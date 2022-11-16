@@ -17,7 +17,7 @@ const octokit = new Octokit({
   })}`;
 
   await fs.writeFile(
-    join(process.cwd(), 'hearding-cats.config.js'),
+    join(process.cwd(), 'herding-cats.config.js'),
     prettier.format(content)
   );
 })();

@@ -4,7 +4,7 @@
   "description": "Herd leader of all example repos",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "checkout-examples": "herd clone git@github.com:edgio-docs/edgio-examples.git examples"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
   "dependencies": {
     "@octokit/core": "^4.1.0",
     "dotenv": "^16.0.3",
+    "herding-cats": "^1.4.1",
     "prettier": "^2.7.1"
   }
 }
