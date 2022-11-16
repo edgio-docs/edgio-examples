@@ -1,0 +1,24 @@
+{
+  "name": "edgio-examples",
+  "version": "1.0.0",
+  "description": "Herd leader of all example repos",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/edgio-docs/edgio-examples.git"
+  },
+  "author": "Tristan Lee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/edgio-docs/edgio-examples/issues"
+  },
+  "homepage": "https://github.com/edgio-docs/edgio-examples#readme",
+  "dependencies": {
+    "@octokit/core": "^4.1.0",
+    "dotenv": "^16.0.3",
+    "prettier": "^2.7.1"
+  }
+}
