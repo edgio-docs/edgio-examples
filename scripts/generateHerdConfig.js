@@ -1,6 +1,7 @@
 const { join } = require('path');
 const fs = require('fs/promises');
 const prettier = require('prettier');
+const _orderBy = require('lodash/orderBy');
 const { Octokit } = require('@octokit/core');
 require('dotenv').config();
 
@@ -10,10 +11,12 @@ const octokit = new Octokit({
 
 (async () => {
   const exampleRepos = await getExampleRepos();
-  const repoUrls = exampleRepos.map(({ ssh_url }) => ssh_url);
+  const repoUrls = exampleRepos.map(
+    ({ ssh_url: repo, default_branch: branch }) => ({ repo, branch })
+  );
 
   const content = `module.exports = ${JSON.stringify({
-    repos: repoUrls.sort(),
+    repos: _orderBy(repoUrls, 'repo'),
   })}`;
 
   await fs.writeFile(

@@ -4,6 +4,7 @@
   "description": "Herd leader of all example repos",
   "main": "index.js",
   "scripts": {
+    "generate-config": "node scripts/generateHerdConfig.js",
     "checkout-examples": "herd clone git@github.com:edgio-docs/edgio-examples.git examples"
   },
   "repository": {
@@ -20,6 +21,7 @@
     "@octokit/core": "^4.1.0",
     "dotenv": "^16.0.3",
     "herding-cats": "^1.4.1",
+    "lodash": "^4.17.21",
     "prettier": "^2.7.1"
   }
 }
