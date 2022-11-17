@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "generate-config": "node scripts/generateHerdConfig.js",
-    "checkout-examples": "herd clone git@github.com:edgio-docs/edgio-examples.git examples"
+    "clone-examples": "herd clone git@github.com:edgio-docs/edgio-examples.git examples"
   },
   "repository": {
     "type": "git",
