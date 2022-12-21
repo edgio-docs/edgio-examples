@@ -8,6 +8,10 @@ let config;
 const errors = [];
 
 async function cloneAndCheckout(repo) {
+  const cloneDir = `${config.outDir}/${repo.repo
+    .split('/')[1]
+    .replace('.git', '')}`;
+
   // Clone the repository into the outDir directory
   const clone = spawn('git', [
     'clone',
@@ -17,7 +21,7 @@ async function cloneAndCheckout(repo) {
     '--branch',
     repo.branch,
     repo.repo,
-    `${config.outDir}/${repo.repo.split('/')[1].replace('.git', '')}`,
+    cloneDir,
   ]);
 
   clone.stdout.on('data', (data) => {
@@ -31,6 +35,9 @@ async function cloneAndCheckout(repo) {
   return new Promise((resolve, reject) => {
     clone.on('close', (code) => {
       if (code === 0) {
+        // Remove .git directory from the cloned repository
+        fs.rmdirSync(join(cloneDir, '.git'), { recursive: true });
+        console.log(chalk.green(`Cloned repository: ${repo.repo}`));
         resolve();
       } else {
         reject(`Failed to clone repository: ${repo.repo}`);
