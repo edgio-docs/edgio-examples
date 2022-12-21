@@ -1,4 +1,5 @@
 module.exports = {
+  outDir: "examples",
   repos: [
     {
       repo: "git@github.com:edgio-docs/edgio-analytics-variant-example.git",
@@ -25,10 +26,6 @@ module.exports = {
       branch: "main",
     },
     { repo: "git@github.com:edgio-docs/edgio-cdn-example.git", branch: "main" },
-    {
-      repo: "git@github.com:edgio-docs/edgio-contentstack-marketing-example.git",
-      branch: "main",
-    },
     {
       repo: "git@github.com:edgio-docs/edgio-docs-bloomreach-reference-spa-static-example.git",
       branch: "main",
@@ -223,11 +220,11 @@ module.exports = {
       branch: "main",
     },
     {
-      repo: "git@github.com:edgio-docs/edgio-swell-example.git",
+      repo: "git@github.com:edgio-docs/edgio-sveltekit-commerce-example.git",
       branch: "main",
     },
     {
-      repo: "git@github.com:edgio-docs/edgio-test3-example.git",
+      repo: "git@github.com:edgio-docs/edgio-swell-example.git",
       branch: "main",
     },
     {

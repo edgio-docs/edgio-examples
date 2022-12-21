@@ -1,0 +1,108 @@
+name: Deploy Examples (dev-only)
+
+on:
+  pull_request:
+  workflow_dispatch:
+
+# In case you push new commit into the MR / the previous runs will automatically stop
+concurrency:
+  group: dev-examples-${{ github.ref }}
+  cancel-in-progress: true
+
+# Node version for all the jobs
+env:
+  NODE_VERSION: 16
+
+jobs:
+  prepare-env:
+    name: 'Prepare env for examples'
+    runs-on: ubuntu-latest
+    outputs:
+      preid: ${{ steps.setPreid.outputs.preid }}
+      buildversion: ${{ steps.setVersion.outputs.version }}
+      matrix: ${{ steps.setMatrix.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }} # NODE_VERSION
+          registry-url: https://registry.npmjs.org/
+      - name: 'Cache node modules'
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-packages-node-modules-node16-v1
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('package-lock.json', 'packages/**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+
+      - name: 'Install NPM 6'
+        run: npm install -g npm@latest-6
+
+      - name: 'Generate preid of this build'
+        id: setPreid
+        run: echo -e "preid=next-$(date +'%s')-$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+
+      - run: npm i --no-audit
+
+      - name: 'Load list of examples'
+        id: setMatrix
+        run: |
+          echo -e "matrix=$(node scripts/helpers/printTests.js)" >> $GITHUB_OUTPUT
+
+  examples:
+    name: 'Examples'
+    needs: prepare-env
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    strategy:
+      matrix:
+        example: ${{ fromJson( needs.prepare-env.outputs.matrix ) }}
+    env:
+      EDGIO_TEAM: 'layer0-docs'
+      EDGIO_SITE: 'edgio-examples'
+      EDGIO_DEPLOY_TOKEN: ${{secrets.EDGIO_EXAMPLES_DEPLOY_TOKEN}}
+      OPTIONAL_API_URL: --api-url=https://app.layer0.co
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }} # NODE_VERSION
+          registry-url: https://registry.npmjs.org/
+
+      - name: 'Cache node modules'
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-examples-node-modules-${{ matrix.example }}-node16-v2
+        with:
+          path: |
+            examples/${{ matrix.example }}/node_modules
+            /opt/hostedtoolcache/node/14.20.1/x64/lib/node_modules
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles(format('examples/{0}/package-lock.json', matrix.test), 'packages/*/package-lock.json') }}
+
+      # Install NPM 6
+      - run: npm install -g npm@latest-6
+      - run: npm set audit false
+
+      # Install global packges
+      - run: |
+          npm i -g @edgio/cli@latest
+
+      # We will install all dependencies
+      - name: 'Install dependencies'
+        run: |
+          npm i --no-audit --prefix ./examples/${{ matrix.example }}
+
+      - name: 'Disable analytics'
+        run: edgio config set-analytics false
+
+      - name: 'Prepare environments for the example'
+        run: |
+          edgio env add --environment=${{ matrix.example }} --site=$EDGIO_SITE --team=$EDGIO_TEAM --token=$EDGIO_DEPLOY_TOKEN $OPTIONAL_API_URL
+
+      # - name: 'Deploy examples'
+      #   run: npm run ci:deploy --prefix ./integration-tests/${{ matrix.example }}

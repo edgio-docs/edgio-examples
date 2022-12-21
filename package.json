@@ -1,11 +1,15 @@
 {
   "name": "edgio-examples",
   "version": "1.0.0",
-  "description": "Herd leader of all example repos",
-  "main": "index.js",
+  "description": "Monorepo for all Edgio example sites",
   "scripts": {
-    "generate-config": "node scripts/generateHerdConfig.js",
-    "clone-examples": "herd clone git@github.com:edgio-docs/edgio-examples.git examples"
+    "generate-config": "node scripts/generateConfig.js",
+    "clone-examples": "rm -rf ./examples; mkdir ./examples; node scripts/cloneExamples.js",
+    "dev": "turbo run edgio:dev",
+    "build": "turbo run edgio:build",
+    "deploy": "turbo run edgio:deploy",
+    "test": "turbo run test",
+    "lint": "turbo run lint"
   },
   "repository": {
     "type": "git",
@@ -20,8 +24,14 @@
   "dependencies": {
     "@octokit/core": "^4.1.0",
     "dotenv": "^16.0.3",
-    "herding-cats": "^1.4.1",
     "lodash": "^4.17.21",
     "prettier": "^2.7.1"
-  }
+  },
+  "devDependencies": {
+    "chalk": "^4.1.2",
+    "turbo": "^1.6.3"
+  },
+  "workspaces": [
+    "examples/*"
+  ]
 }

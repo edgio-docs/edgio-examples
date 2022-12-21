@@ -5,6 +5,9 @@ const _orderBy = require('lodash/orderBy');
 const { Octokit } = require('@octokit/core');
 require('dotenv').config();
 
+const CONFIG_FILE = 'examples.config.js';
+const OUT_DIR = 'examples';
+
 const octokit = new Octokit({
   auth: process.env.GITHUB_API_TOKEN,
 });
@@ -16,11 +19,12 @@ const octokit = new Octokit({
   );
 
   const content = `module.exports = ${JSON.stringify({
+    outDir: OUT_DIR,
     repos: _orderBy(repoUrls, 'repo'),
   })}`;
 
   await fs.writeFile(
-    join(process.cwd(), 'herding-cats.config.js'),
+    join(process.cwd(), CONFIG_FILE),
     prettier.format(content)
   );
 })();
