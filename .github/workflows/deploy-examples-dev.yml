@@ -63,7 +63,7 @@ jobs:
     env:
       EDGIO_TEAM: 'layer0-docs'
       EDGIO_SITE: 'edgio-examples'
-      ENV_NAME: ${{ matrix.example }}-$EDGIO_ENV
+      ENV_NAME: ${{ matrix.example }}-${EDGIO_ENV}
       EDGIO_DEPLOY_TOKEN: ${{secrets.EDGIO_EXAMPLES_DEPLOY_TOKEN}}
       OPTIONAL_API_URL: --api-url=https://app.layer0.co
 
