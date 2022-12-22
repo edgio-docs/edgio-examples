@@ -108,6 +108,7 @@ jobs:
       - name: 'Prepare environments for the example'
         run: |
           common_args="--site=$EDGIO_SITE --team=$EDGIO_TEAM --token=$EDGIO_DEPLOY_TOKEN $OPTIONAL_API_URL"
+          output=$(eval "edgio env list $common_args")
 
           # Get the lines that contain the list of environments
           envs=$(echo "$output" | grep -A 1000 "Environments:")
