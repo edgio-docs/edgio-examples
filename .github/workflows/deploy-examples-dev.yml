@@ -158,6 +158,11 @@ jobs:
           ENV_NAME: ${{ matrix.example }}-${{ env.EDGIO_ENV }}
         working-directory: ${{ env.EXAMPLE_DIR }}
 
+      - name: Echo everything from previous step
+        run: |
+          echo "Output from previous step:"
+          echo "${{ steps.deploy.output }}"
+
       - name: Extract permalink
         id: extract_permalink
         run: echo -e "matches=$(sed -n 's/.*\(https.*-perma\.link\).*/\1/p' <<< '${{ steps.deploy.output }}')" >> $GITHUB_OUTPUT
