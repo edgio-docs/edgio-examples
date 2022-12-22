@@ -64,6 +64,9 @@ jobs:
     strategy:
       matrix:
         example: ${{ fromJson( needs.prepare-env.outputs.matrix ) }}
+    env:
+      EXAMPLE_DIR: examples/${{ matrix.example }}
+      EDGIO_ARGS: --site=$EDGIO_SITE --team=$EDGIO_TEAM --token=$EDGIO_DEPLOY_TOKEN $OPTIONAL_API_URL
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -88,26 +91,25 @@ jobs:
 
           # Check if package-lock.json file exists
           if [ -f "package-lock.json" ]; then
-            # Use npm ci
+            # Use npm
             npm ci
           else
             # Check if yarn.lock file exists
             if [ -f "yarn.lock" ]; then
-              # Use yarn install --frozen-lockfile
-              yarn install --frozen-lockfile
+              # Use yarn
+              yarn install --immutable
             else
               # No lock file found
               echo "No lock file found. Please run 'npm ci' or 'yarn install --frozen-lockfile' to install dependencies."
             fi
           fi
-        working-directory: examples/${{ matrix.example }}
+        working-directory: ${{ env.EXAMPLE_DIR }}
 
       - name: 'Disable analytics'
         run: edgio config set-analytics false
 
       - name: 'Prepare environments for the example'
         run: |
-          common_args="--site=$EDGIO_SITE --team=$EDGIO_TEAM --token=$EDGIO_DEPLOY_TOKEN $OPTIONAL_API_URL"
           output=$(eval "edgio env list $common_args")
 
           # Get the lines that contain the list of environments
@@ -121,7 +123,7 @@ jobs:
 
           if [[ " $envs " =~ " $ENV_NAME " ]]; then
             # environment exists in the list; skip it
-            echo "Environment ${ENV_NAME} already exists in the list of environments and is being skipped."
+            echo "Environment '${ENV_NAME}'' already exists in the list of environments and is being skipped."
           else
             # environment doesn't exist in the list; add it
             edgio env add $common_args --environment=$ENV_NAME
@@ -129,5 +131,7 @@ jobs:
         env:
           ENV_NAME: ${{ matrix.example }}-${{ env.EDGIO_ENV }}
 
-      # - name: 'Deploy examples'
-      #   run: npm run ci:deploy --prefix ./integration-tests/${{ matrix.example }}
+      - name: 'Deploy example'
+        # All examples must contain an `edgio:deploy` script in their package.json
+        run: npm run edgio:deploy -- ${{ env.EDGIO_ARGS }} --environment=${{ matrix.example }}-${{ env.EDGIO_ENV }}
+        working-directory: ${{ env.EXAMPLE_DIR }}
