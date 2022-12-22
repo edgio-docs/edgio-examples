@@ -65,7 +65,7 @@ jobs:
       matrix:
         example: ${{ fromJson( needs.prepare-env.outputs.matrix ) }}
     env:
-      ENV_NAME: ${{ matrix.example }}-${EDGIO_ENV}
+      ENV_NAME: ${{ matrix.example }}-${{ env.EDGIO_ENV }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
