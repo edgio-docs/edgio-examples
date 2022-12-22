@@ -25,12 +25,14 @@ env:
   OPTIONAL_API_URL: --api-url=https://app.layer0.co
 
 jobs:
-  prepare-env:
+  prepare:
     name: Prepare env for examples
     runs-on: ubuntu-latest
     outputs:
       matrix: ${{ steps.setMatrix.outputs.matrix }}
       branch: ${{ steps.setBranch.outputs.branch }}
+      # Array to store the results of the examples
+      results: ${{ steps.setMatrix.outputs.results }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -63,16 +65,17 @@ jobs:
       - name: Load list of examples
         id: setMatrix
         run: |
+          echo "results={}" >> $GITHUB_OUTPUT
           echo -e "matrix=$(node scripts/helpers/printExamples.js)" >> $GITHUB_OUTPUT
 
   examples:
     name: Examples
-    needs: prepare-env
+    needs: prepare
     runs-on: ubuntu-latest
     continue-on-error: true
     strategy:
       matrix:
-        example: ${{ fromJson( needs.prepare-env.outputs.matrix ) }}
+        example: ${{ fromJson( needs.prepare.outputs.matrix ) }}
     env:
       EXAMPLE_DIR: examples/${{ matrix.example }}
       ENV_CMD_ARGS: --site=$EDGIO_SITE --team=$EDGIO_TEAM --token=$EDGIO_DEPLOY_TOKEN $OPTIONAL_API_URL
@@ -161,17 +164,24 @@ jobs:
           echo deploy_output=$deploy >> $GITHUB_OUTPUT
         env:
           ENV_NAME: ${{ matrix.example }}-${{ env.EDGIO_ENV }}
-          BRANCH_NAME: ${{ needs.prepare-env.outputs.branch }}
+          BRANCH_NAME: ${{ needs.prepare.outputs.branch }}
         working-directory: ${{ env.EXAMPLE_DIR }}
-
-      - name: Echo everything from previous step
-        run: |
-          echo "Output from previous step:"
-          echo $GITHUB_OUTPUT
 
       - name: Extract permalink
         id: extract_permalink
         run: echo -e "matches=$(sed -n 's/.*\(https.*-perma\.link\).*/\1/p' <<< '${{ steps.deploy.outputs.DEPLOY_OUTPUT }}')" >> $GITHUB_OUTPUT
 
       - name: Print permalink
-        run: echo "The permalink is ${{ steps.extract_permalink.outputs.matches }}"
+        run: |
+          echo "The permalink is ${{ steps.extract_permalink.outputs.matches }}"
+          results=$(jq ".example_property |= .+ [${{ steps.extract_permalink.outputs.matches }}]" <<< "${{ needs.prepare.outputs.results }}")
+          echo "results=$results" >> $GITHUB_OUTPUT
+
+  notify:
+    name: Notify results
+    needs: examples
+    runs-on: ubuntu-latest
+    continue-on-error: true
+
+    steps:
+      - run: echo "The results are ${{ needs.prepare.outputs.results }}"
