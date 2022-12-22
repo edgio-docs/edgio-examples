@@ -92,7 +92,7 @@ jobs:
 
       - name: 'Prepare environments for the example'
         run: |
-          common_args="--environment=$ENV_NAME --site=$EDGIO_SITE --team=$EDGIO_TEAM --token=$EDGIO_DEPLOY_TOKEN $OPTIONAL_API_URL"
+          common_args="--site=$EDGIO_SITE --team=$EDGIO_TEAM --token=$EDGIO_DEPLOY_TOKEN $OPTIONAL_API_URL"
           output=$(eval "edgio env list $common_args")
           envs_line=$(echo "$output" | grep "Environments:")  # get the line that contains the list of environments
           envs=${envs_line#*: }  # remove the "Environments: " prefix from the line
@@ -102,7 +102,7 @@ jobs:
             echo "Environment ${ENV_NAME} already exists in the list of environments and is being skipped."
           else
             # environment doesn't exist in the list; add it
-            edgio env add $common_args
+            edgio env add $common_args --environment=$ENV_NAME
           fi
         env:
           ENV_NAME: ${{ matrix.example }}-${{ env.EDGIO_ENV }}
