@@ -158,7 +158,7 @@ jobs:
         run: |
           deploy=$(npm run edgio:deploy -- ${{ env.ENV_CMD_ARGS }} --branch=${{ env.BRANCH_NAME }} --environment=${{ env.ENV_NAME }})
           echo "The output is: $deploy"
-          echo "deploy_output='$deploy'" >> $GITHUB_OUTPUT
+          echo deploy_output=$deploy >> $GITHUB_OUTPUT
         env:
           ENV_NAME: ${{ matrix.example }}-${{ env.EDGIO_ENV }}
           BRANCH_NAME: ${{ needs.prepare-env.outputs.branch }}
@@ -167,7 +167,7 @@ jobs:
       - name: Echo everything from previous step
         run: |
           echo "Output from previous step:"
-          echo "${{ steps.deploy.outputs.deploy_output }}"
+          echo $GITHUB_OUTPUT
 
       - name: Extract permalink
         id: extract_permalink
