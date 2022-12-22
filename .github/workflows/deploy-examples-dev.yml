@@ -160,10 +160,7 @@ jobs:
 
       - name: Extract permalink
         id: extract_permalink
-        uses: actions/parse_text@v1
-        with:
-          text: ${{ steps.deploy.output }}
-          regexp: '🔗 Permalink:.*(https://.*)'
+        run: grep -oP '🔗 Permalink:.*(https://.*)' <<< "${{ steps.deploy.output }}"
 
       - name: Print permalink
         run: echo "The permalink is ${{ steps.extract_permalink.outputs.matches }}"
