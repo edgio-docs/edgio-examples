@@ -103,7 +103,10 @@ jobs:
           envs_line=$(echo "$output" | grep "Environments:")  # get the line that contains the list of environments
           envs=${envs_line#*: }  # remove the "Environments: " prefix from the line
           IFS=$'\n' read -rd '' -a envs_array <<< "$envs"  # split the string by newline and store the resulting array in envs_array
-          if ! [[ " ${envs_array[@]} " =~ " ${ENV_NAME} " ]]; then
+          if [[ " ${envs_array[@]} " =~ " ${ENV_NAME} " ]]; then
+            # environment exists in the list; skip it
+            echo "Environment ${ENV_NAME} already exists in the list of environments and is being skipped."
+          else
             # environment doesn't exist in the list; add it
             edgio env add $common_args
           fi
