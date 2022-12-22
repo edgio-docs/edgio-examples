@@ -157,14 +157,12 @@ jobs:
         env:
           ENV_NAME: ${{ matrix.example }}-${{ env.EDGIO_ENV }}
         working-directory: ${{ env.EXAMPLE_DIR }}
-        outputs:
-          deployment_output: ${{ steps.deploy.output }}
 
       - name: Extract permalink
         id: extract_permalink
         uses: actions/parse_text@v1
         with:
-          text: ${{ steps.deploy.outputs.deployment_output }}
+          text: ${{ steps.deploy.output }}
           regexp: '🔗 Permalink:.*(https://.*)'
 
       - name: Print permalink
