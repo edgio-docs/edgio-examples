@@ -64,8 +64,6 @@ jobs:
     strategy:
       matrix:
         example: ${{ fromJson( needs.prepare-env.outputs.matrix ) }}
-    env:
-      ENV_NAME: ${{ matrix.example }}-${{ env.EDGIO_ENV }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -105,6 +103,8 @@ jobs:
             # environment doesn't exist in the list; add it
             edgio env add $common_args
           fi
+        env:
+          ENV_NAME: ${{ matrix.example }}-${{ env.EDGIO_ENV }}
 
       # - name: 'Deploy examples'
       #   run: npm run ci:deploy --prefix ./integration-tests/${{ matrix.example }}
