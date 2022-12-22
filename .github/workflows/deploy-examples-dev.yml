@@ -16,6 +16,10 @@ env:
   # Set env var based on branch name
   GIT_REF: ${{ github.ref }}
   EDGIO_ENV: ${{ github.ref == 'refs/heads/main' && 'live' || 'test' }}
+  EDGIO_TEAM: 'layer0-docs'
+  EDGIO_SITE: 'edgio-examples'
+  EDGIO_DEPLOY_TOKEN: ${{secrets.EDGIO_EXAMPLES_DEPLOY_TOKEN}}
+  OPTIONAL_API_URL: --api-url=https://app.layer0.co
 
 jobs:
   prepare-env:
@@ -61,12 +65,7 @@ jobs:
       matrix:
         example: ${{ fromJson( needs.prepare-env.outputs.matrix ) }}
     env:
-      EDGIO_TEAM: 'layer0-docs'
-      EDGIO_SITE: 'edgio-examples'
       ENV_NAME: ${{ matrix.example }}-${EDGIO_ENV}
-      EDGIO_DEPLOY_TOKEN: ${{secrets.EDGIO_EXAMPLES_DEPLOY_TOKEN}}
-      OPTIONAL_API_URL: --api-url=https://app.layer0.co
-
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -84,11 +83,7 @@ jobs:
             /opt/hostedtoolcache/node/14.20.1/x64/lib/node_modules
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles(format('examples/{0}/package-lock.json', matrix.test), 'packages/*/package-lock.json') }}
 
-      # Install global packges
-      - run: |
-          npm i -g @edgio/cli@latest
-
-      # We will install all dependencies
+      # Install dependencies for this example
       - name: 'Install dependencies'
         run: |
           npm i --no-audit --prefix ./examples/${{ matrix.example }}
