@@ -119,9 +119,7 @@ jobs:
           # Replace all newline characters with a space
           envs=$(echo "$envs" | tr '\n' ' ')
 
-          echo $envs
-
-          if [[ " $list " =~ " $ENV_NAME " ]]; then
+          if [[ " $envs " =~ " $ENV_NAME " ]]; then
             # environment exists in the list; skip it
             echo "Environment ${ENV_NAME} already exists in the list of environments and is being skipped."
           else
