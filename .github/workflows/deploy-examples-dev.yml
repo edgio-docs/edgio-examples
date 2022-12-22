@@ -33,7 +33,6 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }} # NODE_VERSION
           registry-url: https://registry.npmjs.org/
-          global-npm-packages: '@edgio/cli'
       - name: 'Cache node modules'
         uses: actions/cache@v3
         env:
@@ -50,9 +49,7 @@ jobs:
         id: setPreid
         run: echo -e "preid=next-$(date +'%s')-$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
 
-      - run: |
-          npm i -g @edgio/cli
-          npm i
+      - run: npm ci
 
       - name: 'Load list of examples'
         id: setMatrix
@@ -87,6 +84,7 @@ jobs:
       # Install dependencies for this example
       - name: 'Install dependencies'
         run: |
+          npm i -g @edgio/cli
           npm i --no-audit --prefix ./examples/${{ matrix.example }}
 
       - name: 'Disable analytics'
