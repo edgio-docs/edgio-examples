@@ -93,7 +93,7 @@ jobs:
       - name: 'Prepare environments for the example'
         run: |
           common_args="--environment=$ENV_NAME --site=$EDGIO_SITE --team=$EDGIO_TEAM --token=$EDGIO_DEPLOY_TOKEN $OPTIONAL_API_URL"
-          output=$(edgio env list $common_args)
+          output=$(eval "edgio env list $common_args")
           envs_line=$(echo "$output" | grep "Environments:")  # get the line that contains the list of environments
           envs=${envs_line#*: }  # remove the "Environments: " prefix from the line
           IFS=$'\n' read -rd '' -a envs_array <<< "$envs"  # split the string by newline and store the resulting array in envs_array
