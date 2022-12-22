@@ -108,11 +108,21 @@ jobs:
       - name: 'Prepare environments for the example'
         run: |
           common_args="--site=$EDGIO_SITE --team=$EDGIO_TEAM --token=$EDGIO_DEPLOY_TOKEN $OPTIONAL_API_URL"
-          echo "edgio env list $common_args"
-          output=$(eval "edgio env list $common_args")
-          envs=$(echo "$output" | grep -A 1000 "Environments:" | tail -n +2)
+
+          # Get the lines that contain the list of environments
+          envs=$(echo "$output" | grep -A 1000 "Environments:")
+
+          # Remove the "Environments: " prefix from the first line and remove all lines before the first one
+          envs=$(echo "$envs" | tail -n +2)
+
+          # Replace all newline characters with a space
+          envs=$(echo "$envs" | tr '\n' ' ')
+
           echo $envs
-          IFS=$'\n' read -rd '' -a envs_array <<< "$envs"  # split the string by newline and store the resulting array in envs_array
+          # Split the string by newline and store the resulting array in envs_array
+          IFS=$'\n' read -d ' ' -r -a envs_array <<< "$envs"
+          echo $envs_array
+
           if [[ " ${envs_array[@]} " =~ " ${ENV_NAME} " ]]; then
             # environment exists in the list; skip it
             echo "Environment ${ENV_NAME} already exists in the list of environments and is being skipped."
