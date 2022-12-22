@@ -79,10 +79,6 @@ jobs:
             /opt/hostedtoolcache/node/14.20.1/x64/lib/node_modules
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles(format('examples/{0}/package-lock.json', matrix.test), 'packages/*/package-lock.json') }}
 
-      # Install NPM 6
-      - run: npm install -g npm@latest-6
-      - run: npm set audit false
-
       # Install global packges
       - run: |
           npm i -g @edgio/cli@latest
