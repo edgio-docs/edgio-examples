@@ -155,7 +155,10 @@ jobs:
 
       - name: Deploy example
         id: deploy
-        run: npm run edgio:deploy -- ${{ env.ENV_CMD_ARGS }} --branch=${{ env.BRANCH_NAME }} --environment=${{ env.ENV_NAME }}
+        run: |
+          output=$(npm run edgio:deploy -- ${{ env.ENV_CMD_ARGS }} --branch=${{ env.BRANCH_NAME }} --environment=${{ env.ENV_NAME }})
+          echo "The output is: $output"
+          echo "::set-output name=output_var::$output"
         env:
           ENV_NAME: ${{ matrix.example }}-${{ env.EDGIO_ENV }}
           BRANCH_NAME: ${{ needs.prepare-env.outputs.branch }}
@@ -164,7 +167,7 @@ jobs:
       - name: Echo everything from previous step
         run: |
           echo "Output from previous step:"
-          echo "${{ steps.deploy }}"
+          echo "${{ steps.deploy.outputs.output_var }}"
 
       - name: Extract permalink
         id: extract_permalink
