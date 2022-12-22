@@ -66,7 +66,7 @@ jobs:
         example: ${{ fromJson( needs.prepare-env.outputs.matrix ) }}
     env:
       EXAMPLE_DIR: examples/${{ matrix.example }}
-      EDGIO_ARGS: --site=$EDGIO_SITE --team=$EDGIO_TEAM --token=$EDGIO_DEPLOY_TOKEN $OPTIONAL_API_URL
+      ENV_CMD_ARGS: --site=$EDGIO_SITE --team=$EDGIO_TEAM --token=$EDGIO_DEPLOY_TOKEN $OPTIONAL_API_URL
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -81,18 +81,18 @@ jobs:
         with:
           path: |
             examples/${{ matrix.example }}/node_modules
-            /opt/hostedtoolcache/node/14.20.1/x64/lib/node_modules
+            */*/node_modules
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles(format('examples/{0}/package-lock.json', matrix.test), 'packages/*/package-lock.json') }}
 
-      # Check if there are files changes using `git status` in the specified directory
-      - name: 'Check if there are changes in the example'
-        id: checkChanges
-        run: |
-          echo -e "hasChanges=$(git status --porcelain --untracked-files=no ${{ env.EXAMPLE_DIR }} | wc -l)" >> $GITHUB_OUTPUT
-          if [ $hasChanges = 0 ]; then
-            echo "No changes in the example, exiting matrix."
-            exit 0
-          fi
+      # TODO: If the PR doesn't contain any changes in the example relative to the base branch, skip the matrix
+      # - name: 'Check if there are changes in the example'
+      #   id: checkChanges
+      #   run: |
+      #     echo -e "hasChanges=$(git status --porcelain --untracked-files=no ${{ env.EXAMPLE_DIR }} | wc -l)" >> $GITHUB_OUTPUT
+      #     if [ $hasChanges = 0 ]; then
+      #       echo "No changes in the example, exiting matrix."
+      #       exit 0
+      #     fi
 
       # Install dependencies for this example
       - name: 'Install dependencies'
@@ -120,7 +120,7 @@ jobs:
 
       - name: 'Prepare environments for the example'
         run: |
-          output=$(eval "edgio env list $EDGIO_ARGS")
+          output=$(eval "edgio env list $ENV_CMD_ARGS")
 
           # Get the lines that contain the list of environments
           envs=$(echo "$output" | grep -A 1000 "Environments:")
@@ -136,14 +136,14 @@ jobs:
             echo "Environment '${ENV_NAME}' already exists in the list of environments and is being skipped."
           else
             # environment doesn't exist in the list; add it
-            edgio env add $common_args --environment=$ENV_NAME
+            edgio env add $ENV_CMD_ARGS --environment=$ENV_NAME
           fi
         env:
           ENV_NAME: ${{ matrix.example }}-${{ env.EDGIO_ENV }}
 
       - name: 'Deploy example'
         # All examples must contain an `edgio:deploy` script in their package.json
-        run: npm run edgio:deploy -- ${{ env.EDGIO_ARGS }} --environment=${{ env.ENV_NAME }}
+        run: npm run edgio:deploy -- ${{ env.ENV_CMD_ARGS }} --environment=${{ env.ENV_NAME }}
         env:
           ENV_NAME: ${{ matrix.example }}-${{ env.EDGIO_ENV }}
         working-directory: ${{ env.EXAMPLE_DIR }}
