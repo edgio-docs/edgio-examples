@@ -19,14 +19,14 @@ env:
   # Set env var based on branch name
   GIT_REF: ${{ github.ref }}
   EDGIO_ENV: ${{ github.ref == 'refs/heads/main' && 'live' || 'test' }}
-  EDGIO_TEAM: 'layer0-docs'
-  EDGIO_SITE: 'edgio-examples'
+  EDGIO_TEAM: layer0-docs
+  EDGIO_SITE: edgio-examples
   EDGIO_DEPLOY_TOKEN: ${{secrets.EDGIO_EXAMPLES_DEPLOY_TOKEN}}
   OPTIONAL_API_URL: --api-url=https://app.layer0.co
 
 jobs:
   prepare-env:
-    name: 'Prepare env for examples'
+    name: Prepare env for examples
     runs-on: ubuntu-latest
     outputs:
       matrix: ${{ steps.setMatrix.outputs.matrix }}
@@ -36,7 +36,7 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }} # NODE_VERSION
           registry-url: https://registry.npmjs.org/
-      - name: 'Cache node modules'
+      - name: Cache node modules
         uses: actions/cache@v3
         env:
           cache-name: cache-packages-node-modules-node16-v1
@@ -52,19 +52,19 @@ jobs:
         shell: bash
         run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | sed 's/[^[:alnum:].-]/-/g')" >> $GITHUB_ENV
 
-      - name: 'Generate preid of this build'
+      - name: Generate preid of this build
         id: setPreid
         run: echo -e "preid=next-$(date +'%s')-$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
 
       - run: npm ci
 
-      - name: 'Load list of examples'
+      - name: Load list of examples
         id: setMatrix
         run: |
           echo -e "matrix=$(node scripts/helpers/printExamples.js)" >> $GITHUB_OUTPUT
 
   examples:
-    name: 'Examples'
+    name: Examples
     needs: prepare-env
     runs-on: ubuntu-latest
     continue-on-error: true
@@ -81,7 +81,7 @@ jobs:
           node-version: ${{ env.NODE_VERSION }} # NODE_VERSION
           registry-url: https://registry.npmjs.org/
 
-      - name: 'Cache node modules'
+      - name: Cache node modules
         uses: actions/cache@v3
         env:
           cache-name: cache-examples-node-modules-${{ matrix.example }}-node16-v2
@@ -102,7 +102,7 @@ jobs:
       #     fi
 
       # Install dependencies for this example
-      - name: 'Install dependencies'
+      - name: Install dependencies
         run: |
           npm i -g @edgio/cli
 
@@ -122,10 +122,10 @@ jobs:
           fi
         working-directory: ${{ env.EXAMPLE_DIR }}
 
-      - name: 'Disable analytics'
+      - name: Disable analytics
         run: edgio config set-analytics false
 
-      - name: 'Prepare environments for the example'
+      - name: Prepare environments for the example
         run: |
           output=$(eval "edgio env list $ENV_CMD_ARGS")
 
@@ -148,11 +148,24 @@ jobs:
         env:
           ENV_NAME: ${{ matrix.example }}-${{ env.EDGIO_ENV }}
 
-      - name: 'Validate package scripts'
+      - name: Validate package scripts
         run: node scripts/helpers/validatePackageScripts.js ${{ env.EXAMPLE_DIR }}
 
-      - name: 'Deploy example'
+      - name: Deploy example
+        id: deploy
         run: npm run edgio:deploy -- ${{ env.ENV_CMD_ARGS }} --branch=${{ env.BRANCH_NAME }} --environment=${{ env.ENV_NAME }}
         env:
           ENV_NAME: ${{ matrix.example }}-${{ env.EDGIO_ENV }}
         working-directory: ${{ env.EXAMPLE_DIR }}
+        outputs:
+          deployment_output: ${{ steps.deploy.output }}
+
+      - name: Extract permalink
+        id: extract_permalink
+        uses: actions/parse_text@v1
+        with:
+          text: ${{ steps.deploy.outputs.deployment_output }}
+          regexp: '🔗 Permalink:.*(https://.*)'
+
+      - name: Print permalink
+        run: echo "The permalink is ${{ steps.extract_permalink.outputs.matches }}"
