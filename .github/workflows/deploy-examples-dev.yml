@@ -63,6 +63,7 @@ jobs:
     env:
       EDGIO_TEAM: 'layer0-docs'
       EDGIO_SITE: 'edgio-examples'
+      ENV_NAME: ${{ matrix.example }}-${{ env.EDGIO_ENV}}
       EDGIO_DEPLOY_TOKEN: ${{secrets.EDGIO_EXAMPLES_DEPLOY_TOKEN}}
       OPTIONAL_API_URL: --api-url=https://app.layer0.co
 
@@ -97,7 +98,15 @@ jobs:
 
       - name: 'Prepare environments for the example'
         run: |
-          edgio env add --environment=${{ matrix.example }}-${{ env.EDGIO_ENV}} --site=$EDGIO_SITE --team=$EDGIO_TEAM --token=$EDGIO_DEPLOY_TOKEN $OPTIONAL_API_URL
+          common_args="--environment=$ENV_NAME --site=$EDGIO_SITE --team=$EDGIO_TEAM --token=$EDGIO_DEPLOY_TOKEN $OPTIONAL_API_URL"
+          output=$(edgio env list $common_args)
+          envs_line=$(echo "$output" | grep "Environments:")  # get the line that contains the list of environments
+          envs=${envs_line#*: }  # remove the "Environments: " prefix from the line
+          IFS=$'\n' read -rd '' -a envs_array <<< "$envs"  # split the string by newline and store the resulting array in envs_array
+          if ! [[ " ${envs_array[@]} " =~ " ${ENV_NAME} " ]]; then
+            # environment doesn't exist in the list; add it
+            edgio env add $common_args
+          fi
 
       # - name: 'Deploy examples'
       #   run: npm run ci:deploy --prefix ./integration-tests/${{ matrix.example }}
