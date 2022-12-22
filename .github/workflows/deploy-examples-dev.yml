@@ -174,7 +174,7 @@ jobs:
       - name: Print permalink
         run: |
           echo "The permalink is ${{ steps.extract_permalink.outputs.matches }}"
-          results=$(jq ".example_property |= .+ [${{ steps.extract_permalink.outputs.matches }}]" <<< "${{ needs.prepare.outputs.results }}")
+          results=$(jq ' . += {"key": "${{ steps.extract_permalink.outputs.matches }}"}' <<< "${{ needs.prepare.outputs.results }}")
           echo "results=$results" >> $GITHUB_OUTPUT
 
   notify:
