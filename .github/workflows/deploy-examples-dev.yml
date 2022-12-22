@@ -85,7 +85,22 @@ jobs:
       - name: 'Install dependencies'
         run: |
           npm i -g @edgio/cli
-          npm i --prefix ./examples/${{ matrix.example }}
+
+          # Check if package-lock.json file exists
+          if [ -f "package-lock.json" ]; then
+            # Use npm ci
+            npm ci
+          else
+            # Check if yarn.lock file exists
+            if [ -f "yarn.lock" ]; then
+              # Use yarn install --frozen-lockfile
+              yarn install --frozen-lockfile
+            else
+              # No lock file found
+              echo "No lock file found. Please run 'npm ci' or 'yarn install --frozen-lockfile' to install dependencies."
+            fi
+          fi
+        working-directory: examples/${{ matrix.example }}
 
       - name: 'Disable analytics'
         run: edgio config set-analytics false
@@ -95,8 +110,7 @@ jobs:
           common_args="--site=$EDGIO_SITE --team=$EDGIO_TEAM --token=$EDGIO_DEPLOY_TOKEN $OPTIONAL_API_URL"
           echo "edgio env list $common_args"
           output=$(eval "edgio env list $common_args")
-          envs_line=$(echo "$output" | grep "Environments:")  # get the line that contains the list of environments
-          envs=${envs_line#*: }  # remove the "Environments: " prefix from the line
+          envs=$(echo "$output" | grep -A 1000 "Environments:" | tail -n +2)
           IFS=$'\n' read -rd '' -a envs_array <<< "$envs"  # split the string by newline and store the resulting array in envs_array
           if [[ " ${envs_array[@]} " =~ " ${ENV_NAME} " ]]; then
             # environment exists in the list; skip it
