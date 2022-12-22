@@ -153,7 +153,7 @@ jobs:
 
       - name: Deploy example
         id: deploy
-        run: npm run edgio:deploy -- ${{ env.ENV_CMD_ARGS }} --branch=${{ env.BRANCH_NAME }} --environment=${{ env.ENV_NAME }} >> $GITHUB_OUTPUT
+        run: echo -e "DEPLOY_OUTPUT=$(npm run edgio:deploy -- ${{ env.ENV_CMD_ARGS }} --branch=${{ env.BRANCH_NAME }} --environment=${{ env.ENV_NAME }})" >> $GITHUB_OUTPUT
         env:
           ENV_NAME: ${{ matrix.example }}-${{ env.EDGIO_ENV }}
         working-directory: ${{ env.EXAMPLE_DIR }}
@@ -161,11 +161,11 @@ jobs:
       - name: Echo everything from previous step
         run: |
           echo "Output from previous step:"
-          echo "${{ steps.deploy.output }}"
+          echo "${{ steps.deploy.outputs.DEPLOY_OUTPUT }}"
 
       - name: Extract permalink
         id: extract_permalink
-        run: echo -e "matches=$(sed -n 's/.*\(https.*-perma\.link\).*/\1/p' <<< '${{ steps.deploy.output }}')" >> $GITHUB_OUTPUT
+        run: echo -e "matches=$(sed -n 's/.*\(https.*-perma\.link\).*/\1/p' <<< '${{ steps.deploy.outputs.DEPLOY_OUTPUT }}')" >> $GITHUB_OUTPUT
 
       - name: Print permalink
         run: echo "The permalink is ${{ steps.extract_permalink.outputs.matches }}"
