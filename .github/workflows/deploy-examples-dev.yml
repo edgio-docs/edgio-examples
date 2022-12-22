@@ -156,7 +156,7 @@ jobs:
       - name: Deploy example
         id: deploy
         run: |
-          echo -e "output=$(npm run edgio:deploy -- ${{ env.ENV_CMD_ARGS }} --branch=${{ env.BRANCH_NAME }} --environment=${{ env.ENV_NAME }})" >> $GITHUB_OUTPUT
+          echo -e "output=$(eval 'npm run edgio:deploy -- ${{ env.ENV_CMD_ARGS }} --branch=${{ env.BRANCH_NAME }} --environment=${{ env.ENV_NAME }}')" >> $GITHUB_OUTPUT
         env:
           ENV_NAME: ${{ matrix.example }}-${{ env.EDGIO_ENV }}
           BRANCH_NAME: ${{ needs.prepare-env.outputs.branch }}
