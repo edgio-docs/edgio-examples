@@ -110,7 +110,7 @@ jobs:
 
       - name: 'Prepare environments for the example'
         run: |
-          output=$(eval "edgio env list $common_args")
+          output=$(eval "edgio env list $EDGIO_ARGS")
 
           # Get the lines that contain the list of environments
           envs=$(echo "$output" | grep -A 1000 "Environments:")
@@ -133,5 +133,7 @@ jobs:
 
       - name: 'Deploy example'
         # All examples must contain an `edgio:deploy` script in their package.json
-        run: npm run edgio:deploy -- ${{ env.EDGIO_ARGS }} --environment=${{ matrix.example }}-${{ env.EDGIO_ENV }}
+        run: npm run edgio:deploy -- ${{ env.EDGIO_ARGS }} --environment=${{ env.ENV_NAME }}
+        env:
+          ENV_NAME: ${{ matrix.example }}-${{ env.EDGIO_ENV }}
         working-directory: ${{ env.EXAMPLE_DIR }}
