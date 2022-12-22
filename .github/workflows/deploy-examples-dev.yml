@@ -52,7 +52,7 @@ jobs:
       - name: Extract branch name
         id: setBranch
         shell: bash
-        run: echo -e "branch=$(echo ${GITHUB_REF#refs/heads/} | sed 's/[^[:alnum:].-]/-/g')" >> $GITHUB_ENV
+        run: echo -e "branch=$(echo ${GITHUB_REF#refs/heads/} | sed 's/[^[:alnum:].-]/-/g')" >> $GITHUB_OUTPUT
 
       - name: Generate preid of this build
         id: setPreid
@@ -155,8 +155,7 @@ jobs:
 
       - name: Deploy example
         id: deploy
-        run: |
-          echo -e "output=$(eval 'npm run edgio:deploy -- ${{ env.ENV_CMD_ARGS }} --branch=${{ env.BRANCH_NAME }} --environment=${{ env.ENV_NAME }}')" >> $GITHUB_OUTPUT
+        run: npm run edgio:deploy -- ${{ env.ENV_CMD_ARGS }} --branch=${{ env.BRANCH_NAME }} --environment=${{ env.ENV_NAME }}
         env:
           ENV_NAME: ${{ matrix.example }}-${{ env.EDGIO_ENV }}
           BRANCH_NAME: ${{ needs.prepare-env.outputs.branch }}
@@ -165,7 +164,7 @@ jobs:
       - name: Echo everything from previous step
         run: |
           echo "Output from previous step:"
-          echo "${{ steps.deploy.outputs }}"
+          echo "${{ fromJson(steps.deploy) }}"
 
       - name: Extract permalink
         id: extract_permalink
