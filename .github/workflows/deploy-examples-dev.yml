@@ -46,7 +46,7 @@ jobs:
       - name: 'Load list of examples'
         id: setMatrix
         run: |
-          echo -e "matrix=$(node ../scripts/helpers/printExamples.js)" >> $GITHUB_OUTPUT
+          echo -e "matrix=$(node scripts/helpers/printExamples.js)" >> $GITHUB_OUTPUT
 
   examples:
     name: 'Examples'

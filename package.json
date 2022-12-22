@@ -32,6 +32,6 @@
     "turbo": "^1.6.3"
   },
   "workspaces": [
-    "examples/*"
+    "__ignore__examples/*"
   ]
 }
