@@ -14,6 +14,7 @@ env:
   NODE_VERSION: 16
 
   # Set env var based on branch name
+  GIT_REF: ${{ github.ref }}
   EDGIO_ENV: ${{ github.ref == 'refs/heads/main' && 'live' || 'test' }}
 
 jobs:
