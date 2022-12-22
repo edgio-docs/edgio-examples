@@ -164,7 +164,7 @@ jobs:
       - name: Echo everything from previous step
         run: |
           echo "Output from previous step:"
-          echo "${{ fromJson(steps.deploy) }}"
+          echo "${{ steps.deploy }}"
 
       - name: Extract permalink
         id: extract_permalink
