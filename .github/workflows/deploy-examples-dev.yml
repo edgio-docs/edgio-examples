@@ -50,8 +50,8 @@ jobs:
         run: echo -e "preid=next-$(date +'%s')-$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
 
       - run: |
-        npm i -g @edgio/cli
-        npm i
+          npm i -g @edgio/cli
+          npm i
 
       - name: 'Load list of examples'
         id: setMatrix
