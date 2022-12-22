@@ -9,9 +9,12 @@ concurrency:
   group: dev-examples-${{ github.ref }}
   cancel-in-progress: true
 
-# Node version for all the jobs
 env:
+  # Node version for all the jobs
   NODE_VERSION: 16
+
+  # Set env var based on branch name
+  EDGIO_ENV: ${{ github.ref == 'refs/heads/main' && '' || '-test' }}
 
 jobs:
   prepare-env:
@@ -93,7 +96,7 @@ jobs:
 
       - name: 'Prepare environments for the example'
         run: |
-          edgio env add --environment=${{ matrix.example }} --site=$EDGIO_SITE --team=$EDGIO_TEAM --token=$EDGIO_DEPLOY_TOKEN $OPTIONAL_API_URL
+          edgio env add --environment=${{ matrix.example }}${{ env.EDGIO_ENV}} --site=$EDGIO_SITE --team=$EDGIO_TEAM --token=$EDGIO_DEPLOY_TOKEN $OPTIONAL_API_URL
 
       # - name: 'Deploy examples'
       #   run: npm run ci:deploy --prefix ./integration-tests/${{ matrix.example }}
