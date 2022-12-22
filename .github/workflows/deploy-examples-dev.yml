@@ -111,6 +111,7 @@ jobs:
           echo "edgio env list $common_args"
           output=$(eval "edgio env list $common_args")
           envs=$(echo "$output" | grep -A 1000 "Environments:" | tail -n +2)
+          echo $envs
           IFS=$'\n' read -rd '' -a envs_array <<< "$envs"  # split the string by newline and store the resulting array in envs_array
           if [[ " ${envs_array[@]} " =~ " ${ENV_NAME} " ]]; then
             # environment exists in the list; skip it
