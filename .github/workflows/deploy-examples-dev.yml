@@ -84,6 +84,16 @@ jobs:
             /opt/hostedtoolcache/node/14.20.1/x64/lib/node_modules
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles(format('examples/{0}/package-lock.json', matrix.test), 'packages/*/package-lock.json') }}
 
+      # Check if there are files changes using `git status` in the specified directory
+      - name: 'Check if there are changes in the example'
+        id: checkChanges
+        run: |
+          echo -e "hasChanges=$(git status --porcelain --untracked-files=no ${{ env.EXAMPLE_DIR }} | wc -l)" >> $GITHUB_OUTPUT
+          if [ $hasChanges = 0 ]; then
+            echo "No changes in the example, exiting matrix."
+            exit 0
+          fi
+
       # Install dependencies for this example
       - name: 'Install dependencies'
         run: |
@@ -123,7 +133,7 @@ jobs:
 
           if [[ " $envs " =~ " $ENV_NAME " ]]; then
             # environment exists in the list; skip it
-            echo "Environment '${ENV_NAME}'' already exists in the list of environments and is being skipped."
+            echo "Environment '${ENV_NAME}' already exists in the list of environments and is being skipped."
           else
             # environment doesn't exist in the list; add it
             edgio env add $common_args --environment=$ENV_NAME
