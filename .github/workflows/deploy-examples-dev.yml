@@ -18,8 +18,6 @@ jobs:
     name: 'Prepare env for examples'
     runs-on: ubuntu-latest
     outputs:
-      preid: ${{ steps.setPreid.outputs.preid }}
-      buildversion: ${{ steps.setVersion.outputs.version }}
       matrix: ${{ steps.setMatrix.outputs.matrix }}
     steps:
       - uses: actions/checkout@v3
@@ -39,9 +37,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
 
-      - name: 'Install NPM 6'
-        run: npm install -g npm@latest-6
-
       - name: 'Generate preid of this build'
         id: setPreid
         run: echo -e "preid=next-$(date +'%s')-$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
@@ -51,7 +46,7 @@ jobs:
       - name: 'Load list of examples'
         id: setMatrix
         run: |
-          echo -e "matrix=$(node ../scripts/helpers/printTests.js)" >> $GITHUB_OUTPUT
+          echo -e "matrix=$(node ../scripts/helpers/printExamples.js)" >> $GITHUB_OUTPUT
 
   examples:
     name: 'Examples'
