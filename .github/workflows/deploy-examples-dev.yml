@@ -32,7 +32,7 @@ jobs:
       matrix: ${{ steps.setMatrix.outputs.matrix }}
       branch: ${{ steps.setBranch.outputs.branch }}
       # Array to store the results of the examples
-      results: ${{ steps.setMatrix.outputs.results }}
+      results: ${{ toJson(steps.setMatrix.outputs.results) }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -73,6 +73,8 @@ jobs:
     needs: prepare
     runs-on: ubuntu-latest
     continue-on-error: true
+    inputs:
+      results: ${{ fromJson(needs.prepare.outputs.results) }}
     strategy:
       matrix:
         example: ${{ fromJson( needs.prepare.outputs.matrix ) }}
@@ -174,8 +176,11 @@ jobs:
       - name: Print permalink
         run: |
           echo "The permalink is ${{ steps.extract_permalink.outputs.matches }}"
-          results=$(jq -c ' . += {"key": "${{ steps.extract_permalink.outputs.matches }}"}' <<< "${{ needs.prepare.outputs.results }}")
+          results=$(echo $results | jq -c ". += {\"${{ matrix.example }}\": \"${{ steps.extract_permalink.outputs.matches }}\"}")
           echo "results=$results" >> $GITHUB_OUTPUT
+    outputs:
+      # Output the results object for each step in the matrix
+      results: ${{ fromJson(steps.setOutput.outputs.results) }}
 
   notify:
     name: Notify results
@@ -184,4 +189,6 @@ jobs:
     continue-on-error: true
 
     steps:
-      - run: echo "The results are ${{ needs.prepare.outputs.results }}"
+      - run: |
+          echo $GITHUB_OUTPUT
+          echo "The results are ${{ needs.examples.outputs.results }}"
