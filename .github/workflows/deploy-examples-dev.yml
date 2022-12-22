@@ -73,14 +73,13 @@ jobs:
     needs: prepare
     runs-on: ubuntu-latest
     continue-on-error: true
-    inputs:
-      results: ${{ fromJson(needs.prepare.outputs.results) }}
     strategy:
       matrix:
         example: ${{ fromJson( needs.prepare.outputs.matrix ) }}
     env:
       EXAMPLE_DIR: examples/${{ matrix.example }}
       ENV_CMD_ARGS: --site=$EDGIO_SITE --team=$EDGIO_TEAM --token=$EDGIO_DEPLOY_TOKEN $OPTIONAL_API_URL
+      MATRIX_RESULTS: ${{ fromJson(needs.prepare.outputs.results) }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -176,11 +175,11 @@ jobs:
       - name: Print permalink
         run: |
           echo "The permalink is ${{ steps.extract_permalink.outputs.matches }}"
-          results=$(echo $results | jq -c ". += {\"${{ matrix.example }}\": \"${{ steps.extract_permalink.outputs.matches }}\"}")
-          echo "results=$results" >> $GITHUB_OUTPUT
+          results=$(echo ${{ env.MATRIX_RESULTS }} | jq -c ". += {\"${{ matrix.example }}\": \"${{ steps.extract_permalink.outputs.matches }}\"}")
+          echo "MATRIX_RESULTS=$results" >> $GITHUB_ENV
     outputs:
       # Output the results object for each step in the matrix
-      results: ${{ fromJson(steps.setOutput.outputs.results) }}
+      results: ${{ fromJson(env.MATRIX_RESULTS) }}
 
   notify:
     name: Notify results
