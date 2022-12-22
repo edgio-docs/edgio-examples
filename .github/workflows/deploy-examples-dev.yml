@@ -136,7 +136,7 @@ jobs:
             echo "Environment '${ENV_NAME}' already exists in the list of environments and is being skipped."
           else
             # environment doesn't exist in the list; add it
-            edgio env add $ENV_CMD_ARGS --environment=$ENV_NAME
+            eval "edgio env add $ENV_CMD_ARGS --environment=$ENV_NAME"
           fi
         env:
           ENV_NAME: ${{ matrix.example }}-${{ env.EDGIO_ENV }}
