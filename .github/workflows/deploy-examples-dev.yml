@@ -119,11 +119,8 @@ jobs:
           envs=$(echo "$envs" | tr '\n' ' ')
 
           echo $envs
-          # Split the string by newline and store the resulting array in envs_array
-          IFS=$'\n' read -d ' ' -r -a envs_array <<< "$envs"
-          echo $envs_array
 
-          if [[ " ${envs_array[@]} " =~ " ${ENV_NAME} " ]]; then
+          if [[ " $list " =~ " $ENV_NAME " ]]; then
             # environment exists in the list; skip it
             echo "Environment ${ENV_NAME} already exists in the list of environments and is being skipped."
           else
