@@ -85,7 +85,7 @@ jobs:
       - name: 'Install dependencies'
         run: |
           npm i -g @edgio/cli
-          npm ci --prefix ./examples/${{ matrix.example }}
+          npm i --prefix ./examples/${{ matrix.example }}
 
       - name: 'Disable analytics'
         run: edgio config set-analytics false
