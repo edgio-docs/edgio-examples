@@ -20,6 +20,7 @@ env:
   EDGIO_SITE: 'edgio-examples'
   EDGIO_DEPLOY_TOKEN: ${{secrets.EDGIO_EXAMPLES_DEPLOY_TOKEN}}
   OPTIONAL_API_URL: --api-url=https://app.layer0.co
+  BRANCH_NAME: $(echo ${GITHUB_REF#refs/heads/} | sed 's/[^[:alnum:].-]/-/g')"
 
 jobs:
   prepare-env:
@@ -145,7 +146,7 @@ jobs:
         run: node scripts/helpers/validatePackageScripts.js ${{ env.EXAMPLE_DIR }}
 
       - name: 'Deploy example'
-        run: npm run edgio:deploy -- ${{ env.ENV_CMD_ARGS }} --environment=${{ env.ENV_NAME }}
+        run: npm run edgio:deploy -- ${{ env.ENV_CMD_ARGS }} --branch=${{ env.BRANCH_NAME }} --environment=${{ env.ENV_NAME }}
         env:
           ENV_NAME: ${{ matrix.example }}-${{ env.EDGIO_ENV }}
         working-directory: ${{ env.EXAMPLE_DIR }}
