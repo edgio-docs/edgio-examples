@@ -188,4 +188,4 @@ jobs:
       - run: |
           echo "$(cat $GITHUB_ENV)"
           echo "$(cat $GITHUB_OUTPUT)"
-          echo "The results are ${{ needs.examples.outputs.results }}"
+          echo "The results are ${{ needs.examples.env }}"
