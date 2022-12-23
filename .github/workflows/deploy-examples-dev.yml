@@ -177,6 +177,7 @@ jobs:
           echo "The permalink is ${{ steps.extract_permalink.outputs.matches }}"
           results=$(echo ${{ env.MATRIX_RESULTS }} | jq -c ". += {\"${{ matrix.example }}\": \"${{ steps.extract_permalink.outputs.matches }}\"}")
           echo "MATRIX_RESULTS=$results" >> $GITHUB_ENV
+          echo ${{ toJson(env) }}
 
   notify:
     name: Notify results
@@ -186,6 +187,7 @@ jobs:
 
     steps:
       - run: |
+          eval "${{ needs.examples.outputs.env }}"
           echo "$(cat $GITHUB_ENV)"
           echo "$(cat $GITHUB_OUTPUT)"
           echo "The results are ${{ needs.examples.env }}"
