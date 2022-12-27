@@ -177,7 +177,7 @@ jobs:
       - name: Publish Preview Link
         uses: marocchino/sticky-pull-request-comment@v2.2.0
         with:
-          number: ${{ needs.prepare.steps.finder.outputs.pr }}
+          number: ${{ needs.prepare.outputs.pr }}
           header: preview
           message: |
             Preview ${{ matrix.example }}: ${{ steps.extract_permalink.outputs.matches }}
