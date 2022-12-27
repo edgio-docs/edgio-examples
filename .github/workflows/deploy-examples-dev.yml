@@ -174,7 +174,8 @@ jobs:
 
       - name: Extract permalink
         id: extract_permalink
-        run: echo -e "matches=$(sed -n 's/.*\(https.*-perma\.link\).*/\1/p' <<< '${{ steps.deploy.outputs.DEPLOY_OUTPUT }}')" >> $GITHUB_OUTPUT
+        run: |
+          echo "${{ steps.deploy.outputs.DEPLOY_OUTPUT }}" | sed -n 's/.*\(https.*-perma\.link\).*/\1/p' | { read matches; echo "matches=$matches" >> $GITHUB_OUTPUT; }
 
       - name: Publish Preview Link
         uses: marocchino/sticky-pull-request-comment@v2.2.0
