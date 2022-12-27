@@ -164,11 +164,12 @@ jobs:
       - name: Deploy example
         id: deploy
         run: |
-          DEPLOY=$(yarn edgio:deploy -- ${{ env.ENV_CMD_ARGS }} --branch=${{ env.BRANCH_NAME }} --environment=${{ env.ENV_NAME }})
-          DEPLOY="${DEPLOY//'%'/'%25'}"
-          DEPLOY="${DEPLOY//$'\n'/'%0A'}"
-          DEPLOY="${DEPLOY//$'\r'/'%0D'}"
-          echo DEPLOY_OUTPUT=$DEPLOY >> $GITHUB_OUTPUT
+          yarn edgio:deploy -- ${{ env.ENV_CMD_ARGS }} --branch=${{ env.BRANCH_NAME }} --environment=${{ env.ENV_NAME }}
+          # DEPLOY=$(yarn edgio:deploy -- ${{ env.ENV_CMD_ARGS }} --branch=${{ env.BRANCH_NAME }} --environment=${{ env.ENV_NAME }})
+          # DEPLOY="${DEPLOY//'%'/'%25'}"
+          # DEPLOY="${DEPLOY//$'\n'/'%0A'}"
+          # DEPLOY="${DEPLOY//$'\r'/'%0D'}"
+          # echo DEPLOY_OUTPUT=$DEPLOY >> $GITHUB_OUTPUT
         env:
           ENV_NAME: ${{ matrix.example }}-${{ env.EDGIO_ENV }}
           BRANCH_NAME: ${{ needs.prepare.outputs.branch }}
