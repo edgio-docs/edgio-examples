@@ -59,7 +59,7 @@ jobs:
       - name: Create comment for preview links
         uses: marocchino/sticky-pull-request-comment@v2.2.0
         with:
-          number: ${{ needs.prepare.outputs.pr }}
+          number: ${{ steps.finder.outputs.pr }}
           header: ${{ env.COMMENT_ID }}
           recreate: true
           message: |
