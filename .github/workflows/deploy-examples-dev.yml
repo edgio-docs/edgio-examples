@@ -166,7 +166,7 @@ jobs:
           DEPLOY="${DEPLOY//'%'/'%25'}"
           DEPLOY="${DEPLOY//$'\n'/'%0A'}"
           DEPLOY="${DEPLOY//$'\r'/'%0D'}"
-          echo deploy_output=$DEPLOY >> $GITHUB_OUTPUT
+          echo DEPLOY_OUTPUT=$DEPLOY >> $GITHUB_OUTPUT
         env:
           ENV_NAME: ${{ matrix.example }}-${{ env.EDGIO_ENV }}
           BRANCH_NAME: ${{ needs.prepare.outputs.branch }}
