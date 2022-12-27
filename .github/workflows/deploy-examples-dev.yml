@@ -180,4 +180,4 @@ jobs:
           number: ${{ needs.prepare.outputs.pr }}
           header: preview
           message: |
-            Preview ${{ matrix.example }}: ${{ steps.extract_permalink.outputs.matches }}
+            Preview `${{ matrix.example }}`: ${{ steps.extract_permalink.outputs.matches }}
