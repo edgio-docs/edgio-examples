@@ -31,8 +31,7 @@ jobs:
     outputs:
       matrix: ${{ steps.setMatrix.outputs.matrix }}
       branch: ${{ steps.setBranch.outputs.branch }}
-      # Array to store the results of the examples
-      results: ${{ toJson(steps.setMatrix.outputs.results) }}
+      pr: ${{ steps.finder.outputs.pr }}
     steps:
       - uses: actions/checkout@v3
 
@@ -181,7 +180,8 @@ jobs:
       - name: Publish Preview Link
         uses: marocchino/sticky-pull-request-comment@v2.2.0
         with:
-          number: ${{ needs.prepare.steps.finder.outputs.pr }}
+          number: ${{ needs.prepare.outputs.pr }}
           header: preview
+          append: true
           message: |
             Preview ${{ matrix.example }}: ${{ steps.extract_permalink.outputs.matches }}spx
