@@ -23,6 +23,7 @@ env:
   EDGIO_SITE: edgio-examples
   EDGIO_DEPLOY_TOKEN: ${{secrets.EDGIO_EXAMPLES_DEPLOY_TOKEN}}
   OPTIONAL_API_URL: --api-url=https://app.layer0.co
+  COMMENT_ID: preview-${{ github.sha }}
 
 jobs:
   prepare:
@@ -55,14 +56,19 @@ jobs:
       - uses: jwalton/gh-find-current-pr@v1
         id: finder
 
+      - name: Create comment for preview links
+        uses: marocchino/sticky-pull-request-comment@v2.2.0
+        with:
+          number: ${{ needs.prepare.outputs.pr }}
+          header: ${{ env.COMMENT_ID }}
+          recreate: true
+          message: |
+            Preview links will be available after the build is finished.
+
       - name: Extract branch name
         id: setBranch
         shell: bash
         run: echo -e "branch=$(echo ${GITHUB_REF#refs/heads/} | sed 's/[^[:alnum:].-]/-/g')" >> $GITHUB_OUTPUT
-
-      - name: Generate preid of this build
-        id: setPreid
-        run: echo -e "preid=next-$(date +'%s')-$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
 
       - run: npm ci
 
@@ -181,7 +187,7 @@ jobs:
         uses: marocchino/sticky-pull-request-comment@v2.2.0
         with:
           number: ${{ needs.prepare.outputs.pr }}
-          header: preview
+          header: ${{ env.COMMENT_ID }}
           append: true
           message: |
-            - Preview `${{ matrix.example }}`: ${{ steps.extract_permalink.outputs.matches }}
+            - `${{ matrix.example }}`: ${{ steps.extract_permalink.outputs.matches }}
