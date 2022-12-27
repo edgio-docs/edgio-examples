@@ -161,11 +161,11 @@ jobs:
 
       - name: Deploy example
         id: deploy
-        uses: mathiasvr/command-output@v1.1.0
+        uses: actions/github-script@v2
         with:
-          run: |
+          script: |
             npm run edgio:deploy -- ${{ env.ENV_CMD_ARGS }} --branch=${{ env.BRANCH_NAME }} --environment=${{ env.ENV_NAME }}
-          working-directory: ${{ env.EXAMPLE_DIR }}
+        working-directory: ${{ env.EXAMPLE_DIR }}
         env:
           ENV_NAME: ${{ matrix.example }}-${{ env.EDGIO_ENV }}
           BRANCH_NAME: ${{ needs.prepare.outputs.branch }}
