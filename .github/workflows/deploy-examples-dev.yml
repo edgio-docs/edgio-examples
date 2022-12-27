@@ -182,5 +182,6 @@ jobs:
         with:
           number: ${{ needs.prepare.outputs.pr }}
           header: preview
+          append: true
           message: |
-            Preview `${{ matrix.example }}`: ${{ steps.extract_permalink.outputs.matches }}
+            - Preview `${{ matrix.example }}`: ${{ steps.extract_permalink.outputs.matches }}
