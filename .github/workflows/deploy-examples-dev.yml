@@ -31,7 +31,6 @@ jobs:
     outputs:
       matrix: ${{ steps.setMatrix.outputs.matrix }}
       branch: ${{ steps.setBranch.outputs.branch }}
-      pr: ${{ steps.finder.outputs.pr }}
     steps:
       - uses: actions/checkout@v3
 
@@ -68,9 +67,7 @@ jobs:
 
       - name: Load list of examples
         id: setMatrix
-        run: |
-          echo -e "results={}" >> $GITHUB_OUTPUT
-          echo -e "matrix=$(node scripts/helpers/printExamples.js)" >> $GITHUB_OUTPUT
+        run: echo -e "matrix=$(node scripts/helpers/printExamples.js)" >> $GITHUB_OUTPUT
 
   examples:
     name: Examples
@@ -83,7 +80,6 @@ jobs:
     env:
       EXAMPLE_DIR: examples/${{ matrix.example }}
       ENV_CMD_ARGS: --site=$EDGIO_SITE --team=$EDGIO_TEAM --token=$EDGIO_DEPLOY_TOKEN $OPTIONAL_API_URL
-      MATRIX_RESULTS: ${{ fromJson(needs.prepare.outputs.results) }}
     steps:
       - uses: actions/checkout@v3
 
@@ -180,8 +176,7 @@ jobs:
       - name: Publish Preview Link
         uses: marocchino/sticky-pull-request-comment@v2.2.0
         with:
-          number: ${{ needs.prepare.outputs.pr }}
+          number: ${{ needs.prepare.steps.finder.outputs.pr }}
           header: preview
-          append: true
           message: |
             Preview ${{ matrix.example }}: ${{ steps.extract_permalink.outputs.matches }}spx
