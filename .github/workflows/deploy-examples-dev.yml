@@ -35,6 +35,10 @@ jobs:
       pr: ${{ steps.finder.outputs.pr }}
     steps:
       - uses: actions/checkout@v3
+        with:
+          ref: main
+
+      - uses: actions/checkout@v3
 
       - uses: actions/setup-node@v3
         with:
