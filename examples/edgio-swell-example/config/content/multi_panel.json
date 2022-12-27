@@ -1,0 +1,145 @@
+{
+  "name": "Multiple panels",
+  "slug": "multi_panel",
+  "description": "Multiple panels with an image or text",
+  "fields": [
+    {
+      "label": "Content",
+      "type": "field_group",
+      "fields": [
+        {
+          "id": "panels",
+          "label": "Panels",
+          "type": "collection",
+          "min": 2,
+          "max": 4,
+          "item_types": [
+            {
+              "id": "text",
+              "label": "Text",
+              "fields": [
+                {
+                  "id": "heading",
+                  "label": "Heading text",
+                  "type": "text",
+                  "required": true,
+                  "localized": true
+                },
+                {
+                  "id": "description",
+                  "label": "Description text",
+                  "type": "textarea",
+                  "localized": true
+                },
+                {
+                  "id": "links",
+                  "label": "Links",
+                  "type": "collection",
+                  "max": 2,
+                  "fields": [
+                    {
+                      "id": "style",
+                      "label": "Style",
+                      "type": "select",
+                      "default": "button_primary",
+                      "options": [
+                        {
+                          "value": "text",
+                          "label": "Text"
+                        },
+                        {
+                          "value": "button_primary",
+                          "label": "Primary button"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "label",
+                      "label": "Label text",
+                      "type": "text",
+                      "required": true,
+                      "localized": true
+                    },
+                    {
+                      "id": "url",
+                      "label": "Link URL",
+                      "hint": "For external URLs, include the protocol (http:// or https://)",
+                      "type": "url",
+                      "required": true
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "id": "image",
+              "label": "Image",
+              "fields": [
+                {
+                  "id": "image",
+                  "label": "Background image",
+                  "type": "image",
+                  "required": true
+                },
+                {
+                  "id": "url",
+                  "label": "Image URL",
+                  "type": "url"
+                },
+                {
+                  "id": "image_alt",
+                  "label": "Image Alt Text",
+                  "type": "text"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Styling",
+      "type": "field_group",
+      "fields": [
+        {
+          "id": "text_align",
+          "label": "Text alignment",
+          "type": "select",
+          "default": "left",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ]
+        },
+        {
+          "id": "bg_color",
+          "label": "Background color",
+          "type": "select",
+          "default": "primary-lightest",
+          "options": [
+            {
+              "value": "primary-lightest",
+              "label": "Background (primary)"
+            },
+            {
+              "value": "primary-lighter",
+              "label": "Background (secondary)"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "source_type": "theme",
+  "source_id": "origin"
+}

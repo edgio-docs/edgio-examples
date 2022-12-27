@@ -1,0 +1,13 @@
+<h2 class="text-[#FFFFFF75]">Showing {{ productItems.length }} Results</h2>
+<div class="sm:grid-cols-2 mt-5 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
+  <a [routerLink]="'/product/' + item.slug" *ngFor="let item of productItems" class="relative mt-2 border border-white p-1">
+    <div class="absolute top-0 left-0 z-10 flex flex-col items-start">
+      <h3 class="border border-gray-200 bg-white py-1 px-2 text-xs font-medium text-black md:py-2 md:px-4 md:text-xl">{{ item?.name }}</h3>
+      <h4 class="border border-gray-200 bg-white py-1 px-2 text-xs text-black md:py-2 md:px-4 md:text-lg">
+        {{ item?.prices?.price?.value }}{{ item?.prices?.price?.currencyCode }}
+      </h4>
+    </div>
+    <!-- <HeartIcon class="absolute top-0 right-0 h-[30px] w-[30px] bg-white p-2" /> -->
+    <img loading="lazy" class="h-full bg-white object-contain" [src]="item?.images[0]?.url" />
+  </a>
+</div>

@@ -1,0 +1,6 @@
+{
+  "appId": "io.ionic.starter",
+  "appName": "edgio-ionic-vue-example",
+  "webDir": "dist",
+  "bundledWebRuntime": false
+}

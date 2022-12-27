@@ -1,0 +1,4 @@
+node_modules
+# Layer0 generated build directory
+.layer0
+.nuxt

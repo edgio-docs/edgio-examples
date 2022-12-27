@@ -1,0 +1,6 @@
+/.env
+/build
+/node_modules
+/node
+# Layer0 generated build directory
+.layer0

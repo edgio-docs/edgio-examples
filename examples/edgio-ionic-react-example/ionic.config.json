@@ -1,0 +1,7 @@
+{
+  "name": "edgio-ionic-react-example",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}

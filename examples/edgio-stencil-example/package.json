@@ -1,0 +1,22 @@
+{
+  "name": "layer0-stencil-example",
+  "scripts": {
+    "build": "stencil build",
+    "start": "stencil build --dev --watch --serve",
+    "generate": "stencil generate",
+    "layer0:dev": "layer0 dev",
+    "layer0:build": "layer0 build",
+    "layer0:deploy": "layer0 deploy",
+    "layer0:production": "layer0 run --production",
+    "format": "prettier --write '**/*' --ignore-unknown"
+  },
+  "devDependencies": {
+    "@ionic/core": "^5.3.2",
+    "@layer0/cli": "^4.18.1",
+    "@layer0/core": "^4.18.1",
+    "@layer0/devtools": "^4.18.1",
+    "@layer0/prefetch": "^4.18.1",
+    "@stencil/core": "^2.7.0",
+    "prettier": "^2.6.2"
+  }
+}

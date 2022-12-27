@@ -1,0 +1,42 @@
+{
+  "name": "layer0-static-react-example",
+  "scripts": {
+    "edgio:dev": "edgio dev",
+    "edgio:build": "edgio build",
+    "edgio:deploy": "edgio deploy",
+    "format": "prettier --write '**/*' --ignore-unknown"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.3.0",
+    "react-scripts": "5.0.1"
+  },
+  "devDependencies": {
+    "@edgio/cli": "^5.0.4",
+    "@edgio/core": "^5.0.4",
+    "@edgio/devtools": "^5.0.4",
+    "@edgio/prefetch": "^5.0.4",
+    "@edgio/react": "^5.0.4",
+    "@edgio/react-cra": "^5.0.4",
+    "@edgio/rum": "^5.0.8",
+    "@heroicons/react": "^1.0.6",
+    "autoprefixer": "^10.4.8",
+    "classnames": "^2.3.1",
+    "postcss": "^8.4.16",
+    "prettier": "^2.6.2",
+    "tailwindcss": "^3.1.8"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "appId": "io.ionic.starter",
+  "appName": "edgio-ionic-react-example",
+  "webDir": "build",
+  "bundledWebRuntime": false
+}

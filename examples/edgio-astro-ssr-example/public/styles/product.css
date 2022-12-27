@@ -1,0 +1,7 @@
+.product-thumbnails::-webkit-scrollbar {
+  display: none;
+}
+.product-thumbnails {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

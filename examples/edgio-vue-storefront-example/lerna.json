@@ -1,0 +1,7 @@
+{
+  "lerna": "3.14.1",
+  "version": "independent",
+  "npmClient": "npm",
+  "useWorkspaces": true,
+  "registry": "https://registry.npmjs.org/"
+}

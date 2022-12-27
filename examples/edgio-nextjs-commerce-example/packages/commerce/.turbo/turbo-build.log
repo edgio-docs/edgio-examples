@@ -1,0 +1,8 @@
+[35m@vercel/commerce:build: [0mcache hit, replaying output [2m274ec48b11792b13[0m
+[35m@vercel/commerce:build: [0myarn run v1.22.18
+[35m@vercel/commerce:build: [0m$ taskr build
+[35m@vercel/commerce:build: [0m[14:05:00] Running with /Users/patzer/workspace/l0/starters/commerce/packages/commerce/taskfile.js
+[35m@vercel/commerce:build: [0m[14:05:00] Starting build
+[35m@vercel/commerce:build: [0m[14:05:00] Compiled src files
+[35m@vercel/commerce:build: [0m[14:05:00] Finished build in 70ms
+[35m@vercel/commerce:build: [0mDone in 1.09s.

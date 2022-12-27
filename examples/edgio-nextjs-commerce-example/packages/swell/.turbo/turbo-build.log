@@ -1,0 +1,8 @@
+[36m@vercel/commerce-swell:build: [0mcache hit, replaying output [2m8e68ee007bcbf2b3[0m
+[36m@vercel/commerce-swell:build: [0myarn run v1.22.18
+[36m@vercel/commerce-swell:build: [0m$ taskr build
+[36m@vercel/commerce-swell:build: [0m[14:05:01] Running with /Users/patzer/workspace/l0/starters/commerce/packages/swell/taskfile.js
+[36m@vercel/commerce-swell:build: [0m[14:05:01] Starting build
+[36m@vercel/commerce-swell:build: [0m[14:05:02] Compiled src files
+[36m@vercel/commerce-swell:build: [0m[14:05:02] Finished build in 296ms
+[36m@vercel/commerce-swell:build: [0mDone in 0.74s.

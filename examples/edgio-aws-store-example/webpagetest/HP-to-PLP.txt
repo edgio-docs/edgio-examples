@@ -1,0 +1,11 @@
+# --- AWS ---
+setActivityTimeout	5000
+navigate	http://d352ituifcqjhq.cloudfront.net/
+sleep	10
+execAndWait	document.querySelector('a[href*="/category/footwear"]').click()
+
+# --- layer0 ---
+setActivityTimeout	5000
+navigate	https://moovweb-demos-aws-rds-default.moovweb-edge.io/
+sleep	10
+execAndWait	document.querySelector('a[href*="/category/footwear"]').click()

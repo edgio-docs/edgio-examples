@@ -1,0 +1,13 @@
+<div class="flex flex-col">
+  <a class="text-md" [routerLink]="'/commerce'" [class]="getCurrentRoute('shop-all') ? 'font-medium text-[#FFFFFF]' : 'font-light text-[#FFFFFF75]'">
+    Shop All
+  </a>
+  <a
+    class="text-md mt-2"
+    *ngFor="let item of filterItems"
+    [routerLink]="'/commerce/' + item.slug"
+    [class]="getCurrentRoute(item.slug) ? 'font-medium text-[#FFFFFF]' : 'font-light text-[#FFFFFF75]'"
+  >
+    {{ item.name }}
+  </a>
+</div>

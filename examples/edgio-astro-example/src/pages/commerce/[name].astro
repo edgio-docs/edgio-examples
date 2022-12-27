@@ -1,0 +1,27 @@
+---
+import Commerce from '@/components/Commerce'
+import MainLayout from '@/layouts/MainLayout.astro'
+
+export async function getStaticPaths() {
+  const resp = await fetch('https://layer0-docs-layer0-ecommmerce-api-example-default.layer0-limelight.link/categories/all')
+  const data = await resp.json()
+  const texts = await Promise.all(
+    data.map(async (cat) => {
+      const resp = await fetch(`https://layer0-docs-layer0-ecommmerce-api-example-default.layer0-limelight.link/categories/${cat.slug}`)
+      return resp.json()
+    })
+  )
+  return texts.map((i) => {
+    return {
+      params: { name: i.slug },
+      props: { data: i.items },
+    }
+  })
+}
+
+const { data } = Astro.props
+---
+
+<MainLayout>
+  <Commerce client:load data={data} />
+</MainLayout>

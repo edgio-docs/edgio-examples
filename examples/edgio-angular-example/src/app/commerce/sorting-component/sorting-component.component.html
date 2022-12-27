@@ -1,0 +1,11 @@
+<div class="flex flex-col">
+  <h2 class="text-md font-light text-[#FFFFFF75]">Relevance</h2>
+  <a
+    (click)="navigate(item)"
+    *ngFor="let item of relevanceItems"
+    class="appearance-none text-md mt-2 cursor-pointer"
+    [class]="currentFilter !== item.filter ? 'font-light text-[#FFFFFF75]' : 'font-medium text-[#FFFFFF]'"
+  >
+    {{ item.name }}
+  </a>
+</div>

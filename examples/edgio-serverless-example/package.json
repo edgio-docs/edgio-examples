@@ -1,0 +1,16 @@
+{
+  "name": "edgio-serverless-example",
+  "version": "1.0.0",
+  "description": "This example project shows you how to deploy serverless functions on Edgio without a web framework.",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@edgio/cli": "^5.0.4",
+    "@edgio/core": "^5.0.4",
+    "@edgio/devtools": "^5.0.4",
+    "@edgio/prefetch": "^5.0.4"
+  },
+  "dependencies": {
+    "node-fetch": "^3.2.10",
+    "zlib": "^1.0.5"
+  }
+}

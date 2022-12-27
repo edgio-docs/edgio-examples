@@ -1,0 +1,23 @@
+name: Deploy to Edgio
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  deploy-to-edgio:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - run: yarn install --frozen-lockfile
+      # Deploy to default env
+      - run: yarn edgio:deploy -- --token=$LAYER0_DEPLOY_TOKEN
+        env:
+          LAYER0_DEPLOY_TOKEN: ${{secrets.LAYER0_DEPLOY_TOKEN}}
+      #Deploy to split_test env
+      - run: yarn edgio:deploy -- --skip-build --environment=split_test --token=$LAYER0_DEPLOY_TOKEN
+        env:
+          LAYER0_DEPLOY_TOKEN: ${{secrets.LAYER0_DEPLOY_TOKEN}}

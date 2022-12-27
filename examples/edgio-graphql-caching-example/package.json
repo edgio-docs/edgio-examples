@@ -1,0 +1,33 @@
+{
+  "name": "graphql-caching-example",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "edgio:dev": "edgio dev",
+    "edgio:build": "edgio build",
+    "edgio:deploy": "edgio deploy",
+    "edgio:production": "edgio run --production",
+    "format": "prettier '**/*' --write --ignore-unknown"
+  },
+  "dependencies": {
+    "@apollo/client": "^3.4.8",
+    "graphql": "^15.5.1",
+    "next": "^12.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@edgio/cli": "^5.0.4",
+    "@edgio/core": "^5.0.4",
+    "@edgio/devtools": "^5.0.4",
+    "@edgio/next": "^5.0.4",
+    "@edgio/prefetch": "^5.0.4",
+    "@edgio/react": "^5.0.4",
+    "@tailwindcss/line-clamp": "^0.2.1",
+    "autoprefixer": "^10.3.6",
+    "postcss": "^8.3.8",
+    "prettier": "^2.7.1",
+    "tailwindcss": "^2.2.16"
+  }
+}

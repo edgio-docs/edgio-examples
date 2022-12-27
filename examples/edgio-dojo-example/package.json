@@ -1,0 +1,31 @@
+{
+  "name": "edgio-dojo-example",
+  "scripts": {
+    "dev": "dojo build --mode dev --watch --serve",
+    "build": "dojo build --mode dist",
+    "build:dev": "dojo build --mode dev",
+    "edgio:dev": "edgio dev",
+    "edgio:build": "edgio build",
+    "edgio:deploy": "edgio deploy",
+    "edgio:production": "edgio run --production",
+    "format": "prettier --write '**/*' --ignore-unknown"
+  },
+  "dependencies": {
+    "@dojo/framework": "~8.0.0",
+    "@dojo/widgets": "~8.0.0",
+    "tslib": "~1.9.1",
+    "cldr-data": "36.0.0",
+    "globalize": "1.5.0"
+  },
+  "devDependencies": {
+    "@dojo/cli": "~8.0.0",
+    "@dojo/cli-build-app": "~8.0.0",
+    "@edgio/cli": "^5.0.4",
+    "@edgio/core": "^5.0.4",
+    "@edgio/devtools": "^5.0.4",
+    "@edgio/prefetch": "^5.0.4",
+    "@types/node": "~9.6.5",
+    "prettier": "^2.7.1",
+    "typescript": "~3.5.3"
+  }
+}

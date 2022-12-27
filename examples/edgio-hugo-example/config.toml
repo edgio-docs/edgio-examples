@@ -1,0 +1,4 @@
+baseURL = 'https://layer0-docs-layer0-hugo-example-default.layer0-limelight.link'
+languageCode = 'en-us'
+title = 'My New Hugo Site'
+theme = "ananke"

@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.product-thumbnails::-webkit-scrollbar {
+  display: none;
+}
+.product-thumbnails {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}

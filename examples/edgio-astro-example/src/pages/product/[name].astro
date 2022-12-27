@@ -1,0 +1,21 @@
+---
+import Product from '@/components/Product'
+import MainLayout from '@/layouts/MainLayout.astro'
+
+export async function getStaticPaths() {
+  const resp = await fetch('https://layer0-docs-layer0-ecommmerce-api-example-default.layer0-limelight.link/products/all')
+  const data = await resp.json()
+  return data.map((i) => {
+    return {
+      params: { name: i.slug },
+      props: { data: i },
+    }
+  })
+}
+
+const { data } = Astro.props
+---
+
+<MainLayout>
+  <Product data={data} />
+</MainLayout>
