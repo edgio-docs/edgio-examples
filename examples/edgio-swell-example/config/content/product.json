@@ -1,0 +1,77 @@
+{
+  "name": "Product detail page",
+  "slug": "product",
+  "description": "Page displaying a single product",
+  "model": "products",
+  "fields": [
+    {
+      "id": "product_benefits",
+      "label": "Product benefits",
+      "type": "collection",
+      "fields": [
+        {
+          "id": "icon",
+          "label": "Icon",
+          "type": "icon",
+          "required": true
+        },
+        {
+          "id": "text",
+          "label": "Benefit text",
+          "type": "text",
+          "required": true,
+          "localized": true
+        }
+      ],
+      "default": [
+        {
+          "icon": "uil:truck",
+          "text": "Free US shipping on all orders over $100"
+        },
+        {
+          "icon": "uil:clock-two",
+          "text": "Free returns up to 30 days"
+        },
+        {
+          "icon": "uil:award",
+          "text": "98% customer satisfaction rating"
+        }
+      ]
+    },
+    {
+      "id": "enable_social_sharing",
+      "label": "Enable social sharing",
+      "type": "toggle"
+    },
+    {
+      "id": "show_stock_level",
+      "label": "Show stock level",
+      "type": "toggle"
+    },
+    {
+      "id": "enable_quantity",
+      "label": "Enable product quantity",
+      "hint": "Allows users to set the quantity of the product to be added to cart.",
+      "default": true,
+      "type": "toggle"
+    },
+    {
+      "id": "max_quantity",
+      "label": "Max product quantity",
+      "hint": "Sets the limit a product can be added to cart at a time.",
+      "default": 99,
+      "type": "number",
+      "conditions": { "enable_quantity": true }
+    },
+    {
+      "id": "up_sell_cols",
+      "label": "Number of upsell products per row",
+      "hint": "The max amount of products that initially show on the cross-sell row.",
+      "type": "select",
+      "options": [2, 3, 4],
+      "default": 4
+    }
+  ],
+  "source_type": "theme",
+  "source_id": "origin"
+}

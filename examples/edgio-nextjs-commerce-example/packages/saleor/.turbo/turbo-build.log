@@ -1,0 +1,8 @@
+[35m@vercel/commerce-saleor:build: [0mcache hit, replaying output [2m0b4b71e6804c79cc[0m
+[35m@vercel/commerce-saleor:build: [0myarn run v1.22.18
+[35m@vercel/commerce-saleor:build: [0m$ taskr build
+[35m@vercel/commerce-saleor:build: [0m[14:05:02] Running with /Users/patzer/workspace/l0/starters/commerce/packages/saleor/taskfile.js
+[35m@vercel/commerce-saleor:build: [0m[14:05:02] Starting build
+[35m@vercel/commerce-saleor:build: [0m[14:05:02] Compiled src files
+[35m@vercel/commerce-saleor:build: [0m[14:05:02] Finished build in 362ms
+[35m@vercel/commerce-saleor:build: [0mDone in 1.15s.

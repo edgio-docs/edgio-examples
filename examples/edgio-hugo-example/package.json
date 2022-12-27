@@ -1,0 +1,17 @@
+{
+  "name": "edgio-hugo-example",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "hugo -D",
+    "deploy": "edgio deploy",
+    "format": "prettier --write '**/*' --ignore-unknown"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@edgio/cli": "^5.0.4",
+    "@edgio/core": "^5.0.4",
+    "@edgio/devtools": "^5.0.4",
+    "@edgio/prefetch": "^5.0.4",
+    "prettier": "^2.5.1"
+  }
+}

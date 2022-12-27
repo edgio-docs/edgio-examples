@@ -1,0 +1,104 @@
+{
+  "name": "@edgio/cli",
+  "version": "5.0.4+f0340912",
+  "main": "index.js",
+  "scripts": {
+    "build": "rm -rf ./dist; mkdir ./dist; cp package.json README.md ./dist; babel src -d dist",
+    "watch": "npm-watch",
+    "push-build": "npm run build && cd dist && yalc push && cd ..",
+    "test": "jest",
+    "release": "cd ./dist; npm publish --access public",
+    "release:next": "npm run release -- --tag next"
+  },
+  "watch": {
+    "push-build": {
+      "patterns": [
+        "src",
+        "package.json"
+      ],
+      "extensions": "js",
+      "quiet": false
+    }
+  },
+  "dependencies": {
+    "axios": "^0.21.2",
+    "chalk": "^4.1.2",
+    "check-node-version": "^4.2.1",
+    "cli-progress": "^3.9.1",
+    "command-exists": "^1.2.9",
+    "conf": "^6.1.0",
+    "cross-spawn": "^7.0.3",
+    "date-fns": "^2.27.0",
+    "decode-uri-component": "^0.2.0",
+    "execa": "^3.2.0",
+    "filesize": "^6.0.1",
+    "form-data": "^2.5.1",
+    "fs-extra": "^8.1.0",
+    "git-url-parse": "^13.1.0",
+    "globby": "^10.0.1",
+    "import-local": "^3.0.2",
+    "ipaddr.js": "^2.0.1",
+    "is-ci": "^2.0.0",
+    "json5": "^2.2.0",
+    "kill-port": "^1.6.1",
+    "lodash": "^4.17.21",
+    "mime-types": "^2.1.35",
+    "node-fetch": "^2.6.7",
+    "normalize-url": "^6.1.0",
+    "open": "^7.0.0",
+    "ora": "^4.0.3",
+    "prettier": "^2.5.0",
+    "prompts": "^2.4.2",
+    "replace-in-files": "^3.0.0",
+    "resolve-global": "^1.0.0",
+    "resolve-package-path": "^4.0.3",
+    "semver": "^7.3.5",
+    "sharp": "^0.31.2",
+    "simple-git": "^3.14.1",
+    "slash": "^3.0.0",
+    "terminal-link": "^2.1.1",
+    "tmp-promise": "^2.0.2",
+    "ws": "^7.4.6",
+    "yargs": "^14.2.0",
+    "yauzl": "^2.10.0",
+    "yazl": "^2.5.1"
+  },
+  "bin": {
+    "edg": "./index.js",
+    "edgio": "./index.js"
+  },
+  "publishConfig": {
+    "directory": "dist"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "jest": {
+    "clearMocks": true,
+    "collectCoverage": true,
+    "transform": {
+      "^.+\\.(js)?$": "babel-jest"
+    },
+    "setupFiles": [
+      "<rootDir>/test/setEnvVars.js"
+    ],
+    "transformIgnorePatterns": [
+      "<rootDir>/node_modules/"
+    ],
+    "collectCoverageFrom": [
+      "./src/frameworks/**/*.{js,jsx}",
+      "./src/serverless/**/*.{js,jsx}",
+      "./src/utils/**/getEntryPoint.js",
+      "./src/utils/**/time.js",
+      "./src/utils/config/**/*.js",
+      "./src/curl/**/*.js",
+      "!./src/curl/options/*.js",
+      "!**/test/**",
+      "!**/index.js"
+    ],
+    "moduleNameMapper": {
+      "^@edgio/core(.*)$": "<rootDir>/../core/src/$1"
+    }
+  },
+  "yalcSig": "f0340912889359684218e5931c62ccc3"
+}

@@ -1,0 +1,147 @@
+{
+  "name": "Email signup",
+  "slug": "email_signup",
+  "description": "Email signup form with background image",
+  "fields": [
+    {
+      "label": "Content",
+      "type": "field_group",
+      "fields": [
+        {
+          "id": "heading",
+          "label": "Heading text",
+          "type": "text",
+          "default": "Email signup",
+          "required": true,
+          "localized": true
+        },
+        {
+          "id": "description",
+          "label": "Description text",
+          "type": "textarea",
+          "default": "Enter your email address and we'll send you updates.",
+          "required": true,
+          "localized": true
+        },
+        {
+          "id": "image",
+          "label": "Background image",
+          "type": "image"
+        }
+      ]
+    },
+    {
+      "label": "Styling",
+      "type": "field_group",
+      "fields": [
+        {
+          "id": "bg_color",
+          "label": "Background color",
+          "type": "select",
+          "default": "primary-lightest",
+          "options": [
+            {
+              "value": "primary-lightest",
+              "label": "Background (primary)"
+            },
+            {
+              "value": "primary-lighter",
+              "label": "Background (secondary)"
+            }
+          ]
+        },
+        {
+          "id": "outer_spacing_x",
+          "label": "Horizontal outer spacing",
+          "description": "Space around sides of block",
+          "type": "select",
+          "default": "none",
+          "options": [
+            {
+              "value": "none",
+              "label": "None"
+            },
+            {
+              "value": "md",
+              "label": "Medium"
+            }
+          ]
+        },
+        {
+          "id": "outer_spacing_y",
+          "label": "Vertical outer spacing",
+          "description": "Space above and below block",
+          "type": "select",
+          "default": "none",
+          "options": [
+            {
+              "value": "none",
+              "label": "None"
+            },
+            {
+              "value": "md",
+              "label": "Medium"
+            }
+          ]
+        },
+        {
+          "id": "align_x",
+          "label": "Form position",
+          "type": "select",
+          "default": "left",
+          "conditions": { "image.file": { "$empty": false } },
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ]
+        },
+        {
+          "id": "align_x",
+          "label": "Form position",
+          "type": "select",
+          "default": "left",
+          "conditions": { "image.file": { "$empty": true } },
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            }
+          ]
+        },
+        {
+          "id": "text_align",
+          "label": "Text alignment",
+          "type": "select",
+          "default": "left",
+          "conditions": { "align_x": { "$ne": "center" } },
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "source_type": "theme",
+  "source_id": "origin"
+}

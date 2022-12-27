@@ -1,0 +1,8 @@
+[33m@vercel/commerce-shopify:build: [0mcache hit, replaying output [2m08a1dd51ce696d12[0m
+[33m@vercel/commerce-shopify:build: [0myarn run v1.22.18
+[33m@vercel/commerce-shopify:build: [0m$ taskr build
+[33m@vercel/commerce-shopify:build: [0m[14:05:01] Running with /Users/patzer/workspace/l0/starters/commerce/packages/shopify/taskfile.js
+[33m@vercel/commerce-shopify:build: [0m[14:05:01] Starting build
+[33m@vercel/commerce-shopify:build: [0m[14:05:02] Compiled src files
+[33m@vercel/commerce-shopify:build: [0m[14:05:02] Finished build in 302ms
+[33m@vercel/commerce-shopify:build: [0mDone in 0.94s.

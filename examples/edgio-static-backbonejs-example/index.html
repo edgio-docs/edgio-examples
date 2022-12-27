@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Static Backbone.js Example powered by Layer0</title>
+    <link
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link href="css/main.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header class="bs-header">
+      <div class="container">
+        <h1>Address Book</h1>
+      </div>
+    </header>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 main-container"></div>
+      </div>
+    </div>
+    <script type="text/template" id="tpl-contacts">
+      <h2 class="page-header text-center">List of Employees</h2>
+      <p class="text-center">
+        <a href="#employees/new" class="btn btn-lg btn-outline">Add Employee</a>
+      </p>
+      <ul class="media-list row contacts-container"></ul>
+    </script>
+    <script type="text/template" id="tpl-contact">
+      <div class="thumbnail">
+        <img class="media-object" width="200" height="200" src="/css/icon.png">
+      </div>
+      <div class="media-heading">
+        <h3>
+          <%- name %>
+          <small>
+            <a href="#employees/edit/<%- id %>"><span class="glyphicon glyphicon-pencil"></span></a>
+            <a href="#employees/delete/<%- id %>" class="delete-employee">
+              <span class="glyphicon glyphicon-trash"></span>
+            </a>
+          </small>
+        </h3>
+      </div>
+      <div class="media-body">
+        <dl>
+          <dt>Phone Number:</dt>
+          <dd><%- tel %></dd>
+          <dt>Email:</dt>
+          <dd><%- email %></dd>
+        </dl>
+      </div>
+      <hr>
+    </script>
+    <script type="text/template" id="tpl-new-contact">
+      <h2 class="page-header text-center"><%= isNew ? 'Create' : 'Edit' %> Employee </h2>
+      <form role="form" class="form-horizontal employee-form">
+        <div class="form-group">
+          <label class="col-sm-4 control-label">Full name:</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control employee-name-input" value="<%- name %>" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-4 control-label">Email address:</label>
+          <div class="col-sm-6">
+            <input type="email" class="form-control employee-email-input" value="<%- email %>" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-4 control-label">Telephone number:</label>
+          <div class="col-sm-6">
+            <input type="tel" class="form-control employee-tel-input" value="<%- tel %>" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-4 col-sm-3">
+            <button type="submit" class="btn btn-outline btn-lg btn-block">Submit</button>
+          </div>
+          <div class="col-sm-3">
+            <a href="#employees" class="btn btn-outline btn-lg btn-block">Cancel</a>
+          </div>
+        </div>
+      </form>
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone-min.js"></script>
+    <script src="https://cdn.auth0.com/js/auth0/8.8/auth0.min.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/models/employee.js"></script>
+    <script src="js/collections/employees.js"></script>
+    <script src="js/views/employee.js"></script>
+    <script src="js/views/employees.js"></script>
+    <script src="js/views/employeeForm.js"></script>
+    <script src="js/router.js"></script>
+    <script>
+      $(function () {
+        EmployeeManager.start({
+          employees: [
+            {
+              id: 1,
+              name: 'Christian Nwamba',
+              avatar: '11.svg',
+              tel: '651-603-1723',
+              email: 'chris@scotch.io',
+            },
+            {
+              id: 2,
+              name: 'Bukola Ayodeji',
+              avatar: '20.svg',
+              tel: '513-307-5859',
+              email: 'bukolayodeji@nairabet.com',
+            },
+            {
+              id: 3,
+              name: 'Rick Ross',
+              avatar: '17.svg',
+              tel: '918-774-0199',
+              email: 'ross@auth0.com',
+            },
+            {
+              id: 4,
+              name: 'Godson Ukpere',
+              avatar: '19.svg',
+              tel: '702-989-5145',
+              email: 'g.ukpe@gigstar.co',
+            },
+            {
+              id: 5,
+              name: 'John I. Wilson',
+              avatar: '01.svg',
+              tel: '318-292-6700',
+              email: 'JohnIWilson@dayrep.com',
+            },
+            {
+              id: 6,
+              name: 'Goodnes Tejufona',
+              avatar: '05.svg',
+              tel: '803-557-9815',
+              email: 'goodness.teju@kudiai.com',
+            },
+          ],
+        })
+      })
+    </script>
+  </body>
+</html>

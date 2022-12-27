@@ -1,0 +1,37 @@
+{
+  "name": "edgio-sveltekit-commerce-example",
+  "type": "module",
+  "scripts": {
+    "dev": "vite dev",
+    "build": "vite build",
+    "package": "svelte-kit package",
+    "preview": "vite preview",
+    "edgio:dev": "edgio dev",
+    "edgio:build": "edgio build",
+    "edgio:deploy": "edgio deploy",
+    "edgio:production": "edgio run --production",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "@shopify/shopify-api": "latest"
+  },
+  "devDependencies": {
+    "@edgio/cli": "^6.0.3",
+    "@edgio/core": "^6.0.3",
+    "@sveltejs/adapter-vercel": "latest",
+    "@sveltejs/kit": "latest",
+    "autoprefixer": "latest",
+    "eslint": "latest",
+    "eslint-config-prettier": "latest",
+    "node-sass": "latest",
+    "postcss": "latest",
+    "postcss-load-config": "latest",
+    "prettier": "latest",
+    "prettier-plugin-svelte": "latest",
+    "prettier-plugin-tailwindcss": "latest",
+    "svelte": "latest",
+    "svelte-preprocess": "latest",
+    "tailwindcss": "latest",
+    "vite": "latest"
+  }
+}

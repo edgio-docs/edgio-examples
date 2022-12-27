@@ -1,0 +1,5 @@
+node_modules
+/build
+/*.log
+# Layer0 generated build directory
+.layer0

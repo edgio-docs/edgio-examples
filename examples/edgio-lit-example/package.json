@@ -1,0 +1,42 @@
+{
+  "name": "edgio-lit-example",
+  "scripts": {
+    "dev": "NODE_ENV=development rollup -c -w & npm run tailwindcss:dev",
+    "build": "NODE_ENV=production rollup -c & npm run tailwindcss:build",
+    "tailwindcss:dev": "tailwindcss -w -i ./src/app.css -o build/app.css",
+    "tailwindcss:build": "tailwindcss -m -i ./src/app.css -o build/app.css",
+    "edgio:dev": "edgio dev",
+    "edgio:build": "edgio build",
+    "edgio:deploy": "edgio deploy",
+    "edgio:production": "edgio run --production",
+    "format": "prettier --write '**/*' --ignore-unknown"
+  },
+  "dependencies": {
+    "@lit/reactive-element": "^1.0.0",
+    "lit": "^2.0.0",
+    "lit-element": "^3.0.0",
+    "lit-html": "^2.0.0"
+  },
+  "devDependencies": {
+    "@edgio/cli": "^5.0.4",
+    "@edgio/core": "^5.0.4",
+    "@edgio/devtools": "^5.0.4",
+    "@edgio/prefetch": "^5.0.4",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@rollup/plugin-replace": "^4.0.0",
+    "@web/rollup-plugin-copy": "^0.3.0",
+    "@web/rollup-plugin-html": "^1.10.3",
+    "autoprefixer": "^10.4.8",
+    "fast-glob": "^3.2.11",
+    "postcss": "^8.4.16",
+    "prettier": "^2.7.1",
+    "rollup": "^2.77.3",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-dev": "^2.0.4",
+    "rollup-plugin-livereload": "^2.0.5",
+    "rollup-plugin-minify-html-literals": "^1.2.6",
+    "rollup-plugin-summary": "^1.4.3",
+    "rollup-plugin-terser": "^7.0.2",
+    "tailwindcss": "^3.1.8"
+  }
+}

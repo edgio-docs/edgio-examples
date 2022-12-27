@@ -1,0 +1,33 @@
+{
+  "name": "edgio-brunch-example",
+  "scripts": {
+    "start": "brunch watch --server",
+    "build": "brunch build --production",
+    "edgio:dev": "edgio dev",
+    "edgio:build": "edgio build",
+    "edgio:deploy": "edgio deploy",
+    "edgio:production": "edgio run --production",
+    "format": "prettier --write '**/*' --ignore-unknown"
+  },
+  "dependencies": {
+    "prop-types": "^15.6.0",
+    "react": "^16.2",
+    "react-dom": "^16.2",
+    "react-redux": "~5.0.6",
+    "redux": "~3.7.2"
+  },
+  "devDependencies": {
+    "@edgio/cli": "file:.yalc/@edgio/cli",
+    "@edgio/core": "^5.0.4",
+    "@edgio/devtools": "^5.0.4",
+    "@edgio/prefetch": "^5.0.4",
+    "auto-reload-brunch": "^2",
+    "babel-brunch": "~6.1.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "~6.24",
+    "brunch": "^2",
+    "clean-css-brunch": "^2",
+    "hmr-brunch": "^0.1",
+    "uglify-js-brunch": "^2"
+  }
+}

@@ -1,0 +1,11 @@
+---
+import Commerce from '@/components/Commerce'
+import MainLayout from '@/layouts/MainLayout.astro'
+
+const resp = await fetch('https://layer0-docs-layer0-ecommmerce-api-example-default.layer0-limelight.link/products/all')
+const data = await resp.json()
+---
+
+<MainLayout>
+  <Commerce client:load data={data} />
+</MainLayout>

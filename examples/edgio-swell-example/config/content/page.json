@@ -1,0 +1,24 @@
+{
+  "name": "Page",
+  "slug": "page",
+  "model": "content/pages",
+  "fields": [
+    {
+      "id": "sections",
+      "type": "collection",
+      "item_types": [
+        "collection_preview",
+        "customer_reviews",
+        "email_signup",
+        "full_width_media",
+        "large_media",
+        "multi_feature",
+        "multi_panel",
+        "press_mentions",
+        "heading_with_text"
+      ]
+    }
+  ],
+  "source_type": "theme",
+  "source_id": "origin"
+}

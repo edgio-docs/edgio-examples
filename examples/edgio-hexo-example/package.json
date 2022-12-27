@@ -1,0 +1,34 @@
+{
+  "name": "layer0-hexo-example",
+  "scripts": {
+    "edgio:dev": "edgio dev",
+    "edgio:build": "edgio build",
+    "edgio:deploy": "edgio deploy",
+    "build": "hexo generate",
+    "clean": "hexo clean",
+    "server": "hexo server",
+    "edgio:production": "edgio run --production"
+  },
+  "hexo": {
+    "version": "5.4.2"
+  },
+  "dependencies": {
+    "hexo": "^5.0.0",
+    "hexo-generator-archive": "^1.0.0",
+    "hexo-generator-category": "^1.0.0",
+    "hexo-generator-index": "^2.0.0",
+    "hexo-generator-tag": "^1.0.0",
+    "hexo-renderer-ejs": "^2.0.0",
+    "hexo-renderer-marked": "^4.0.0",
+    "hexo-renderer-stylus": "^2.0.0",
+    "hexo-server": "^2.0.0",
+    "hexo-theme-landscape": "^0.0.3"
+  },
+  "devDependencies": {
+    "@edgio/cli": "^5.0.4",
+    "@edgio/core": "^5.0.4",
+    "@edgio/devtools": "^5.0.4",
+    "@edgio/hexo": "^5.0.4-next-1667390096-5a687c9.0",
+    "@edgio/prefetch": "^5.0.4"
+  }
+}

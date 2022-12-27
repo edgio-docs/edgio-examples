@@ -1,0 +1,6 @@
+node_modules/
+_build/
+output/
+.cert/
+# Layer0 generated build directory
+.layer0

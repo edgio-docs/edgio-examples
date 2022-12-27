@@ -1,0 +1,25 @@
+{
+  "name": "layer0-eleventy-example",
+  "license": "MIT",
+  "scripts": {
+    "build": "eleventy",
+    "watch": "eleventy --watch",
+    "serve": "eleventy --serve",
+    "start": "eleventy --serve",
+    "debug": "DEBUG=* eleventy",
+    "edgio:deploy": "edgio deploy"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^0.12.1",
+    "@11ty/eleventy-navigation": "^0.3.2",
+    "@11ty/eleventy-plugin-rss": "^1.1.1",
+    "@11ty/eleventy-plugin-syntaxhighlight": "^3.1.2",
+    "@edgio/cli": "^5.0.4",
+    "@edgio/core": "^5.0.4",
+    "@edgio/devtools": "^5.0.4",
+    "@edgio/prefetch": "^5.0.4",
+    "luxon": "^1.26.0",
+    "markdown-it": "^12.1.0",
+    "markdown-it-anchor": "^8.1.2"
+  }
+}

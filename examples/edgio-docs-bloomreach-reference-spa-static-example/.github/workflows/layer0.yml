@@ -1,0 +1,26 @@
+name: Deploy to Layer0
+
+on:
+  workflow_dispatch:
+
+env:
+  REACT_APP_BRXM_ENDPOINT: https://layer0-docs-bloomreach-layer0-example-saas-default.layer0-limelight.link/api
+  BRXM_ENDPOINT: trial-tnk8sgqr.bloomreach.io
+  REACT_APP_GRAPHQL_SERVICE_URL: https://layer0-docs-bloomreach-layer0-example-saas-default.layer0-limelight.link/graphql
+  GRAPHQL_SERVICE_URL: graphql.trial-tnk8sgqr.bloomreach.io
+
+jobs:
+  deploy-to-layer0:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14
+          registry-url: https://npm-proxy.fury.io/moovweb/
+      - run: |
+          npm ci
+          CI=false npm run build
+          npm run deploy -- --token=$LAYER0_DEPLOY_TOKEN
+        env:
+          LAYER0_DEPLOY_TOKEN: ${{secrets.LAYER0_DEPLOY_TOKEN}}

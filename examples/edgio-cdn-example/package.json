@@ -1,0 +1,25 @@
+{
+  "name": "cdn-starter-template",
+  "scripts": {
+    "edgio:dev": "edgio dev",
+    "edgio:build": "edgio build",
+    "edgio:deploy": "edgio deploy",
+    "edgio:production": "edgio run --production",
+    "format": "prettier --write '**/*' --ignore-unknown"
+  },
+  "devDependencies": {
+    "@edgio/cli": "^5.0.4",
+    "@edgio/core": "^5.0.4",
+    "@edgio/devtools": "^5.0.4",
+    "@edgio/prefetch": "^5.0.4",
+    "@edgio/starter": "^5.0.4",
+    "@types/node": "^13.13.2",
+    "prettier": "^2.4.1",
+    "typescript": "^4.4.4"
+  },
+  "prettier": {
+    "semi": false,
+    "printWidth": 150,
+    "singleQuote": true
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "name": "edgio-ionic-vue-example",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}

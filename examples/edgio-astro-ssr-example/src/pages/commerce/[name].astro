@@ -1,0 +1,15 @@
+---
+import { getOrigin } from '@/helper'
+import Commerce from '@/components/Commerce'
+import MainLayout from '@/layouts/MainLayout.astro'
+
+const host = Astro.request.headers.get('host')
+const origin = getOrigin({ headers: { host } })
+const { name } = Astro.params
+const resp = await fetch(`${origin}/l0-api/categories/${name}`)
+const data = (await resp.json())['items']
+---
+
+<MainLayout>
+  <Commerce client:load data={data} />
+</MainLayout>

@@ -1,0 +1,19 @@
+---
+import Navbar from '@/components/Navbar'
+---
+
+<html lang="en" class="initial">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="viewport" content="width=device-width" />
+  </head>
+
+  <body class="font-display flex min-h-screen flex-col bg-gradient-to-br from-[#9a1ab1] via-[#004966] to-[#01B18D]">
+    <Navbar client:load />
+    <slot />
+    <script is:inline defer src="/__edgio__/client/rum.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" />
+    <link rel="stylesheet" href="/styles/product.css" />
+  </body>
+</html>

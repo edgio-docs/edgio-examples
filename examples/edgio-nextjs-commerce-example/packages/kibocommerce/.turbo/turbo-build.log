@@ -1,0 +1,8 @@
+[34m@vercel/commerce-kibocommerce:build: [0mcache hit, replaying output [2m94d6182819fda26a[0m
+[34m@vercel/commerce-kibocommerce:build: [0myarn run v1.22.18
+[34m@vercel/commerce-kibocommerce:build: [0m$ taskr build
+[34m@vercel/commerce-kibocommerce:build: [0m[14:05:01] Running with /Users/patzer/workspace/l0/starters/commerce/packages/kibocommerce/taskfile.js
+[34m@vercel/commerce-kibocommerce:build: [0m[14:05:01] Starting build
+[34m@vercel/commerce-kibocommerce:build: [0m[14:05:02] Compiled src files
+[34m@vercel/commerce-kibocommerce:build: [0m[14:05:02] Finished build in 385ms
+[34m@vercel/commerce-kibocommerce:build: [0mDone in 1.04s.

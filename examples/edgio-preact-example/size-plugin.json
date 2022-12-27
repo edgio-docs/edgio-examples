@@ -1,0 +1,88 @@
+[
+  {
+    "timestamp": 1638691434142,
+    "files": [
+      {
+        "filename": "ssr-build/ssr-bundle.43203.css",
+        "previous": 569,
+        "size": 0,
+        "diff": -569
+      },
+      {
+        "filename": "ssr-build/ssr-bundle.js",
+        "previous": 4534,
+        "size": 0,
+        "diff": -4534
+      },
+      {
+        "filename": "bundle.4922e.css",
+        "previous": 0,
+        "size": 447,
+        "diff": 447
+      },
+      {
+        "filename": "bundle.*****.esm.js",
+        "previous": 0,
+        "size": 8323,
+        "diff": 8323
+      },
+      {
+        "filename": "polyfills.*****.esm.js",
+        "previous": 0,
+        "size": 2191,
+        "diff": 2191
+      },
+      {
+        "filename": "route-home.chunk.8aeee.css",
+        "previous": 0,
+        "size": 75,
+        "diff": 75
+      },
+      {
+        "filename": "route-home.chunk.*****.esm.js",
+        "previous": 0,
+        "size": 252,
+        "diff": 252
+      },
+      {
+        "filename": "route-profile.chunk.141aa.css",
+        "previous": 0,
+        "size": 78,
+        "diff": 78
+      },
+      {
+        "filename": "route-profile.chunk.*****.esm.js",
+        "previous": 0,
+        "size": 1115,
+        "diff": 1115
+      },
+      { "filename": "sw-esm.js", "previous": 0, "size": 10552, "diff": 10552 },
+      {
+        "filename": "bundle.0eaeb.js",
+        "previous": 0,
+        "size": 8369,
+        "diff": 8369
+      },
+      {
+        "filename": "polyfills.c3585.js",
+        "previous": 0,
+        "size": 2291,
+        "diff": 2291
+      },
+      {
+        "filename": "route-home.chunk.732e3.js",
+        "previous": 0,
+        "size": 256,
+        "diff": 256
+      },
+      {
+        "filename": "route-profile.chunk.f96b8.js",
+        "previous": 0,
+        "size": 1606,
+        "diff": 1606
+      },
+      { "filename": "index.html", "previous": 0, "size": 1045, "diff": 1045 },
+      { "filename": "200.html", "previous": 0, "size": 645, "diff": 645 }
+    ]
+  }
+]

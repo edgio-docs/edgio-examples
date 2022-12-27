@@ -1,0 +1,8 @@
+[36m@vercel/commerce-ordercloud:build: [0mcache hit, replaying output [2m2e28ee3cb418a81e[0m
+[36m@vercel/commerce-ordercloud:build: [0myarn run v1.22.18
+[36m@vercel/commerce-ordercloud:build: [0m$ taskr build
+[36m@vercel/commerce-ordercloud:build: [0m[14:05:02] Running with /Users/patzer/workspace/l0/starters/commerce/packages/ordercloud/taskfile.js
+[36m@vercel/commerce-ordercloud:build: [0m[14:05:02] Starting build
+[36m@vercel/commerce-ordercloud:build: [0m[14:05:02] Compiled src files
+[36m@vercel/commerce-ordercloud:build: [0m[14:05:02] Finished build in 268ms
+[36m@vercel/commerce-ordercloud:build: [0mDone in 0.99s.

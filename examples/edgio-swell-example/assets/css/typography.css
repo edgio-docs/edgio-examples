@@ -1,0 +1,104 @@
+/* Hide text visually, but not from screen readers */
+.reader-only {
+}
+
+body,
+html {
+  @apply text-primary-darker font-body text-base leading-normal antialiased;
+}
+
+button {
+  @apply rounded font-semibold;
+
+  &:not(.text-inherit, .btn--lg) {
+    @apply text-primary-darkest;
+  }
+
+  &:hover {
+    @apply text-accent-default;
+  }
+}
+
+a {
+  @apply rounded font-semibold;
+
+  &:hover {
+    @apply text-accent-default;
+  }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  @apply font-heading font-bold text-primary-darkest;
+}
+
+h1 {
+  @apply text-4xl lg:text-6xl xl:text-7xl mb-3;
+}
+
+h2 {
+  @apply text-3xl md:text-4xl lg:text-5xl leading-tight mb-3;
+}
+
+h3 {
+  @apply text-xl;
+}
+
+h4 {
+  @apply text-base;
+}
+
+b,
+strong {
+  @apply font-semibold;
+}
+
+ul li {
+  @apply mb-1;
+}
+
+input,
+textarea {
+  &::placeholder {
+    @apply opacity-100 text-primary-dark;
+  }
+}
+
+.label-xs-bold {
+  @apply text-xs font-semibold uppercase tracking-wide leading-tight;
+}
+
+.label-xs-bold-faded {
+  @apply text-xs font-semibold uppercase tracking-wide leading-tight text-primary-dark;
+}
+
+.label-sm {
+  @apply text-sm;
+}
+
+.label-sm-bold {
+  @apply text-sm font-semibold;
+}
+
+.label-sm-faded {
+  @apply text-sm text-primary-dark;
+}
+
+.tracking-large {
+  letter-spacing: 0.25rem;
+}
+
+.tracking-inherit {
+  letter-spacing: inherit;
+}
+
+.markdown ul {
+  @apply list-inside list-disc;
+}
+
+.markdown ol {
+  @apply list-inside list-decimal;
+}

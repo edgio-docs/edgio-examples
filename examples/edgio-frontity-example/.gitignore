@@ -1,0 +1,4 @@
+build
+#Layer0 generated build directory
+.layer0
+node_modules

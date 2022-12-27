@@ -1,0 +1,28 @@
+{
+  "name": "edgio-saber-example",
+  "scripts": {
+    "dev": "saber",
+    "build": "saber build",
+    "edgio:dev": "edgio dev",
+    "edgio:build": "edgio build",
+    "edgio:deploy": "edgio deploy",
+    "edgio:production": "edgio run --production",
+    "format": "prettier --write '**/*' --ignore-unknown"
+  },
+  "dependencies": {
+    "saber": "^0.11.7"
+  },
+  "devDependencies": {
+    "@edgio/cli": "^5.0.4",
+    "@edgio/core": "^5.0.4",
+    "@edgio/devtools": "^5.0.4",
+    "@edgio/prefetch": "^5.0.4",
+    "@edgio/rum": "^5.0.8",
+    "@edgio/vue": "^5.0.4",
+    "autoprefixer": "^10.4.8",
+    "node-fetch": "^3.2.10",
+    "postcss": "^8.4.16",
+    "prettier": "^2.7.1",
+    "tailwindcss": "^3.1.8"
+  }
+}

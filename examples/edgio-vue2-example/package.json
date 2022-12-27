@@ -1,0 +1,34 @@
+{
+  "name": "edgio-vue2-example",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "tailwindcss:watch": "npx tailwindcss -i ./src/input.css -o ./src/compiled/output.css --watch",
+    "tailwindcss:build": "npx tailwindcss -i ./src/input.css -o ./src/compiled/output.css",
+    "edgio:dev": "edgio dev",
+    "edgio:build": "edgio build",
+    "edgio:deploy": "edgio deploy",
+    "edgio:production": "edgio run --production",
+    "format": "prettier --write '**/*' --ignore-unknown"
+  },
+  "dependencies": {
+    "vue": "^2.6.11",
+    "vue-router": "3.5.4"
+  },
+  "devDependencies": {
+    "@edgio/cli": "^5.0.4",
+    "@edgio/core": "^5.0.4",
+    "@edgio/devtools": "^5.0.4",
+    "@edgio/prefetch": "^5.0.4",
+    "@edgio/rum": "^5.0.8",
+    "@edgio/vue": "^5.0.4",
+    "@vue/cli-service": "~4.5.0",
+    "tailwindcss": "^3.1.6",
+    "vue-template-compiler": "^2.6.11"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
