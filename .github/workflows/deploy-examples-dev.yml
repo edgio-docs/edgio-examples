@@ -164,8 +164,7 @@ jobs:
         uses: actions/github-script@v2
         with:
           script: |
-            npm run edgio:deploy -- ${{ env.ENV_CMD_ARGS }} --branch=${{ env.BRANCH_NAME }} --environment=${{ env.ENV_NAME }}
-        working-directory: ${{ env.EXAMPLE_DIR }}
+            cd ${{ env.EXAMPLE_DIR }} && npm run edgio:deploy -- ${{ env.ENV_CMD_ARGS }} --branch=${{ env.BRANCH_NAME }} --environment=${{ env.ENV_NAME }}
         env:
           ENV_NAME: ${{ matrix.example }}-${{ env.EDGIO_ENV }}
           BRANCH_NAME: ${{ needs.prepare.outputs.branch }}
