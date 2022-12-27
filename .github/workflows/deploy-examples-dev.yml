@@ -165,10 +165,10 @@ jobs:
         with:
           run: |
             npm run edgio:deploy -- ${{ env.ENV_CMD_ARGS }} --branch=${{ env.BRANCH_NAME }} --environment=${{ env.ENV_NAME }}
-        env:
-          ENV_NAME: ${{ matrix.example }}-${{ env.EDGIO_ENV }}
-          BRANCH_NAME: ${{ needs.prepare.outputs.branch }}
-        working-directory: ${{ env.EXAMPLE_DIR }}
+          env:
+            ENV_NAME: ${{ matrix.example }}-${{ env.EDGIO_ENV }}
+            BRANCH_NAME: ${{ needs.prepare.outputs.branch }}
+          working-directory: ${{ env.EXAMPLE_DIR }}
 
       - name: Extract permalink
         id: extract_permalink
