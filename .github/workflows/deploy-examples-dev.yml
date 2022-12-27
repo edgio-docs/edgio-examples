@@ -184,7 +184,7 @@ jobs:
           echo "${{ steps.deploy.outputs.DEPLOY_OUTPUT }}" | sed -n 's/.*\(https.*-perma\.link\).*/\1/p' | { read matches; echo "matches=$matches" >> $GITHUB_OUTPUT; }
 
       - name: Publish Preview Link
-        continue-on-error: true
+        if: ${{ always() }}
         uses: marocchino/sticky-pull-request-comment@v2.2.0
         with:
           number: ${{ needs.prepare.outputs.pr }}
