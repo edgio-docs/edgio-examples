@@ -161,17 +161,18 @@ jobs:
 
       - name: Deploy example
         id: deploy
-        uses: actions/github-script@v2
-        with:
-          script: |
-            cd ${{ env.EXAMPLE_DIR }} && npm run edgio:deploy -- ${{ env.ENV_CMD_ARGS }} --branch=${{ env.BRANCH_NAME }} --environment=${{ env.ENV_NAME }}
+        run: |
+          npm run edgio:deploy -- ${{ env.ENV_CMD_ARGS }} --branch=${{ env.BRANCH_NAME }} --environment=${{ env.ENV_NAME }}
         env:
           ENV_NAME: ${{ matrix.example }}-${{ env.EDGIO_ENV }}
           BRANCH_NAME: ${{ needs.prepare.outputs.branch }}
+        working-directory: ${{ env.EXAMPLE_DIR }}
+        outputs:
+          output: ${{ steps.deploy.output }}
 
       - name: Extract permalink
         id: extract_permalink
-        run: echo -e "matches=$(sed -n 's/.*\(https.*-perma\.link\).*/\1/p' <<< '${{ steps.deploy.outputs.stdout }}')" >> $GITHUB_OUTPUT
+        run: echo -e "matches=$(sed -n 's/.*\(https.*-perma\.link\).*/\1/p' <<< '${{ steps.deploy.outputs.DEPLOY_OUTPUT }}')" >> $GITHUB_OUTPUT
 
       - name: Publish Preview Link
         uses: marocchino/sticky-pull-request-comment@v2.2.0
