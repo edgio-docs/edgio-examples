@@ -5,7 +5,7 @@ const examples = require('./getExamples')();
 
 // Get the list of modified files
 const modifiedFiles = execSync(
-  'git diff --name-only main | xargs -I {} dirname {} | sort | uniq'
+  'git diff --name-only origin/main | xargs -I {} dirname {} | sort | uniq'
 )
   .toString()
   .split('\n');
