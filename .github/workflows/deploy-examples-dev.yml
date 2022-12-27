@@ -162,13 +162,15 @@ jobs:
       - name: Deploy example
         id: deploy
         run: |
-          npm run edgio:deploy -- ${{ env.ENV_CMD_ARGS }} --branch=${{ env.BRANCH_NAME }} --environment=${{ env.ENV_NAME }}
+          DEPLOY=$(npm run edgio:deploy -- ${{ env.ENV_CMD_ARGS }} --branch=${{ env.BRANCH_NAME }} --environment=${{ env.ENV_NAME }})
+          DEPLOY="${DEPLOY//'%'/'%25'}"
+          DEPLOY="${DEPLOY//$'\n'/'%0A'}"
+          DEPLOY="${DEPLOY//$'\r'/'%0D'}"
+          echo deploy_output=$DEPLOY >> $GITHUB_OUTPUT
         env:
           ENV_NAME: ${{ matrix.example }}-${{ env.EDGIO_ENV }}
           BRANCH_NAME: ${{ needs.prepare.outputs.branch }}
         working-directory: ${{ env.EXAMPLE_DIR }}
-        outputs:
-          output: ${{ steps.deploy.output }}
 
       - name: Extract permalink
         id: extract_permalink
