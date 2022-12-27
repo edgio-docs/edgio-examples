@@ -191,4 +191,4 @@ jobs:
           header: ${{ env.COMMENT_ID }}
           append: true
           message: |
-            - `${{ matrix.example }}`: ${{ if eq(job.status, 'failure') 'FAILED' steps.extract_permalink.outputs.matches }}
+            - `${{ matrix.example }}`: ${{ if eq('${{ job.status }}', 'failure') 'FAILED' steps.extract_permalink.outputs.matches }}
