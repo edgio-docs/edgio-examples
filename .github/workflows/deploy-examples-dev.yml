@@ -31,6 +31,7 @@ jobs:
     outputs:
       matrix: ${{ steps.setMatrix.outputs.matrix }}
       branch: ${{ steps.setBranch.outputs.branch }}
+      pr: ${{ steps.finder.outputs.pr }}
     steps:
       - uses: actions/checkout@v3
 
