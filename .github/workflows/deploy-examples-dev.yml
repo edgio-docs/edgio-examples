@@ -179,4 +179,4 @@ jobs:
           number: ${{ needs.prepare.steps.finder.outputs.pr }}
           header: preview
           message: |
-            Preview ${{ matrix.example }}: ${{ steps.extract_permalink.outputs.matches }}spx
+            Preview ${{ matrix.example }}: ${{ steps.extract_permalink.outputs.matches }}
