@@ -53,6 +53,19 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
 
+      - name: Extract branch name
+        id: setBranch
+        shell: bash
+        run: echo -e "branch=$(echo ${GITHUB_REF#refs/heads/} | sed 's/[^[:alnum:].-]/-/g')" >> $GITHUB_OUTPUT
+
+      - run: npm ci
+
+      - name: Get matrix of modified examples
+        id: setMatrix
+        run: echo -e "matrix=$(node scripts/helpers/printExamples.js)" >> $GITHUB_OUTPUT
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - uses: jwalton/gh-find-current-pr@v1
         id: finder
 
@@ -64,17 +77,6 @@ jobs:
           recreate: true
           message: |
             Preview links for commit ${{ github.sha }}:
-
-      - name: Extract branch name
-        id: setBranch
-        shell: bash
-        run: echo -e "branch=$(echo ${GITHUB_REF#refs/heads/} | sed 's/[^[:alnum:].-]/-/g')" >> $GITHUB_OUTPUT
-
-      - run: npm ci
-
-      - name: Get matrix of modified examples
-        id: setMatrix
-        run: echo -e "matrix=$(node scripts/helpers/printExamples.js)" >> $GITHUB_OUTPUT
 
   examples:
     name: Examples
