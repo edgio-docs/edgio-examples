@@ -6,7 +6,7 @@ const HomePage = () => {
     <>
       <MetaTags title="Home" description="Home page" />
 
-      <h1>RedwoodJS + Layer0 🚀</h1>
+      <h1>RedwoodJS + Edgio 🚀</h1>
       <p>
         Find me in <code>./web/src/pages/HomePage/HomePage.js</code>
       </p>

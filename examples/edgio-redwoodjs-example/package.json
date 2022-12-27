@@ -1,9 +1,9 @@
 {
-  "name": "layer0-redwoodjs-example",
+  "name": "edgio-redwoodjs-example",
   "scripts": {
-    "layer0:dev": "layer0 dev",
-    "layer0:build": "layer0 build",
-    "layer0:deploy": "layer0 deploy"
+    "edgio:dev": "edgio dev",
+    "edgio:build": "edgio build",
+    "edgio:deploy": "edgio deploy"
   },
   "private": true,
   "workspaces": {
@@ -14,11 +14,11 @@
     ]
   },
   "devDependencies": {
-    "@layer0/cli": "latest",
-    "@layer0/core": "latest",
-    "@layer0/devtools": "latest",
-    "@layer0/prefetch": "latest",
-    "@layer0/redwood": "latest",
+    "@edgio/cli": "^6.0.0",
+    "@edgio/core": "^6.0.0",
+    "@edgio/devtools": "^6.0.0",
+    "@edgio/prefetch": "^6.0.0",
+    "@edgio/redwood": "^6.0.0",
     "@redwoodjs/core": "1.0.0"
   },
   "eslintConfig": {
@@ -26,7 +26,6 @@
     "root": true
   },
   "engines": {
-    "node": ">=14.19 <=16.x",
     "yarn": ">=1.15"
   },
   "prisma": {

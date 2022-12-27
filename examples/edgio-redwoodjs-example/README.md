@@ -1,10 +1,10 @@
 # Deploy Redwood on Layer0 with Limelight
 
-Layer0 by Limelight is an Edge Compute Platform with over 130 global points of presence. Limelight operates its own private network with more than 70+ terabits per second of global egress capacity. Data is prefetched and streamed into the browser at a 95% cache hit rate by Layer0 before the user requests it.
+Edgio is an Edge Compute Platform with over 130 global points of presence. Limelight operates its own private network with more than 70+ terabits per second of global egress capacity. Data is prefetched and streamed into the browser at a 95% cache hit rate by Edgio before the user requests it.
 
 ![Cache hit rate comparison graphic](https://assets-global.website-files.com/5ec129d839c03647b43dbd41/619459e884ec7ae74d923da8_I6iG8tVXinoz29x52oRnHeDYe8WmpuND7AdmwC9-c64qzxJVkN8fpn5Vlogr7W67K-peNtFsLvmBWDWuzlNJ1VnEXM3Iso4ijaf8tXlxd0Mmmk3LrBTLKXUCj_GJASq3WsIbksyJ.jpeg)
 
-In addition to hosting your static assets, Layer0 also includes edge functions with [EdgeJS](https://www.layer0.co/edgejs), a framework agnostic, performant, and declarative JavaScript-based edge configuration language.
+In addition to hosting your static assets, Edgio also includes edge functions with [EdgeJS](https://www.edg.io/edgejs), a framework agnostic, performant, and declarative JavaScript-based edge configuration language.
 
 ## Demo
 
@@ -12,7 +12,7 @@ https://layer0-docs-layer0-redwoodjs-example-default.layer0-limelight.link
 
 ## Try It Now
 
-[![Deploy with Layer0](https://docs.layer0.co/button.svg)](https://app.layer0.co/deploy?repo=https://github.com/layer0-docs/layer0-redwoodjs-example)
+[![Deploy with Layer0](https://docs.edg.io/button.svg)](https://app.layer0.co/deploy?repo=https://github.com/layer0-docs/layer0-redwoodjs-example)
 
 ## Layer0 Configuration
 
@@ -125,9 +125,9 @@ curl \
 
 ```json
 {
-  "data":{
-    "redwood":{
-      "version":"1.0.0"
+  "data": {
+    "redwood": {
+      "version": "1.0.0"
     }
   }
 }

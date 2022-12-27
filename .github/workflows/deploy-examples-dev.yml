@@ -72,7 +72,7 @@ jobs:
 
       - run: npm ci
 
-      - name: Load list of examples
+      - name: Get matrix of modified examples
         id: setMatrix
         run: echo -e "matrix=$(node scripts/helpers/printExamples.js)" >> $GITHUB_OUTPUT
 
@@ -104,16 +104,6 @@ jobs:
             examples/${{ matrix.example }}/node_modules
             */*/node_modules
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles(format('examples/{0}/package-lock.json', matrix.test), 'packages/*/package-lock.json') }}
-
-      # TODO: If the PR doesn't contain any changes in the example relative to the base branch, skip the matrix
-      # - name: 'Check if there are changes in the example'
-      #   id: checkChanges
-      #   run: |
-      #     echo -e "hasChanges=$(git status --porcelain --untracked-files=no ${{ env.EXAMPLE_DIR }} | wc -l)" >> $GITHUB_OUTPUT
-      #     if [ $hasChanges = 0 ]; then
-      #       echo "No changes in the example, exiting matrix."
-      #       exit 0
-      #     fi
 
       # Install dependencies for this example
       - name: Install dependencies
