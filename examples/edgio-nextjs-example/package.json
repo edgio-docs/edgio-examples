@@ -5,7 +5,7 @@
     "build": "next build",
     "start": "next start",
     "edgio:dev": "edgio dev",
-    "edgio:builder": "edgio build",
+    "edgio:build": "edgio build",
     "edgio:deploy": "edgio deploy",
     "edgio:production": "edgio run --production",
     "format": "prettier '**/*' --write --ignore-unknown"
