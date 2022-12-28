@@ -166,9 +166,10 @@ jobs:
         shell: bash
         run: |
           DEPLOY=$(npm run edgio:deploy -- ${{ env.ENV_CMD_ARGS }} --branch=${{ env.BRANCH_NAME }} --environment=${{ env.ENV_NAME }} 2>&1) || true
-          DEPLOY="${DEPLOY//'%'/'%25'}"
-          DEPLOY="${DEPLOY//$'\n'/'%0A'}"
-          DEPLOY="${DEPLOY//$'\r'/'%0D'}"
+          # DEPLOY="${DEPLOY//'%'/'%25'}"
+          # DEPLOY="${DEPLOY//$'\n'/'%0A'}"
+          # DEPLOY="${DEPLOY//$'\r'/'%0D'}"
+          echo "$DEPLOY"
           echo DEPLOY_OUTPUT=$DEPLOY >> $GITHUB_OUTPUT
         env:
           ENV_NAME: ${{ matrix.example }}-${{ env.EDGIO_ENV }}
