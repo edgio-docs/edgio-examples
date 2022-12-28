@@ -180,7 +180,16 @@ jobs:
         id: extract_permalink
         if: ${{ always() }}
         run: |
-          echo "${{ steps.deploy.outputs.DEPLOY_OUTPUT }}" | sed -n 's/.*\(https.*-perma\.link\).*/\1/p' | { read matches; if [[ -n $matches ]]; then echo "matches=$matches" >> $GITHUB_OUTPUT; else echo "matches=FAILED" >> $GITHUB_OUTPUT; fi }
+          echo "${{ steps.deploy.outputs.DEPLOY_OUTPUT }}" |
+            sed -n 's/.*\(https.*-perma\.link\).*/\1/p' |
+            {
+              read matches
+              if [[ -n $matches ]]; then
+                echo "matches=$matches" >> $GITHUB_OUTPUT
+              else
+                echo "matches=FAILED" >> $GITHUB_OUTPUT
+              fi
+            }
 
       - name: Publish Preview Link
         if: ${{ always() }}
