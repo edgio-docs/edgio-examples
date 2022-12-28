@@ -6,12 +6,11 @@
     "deploy": "edgio deploy",
     "format": "prettier --write '**/*' --ignore-unknown"
   },
-  "dependencies": {},
   "devDependencies": {
-    "@edgio/cli": "^5.0.4",
-    "@edgio/core": "^5.0.4",
-    "@edgio/devtools": "^5.0.4",
-    "@edgio/prefetch": "^5.0.4",
+    "@edgio/cli": "^6.0.4",
+    "@edgio/core": "^6.0.4",
+    "@edgio/devtools": "^6.0.4",
+    "@edgio/prefetch": "^6.0.4",
     "prettier": "^2.5.1"
   }
 }
