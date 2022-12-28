@@ -11,7 +11,9 @@ jobs:
         with:
           node-version: 16
       - name: Install @edgio/cli globally
-        run: npm install -g @edgio/cli
+        run: |
+          npm install -g @edgio/cli
+          npm ci
       - name: Update Examples
         run: npm run update-edgio || true
       - name: Check if there are modified files
