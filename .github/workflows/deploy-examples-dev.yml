@@ -35,6 +35,10 @@ jobs:
       pr: ${{ steps.finder.outputs.pr }}
     steps:
       - uses: actions/checkout@v3
+        with:
+          ref: main
+
+      - uses: actions/checkout@v3
 
       - uses: actions/setup-node@v3
         with:
@@ -53,6 +57,19 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
 
+      - name: Extract branch name
+        id: setBranch
+        shell: bash
+        run: echo -e "branch=$(echo ${GITHUB_REF#refs/heads/} | sed 's/[^[:alnum:].-]/-/g')" >> $GITHUB_OUTPUT
+
+      - run: npm ci
+
+      - name: Get matrix of modified examples
+        id: setMatrix
+        run: echo -e "matrix=$(node scripts/helpers/printExamples.js)" >> $GITHUB_OUTPUT
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - uses: jwalton/gh-find-current-pr@v1
         id: finder
 
@@ -64,17 +81,6 @@ jobs:
           recreate: true
           message: |
             Preview links for commit ${{ github.sha }}:
-
-      - name: Extract branch name
-        id: setBranch
-        shell: bash
-        run: echo -e "branch=$(echo ${GITHUB_REF#refs/heads/} | sed 's/[^[:alnum:].-]/-/g')" >> $GITHUB_OUTPUT
-
-      - run: npm ci
-
-      - name: Load list of examples
-        id: setMatrix
-        run: echo -e "matrix=$(node scripts/helpers/printExamples.js)" >> $GITHUB_OUTPUT
 
   examples:
     name: Examples
@@ -104,16 +110,6 @@ jobs:
             examples/${{ matrix.example }}/node_modules
             */*/node_modules
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles(format('examples/{0}/package-lock.json', matrix.test), 'packages/*/package-lock.json') }}
-
-      # TODO: If the PR doesn't contain any changes in the example relative to the base branch, skip the matrix
-      # - name: 'Check if there are changes in the example'
-      #   id: checkChanges
-      #   run: |
-      #     echo -e "hasChanges=$(git status --porcelain --untracked-files=no ${{ env.EXAMPLE_DIR }} | wc -l)" >> $GITHUB_OUTPUT
-      #     if [ $hasChanges = 0 ]; then
-      #       echo "No changes in the example, exiting matrix."
-      #       exit 0
-      #     fi
 
       # Install dependencies for this example
       - name: Install dependencies
@@ -167,11 +163,13 @@ jobs:
 
       - name: Deploy example
         id: deploy
+        shell: bash
         run: |
-          DEPLOY=$(npm run edgio:deploy -- ${{ env.ENV_CMD_ARGS }} --branch=${{ env.BRANCH_NAME }} --environment=${{ env.ENV_NAME }})
-          DEPLOY="${DEPLOY//'%'/'%25'}"
-          DEPLOY="${DEPLOY//$'\n'/'%0A'}"
-          DEPLOY="${DEPLOY//$'\r'/'%0D'}"
+          DEPLOY=$(npm run edgio:deploy -- ${{ env.ENV_CMD_ARGS }} --branch=${{ env.BRANCH_NAME }} --environment=${{ env.ENV_NAME }} 2>&1) || true
+          # DEPLOY="${DEPLOY//'%'/'%25'}"
+          # DEPLOY="${DEPLOY//$'\n'/'%0A'}"
+          # DEPLOY="${DEPLOY//$'\r'/'%0D'}"
+          echo "$DEPLOY"
           echo DEPLOY_OUTPUT=$DEPLOY >> $GITHUB_OUTPUT
         env:
           ENV_NAME: ${{ matrix.example }}-${{ env.EDGIO_ENV }}

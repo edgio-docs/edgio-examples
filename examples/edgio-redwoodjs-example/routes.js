@@ -1,6 +1,6 @@
-// This file was automatically added by layer0 init.
+// This file was automatically added by edgio init.
 // You should commit this file to source control.
-import { Router } from '@layer0/core'
-import { redwoodRoutes } from '@layer0/redwood'
+import { Router } from '@edgio/core'
+import { redwoodRoutes } from '@edgio/redwood'
 
 export default new Router().use(redwoodRoutes)

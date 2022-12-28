@@ -1,3 +1,3 @@
-const getExamples = require('./getExamples');
+const paths = require('./getModifiedExamples');
 
-console.log(JSON.stringify(getExamples()));
+console.log(JSON.stringify(paths));
