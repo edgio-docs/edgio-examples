@@ -24,7 +24,7 @@ env:
   EDGIO_SITE: edgio-examples
   EDGIO_DEPLOY_TOKEN: ${{secrets.EDGIO_EXAMPLES_DEPLOY_TOKEN}}
   OPTIONAL_API_URL: --api-url=https://app.layer0.co
-  COMMENT_ID: preview-${{ github.sha }}
+  COMMENT_ID: preview-${{ github.ref }}
 
 jobs:
   prepare:
@@ -120,7 +120,7 @@ jobs:
           # Check if package-lock.json file exists
           if [ -f "package-lock.json" ]; then
             # Use npm
-            npm ci
+            npm ci --legacy-peer-deps
           else
             # Check if yarn.lock file exists
             if [ -f "yarn.lock" ]; then
