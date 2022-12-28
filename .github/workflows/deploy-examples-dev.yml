@@ -163,6 +163,7 @@ jobs:
 
       - name: Deploy example
         id: deploy
+        shell: bash
         run: |
           DEPLOY=$(npm run edgio:deploy -- ${{ env.ENV_CMD_ARGS }} --branch=${{ env.BRANCH_NAME }} --environment=${{ env.ENV_NAME }} 2>&1)
           DEPLOY="${DEPLOY//'%'/'%25'}"
