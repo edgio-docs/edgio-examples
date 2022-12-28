@@ -3,16 +3,16 @@ const { join } = require('path');
 const examplesPath = 'examples';
 const examples = require('./getExamples')();
 
-// Get the list of modified files
-const modifiedFiles = execSync(
-  'git diff --name-only origin/main | xargs -I {} dirname {} | sort | uniq'
-)
-  .toString()
-  .split('\n');
+module.exports = () => {
+  // Get the list of modified files
+  const modifiedFiles = execSync(
+    'git diff --name-only origin/main | xargs -I {} dirname {} | sort | uniq'
+  )
+    .toString()
+    .split('\n');
 
-// Filter the array of paths to return only the modified paths
-const modifiedPaths = examples.filter((path) =>
-  modifiedFiles.includes(join(examplesPath, path))
-);
-
-module.exports = modifiedPaths;
+  // Filter the array of paths to return only the modified paths
+  return examples.filter((path) =>
+    modifiedFiles.includes(join(examplesPath, path))
+  );
+};

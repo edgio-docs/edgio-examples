@@ -67,7 +67,7 @@ jobs:
 
       - name: Get matrix of modified examples
         id: setMatrix
-        run: echo -e "matrix=$(node scripts/helpers/printExamples.js)" >> $GITHUB_OUTPUT
+        run: echo -e "matrix=$(node scripts/helpers/printModifiedExamples.js)" >> $GITHUB_OUTPUT
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
