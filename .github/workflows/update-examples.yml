@@ -1,7 +1,6 @@
 name: Update Edgio Examples
 on:
-  manual:
-    description: 'Update Edgio Examples to latest version'
+  workflow_dispatch:
 jobs:
   update-edgio:
     runs-on: ubuntu-latest
