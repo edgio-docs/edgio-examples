@@ -42,13 +42,6 @@ jobs:
     env:
       EXAMPLE_DIR: examples/${{ matrix.example }}
     steps:
-      - uses: actions/checkout@v3
-
-      - uses: actions/setup-node@v3
-        with:
-          node-version: ${{ env.NODE_VERSION }} # NODE_VERSION
-          registry-url: https://registry.npmjs.org/
-
       - name: Cache node modules
         uses: actions/cache@v3
         env:
@@ -60,22 +53,23 @@ jobs:
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles(format('examples/{0}/package-lock.json', matrix.test), 'packages/*/package-lock.json') }}
 
       - name: Update Examples
-        run: npm run update-edgio ${{ env.EXAMPLE_DIR }} || true
+        run: npm run update-edgio ${{ env.EXAMPLE_DIR }}
 
       - name: Check if there are modified files
+        id: status
         run: |
           # Check if the git status is clean
           if [ -z "$(git status --porcelain)" ]; then
             echo "No modified files"
             # Set a variable to indicate that there are no modified files
-            NO_MODIFIED_FILES=true
+            echo "NO_MODIFIED_FILES=true" >> $GITHUB_OUTPUT
           else
             echo "Modified files"
             # Set a variable to indicate that there are modified files
-            NO_MODIFIED_FILES=false
+            echo "NO_MODIFIED_FILES=false" >> $GITHUB_OUTPUT
           fi
       - name: Commit changes
-        if: steps.check-if-there-are-modified-files.outputs.NO_MODIFIED_FILES == 'false'
+        if: steps.status.outputs.NO_MODIFIED_FILES == 'false'
         run: |
           git checkout -b update-edgio || git checkout update-edgio
           git add .
@@ -86,11 +80,6 @@ jobs:
     needs: update-examples
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: ${{ env.NODE_VERSION }} # NODE_VERSION
-          registry-url: https://registry.npmjs.org/
       - name: Create PR
         uses: peter-evans/create-pull-request@v3
         with:
