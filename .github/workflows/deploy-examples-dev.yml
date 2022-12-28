@@ -185,7 +185,7 @@ jobs:
             {
               sed_exit_code=$?
               if [[ $sed_exit_code -eq 0 ]]; then
-                read matches
+                read matches || matches=""
                 if [[ -n $matches ]]; then
                   echo "matches=$matches" >> $GITHUB_OUTPUT
                 else
