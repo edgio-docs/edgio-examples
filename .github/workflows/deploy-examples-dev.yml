@@ -5,6 +5,7 @@ on:
     branches:
       - '**'
       - '!main'
+  pull_request:
   workflow_dispatch:
 
 # In case you push new commit into the MR / the previous runs will automatically stop
