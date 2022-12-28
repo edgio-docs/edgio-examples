@@ -18,10 +18,10 @@
     "morgan": "~1.9.1"
   },
   "devDependencies": {
-    "@edgio/cli": "^5.0.4",
-    "@edgio/core": "^5.0.4",
-    "@edgio/devtools": "^5.0.4",
-    "@edgio/express": "^5.0.4",
-    "@edgio/prefetch": "^5.0.4"
+    "@edgio/cli": "^6.0.4",
+    "@edgio/core": "^6.0.4",
+    "@edgio/devtools": "^6.0.4",
+    "@edgio/express": "^6.0.4",
+    "@edgio/prefetch": "^6.0.4"
   }
 }

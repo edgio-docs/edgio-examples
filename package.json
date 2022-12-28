@@ -5,6 +5,7 @@
   "scripts": {
     "generate-config": "node scripts/generateConfig.js",
     "clone-examples": "rm -rf ./examples; mkdir ./examples; node scripts/cloneExamples.js",
+    "update-edgio": "node scripts/updateEdgio.js",
     "dev": "turbo run edgio:dev",
     "build": "turbo run edgio:build",
     "deploy": "turbo run edgio:deploy",
@@ -25,7 +26,8 @@
     "@octokit/core": "^4.1.0",
     "dotenv": "^16.0.3",
     "lodash": "^4.17.21",
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "semver": "^7.3.8"
   },
   "devDependencies": {
     "chalk": "^4.1.2",

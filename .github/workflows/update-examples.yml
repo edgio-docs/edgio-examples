@@ -1,0 +1,46 @@
+name: Update Edgio Examples
+on:
+  workflow_dispatch:
+jobs:
+  update-edgio:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js 16
+        uses: actions/setup-node@v2
+        with:
+          node-version: 16
+      - name: Install @edgio/cli globally
+        run: npm install -g @edgio/cli
+      - name: Update Examples
+        run: npm run update-edgio || true
+      - name: Check if there are modified files
+        run: |
+          # Check if the git status is clean
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No modified files"
+            # Set a variable to indicate that there are no modified files
+            NO_MODIFIED_FILES=true
+          else
+            echo "Modified files"
+            # Set a variable to indicate that there are modified files
+            NO_MODIFIED_FILES=false
+          fi
+      - name: Commit changes
+        if: steps.check-if-there-are-modified-files.outputs.NO_MODIFIED_FILES == 'false'
+        run: |
+          git checkout -b update-edgio
+          git branch
+          git add .
+          git commit -m "Update Edgio"
+      - name: Create pull request
+        if: steps.check-if-there-are-modified-files.outputs.NO_MODIFIED_FILES == 'false'
+        uses: peter-evans/create-pull-request@v3
+        with:
+          title: Update Edgio
+          body: |
+            Updated Edgio
+          head: update-edgio
+          base: ${{ github.repository.default_branch }}
+          owner: ${{ github.repository.owner.name }}
+          repo: ${{ github.repository.name }}

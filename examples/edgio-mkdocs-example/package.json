@@ -9,10 +9,10 @@
     "edgio:deploy": "edgio deploy"
   },
   "devDependencies": {
-    "@edgio/cli": "^5.0.4",
-    "@edgio/core": "^5.0.4",
-    "@edgio/devtools": "^5.0.4",
-    "@edgio/mkdocs": "^5.0.4",
-    "@edgio/prefetch": "^5.0.4"
+    "@edgio/cli": "^6.0.4",
+    "@edgio/core": "^6.0.4",
+    "@edgio/devtools": "^6.0.4",
+    "@edgio/mkdocs": "^6.0.4",
+    "@edgio/prefetch": "^6.0.4"
   }
 }

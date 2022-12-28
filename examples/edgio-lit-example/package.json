@@ -18,10 +18,10 @@
     "lit-html": "^2.0.0"
   },
   "devDependencies": {
-    "@edgio/cli": "^5.0.4",
-    "@edgio/core": "^5.0.4",
-    "@edgio/devtools": "^5.0.4",
-    "@edgio/prefetch": "^5.0.4",
+    "@edgio/cli": "^6.0.4",
+    "@edgio/core": "^6.0.4",
+    "@edgio/devtools": "^6.0.4",
+    "@edgio/prefetch": "^6.0.4",
     "@rollup/plugin-node-resolve": "^13.3.0",
     "@rollup/plugin-replace": "^4.0.0",
     "@web/rollup-plugin-copy": "^0.3.0",
