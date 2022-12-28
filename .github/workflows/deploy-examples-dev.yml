@@ -183,16 +183,13 @@ jobs:
           echo "${{ steps.deploy.outputs.DEPLOY_OUTPUT }}" |
             sed -n 's/.*\(https.*-perma\.link\).*/\1/p' |
             {
-              sed_exit_code=$?
-              if [[ $sed_exit_code -eq 0 ]]; then
-                read matches || matches=""
-                if [[ -n $matches ]]; then
-                  echo "matches=$matches" >> $GITHUB_OUTPUT
-                else
-                  echo "matches=FAILED ❌" >> $GITHUB_OUTPUT
-                fi
+              read matches || matches=""
+              if [[ -n $matches ]]; then
+                echo "matches=$matches" >> $GITHUB_OUTPUT
+                echo "status=SUCCESS ✅" >> $GITHUB_OUTPUT
               else
-                echo "matches=FAILED ❌" >> $GITHUB_OUTPUT
+                echo "matches=" >> $GITHUB_OUTPUT
+                echo "status=FAILED ❌" >> $GITHUB_OUTPUT
               fi
             }
 
@@ -204,4 +201,4 @@ jobs:
           header: ${{ env.COMMENT_ID }}
           append: true
           message: |
-            - `${{ matrix.example }}`: ${{ steps.extract_permalink.outputs.matches }}
+            - `${{ matrix.example }} (${{ steps.extract_permalink.outputs.status }})`: ${{ steps.extract_permalink.outputs.matches }}
