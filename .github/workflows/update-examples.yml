@@ -55,7 +55,6 @@ jobs:
       - name: Update Examples
         run: |
           ls -al
-          npm run update-edgio ${{ env.EXAMPLE_DIR }}
 
       - name: Check if there are modified files
         id: status
