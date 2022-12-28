@@ -53,7 +53,9 @@ jobs:
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles(format('examples/{0}/package-lock.json', matrix.test), 'packages/*/package-lock.json') }}
 
       - name: Update Examples
-        run: npm run update-edgio ${{ env.EXAMPLE_DIR }}
+        run: |
+          ls -al
+          npm run update-edgio ${{ env.EXAMPLE_DIR }}
 
       - name: Check if there are modified files
         id: status
