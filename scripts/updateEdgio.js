@@ -17,7 +17,7 @@ try {
 
 if (rootPath) {
   // Update the dependencies and dev dependencies in the specified directory
-  updateEdgioDependencies(rootPath);
+  updateEdgioDependencies(path.join(process.cwd(), rootPath));
 } else {
   // Update the dependencies and dev dependencies in all directories within the examples directory
   const examplesPath = path.join(process.cwd(), 'examples');
