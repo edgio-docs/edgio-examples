@@ -5,7 +5,7 @@
   "scripts": {
     "generate-config": "node scripts/generateConfig.js",
     "clone-examples": "rm -rf ./examples; mkdir ./examples; node scripts/cloneExamples.js",
-    "update-edgio": "node scripts/updateEdgio.js",
+    "update-examples": "node scripts/updateEdgio.js",
     "dev": "turbo run edgio:dev",
     "build": "turbo run edgio:build",
     "deploy": "turbo run edgio:deploy",
