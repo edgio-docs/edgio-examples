@@ -101,21 +101,21 @@ jobs:
         with:
           ref: ${{ env.BRANCH_NAME }}
           fetch-depth: 0
-      # - name: Check for file changes
-      #   id: status
-      #   run: |
-      #     git pull
-      #     HAS_CHANGED_FILES=$(git diff --name-only origin/main | grep -q . && echo true || echo false)
-      #     echo "HAS_CHANGED_FILES=$HAS_CHANGED_FILES" >> $GITHUB_OUTPUT
+      - name: Check for file changes
+        id: status
+        run: |
+          git pull
+          HAS_CHANGED_FILES=$(git diff --name-only origin/main | grep -q . && echo true || echo false)
+          echo "HAS_CHANGED_FILES=$HAS_CHANGED_FILES" >> $GITHUB_OUTPUT
       - name: Create PR
-        # if: steps.status.outputs.HAS_CHANGED_FILES == 'true'
-        uses: peter-evans/create-pull-request@v4
+        if: steps.status.outputs.HAS_CHANGED_FILES == 'true'
+        uses: repo-sync/pull-request@v2
         with:
-          base: main
-          branch: ${{ env.BRANCH_NAME }}
-          commit-message: Update Edgio Examples
-          title: Update Edgio Examples
-      # - name: Delete branch
-      #   if: steps.status.outputs.HAS_CHANGED_FILES == 'false'
-      #   run: |
-      #     git push origin --delete ${{ env.BRANCH_NAME }}
+          destination_branch: ${{ github.repository.default_branch }}
+          pr_title: [BOT] Update Edgio Examples
+          pr_reviewer: ${{ github.repository_owner }}
+          pr_assignee: ${{ github.repository_owner }}
+      - name: Delete branch
+        if: steps.status.outputs.HAS_CHANGED_FILES == 'false'
+        run: |
+          git push origin --delete ${{ env.BRANCH_NAME }}
