@@ -112,7 +112,7 @@ jobs:
         uses: repo-sync/pull-request@v2
         with:
           destination_branch: ${{ github.repository.default_branch }}
-          pr_title: [BOT] Update Edgio Examples
+          pr_title: '[BOT] Update Edgio Examples'
           pr_reviewer: ${{ github.repository_owner }}
           pr_assignee: ${{ github.repository_owner }}
       - name: Delete branch
