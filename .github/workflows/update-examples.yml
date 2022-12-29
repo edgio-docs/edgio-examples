@@ -9,6 +9,7 @@ concurrency:
 env:
   # Node version for all the jobs
   NODE_VERSION: 16
+  BRANCH_NAME: update-edgio-${{ github.run_number }}
 
 jobs:
   prepare:
@@ -21,10 +22,10 @@ jobs:
         with:
           node-version: ${{ env.NODE_VERSION }} # NODE_VERSION
           registry-url: https://registry.npmjs.org/
-      - name: Install @edgio/cli globally
-        run: |
-          npm install -g @edgio/cli
-          npm ci
+      - name: Install Node.js modules
+        run: npm ci
+      - name: Create branch for updates
+        run: git checkout -b ${{ env.BRANCH_NAME }}
       - name: Get matrix of examples
         id: setMatrix
         run: echo -e "matrix=$(node scripts/helpers/printExamples.js)" >> $GITHUB_OUTPUT
@@ -42,6 +43,15 @@ jobs:
     env:
       EXAMPLE_DIR: examples/${{ matrix.example }}
     steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ env.BRANCH_NAME }}
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }} # NODE_VERSION
+          registry-url: https://registry.npmjs.org/
+      - name: Install Node.js modules
+        run: npm ci
       - name: Cache node modules
         uses: actions/cache@v3
         env:
@@ -53,8 +63,7 @@ jobs:
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles(format('examples/{0}/package-lock.json', matrix.test), 'packages/*/package-lock.json') }}
 
       - name: Update Examples
-        run: |
-          ls -al
+        run: npm run update-examples ${{ env.EXAMPLE_DIR }}
 
       - name: Check if there are modified files
         id: status
@@ -72,7 +81,6 @@ jobs:
       - name: Commit changes
         if: steps.status.outputs.NO_MODIFIED_FILES == 'false'
         run: |
-          git checkout -b update-edgio || git checkout update-edgio
           git add .
           git commit -m "Update ${{ matrix.example }}"
 
@@ -81,22 +89,11 @@ jobs:
     needs: update-examples
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ env.BRANCH_NAME }}
       - name: Create PR
         uses: peter-evans/create-pull-request@v3
         with:
-          base: ${{ github.repository.default_branch }}
-          head: update-edgio
-          owner: ${{ github.repository.owner.name }}
-          repo: ${{ github.repository.name }}
           commit-message: Update Edgio Examples
           title: Update Edgio Examples
-          body: |
-            Update Edgio Examples
-
-          labels: |
-            update-edgio
-          reviewers: |
-            edgio-bot
-          assignees: |
-            edgio-bot
-          draft: true
