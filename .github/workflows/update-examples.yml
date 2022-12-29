@@ -107,7 +107,7 @@ jobs:
           HAS_CHANGED_FILES=$(git diff --name-only origin/main | grep -q . && echo true || echo false)
           echo "HAS_CHANGED_FILES=$HAS_CHANGED_FILES" >> $GITHUB_OUTPUT
       - name: Create PR
-        #if: steps.status.outputs.HAS_CHANGED_FILES == 'true'
+        if: steps.status.outputs.HAS_CHANGED_FILES == 'true'
         uses: repo-sync/pull-request@v2
         with:
           destination_branch: main
