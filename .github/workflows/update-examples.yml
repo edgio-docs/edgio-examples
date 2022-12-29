@@ -53,7 +53,9 @@ jobs:
           node-version: ${{ env.NODE_VERSION }} # NODE_VERSION
           registry-url: https://registry.npmjs.org/
       - name: Install Node.js modules
-        run: npm ci
+        run: |
+          npm i -g @edgio/cli
+          npm ci
       - name: Cache node modules
         uses: actions/cache@v3
         env:
@@ -83,6 +85,7 @@ jobs:
       - name: Commit changes
         if: steps.status.outputs.NO_MODIFIED_FILES == 'false'
         run: |
+          git pull origin ${{ env.BRANCH_NAME }}
           git add .
           git commit -m "Update ${{ matrix.example }}"
           git push origin ${{ env.BRANCH_NAME }}

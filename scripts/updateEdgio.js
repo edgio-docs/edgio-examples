@@ -14,6 +14,7 @@ try {
 } catch (error) {
   console.error('Error: edgio module not found');
 }
+version = '^6.0.1';
 
 if (rootPath) {
   // Update the dependencies and dev dependencies in the specified directory
@@ -58,10 +59,10 @@ function updateEdgioDependencies(rootPath) {
       if (dependency.startsWith('@edgio')) {
         // Compare the current version of the dependency with the specified version
         const currentVersion = allDependencies[dependency];
-        if (!semver.satisfies(version, currentVersion)) {
-          // Only update the dependency if the specified version is newer
-          edgioDependencies.push(`${dependency}@${version}`);
-        }
+        //if (!semver.satisfies(version, currentVersion)) {
+        // Only update the dependency if the specified version is newer
+        edgioDependencies.push(`${dependency}@${version}`);
+        //}
       }
     }
 
