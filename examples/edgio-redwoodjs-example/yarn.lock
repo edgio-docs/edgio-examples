@@ -3078,9 +3078,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@edgio/cli@npm:^6.0.0":
-  version: 6.0.4
-  resolution: "@edgio/cli@npm:6.0.4"
+"@edgio/cli@npm:6.0.1":
+  version: 6.0.1
+  resolution: "@edgio/cli@npm:6.0.1"
   dependencies:
     axios: ^0.21.2
     chalk: ^4.1.2
@@ -3115,7 +3115,7 @@ __metadata:
     resolve-package-path: ^4.0.3
     semver: ^7.3.5
     sharp: ^0.31.2
-    simple-git: ^3.15.1
+    simple-git: ^3.14.1
     slash: ^3.0.0
     terminal-link: ^2.1.1
     tmp-promise: ^2.0.2
@@ -3126,11 +3126,55 @@ __metadata:
   bin:
     edg: index.js
     edgio: index.js
-  checksum: f50d70c5bdbd309e8af0d0a4f1555958fe80505e0044c89e8c7a7e48f8418ffe5536ba70578e84af6b62fccbcec7e41e5ef8e86d44ee38c5334709bb4d10409e
+  checksum: c8a312472fac94a1aeb8c219a2f461664da7591b599f5b467f8458d7af831f6df43f30bf908b740507032eaebdb8ccef5c328d73102a22dae3726847bd44cf45
   languageName: node
   linkType: hard
 
-"@edgio/core@npm:^6.0.0, @edgio/core@npm:^6.0.4":
+"@edgio/core@npm:6.0.1":
+  version: 6.0.1
+  resolution: "@edgio/core@npm:6.0.1"
+  dependencies:
+    "@babel/parser": ^7.18.9
+    "@babel/traverse": ^7.18.9
+    "@types/lodash.clonedeep": ^4.5.6
+    ajv: ^6.12.6
+    babel-loader: ^8.2.2
+    chalk: ^4.1.2
+    chardet: ^1.4.0
+    chokidar: ^3.5.1
+    cls-hooked: ^4.2.2
+    content-type: ^1.0.4
+    cookie: ^0.4.1
+    cross-spawn: ^7.0.3
+    decode-uri-component: ^0.2.0
+    deepmerge: ^4.2.2
+    esbuild: ^0.14.49
+    express: ^4.17.1
+    fluentvalidation-ts: ^2.2.2
+    fs-extra: ^8.1.0
+    globby: ^11.0.2
+    http-proxy: ^1.18.1
+    lodash.clonedeep: ^4.5.0
+    lru-cache: ^6.0.0
+    mime-types: ^2.1.35
+    node-fetch: ^2.6.1
+    path-to-regexp: ^6.2.0
+    pino: ^6.13.3
+    qs: ^6.10.1
+    resolve-package-path: ^4.0.3
+    semver: ^7.3.5
+    shelljs: ^0.8.5
+    slash: ^3.0.0
+    tcp-port-used: ^1.0.2
+    ts-loader: ^8.2.0
+    unixify: ^1.0.0
+    uuid: ^8.3.2
+    workbox-build: ^6.5.4
+  checksum: b75cac4bee6f4546409e7bf9b8e46dcfc306c89d77c4c17bc9dc39b978a48337298ce1a71a6962b6c112eb1206b5affccad54d898c90a9ef9e7bfe14dfba08e8
+  languageName: node
+  linkType: hard
+
+"@edgio/core@npm:^6.0.1":
   version: 6.0.4
   resolution: "@edgio/core@npm:6.0.4"
   dependencies:
@@ -3174,24 +3218,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@edgio/devtools@npm:^6.0.0":
-  version: 6.0.4
-  resolution: "@edgio/devtools@npm:6.0.4"
+"@edgio/devtools@npm:6.0.1":
+  version: 6.0.1
+  resolution: "@edgio/devtools@npm:6.0.1"
   dependencies:
     clsx: ^1.1.1
     lodash: ^4.17.20
     sirv-cli: ^1.0.0
   peerDependencies:
     "@edgio/prefetch": ^6.0.0
-  checksum: 0e8fcae244515c7eb921c95773e56ef061c4fd0ff898561e93501c0716f195e4aa8bbfaa82906ab10f74d90c2a3e1f2aed6010177cbf41030f496af94f49a943
+  checksum: c48605a1a2bc0deb72470abe96bf3e3aadcea45c4821690be00bb88849b2abb215c6820e4cc8ea6a9207f3ed2fefbf43acf60671b1f04e72b6ccc142c5079052
   languageName: node
   linkType: hard
 
-"@edgio/prefetch@npm:^6.0.0":
-  version: 6.0.4
-  resolution: "@edgio/prefetch@npm:6.0.4"
+"@edgio/prefetch@npm:6.0.1":
+  version: 6.0.1
+  resolution: "@edgio/prefetch@npm:6.0.1"
   dependencies:
-    "@edgio/core": ^6.0.4
+    "@edgio/core": ^6.0.1
     cheerio: ^1.0.0-rc.3
     json-query: ^2.2.2
     workbox-cacheable-response: ^5.1.2
@@ -3202,13 +3246,13 @@ __metadata:
     workbox-strategies: ^5.1.2
   peerDependencies:
     "@edgio/devtools": ^6.0.0
-  checksum: 8a33d47e6ee30e516aaef4d1f5a7de49751170021cb51bdcdd88ba31241fdc4cedf9fe6d31d7fb8ae1c2a06b425c13e4234a180b804a575283a7f4e27e0ababc
+  checksum: d721a3c4102eed456d4ec590c7c9c5216cd581dcd6680c057ecc2d440f9eab0bd9ba62e4f961b7abdebd5c26eb81da60c6a9bb7f3fd1641995504e4db6066102
   languageName: node
   linkType: hard
 
-"@edgio/redwood@npm:^6.0.0":
-  version: 6.0.4
-  resolution: "@edgio/redwood@npm:6.0.4"
+"@edgio/redwood@npm:6.0.1":
+  version: 6.0.1
+  resolution: "@edgio/redwood@npm:6.0.1"
   dependencies:
     "@iarna/toml": ^2.2.5
     "@vercel/nft": ^0.13.1
@@ -3218,7 +3262,7 @@ __metadata:
   peerDependencies:
     "@edgio/cli": ^5.0.0
     "@edgio/core": ^5.0.0
-  checksum: a1c7ba1000ab491beba549854d164ce9ceff98a28e10132656aafcc080046b677406c816d65a2a98e1f79167bb29b420b15d9ebf23edb38f75a2b4b8b68947a1
+  checksum: 3eb3167c577cdb4b220eadeca6d0337b38fcbde930342c7a769e5ce1b35c2a914215eb9ea591c61f2dd02a6732a56545869f852e0d3aae61f4eb925d10cf9602
   languageName: node
   linkType: hard
 
@@ -13393,11 +13437,11 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "edgio-redwoodjs-example@workspace:."
   dependencies:
-    "@edgio/cli": ^6.0.0
-    "@edgio/core": ^6.0.0
-    "@edgio/devtools": ^6.0.0
-    "@edgio/prefetch": ^6.0.0
-    "@edgio/redwood": ^6.0.0
+    "@edgio/cli": 6.0.1
+    "@edgio/core": 6.0.1
+    "@edgio/devtools": 6.0.1
+    "@edgio/prefetch": 6.0.1
+    "@edgio/redwood": 6.0.1
     "@redwoodjs/core": ^3.8.0
   languageName: unknown
   linkType: soft
@@ -23066,7 +23110,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"qs@npm:6.11.0, qs@npm:^6.11.0":
+"qs@npm:6.11.0, qs@npm:^6.10.1, qs@npm:^6.11.0":
   version: 6.11.0
   resolution: "qs@npm:6.11.0"
   dependencies:
@@ -24887,7 +24931,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"simple-git@npm:^3.15.1":
+"simple-git@npm:^3.14.1":
   version: 3.15.1
   resolution: "simple-git@npm:3.15.1"
   dependencies:
