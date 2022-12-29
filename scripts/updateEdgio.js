@@ -14,7 +14,7 @@ try {
 } catch (error) {
   console.error('Error: edgio module not found');
 }
-version = '^6.0.1';
+version = '6.0.1';
 
 if (rootPath) {
   // Update the dependencies and dev dependencies in the specified directory
@@ -51,17 +51,26 @@ function updateEdgioDependencies(rootPath) {
     // Find the dependencies and dev dependencies that start with @edgio
     const dependencies = packageJson.dependencies;
     const devDependencies = packageJson.devDependencies;
-    const edgioDependencies = [];
+    const edgioDependencies = { dependencies: [], devDependencies: [] };
 
-    const allDependencies = { ...dependencies, ...devDependencies };
-
-    for (const dependency in allDependencies) {
+    for (const dependency in dependencies) {
       if (dependency.startsWith('@edgio')) {
         // Compare the current version of the dependency with the specified version
-        const currentVersion = allDependencies[dependency];
+        const currentVersion = dependencies[dependency];
         //if (!semver.satisfies(version, currentVersion)) {
         // Only update the dependency if the specified version is newer
-        edgioDependencies.push(`${dependency}@${version}`);
+        edgioDependencies.dependencies.push(`${dependency}@${version}`);
+        //}
+      }
+    }
+
+    for (const dependency in devDependencies) {
+      if (dependency.startsWith('@edgio')) {
+        // Compare the current version of the dependency with the specified version
+        const currentVersion = devDependencies[dependency];
+        //if (!semver.satisfies(version, currentVersion)) {
+        // Only update the dependency if the specified version is newer
+        edgioDependencies.devDependencies.push(`${dependency}@${version}`);
         //}
       }
     }
@@ -84,23 +93,27 @@ function updateEdgioDependencies(rootPath) {
     }
 
     // Update the dependencies and dev dependencies to the latest version
-    if (edgioDependencies.length > 0) {
-      console.log(
-        `Updating the following dependencies to the latest version using ${packageManager}: ${edgioDependencies.join(
-          ', '
-        )}`
-      );
-      let command;
-      if (packageManager === 'yarn') {
-        command = `yarn add ${edgioDependencies.join(' ')}`;
+    for (const key in edgioDependencies) {
+      const saveKey = key === 'dependencies' ? '' : ' -D ';
+
+      if (edgioDependencies[key].length > 0) {
+        console.log(
+          `Updating the following ${key} to the latest version using ${packageManager}: ${edgioDependencies[
+            key
+          ].join(', ')}`
+        );
+        let command;
+        if (packageManager === 'yarn') {
+          command = `yarn add ${saveKey} ${edgioDependencies[key].join(' ')}`;
+        } else {
+          command = `npm install ${saveKey} ${edgioDependencies[key].join(
+            ' '
+          )} --legacy-peer-deps`;
+        }
+        execSync(command, { stdio: 'inherit', cwd: rootPath });
       } else {
-        command = `npm install ${edgioDependencies.join(
-          ' '
-        )} --legacy-peer-deps`;
+        console.log(`No ${key} to update`);
       }
-      execSync(command, { stdio: 'inherit', cwd: rootPath });
-    } else {
-      console.log('No dependencies to update');
     }
   } catch (error) {
     console.error(
