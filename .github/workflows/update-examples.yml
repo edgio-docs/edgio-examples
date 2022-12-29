@@ -111,8 +111,8 @@ jobs:
           destination_branch: main
           source_branch: ${{ env.BRANCH_NAME }}
           pr_title: '[BOT] Update Edgio Examples'
-          pr_reviewer: ${{ github.repository_owner }}
-          pr_assignee: ${{ github.repository_owner }}
+          # pr_reviewer: ${{ github.repository_owner }}
+          # pr_assignee: ${{ github.repository_owner }}
       - name: Delete branch
         if: steps.status.outputs.HAS_CHANGED_FILES == 'false'
         run: |
