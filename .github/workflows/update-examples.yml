@@ -111,7 +111,7 @@ jobs:
         # if: steps.status.outputs.HAS_CHANGED_FILES == 'true'
         uses: peter-evans/create-pull-request@v4
         with:
-          base: origin/main
+          base: main
           branch: ${{ env.BRANCH_NAME }}
           commit-message: Update Edgio Examples
           title: Update Edgio Examples
