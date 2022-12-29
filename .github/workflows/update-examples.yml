@@ -109,7 +109,7 @@ jobs:
           echo "HAS_CHANGED_FILES=$HAS_CHANGED_FILES" >> $GITHUB_OUTPUT
       - name: Create PR
         if: steps.status.outputs.HAS_CHANGED_FILES == 'true'
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v4
         with:
           commit-message: Update Edgio Examples
           title: Update Edgio Examples
