@@ -104,6 +104,7 @@ jobs:
       - name: Check for file changes
         id: status
         run: |
+          git pull
           HAS_CHANGED_FILES=$(git diff --name-only origin/main | grep -q . && echo true || echo false)
           echo "HAS_CHANGED_FILES=$HAS_CHANGED_FILES" >> $GITHUB_OUTPUT
       - name: Create PR
