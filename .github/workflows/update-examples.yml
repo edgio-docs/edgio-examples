@@ -24,8 +24,10 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - name: Install Node.js modules
         run: npm ci
-      - name: Create branch for updates
-        run: git checkout -b ${{ env.BRANCH_NAME }}
+      - name: Create branch and push to origin
+        run: |
+          git checkout -b ${{ env.BRANCH_NAME }}
+          git push origin ${{ env.BRANCH_NAME }}
       - name: Get matrix of examples
         id: setMatrix
         run: echo -e "matrix=$(node scripts/helpers/printExamples.js)" >> $GITHUB_OUTPUT
@@ -83,6 +85,7 @@ jobs:
         run: |
           git add .
           git commit -m "Update ${{ matrix.example }}"
+          git push origin ${{ env.BRANCH_NAME }}
 
   create-pr:
     name: Create PR
