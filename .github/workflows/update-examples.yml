@@ -111,7 +111,7 @@ jobs:
         if: steps.status.outputs.HAS_CHANGED_FILES == 'true'
         uses: repo-sync/pull-request@v2
         with:
-          destination_branch: ${{ github.repository.default_branch }}
+          destination_branch: main
           pr_title: '[BOT] Update Edgio Examples'
           pr_reviewer: ${{ github.repository_owner }}
           pr_assignee: ${{ github.repository_owner }}
