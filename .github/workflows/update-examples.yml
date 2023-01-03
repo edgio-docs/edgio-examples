@@ -102,9 +102,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-        with:
-          ref: ${{ env.UPDATES_BRANCH_NAME }}
-          fetch-depth: 0
       - name: Merge in updated branches to main
         run: |
           git pull
