@@ -108,7 +108,7 @@ jobs:
           git fetch --all
           for branch in $(git branch --remotes)
           do
-            git branch ${branch#origin/} $branch
+            git branch --no-track ${branch#origin/} $branch
           done
 
           echo "Listing branches below"
