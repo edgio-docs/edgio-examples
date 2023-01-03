@@ -14,7 +14,6 @@ try {
 } catch (error) {
   console.error('Error: edgio module not found');
 }
-version = '6.0.1';
 
 if (rootPath) {
   // Update the dependencies and dev dependencies in the specified directory
