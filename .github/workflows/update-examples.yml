@@ -104,6 +104,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: Merge in updated branches to main
         run: |
+          git fetch --all --prune
           git pull
           git branch --list
           for branch in $(git branch --list "${{ env.UPDATES_BRANCH_NAME }}-*")
