@@ -133,9 +133,9 @@ jobs:
           git branch --list "${{ env.UPDATES_BRANCH_NAME }}-*"
 
           echo "Active branch: $(git rev-parse --abbrev-ref HEAD)"
-          for branch in $(git branch --list "update-edgio-*")
+          for branch in $(git branch --list "${{ env.UPDATES_BRANCH_NAME }}-*")
           do
-            git merge $branch
+            git merge --allow-unrelated-histories -m "Merging $branch" $branch
           done
 
       - name: Check for file changes
