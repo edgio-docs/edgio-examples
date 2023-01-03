@@ -9,7 +9,9 @@ concurrency:
 env:
   # Node version for all the jobs
   NODE_VERSION: 16
-  BRANCH_NAME: update-edgio-${{ github.run_number }}
+
+  # Main branch all jobs will merge into
+  UPDATES_BRANCH_NAME: update-edgio-${{ github.run_number }}
 
 jobs:
   prepare:
@@ -26,8 +28,8 @@ jobs:
         run: npm ci
       - name: Create branch and push to origin
         run: |
-          git checkout -b ${{ env.BRANCH_NAME }}
-          git push origin ${{ env.BRANCH_NAME }}
+          git checkout -b ${{ env.UPDATES_BRANCH_NAME }}
+          git push origin ${{ env.UPDATES_BRANCH_NAME }}
       - name: Get matrix of examples
         id: setMatrix
         run: echo -e "matrix=$(node scripts/helpers/printExamples.js)" >> $GITHUB_OUTPUT
@@ -44,10 +46,11 @@ jobs:
         example: ${{ fromJson( needs.prepare.outputs.matrix ) }}
     env:
       EXAMPLE_DIR: examples/${{ matrix.example }}
+      BRANCH_NAME: ${{ env.UPDATES_BRANCH_NAME }}-${{ matrix.example }}
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: ${{ env.BRANCH_NAME }}
+          ref: ${{ env.UPDATES_BRANCH_NAME }}
       - uses: actions/setup-node@v3
         with:
           node-version: ${{ env.NODE_VERSION }} # NODE_VERSION
@@ -87,7 +90,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git pull origin ${{ env.BRANCH_NAME }}
+          git checkout -b ${{ env.BRANCH_NAME }}
           git add .
           git commit -am "Update ${{ matrix.example }}"
           git push origin ${{ env.BRANCH_NAME }}
@@ -99,11 +102,18 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          ref: ${{ env.BRANCH_NAME }}
+          ref: ${{ env.UPDATES_BRANCH_NAME }}
+      - name: Merge in updated branches to main
+        run: |
+          git pull
+          for branch in $(git branch --list "${{ env.UPDATES_BRANCH_NAME }}-*")
+          do
+            git merge $branch
+          done
+
       - name: Check for file changes
         id: status
         run: |
-          git pull
           HAS_CHANGED_FILES=$(git diff --name-only origin/main | grep -q . && echo true || echo false)
           echo "HAS_CHANGED_FILES=$HAS_CHANGED_FILES" >> $GITHUB_OUTPUT
       - name: Create PR
@@ -111,9 +121,9 @@ jobs:
         uses: repo-sync/pull-request@v2
         with:
           destination_branch: main
-          source_branch: ${{ env.BRANCH_NAME }}
+          source_branch: ${{ env.UPDATES_BRANCH_NAME }}
           pr_title: '[BOT] Update Edgio Examples'
       - name: Delete branch
         if: steps.status.outputs.HAS_CHANGED_FILES == 'false'
         run: |
-          git push origin --delete ${{ env.BRANCH_NAME }}
+          git push origin --delete ${{ env.UPDATES_BRANCH_NAME }}
