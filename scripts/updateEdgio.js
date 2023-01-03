@@ -3,6 +3,8 @@ const path = require('path');
 const execSync = require('child_process').execSync;
 const semver = require('semver');
 
+const PACKAGE_NAMESAPCE = '@edgio';
+const IGNORE_PACKAGES = ['@edgio/rum'];
 const rootPath = process.argv[2];
 const failures = [];
 
@@ -48,31 +50,27 @@ function updateEdgioDependencies(rootPath) {
     const packageJson = JSON.parse(packageJsonString);
 
     // Find the dependencies and dev dependencies that start with @edgio
-    const dependencies = packageJson.dependencies;
-    const devDependencies = packageJson.devDependencies;
     const edgioDependencies = { dependencies: [], devDependencies: [] };
 
-    for (const dependency in dependencies) {
-      if (dependency.startsWith('@edgio')) {
-        // Compare the current version of the dependency with the specified version
-        const currentVersion = dependencies[dependency];
-        //if (!semver.satisfies(version, currentVersion)) {
-        // Only update the dependency if the specified version is newer
-        edgioDependencies.dependencies.push(`${dependency}@${version}`);
-        //}
+    function updateDependenciesByKey(key) {
+      const dependencies = packageJson[key];
+      for (const dependency in dependencies) {
+        if (
+          dependency.startsWith(PACKAGE_NAMESAPCE) &&
+          !IGNORE_PACKAGES.includes(dependency)
+        ) {
+          // Compare the current version of the dependency with the specified version
+          const currentVersion = dependencies[dependency];
+          if (!semver.satisfies(version, currentVersion)) {
+            // Only update the dependency if the specified version is newer
+            edgioDependencies[key].push(`${dependency}@${version}`);
+          }
+        }
       }
     }
 
-    for (const dependency in devDependencies) {
-      if (dependency.startsWith('@edgio')) {
-        // Compare the current version of the dependency with the specified version
-        const currentVersion = devDependencies[dependency];
-        //if (!semver.satisfies(version, currentVersion)) {
-        // Only update the dependency if the specified version is newer
-        edgioDependencies.devDependencies.push(`${dependency}@${version}`);
-        //}
-      }
-    }
+    updateDependenciesByKey('dependencies');
+    updateDependenciesByKey('devDependencies');
 
     // Determine whether to use npm or yarn based on the presence of a lock file
     const npmLockFileExists = fs.existsSync(
