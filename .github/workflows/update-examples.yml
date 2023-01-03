@@ -46,7 +46,6 @@ jobs:
         example: ${{ fromJson( needs.prepare.outputs.matrix ) }}
     env:
       EXAMPLE_DIR: examples/${{ matrix.example }}
-      BRANCH_NAME: ${{ env.UPDATES_BRANCH_NAME }}-${{ matrix.example }}
     steps:
       - uses: actions/checkout@v3
         with:
@@ -94,6 +93,8 @@ jobs:
           git add .
           git commit -am "Update ${{ matrix.example }}"
           git push origin ${{ env.BRANCH_NAME }}
+        env:
+          BRANCH_NAME: ${{ env.UPDATES_BRANCH_NAME }}-${{ matrix.example }}
 
   create-pr:
     name: Create PR
