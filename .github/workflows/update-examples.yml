@@ -106,8 +106,13 @@ jobs:
         run: |
           git pull
           git fetch --all
+          for branch in $(git branch --remotes)
+          do
+            git branch ${branch#origin/} $branch
+          done
+
           echo "Listing branches below"
-          git branch --list
+          git branch --list "${{ env.UPDATES_BRANCH_NAME }}-*"
           for branch in $(git branch --list "${{ env.UPDATES_BRANCH_NAME }}-*")
           do
             git merge $branch
