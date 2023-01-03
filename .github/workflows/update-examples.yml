@@ -122,12 +122,12 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git pull
           git fetch --all
           for branch in $(git branch --remotes)
           do
             git branch -q ${branch#origin/} $branch || true
           done
+          git pull --all
 
           echo "Listing branches below"
           git branch --list "${{ env.UPDATES_BRANCH_NAME }}-*"
