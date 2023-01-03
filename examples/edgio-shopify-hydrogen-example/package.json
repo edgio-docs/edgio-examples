@@ -17,10 +17,10 @@
     "edgio:prod": "edgio run --production"
   },
   "devDependencies": {
-    "@edgio/cli": "^5.0.4",
-    "@edgio/core": "^5.0.4",
-    "@edgio/devtools": "^5.0.4",
-    "@edgio/prefetch": "^5.0.4",
+    "@edgio/cli": "^6.0.5",
+    "@edgio/core": "^6.0.5",
+    "@edgio/devtools": "^6.0.5",
+    "@edgio/prefetch": "^6.0.5",
     "@shopify/cli": "3.0.24",
     "@shopify/cli-hydrogen": "3.0.24",
     "@shopify/prettier-config": "^1.1.2",
