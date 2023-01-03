@@ -1,6 +1,11 @@
 name: Update Edgio Examples
 on:
   workflow_dispatch:
+    inputs:
+      allow-major:
+        description: 'Allow major version updates'
+        required: false
+        default: 'false'
 
 concurrency:
   group: update-examples-${{ github.ref }}
@@ -82,7 +87,7 @@ jobs:
             */*/node_modules
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles(format('examples/{0}/package-lock.json', matrix.test), 'packages/*/package-lock.json') }}
       - name: Update Examples
-        run: npm run update-examples ${{ env.EXAMPLE_DIR }}
+        run: npm run update-examples --root-path ${{ env.EXAMPLE_DIR }} --allow-major=${{ github.event.inputs.allow-major }}
       - name: Check if there are modified files
         id: status
         run: |

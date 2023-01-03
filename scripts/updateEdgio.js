@@ -2,19 +2,30 @@ const fs = require('fs');
 const path = require('path');
 const execSync = require('child_process').execSync;
 const semver = require('semver');
-
+const minimist = require('minimist');
 const PACKAGE_NAMESAPCE = '@edgio';
 const IGNORE_PACKAGES = ['@edgio/rum'];
-const rootPath = process.argv[2];
 const failures = [];
 
-let version = process.argv[3] || 'latest';
-try {
-  // Get the version of the edgio module
-  const command = 'edgio --version';
-  version = execSync(command).toString().trim();
-} catch (error) {
-  console.error('Error: edgio module not found');
+const args = minimist(process.argv.slice(2), {
+  demandOption: ['rootPath'],
+  default: {
+    version: 'latest',
+    allowMajor: false,
+  },
+  boolean: ['allowMajor'],
+});
+
+let { version, allowMajor, rootPath } = args;
+
+if (version === 'latest') {
+  try {
+    // Get the version of the edgio module
+    const command = 'edgio --version';
+    version = execSync(command).toString().trim();
+  } catch (error) {
+    console.error('Error: edgio module not found');
+  }
 }
 
 if (rootPath) {
@@ -60,8 +71,14 @@ function updateEdgioDependencies(rootPath) {
           !IGNORE_PACKAGES.includes(dependency)
         ) {
           // Compare the current version of the dependency with the specified version
+          // Only update if:
+          // - The specified version is newer
+          // - The specified version is a major version newer and allowMajor is true
           const currentVersion = dependencies[dependency];
-          if (!semver.satisfies(version, currentVersion)) {
+          if (
+            semver.satisfies(version, currentVersion) ||
+            (allowMajor && semver.lt(semver.coerce(currentVersion), version))
+          ) {
             // Only update the dependency if the specified version is newer
             edgioDependencies[key].push(`${dependency}@${version}`);
           }
