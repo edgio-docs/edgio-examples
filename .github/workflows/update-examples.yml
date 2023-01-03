@@ -10,7 +10,7 @@ env:
   # Node version for all the jobs
   NODE_VERSION: 16
 
-  # Main branch all jobs will merge into
+  # Base branch all jobs will merge into
   BRANCH_PREFIX: update-edgio-
   UPDATES_BRANCH_NAME: update-edgio-${{ github.run_number }}
 
@@ -81,10 +81,8 @@ jobs:
             examples/${{ matrix.example }}/node_modules
             */*/node_modules
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles(format('examples/{0}/package-lock.json', matrix.test), 'packages/*/package-lock.json') }}
-
       - name: Update Examples
         run: npm run update-examples ${{ env.EXAMPLE_DIR }}
-
       - name: Check if there are modified files
         id: status
         run: |
@@ -111,7 +109,7 @@ jobs:
           BRANCH_NAME: ${{ env.UPDATES_BRANCH_NAME }}-${{ matrix.example }}
 
   create-pr:
-    name: Create PR
+    name: Create Update PR
     needs: update-examples
     runs-on: ubuntu-latest
     steps:
@@ -119,7 +117,7 @@ jobs:
         with:
           ref: ${{ env.UPDATES_BRANCH_NAME }}
           fetch-depth: 0
-      - name: Merge in updated branches to main
+      - name: Prepare branches to merge
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
@@ -129,31 +127,17 @@ jobs:
             git branch -q ${branch#origin/} $branch || true
           done
           git pull --all
-
-          echo "Listing branches below"
-          git branch --list "${{ env.UPDATES_BRANCH_NAME }}-*"
-
-          echo "Active branch: $(git rev-parse --abbrev-ref HEAD)"
+      - name: Merge in updated branches to base branch
+        run: |
           for branch in $(git branch --list "${{ env.UPDATES_BRANCH_NAME }}-*")
           do
             git merge --allow-unrelated-histories -m "Merging $branch" $branch
           done
 
           git push origin ${{ env.UPDATES_BRANCH_NAME }}
-
-      - name: Check for file changes
-        id: status
-        run: |
-          HAS_CHANGED_FILES=$(git diff --name-only origin/main | grep -q . && echo true || echo false)
-          echo "HAS_CHANGED_FILES=$HAS_CHANGED_FILES" >> $GITHUB_OUTPUT
       - name: Create PR
-        if: steps.status.outputs.HAS_CHANGED_FILES == 'true'
         uses: repo-sync/pull-request@v2
         with:
           destination_branch: main
           source_branch: ${{ env.UPDATES_BRANCH_NAME }}
-          pr_title: '[BOT] Update Edgio Examples'
-      - name: Delete branch
-        if: steps.status.outputs.HAS_CHANGED_FILES == 'false'
-        run: |
-          git push origin --delete ${{ env.UPDATES_BRANCH_NAME }}
+          pr_title: '[BOT] Update Edgio Version'
