@@ -139,6 +139,8 @@ jobs:
             git merge --allow-unrelated-histories -m "Merging $branch" $branch
           done
 
+          git push origin ${{ env.UPDATES_BRANCH_NAME }}
+
       - name: Check for file changes
         id: status
         run: |
