@@ -11,6 +11,7 @@ env:
   NODE_VERSION: 16
 
   # Main branch all jobs will merge into
+  BRANCH_PREFIX: update-edgio-
   UPDATES_BRANCH_NAME: update-edgio-${{ github.run_number }}
 
 jobs:
@@ -26,8 +27,21 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - name: Install Node.js modules
         run: npm ci
-      - name: Create branch and push to origin
+      - name: Cleanup branches; Create branch and push to origin
         run: |
+          # Cleanup existing branches
+          git pull
+          git fetch --all
+          for branch in $(git branch --remotes)
+          do
+            git branch -q ${branch#origin/} $branch || true
+          done
+          for branch in $(git branch --list "${{ env.BRANCH_PREFIX }}*")
+          do
+            git push origin --delete $branch || true
+          done
+
+          # Create new branch
           git checkout -b ${{ env.UPDATES_BRANCH_NAME }}
           git push origin ${{ env.UPDATES_BRANCH_NAME }}
       - name: Get matrix of examples
@@ -102,6 +116,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          ref: ${{ env.UPDATES_BRANCH_NAME }}
       - name: Merge in updated branches to main
         run: |
           git config --local user.email "action@github.com"
@@ -115,6 +131,8 @@ jobs:
 
           echo "Listing branches below"
           git branch --list "${{ env.UPDATES_BRANCH_NAME }}-*"
+
+          echo "Active branch: $(git rev-parse --abbrev-ref HEAD)"
           for branch in $(git branch --list "${{ env.UPDATES_BRANCH_NAME }}-*")
           do
             git merge $branch
