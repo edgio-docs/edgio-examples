@@ -101,7 +101,9 @@ function updateEdgioDependencies(rootPath) {
         );
         let command;
         if (packageManager === 'yarn') {
-          command = `yarn add ${saveKey} ${edgioDependencies[key].join(' ')}`;
+          command = `yarn add -W ${saveKey} ${edgioDependencies[key].join(
+            ' '
+          )}`;
         } else {
           command = `npm install ${saveKey} ${edgioDependencies[key].join(
             ' '
