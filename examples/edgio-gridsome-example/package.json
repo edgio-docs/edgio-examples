@@ -10,9 +10,9 @@
     "gridsome": "^0.7.0"
   },
   "devDependencies": {
-    "@edgio/cli": "^6.0.4",
-    "@edgio/core": "^6.0.4",
-    "@edgio/devtools": "^6.0.4",
-    "@edgio/prefetch": "^6.0.4"
+    "@edgio/cli": "^6.0.5",
+    "@edgio/core": "^6.0.5",
+    "@edgio/devtools": "^6.0.5",
+    "@edgio/prefetch": "^6.0.5"
   }
 }
