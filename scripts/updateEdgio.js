@@ -118,9 +118,9 @@ function updateEdgioDependencies(rootPath) {
         );
         let command;
         if (packageManager === 'yarn') {
-          command = `yarn add -W ${saveKey} ${edgioDependencies[key].join(
+          command = `yarn add ${saveKey} ${edgioDependencies[key].join(
             ' '
-          )}`;
+          )} --ignore-workspace-root-check`;
         } else {
           command = `npm install ${saveKey} ${edgioDependencies[key].join(
             ' '

@@ -87,7 +87,7 @@ jobs:
             */*/node_modules
           key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles(format('examples/{0}/package-lock.json', matrix.test), 'packages/*/package-lock.json') }}
       - name: Update Examples
-        run: npm run update-examples --dir ${{ env.EXAMPLE_DIR }} --allowMajor ${{ github.event.inputs.allow-major }}
+        run: npm run update-examples -- --dir ${{ env.EXAMPLE_DIR }} --allowMajor ${{ github.event.inputs.allow-major }}
       - name: Check if there are modified files
         id: status
         run: |
