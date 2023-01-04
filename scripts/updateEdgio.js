@@ -8,7 +8,7 @@ const IGNORE_PACKAGES = ['@edgio/rum'];
 const failures = [];
 
 const args = minimist(process.argv.slice(2), {
-  demandOption: ['rootPath'],
+  demandOption: ['dir'],
   default: {
     version: 'latest',
     allowMajor: false,
@@ -16,7 +16,7 @@ const args = minimist(process.argv.slice(2), {
   boolean: ['allowMajor'],
 });
 
-let { version, allowMajor, rootPath } = args;
+let { version, allowMajor, dir: rootPath } = args;
 
 if (version === 'latest') {
   try {
