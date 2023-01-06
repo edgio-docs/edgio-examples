@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint"
   },
-  "name": "layer0-analytics-example",
+  "name": "edgio-analytics-example",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
