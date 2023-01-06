@@ -21590,8 +21590,7 @@ __metadata:
   dependencies:
     got: ^9.6.0
     registry-auth-token: ^4.0.0
-    registry-url: ^5.0.0
-    semver: ^6.2.0
+        semver: ^6.2.0
   checksum: 60c29fe357af43f96c92c334aa0160cebde44e8e65c1e5f9b065efb3f501af812f268ec967a07757b56447834ef7f71458ebbab94425a9f09c271f348f9b764f
   languageName: node
   linkType: hard
@@ -23685,10 +23684,8 @@ __metadata:
   languageName: node
   linkType: hard
 
-"registry-url@npm:^5.0.0":
-  version: 5.1.0
-  resolution: "registry-url@npm:5.1.0"
-  dependencies:
+"  version: 5.1.0
+  resolution: "  dependencies:
     rc: ^1.2.8
   checksum: c2c455342b5836cbed5162092eba075c7a02c087d9ce0fde8aeb4dc87a8f4a34a542e58bf4d8ec2d4cb73f04408cb3148ceb1f76647f76b978cfec22047dc6d6
   languageName: node

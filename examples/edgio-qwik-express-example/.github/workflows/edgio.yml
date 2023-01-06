@@ -1,0 +1,41 @@
+name: Deploy to Edgio
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  deploy-to-edgio:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [14.x]
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Cache node modules
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-packages-node-modules-v3
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+      - run: npm install
+      - run: npm run build
+      - run: npm run edgio:deploy -- --token=$EDGIO_DEPLOY_TOKEN
+        env:
+          EDGIO_DEPLOY_TOKEN: ${{ secrets.EDGIO_DEPLOY_TOKEN }}

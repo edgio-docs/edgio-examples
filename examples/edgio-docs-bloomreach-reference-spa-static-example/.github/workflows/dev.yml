@@ -17,9 +17,9 @@
 #     menu when viewing a deployment in https://app.layer0.co. This environment does not exist by default,
 #     you must create it using https://app.layer0.co.
 #
-# ** In order for this action to deploy your site, you must create a deploy token from the site settings page
+# ** In order for this action to deploy your site, you must create a Deploy to Edgio
 # ** In order for this action to deploy your site, you must create a `deploy` command in your package.json scripts (an example is at https://github.com/layer0-docs/layer0-docs/blob/master/package.json#L11).
-# ** Additionally, you will need to generate a deploy token from your site settings in https://app.layer0.co and configure it as a secret called "LAYER0_DEPLOY_TOKEN" in your repo on GitHub.
+# ** Additionally, you will need to generate a Deploy to Edgio
 #
 # ** Depending on your use of NPM or YARN, adjust the "Install packages" step
 
@@ -39,25 +39,25 @@ env:
   GRAPHQL_SERVICE_URL: graphql.trial-tnk8sgqr.bloomreach.io
 
 jobs:
-  deploy-to-layer0:
+  deploy-to-edgio:
     # cancels the deployment for the automatic merge push created when tagging a release
     if: contains(github.ref, 'refs/tags') == false || github.event_name == 'release'
     runs-on: ubuntu-latest
     env:
-      deploy_token: ${{secrets.LAYER0_DEPLOY_TOKEN}}
+      deploy_token: ${{secrets.EDGIO_DEPLOY_TOKEN}}
     steps:
-      - name: Check for Layer0 deploy token secret
+      - name: Check for Layer0 Deploy to Edgio
         if: env.deploy_token == ''
         run: |
-          echo You must define the "LAYER0_DEPLOY_TOKEN" secret in GitHub project settings
+          echo You must define the "EDGIO_DEPLOY_TOKEN" secret in GitHub project settings
           exit 1
       - name: Extract branch name
         shell: bash
         run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | sed 's/\//_/g')" >> $GITHUB_ENV
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: 14
+          node-version: 16
       - name: Cache node modules
         uses: actions/cache@v1
         env:
@@ -74,6 +74,6 @@ jobs:
         #  run: rm -rf node_modules && yarn install --frozen-lockfile # if using yarn for your project
       - name: Build
         run: CI=false npm run build
-      - name: Deploy to Layer0
+      - name: Deploy to Edgio
         run: |
-          npm run deploy -- ${{'--branch=$BRANCH_NAME' || ''}} --token=${{secrets.LAYER0_DEPLOY_TOKEN}} --environment=default --team=layer0-docs --site=bloomreach-layer0-example-saas
+          npm run deploy -- ${{'--branch=$BRANCH_NAME' || ''}} --token=${{secrets.EDGIO_DEPLOY_TOKEN}} --environment=default --team=layer0-docs --site=bloomreach-layer0-example-saas
