@@ -193,10 +193,10 @@ jobs:
               read matches || matches=""
               if [[ -n $matches ]]; then
                 echo "matches=$matches" >> $GITHUB_OUTPUT
-                echo "status=✅" >> $GITHUB_OUTPUT
+                echo "status=<span style='color:green'>success<span>" >> $GITHUB_OUTPUT
               else
                 echo "matches=" >> $GITHUB_OUTPUT
-                echo "status=❌" >> $GITHUB_OUTPUT
+                echo "status=<span style='color:red'>failed<span>" >> $GITHUB_OUTPUT
               fi
             }
 
@@ -208,7 +208,4 @@ jobs:
           header: ${{ env.COMMENT_ID }}
           append: true
           message: |
-
-            ### `${{ matrix.example }}`:
-              - Status: ${{ steps.extract_permalink.outputs.status }}
-              - Link: ${{ steps.extract_permalink.outputs.matches }}
+            ### `${{ matrix.example }}`: ${{ steps.extract_permalink.outputs.matches }} (${{ steps.extract_permalink.outputs.status }})
