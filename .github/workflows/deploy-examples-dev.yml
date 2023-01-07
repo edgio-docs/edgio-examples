@@ -77,7 +77,7 @@ jobs:
         uses: marocchino/sticky-pull-request-comment@v2.2.0
         with:
           number: ${{ steps.finder.outputs.pr }}
-          header: ${{ env.COMMENT_ID }}
+          header: deploy-status
           recreate: true
           message: |
             Preview links for commit ${{ github.sha }}:
@@ -205,7 +205,7 @@ jobs:
         uses: marocchino/sticky-pull-request-comment@v2.2.0
         with:
           number: ${{ needs.prepare.outputs.pr }}
-          header: ${{ env.COMMENT_ID }}
+          header: deploy-status
           append: true
           message: |
             ##### `${{ matrix.example }}`: (${{ steps.extract_permalink.outputs.status }})
