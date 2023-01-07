@@ -196,7 +196,7 @@ jobs:
                 echo "status=✅ ($matches)" >> $GITHUB_OUTPUT
               else
                 echo "matches=" >> $GITHUB_OUTPUT
-                echo "status=❌" >> $GITHUB_OUTPUT
+                echo "status=❌ [View job]($GITHUB_JOB)" >> $GITHUB_OUTPUT
               fi
             }
 
