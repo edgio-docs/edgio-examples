@@ -196,9 +196,8 @@ jobs:
                 echo "status=✅ [Preview]($matches)" >> $GITHUB_OUTPUT
               else
                 echo "matches=" >> $GITHUB_OUTPUT
-                echo "status=❌ [View job]($GITHUB_JOB)" >> $GITHUB_OUTPUT
-              fi
-            }
+                # Append the current job number to the end of the link
+                echo "status=❌ [View job](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}/jobs/$GITHUB_JOB_NUMBER)" >> $GITHUB_OUTPUT
 
       - name: Publish Preview Link
         if: ${{ always() }}
