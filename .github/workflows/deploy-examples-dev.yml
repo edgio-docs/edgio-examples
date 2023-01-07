@@ -187,7 +187,7 @@ jobs:
         id: extract_permalink
         if: ${{ always() }}
         run: |
-          echo "GitHub context: ${{ toJson(github) }}"
+          echo "GitHub context: ${{ toJson(matrix) }}"
 
           echo "${{ steps.deploy.outputs.DEPLOY_OUTPUT }}" |
             sed -n 's/.*\(https.*-perma\.link\).*/\1/p' |
