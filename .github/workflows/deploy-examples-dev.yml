@@ -115,8 +115,8 @@ jobs:
       # Install dependencies for this example
       - name: Install dependencies
         run: |
+          echo $(ls -al)
           npm i -g @edgio/cli
-
           # Check if package-lock.json file exists
           if [ -f "package-lock.json" ]; then
             # Use npm
