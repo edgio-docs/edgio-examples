@@ -197,8 +197,9 @@ jobs:
               else
                 echo "matches=" >> $GITHUB_OUTPUT
                 # Append the current job number to the end of the link
-                echo "status=❌ [View job](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}/jobs/$GITHUB_JOB_NUMBER)" >> $GITHUB_OUTPUT
-
+                echo "status=❌ [View job](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}/jobs/${{ github.job }})" >> $GITHUB_OUTPUT
+              fi
+            }
       - name: Publish Preview Link
         if: ${{ always() }}
         uses: marocchino/sticky-pull-request-comment@v2.2.0
