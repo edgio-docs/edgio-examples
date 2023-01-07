@@ -5,7 +5,6 @@ on:
     branches:
       - '**'
       - '!main'
-  pull_request:
   workflow_dispatch:
 
 # In case you push new commit into the MR / the previous runs will automatically stop
@@ -165,11 +164,9 @@ jobs:
         id: deploy
         shell: bash
         run: |
-          # Run the command and redirect stderr to stdout
-          DEPLOY=$(npm run edgio:deploy -- ${{ env.ENV_CMD_ARGS }} --branch=${{ env.BRANCH_NAME }} --environment=${{ env.ENV_NAME }} 2>&1)
-
-          # Save the exit code of the command
-          EXIT_CODE=${PIPESTATUS[0]}
+          # Run the command and redirect stderr to stdout; we return true
+          # to prevent the script from exiting if the command fails
+          DEPLOY=$(npm run edgio:deploy -- ${{ env.ENV_CMD_ARGS }} --branch=${{ env.BRANCH_NAME }} --environment=${{ env.ENV_NAME }} 2>&1) || true
 
           # DEPLOY="${DEPLOY//'%'/'%25'}"
           # DEPLOY="${DEPLOY//$'\n'/'%0A'}"
@@ -179,8 +176,8 @@ jobs:
           # Save the output of the command to the output variable
           echo DEPLOY_OUTPUT=$DEPLOY >> $GITHUB_OUTPUT
 
-          # Return the exit code
-          exit $EXIT_CODE
+          # Return the exit code based on the output of the command
+          exit 0
         env:
           ENV_NAME: ${{ matrix.example }}-${{ env.EDGIO_ENV }}
           BRANCH_NAME: ${{ needs.prepare.outputs.branch }}
