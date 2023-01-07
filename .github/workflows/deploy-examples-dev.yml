@@ -208,5 +208,4 @@ jobs:
           header: deploy-status
           append: true
           message: |
-            ##### `${{ matrix.example }}`: (${{ steps.extract_permalink.outputs.status }})
-              - ${{ steps.extract_permalink.outputs.matches }}
+            ##### [`${{ matrix.example }}`](${{ steps.extract_permalink.outputs.matches }}): (${{ steps.extract_permalink.outputs.status }})
