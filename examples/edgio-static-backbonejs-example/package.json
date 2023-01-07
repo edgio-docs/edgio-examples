@@ -1,14 +1,14 @@
 {
   "scripts": {
-    "layer0": "layer0",
-    "layer0:dev": "layer0 dev",
-    "layer0:build": "layer0 build",
-    "layer0:deploy": "layer0 deploy layer0-docs",
-    "deploy": "layer0 deploy",
-    "layer0:start": "layer0 run",
+    "edgio": "edgio",
+    "edgio:dev": "edgio dev",
+    "edgio:build": "edgio build",
+    "edgio:deploy": "edgio deploy",
+    "deploy": "edgio deploy",
+    "edgio:start": "edgio run",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "name": "layer0-static-backbonejs-example",
+  "name": "edgio-static-backbonejs-example",
   "version": "1.0.0",
   "description": "",
   "author": "Tristan Lee",

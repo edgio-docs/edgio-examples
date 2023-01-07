@@ -1,5 +1,5 @@
 {
-  "name": "layer0-emberjs-example",
+  "name": "edgio-emberjs-example",
   "version": "0.0.0",
   "license": "MIT",
   "directories": {
@@ -17,7 +17,7 @@
     "start": "ember serve",
     "test": "npm-run-all lint test:*",
     "test:ember": "ember test",
-    "layer0:deploy": "layer0 deploy",
+    "edgio:deploy": "edgio deploy",
     "format": "prettier --write '**/*' --ignore-unknown"
   },
   "devDependencies": {

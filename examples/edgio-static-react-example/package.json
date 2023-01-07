@@ -1,5 +1,5 @@
 {
-  "name": "layer0-static-react-example",
+  "name": "edgio-static-react-example",
   "scripts": {
     "edgio:dev": "edgio dev",
     "edgio:build": "edgio build",

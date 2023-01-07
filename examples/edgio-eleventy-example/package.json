@@ -1,5 +1,5 @@
 {
-  "name": "layer0-eleventy-example",
+  "name": "edgio-eleventy-example",
   "license": "MIT",
   "scripts": {
     "build": "eleventy",

@@ -1,11 +1,11 @@
 {
-  "name": "layer0-vuepress-example",
+  "name": "edgio-vuepress-example",
   "version": "0.0.1",
   "scripts": {
     "dev": "vuepress dev src",
     "build": "vuepress build src -d=public",
-    "layer0:build": "layer0 build",
-    "layer0:deploy": "layer0 deploy"
+    "edgio:build": "edgio build",
+    "edgio:deploy": "edgio deploy"
   },
   "license": "MIT",
   "devDependencies": {

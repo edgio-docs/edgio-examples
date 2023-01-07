@@ -4,15 +4,14 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "layer0:start": "concurrently \"npx webpack --watch --config layer0/webpack.layer0.config.js\" \"npx layer0 run\"",
-    "layer0:start:cache": "concurrently \"npx webpack --watch --config layer0/webpack.layer0.config.js\" \"npx layer0 run --cache\"",
-    "layer0:start:prod": "npx layer0 run --production",
-    "layer0:build": "npx webpack --progress --config layer0/webpack.layer0.config.js && npx layer0 build",
-    "layer0:deploy": "npx layer0 deploy --team=layer0-docs --skip-build --site=layer0-aws-store-example",
-    "deploy": "npx layer0 deploy --skip-build",
-    "layer0:update": "npm i -D @layer0/cli@latest && npm i @layer0/core@latest @layer0/prefetch@latest @layer0/devtools@latest"
+    "edgio:start": "concurrently \"npx webpack --watch --config layer0/webpack.layer0.config.js\" \"npx layer0 run\"",
+    "edgio:start:cache": "concurrently \"npx webpack --watch --config layer0/webpack.layer0.config.js\" \"npx layer0 run --cache\"",
+    "edgio:start:prod": "npx layer0 run --production",
+    "edgio:build": "npx webpack --progress --config layer0/webpack.layer0.config.js && npx layer0 build",
+    "edgio:deploy": "npx layer0 deploy",
+    "deploy": "npx layer0 deploy --skip-build"
   },
-  "name": "layer0-aws-store-example",
+  "name": "edgio-aws-store-example",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
