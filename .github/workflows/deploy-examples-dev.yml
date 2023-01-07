@@ -208,4 +208,5 @@ jobs:
           header: ${{ env.COMMENT_ID }}
           append: true
           message: |
-            ### `${{ matrix.example }}`: ${{ steps.extract_permalink.outputs.matches }} (${{ steps.extract_permalink.outputs.status }})
+            ### `${{ matrix.example }}`: (${{ steps.extract_permalink.outputs.status }})
+              - ${{ steps.extract_permalink.outputs.matches }}
