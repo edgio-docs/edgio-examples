@@ -115,7 +115,6 @@ jobs:
       # Install dependencies for this example
       - name: Install dependencies
         run: |
-          echo $(ls -al)
           npm i -g @edgio/cli
           # Check if package-lock.json file exists
           if [ -f "package-lock.json" ]; then
@@ -166,12 +165,22 @@ jobs:
         id: deploy
         shell: bash
         run: |
-          DEPLOY=$(npm run edgio:deploy -- ${{ env.ENV_CMD_ARGS }} --branch=${{ env.BRANCH_NAME }} --environment=${{ env.ENV_NAME }} 2>&1) || true
+          # Run the command and redirect stderr to stdout
+          DEPLOY=$(npm run edgio:deploy -- ${{ env.ENV_CMD_ARGS }} --branch=${{ env.BRANCH_NAME }} --environment=${{ env.ENV_NAME }} 2>&1)
+
+          # Save the exit code of the command
+          EXIT_CODE=${PIPESTATUS[0]}
+
           # DEPLOY="${DEPLOY//'%'/'%25'}"
           # DEPLOY="${DEPLOY//$'\n'/'%0A'}"
           # DEPLOY="${DEPLOY//$'\r'/'%0D'}"
           echo "$DEPLOY"
+
+          # Save the output of the command to the output variable
           echo DEPLOY_OUTPUT=$DEPLOY >> $GITHUB_OUTPUT
+
+          # Return the exit code
+          exit $EXIT_CODE
         env:
           ENV_NAME: ${{ matrix.example }}-${{ env.EDGIO_ENV }}
           BRANCH_NAME: ${{ needs.prepare.outputs.branch }}
@@ -187,10 +196,10 @@ jobs:
               read matches || matches=""
               if [[ -n $matches ]]; then
                 echo "matches=$matches" >> $GITHUB_OUTPUT
-                echo "status=SUCCESS ✅" >> $GITHUB_OUTPUT
+                echo "status=✅" >> $GITHUB_OUTPUT
               else
                 echo "matches=" >> $GITHUB_OUTPUT
-                echo "status=FAILED ❌" >> $GITHUB_OUTPUT
+                echo "status=❌" >> $GITHUB_OUTPUT
               fi
             }
 
@@ -202,4 +211,6 @@ jobs:
           header: ${{ env.COMMENT_ID }}
           append: true
           message: |
-            - `${{ matrix.example }}` (${{ steps.extract_permalink.outputs.status }}): ${{ steps.extract_permalink.outputs.matches }}
+            - `${{ matrix.example }}`:
+            - Status: ${{ steps.extract_permalink.outputs.status }}
+            - Link: ${{ steps.extract_permalink.outputs.matches }}  \n
