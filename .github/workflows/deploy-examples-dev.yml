@@ -45,6 +45,10 @@ jobs:
           node-version: ${{ env.NODE_VERSION }} # NODE_VERSION
           registry-url: https://registry.npmjs.org/
 
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 2.7
+
       - name: Cache node modules
         uses: actions/cache@v3
         env:
