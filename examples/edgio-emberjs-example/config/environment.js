@@ -2,7 +2,7 @@
 
 module.exports = function (environment) {
   let ENV = {
-    modulePrefix: 'layer0-emberjs-example',
+    modulePrefix: 'edgio-emberjs-example',
     environment,
     rootURL: '/',
     locationType: 'auto',
