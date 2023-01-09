@@ -175,7 +175,6 @@ jobs:
 
           # Save the output of the command to the output variable
           echo DEPLOY_OUTPUT=$DEPLOY >> $GITHUB_OUTPUT
-          code=0
 
           # Get the preview link from the output of the command
           echo "$DEPLOY" |
@@ -185,16 +184,14 @@ jobs:
               if [[ -n $matches ]]; then
                 echo "matches=$matches" >> $GITHUB_OUTPUT
                 echo "status=✅ [Preview Site]($matches)" >> $GITHUB_OUTPUT
+                exit 0
               else
-                code=1
                 echo "matches=" >> $GITHUB_OUTPUT
                 # Append the current job number to the end of the link
                 echo "status=❌ (See status check)" >> $GITHUB_OUTPUT
+                exit 1
               fi
             }
-
-          # Return the exit code based on the output of the command
-          exit $code
         env:
           ENV_NAME: ${{ matrix.example }}-${{ env.EDGIO_ENV }}
           BRANCH_NAME: ${{ needs.prepare.outputs.branch }}
