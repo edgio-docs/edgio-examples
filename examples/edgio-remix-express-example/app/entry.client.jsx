@@ -3,10 +3,10 @@ import { hydrateRoot } from 'react-dom/client'
 
 hydrateRoot(document, <RemixBrowser />)
 
-import { Metrics } from '@layer0/rum'
-import Router from '@layer0/rum/Router'
-import install from '@layer0/prefetch/window/install'
-import installDevtools from '@layer0/devtools/install'
+import { Metrics } from '@edgio/rum'
+import Router from '@edgio/rum/Router'
+import install from '@edgio/prefetch/window/install'
+import installDevtools from '@edgio/devtools/install'
 
 new Metrics({
   token: 'ee4f7a19-1484-4481-ba64-1173586fa120',
