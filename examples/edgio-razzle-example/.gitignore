@@ -12,5 +12,5 @@ build
 .env.production.local
 /cache
 
-# Layer0 generated build directory
-.layer0
+# Edgio generated build directory
+.edgio

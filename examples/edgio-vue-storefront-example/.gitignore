@@ -39,6 +39,6 @@ core/resource/i18n/ru-RU.json
 /dist-layer0-assets
 /dist-layer0-client
 /dist-layer0-server
-/.layer0# Layer0 generated build directory
-.layer0
+/.edgio# Edgio generated build directory
+.edgio
 .edgio

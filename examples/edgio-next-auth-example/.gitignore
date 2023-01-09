@@ -109,8 +109,8 @@ dist
 .env.rust
 
 .DS_Store
-# Layer0 generated build directory
-.layer0
+# Edgio generated build directory
+.edgio
 
 .yalc
 yalc.lock

@@ -33,6 +33,6 @@ yarn-error.log*
 # vercel
 .vercel
 # layer0 generated build directory
-.layer0
-# Layer0 generated build directory
-.layer0
+.edgio
+# Edgio generated build directory
+.edgio

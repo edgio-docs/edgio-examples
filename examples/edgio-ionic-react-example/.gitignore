@@ -26,5 +26,5 @@ yarn-error.log*
 
 # Optional eslint cache
 .eslintcache
-# Layer0 generated build directory
-.layer0
+# Edgio generated build directory
+.edgio
