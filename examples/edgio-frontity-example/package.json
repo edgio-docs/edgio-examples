@@ -3,7 +3,7 @@
     "edgio": "edgio",
     "edgio:dev": "edgio dev",
     "edgio:build": "edgio build",
-    "edgio:deploy": "edgio deploy edgio-docs",
+    "edgio:deploy": "edgio deploy",
     "deploy": "edgio deploy",
     "dev": "frontity dev",
     "build": "frontity build",

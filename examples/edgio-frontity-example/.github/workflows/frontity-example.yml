@@ -1,4 +1,4 @@
-name: Deploy Frontity Example to Layer0
+name: Deploy Frontity Example to Edgio
 
 on: push
 
