@@ -92,6 +92,7 @@ jobs:
     runs-on: ubuntu-latest
     continue-on-error: true
     strategy:
+      max-parallel: 5 # Prevent exceeding rate limit on Edgio platform during deployment
       matrix:
         example: ${{ fromJson( needs.prepare.outputs.matrix ) }}
     env:
