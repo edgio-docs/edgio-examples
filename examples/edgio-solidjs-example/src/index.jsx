@@ -3,8 +3,8 @@ import App from './App'
 import Layer0RUM from './rum'
 import { render } from 'solid-js/web'
 import { Router } from '@solidjs/router'
-import install from '@layer0/prefetch/window/install'
-import installDevtools from '@layer0/devtools/install'
+import install from '@edgio/prefetch/window/install'
+import installDevtools from '@edgio/devtools/install'
 
 render(
   () => (
