@@ -3,7 +3,9 @@
   "scripts": {
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "docs:serve": "vitepress serve docs"
+    "docs:serve": "vitepress serve docs",
+    "edgio:build": "edgio build",
+    "edgio:deploy": "edgio deploy"
   },
   "devDependencies": {
     "@edgio/cli": "^6.0.6",
