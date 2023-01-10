@@ -5,10 +5,6 @@
     "build": "vue-cli-service build",
     "tailwindcss:watch": "npx tailwindcss -i ./src/input.css -o ./src/compiled/output.css --watch",
     "tailwindcss:build": "npx tailwindcss -i ./src/input.css -o ./src/compiled/output.css",
-    "edgio:dev": "edgio dev",
-    "edgio:build": "edgio build",
-    "edgio:deploy": "edgio deploy",
-    "edgio:production": "edgio run --production",
     "format": "prettier --write '**/*' --ignore-unknown"
   },
   "dependencies": {
@@ -20,7 +16,7 @@
     "@edgio/core": "^6.0.5",
     "@edgio/devtools": "^6.0.5",
     "@edgio/prefetch": "^6.0.5",
-    "@edgio/rum": "^5.0.8",
+    "@edgio/rum": "^6.0.0",
     "@edgio/vue": "^6.0.5",
     "@vue/cli-service": "~4.5.0",
     "tailwindcss": "^3.1.6",

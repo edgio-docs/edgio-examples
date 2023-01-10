@@ -9,10 +9,10 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@layer0/cli": "^4.5.0",
-    "@layer0/core": "^4.5.0",
-    "@layer0/devtools": "^4.5.0",
-    "@layer0/prefetch": "^4.5.0",
+    "@edgio/cli": "^6.0.6",
+    "@edgio/core": "^6.0.6",
+    "@edgio/devtools": "^6.0.6",
+    "@edgio/prefetch": "^6.0.6",
     "vuepress": "^1.5.3"
   }
 }
