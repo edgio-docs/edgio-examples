@@ -1,0 +1,148 @@
+name: Update Edgio Examples
+on:
+  workflow_dispatch:
+    inputs:
+      allow-major:
+        description: 'Allow major version updates'
+        required: false
+        default: 'false'
+
+concurrency:
+  group: update-examples-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  # Node version for all the jobs
+  NODE_VERSION: 16
+
+  # Base branch all jobs will merge into
+  BRANCH_PREFIX: bot-examples-update-
+  UPDATES_BRANCH_NAME: bot-examples-update-${{ github.run_number }}
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.setMatrix.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          registry-url: https://registry.npmjs.org/
+      - name: Install Node.js modules
+        run: npm ci
+      - name: Cleanup branches; Create branch and push to origin
+        run: |
+          # Cleanup existing branches
+          git pull
+          git fetch --all
+          for branch in $(git branch --remotes)
+          do
+            git branch -q ${branch#origin/} $branch || true
+          done
+          for branch in $(git branch --list "${{ env.BRANCH_PREFIX }}*")
+          do
+            git push origin --delete $branch || true
+          done
+
+          # Create new branch
+          git checkout -b ${{ env.UPDATES_BRANCH_NAME }}
+          git push origin ${{ env.UPDATES_BRANCH_NAME }}
+      - name: Get matrix of examples
+        id: setMatrix
+        run: echo -e "matrix=$(node scripts/helpers/printExamples.js)" >> $GITHUB_OUTPUT
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  update-examples:
+    name: Update Examples
+    needs: prepare
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    strategy:
+      matrix:
+        example: ${{ fromJson( needs.prepare.outputs.matrix ) }}
+    env:
+      EXAMPLE_DIR: examples/${{ matrix.example }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ env.UPDATES_BRANCH_NAME }}
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          registry-url: https://registry.npmjs.org/
+      - name: Install Node.js modules
+        run: |
+          npm i -g @edgio/cli
+          npm ci
+      - name: Cache node modules
+        uses: actions/cache@v3
+        env:
+          cache-name: cache-examples-node-modules-${{ matrix.example }}-node16-v2
+        with:
+          path: |
+            examples/${{ matrix.example }}/node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles(format('examples/{0}/package-lock.json', matrix.test), 'packages/*/package-lock.json') }}
+      - name: Update Examples
+        run: npm run update-examples -- --dir ${{ env.EXAMPLE_DIR }} --allowMajor ${{ github.event.inputs.allow-major }}
+      - name: Check if there are modified files
+        id: status
+        run: |
+          # Check if the git status is clean
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No modified files"
+            # Set a variable to indicate that there are no modified files
+            echo "NO_MODIFIED_FILES=true" >> $GITHUB_OUTPUT
+          else
+            echo "Modified files"
+            # Set a variable to indicate that there are modified files
+            echo "NO_MODIFIED_FILES=false" >> $GITHUB_OUTPUT
+          fi
+      - name: Commit changes
+        if: steps.status.outputs.NO_MODIFIED_FILES == 'false'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git checkout -b ${{ env.BRANCH_NAME }}
+          git add .
+          git commit -am "Update ${{ matrix.example }}"
+          git push origin ${{ env.BRANCH_NAME }}
+        env:
+          BRANCH_NAME: ${{ env.UPDATES_BRANCH_NAME }}-${{ matrix.example }}
+
+  create-pr:
+    name: Create Update PR
+    needs: update-examples
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ env.UPDATES_BRANCH_NAME }}
+          fetch-depth: 0
+      - name: Prepare branches to merge
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git fetch --all --prune
+          for branch in $(git branch --remotes)
+          do
+            git branch -q ${branch#origin/} $branch || true
+          done
+          git pull --all
+      - name: Merge in updated branches to base branch
+        run: |
+          for branch in $(git branch --list "${{ env.UPDATES_BRANCH_NAME }}-*")
+          do
+            git merge --allow-unrelated-histories -m "Merging $branch" $branch
+          done
+
+          git push origin ${{ env.UPDATES_BRANCH_NAME }}
+      - name: Create PR
+        uses: repo-sync/pull-request@v2
+        with:
+          destination_branch: main
+          source_branch: ${{ env.UPDATES_BRANCH_NAME }}
+          pr_title: '[BOT] Update Edgio Version'
