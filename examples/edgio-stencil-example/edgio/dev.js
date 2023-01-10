@@ -1,4 +1,4 @@
-const { createDevServer } = require('@layer0/core/dev')
+const { createDevServer } = require('@edgio/core/dev')
 
 module.exports = function () {
   return createDevServer({
