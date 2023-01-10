@@ -15,7 +15,7 @@
     "edgio": "edgio",
     "edgio:start": "npm run edgio:sw:dev && edgio run",
     "edgio:build": "edgio build",
-    "edgio:deploy": "edgio deploy --team=edgio-docs",
+    "edgio:deploy": "edgio deploy",
     "deploy": "edgio deploy",
     "edgio:sw:dev": "webpack --config=sw/webpack.config.js --progress",
     "edgio:sw:prod": "NODE_ENV=production webpack --config=sw/webpack.config.js --progress && node ./sw/inject-manifest.js",

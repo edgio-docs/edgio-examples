@@ -44,7 +44,7 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-# layer0 generated build directory
+# edgio generated build directory
 .edgio
 
 .yalc
