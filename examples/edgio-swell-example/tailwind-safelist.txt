@@ -1,3 +1,0 @@
-bg-error-default
-bg-ok-default
-bg-warn-default
