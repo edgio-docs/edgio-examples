@@ -3,16 +3,13 @@
   "scripts": {
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "docs:serve": "vitepress serve docs",
-    "edgio:dev": "edgio dev",
-    "edgio:build": "edgio build",
-    "edgio:deploy": "edgio deploy"
+    "docs:serve": "vitepress serve docs"
   },
   "devDependencies": {
-    "@layer0/cli": "^4.13.9",
-    "@layer0/core": "^4.13.9",
-    "@layer0/devtools": "^4.13.9",
-    "@layer0/prefetch": "^4.13.9",
+    "@edgio/cli": "^6.0.6",
+    "@edgio/core": "^6.0.6",
+    "@edgio/devtools": "^6.0.6",
+    "@edgio/prefetch": "^6.0.6",
     "vitepress": "^0.20.10"
   }
 }
