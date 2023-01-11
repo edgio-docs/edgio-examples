@@ -5,7 +5,9 @@
     "build": "vue-cli-service build",
     "tailwindcss:watch": "npx tailwindcss -i ./src/input.css -o ./src/compiled/output.css --watch",
     "tailwindcss:build": "npx tailwindcss -i ./src/input.css -o ./src/compiled/output.css",
-    "format": "prettier --write '**/*' --ignore-unknown"
+    "format": "prettier --write '**/*' --ignore-unknown",
+    "edgio:build": "edgio build",
+    "edgio:deploy": "edgio deploy"
   },
   "dependencies": {
     "vue": "^2.6.11",
