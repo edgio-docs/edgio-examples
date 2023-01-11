@@ -1,7 +1,7 @@
-// This file was automatically added by layer0 deploy.
+// This file was automatically added by edgio deploy.
 // You should commit this file to source control.
-import { Router } from '@layer0/core/router'
-import { nextRoutes } from '@layer0/next'
+import { Router } from '@edgio/core/router'
+import { nextRoutes } from '@edgio/next'
 
 export default new Router()
   .match('/service-worker.js', ({ serviceWorker }) => {
