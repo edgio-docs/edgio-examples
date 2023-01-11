@@ -1,0 +1,21 @@
+name: Deploy to Edgio
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy-to-edgio:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - run: npm ci
+      - run: npm run build
+      - run: npm run edgio:build
+      - run: npx layer0 deploy --skip-build --team=layer0-docs --token=$EDGIO_DEPLOY_TOKEN --branch=${{github.ref}}
+        env:
+          EDGIO_DEPLOY_TOKEN: ${{secrets.EDGIO_DEPLOY_TOKEN}}

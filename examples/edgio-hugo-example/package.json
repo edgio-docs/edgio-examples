@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "scripts": {
     "build": "hugo -D",
-    "deploy": "edgio deploy",
+    "edgio:dev": "edgio dev",
+    "edgio:build": "edgio build",
+    "edgio:deploy": "edgio deploy",
     "format": "prettier --write '**/*' --ignore-unknown"
   },
   "devDependencies": {

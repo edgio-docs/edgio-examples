@@ -1,6 +1,6 @@
 import { Link } from '@remix-run/react'
 import { relativizeURL } from '@/helper'
-import { Prefetch } from '@layer0/react'
+import { Prefetch } from '@edgio/react'
 import { HeartIcon } from '@heroicons/react/outline'
 
 const ProductPreview = ({ name, slug, images, prices }) => {

@@ -1,5 +1,5 @@
 {
-  "name": "layer0-gatsby-example",
+  "name": "edgio-gatsby-example",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",

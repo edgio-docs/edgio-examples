@@ -28,7 +28,7 @@ jsconfig.json
 # Brunch output folder.
 /public
 
-# Layer0 generated build directory
-/.layer0
+# Edgio generated build directory
+/.edgio
 # Edgio generated build directory
 .edgio

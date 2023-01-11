@@ -1,7 +1,8 @@
 {
   "name": "edgio-react-static-example",
   "scripts": {
-    "deploy": "edgio deploy",
+    "edgio:build": "edgio build",
+    "edgio:deploy": "edgio deploy",
     "start": "react-static start",
     "stage": "react-static build --staging",
     "build": "react-static build",

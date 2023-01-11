@@ -1,5 +1,5 @@
 import { Link } from '@remix-run/react'
-import { Prefetch } from '@layer0/react'
+import { Prefetch } from '@edgio/react'
 
 const Navbar = () => {
   return (

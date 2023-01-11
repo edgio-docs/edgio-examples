@@ -35,7 +35,7 @@
 <script>
 import Sidebar from './Sidebar.vue'
 import HeartIcon from './HeartIcon.vue'
-import Prefetch from '@layer0/vue/Prefetch'
+import Prefetch from '@edgio/vue/Prefetch'
 import { filterProducts, relativizeURL } from '../../lib/helper'
 
 export default {

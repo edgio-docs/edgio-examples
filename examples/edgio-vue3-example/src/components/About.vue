@@ -19,7 +19,7 @@
         </a>
       </div>
       <a class="mt-5" target="_blank" href="https://app.layer0.co/deploy?repo=https://github.com/layer0-docs/layer0-vue3-example">
-        <img height="15px" src="https://docs.layer0.co/button.svg" />
+        <img height="15px" src="https://docs.edg.io/button.svg" />
       </a>
     </div>
   </div>

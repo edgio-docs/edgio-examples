@@ -1,5 +1,5 @@
 {
-  "name": "layer0-hexo-example",
+  "name": "edgio-hexo-example",
   "scripts": {
     "edgio:dev": "edgio dev",
     "edgio:build": "edgio build",

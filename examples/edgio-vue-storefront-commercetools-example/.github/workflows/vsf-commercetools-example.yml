@@ -13,8 +13,8 @@
 #     Therefore, you can push to production by creating a GitHub release, or by using the "Promote to Environment"
 #     menu when viewing a deployment in https://app.layer0.co.
 #
-# In order for this action to deploy your site, you must create a deploy token from the site settings page
-# in https://app.layer0.co and configure it as a secret called "LAYER0_DEPLOY_TOKEN" in your repo on GitHub.
+# In order for this action to deploy your site, you must create a Deploy to Edgio
+# in https://app.layer0.co and configure it as a secret called "EDGIO_DEPLOY_TOKEN" in your repo on GitHub.
 
 name: Deploy branch to Layer0
 
@@ -24,25 +24,25 @@ on:
     types: [published]
 
 jobs:
-  deploy-to-layer0:
+  deploy-to-edgio:
     # cancels the deployment for the automatic merge push created when tagging a release
     if: contains(github.ref, 'refs/tags') == false || github.event_name == 'release'
     runs-on: ubuntu-latest
     steps:
-      - name: Check for Layer0 deploy token secret
-        if: env.LAYER0_DEPLOY_TOKEN == ''
+      - name: Check for Layer0 Deploy to Edgio
+        if: env.EDGIO_DEPLOY_TOKEN == ''
         run: |
-          echo You must define the "LAYER0_DEPLOY_TOKEN" secret in GitHub project settings
+          echo You must define the "EDGIO_DEPLOY_TOKEN" secret in GitHub project settings
           exit 1
         env:
-          deploy_token: ${{secrets.LAYER0_DEPLOY_TOKEN}}
+          deploy_token: ${{secrets.EDGIO_DEPLOY_TOKEN}}
       - name: Extract branch name
         shell: bash
         run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | sed 's/\//_/g')" >> $GITHUB_ENV
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: 14
+          node-version: 16
       - name: Cache node modules
         uses: actions/cache@v1
         env:
@@ -55,10 +55,10 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
       - run: npm ci
-      - name: Deploy to Layer0
+      - name: Deploy to Edgio
         run:
-          npm run layer0:deploy -- ${{'--branch=$BRANCH_NAME' || ''}} --token=$LAYER0_DEPLOY_TOKEN
+          npm run edgio:deploy -- ${{'--branch=$BRANCH_NAME' || ''}} --token=$EDGIO_DEPLOY_TOKEN
           ${{github.event_name == 'push' && '--environment=default' || ''}}
           ${{github.event_name == 'release' && '--environment=production' || ''}}
         env:
-          deploy_token: ${{secrets.LAYER0_DEPLOY_TOKEN}}
+          deploy_token: ${{secrets.EDGIO_DEPLOY_TOKEN}}

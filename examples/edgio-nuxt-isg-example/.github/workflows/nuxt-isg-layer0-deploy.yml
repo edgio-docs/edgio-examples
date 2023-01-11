@@ -9,10 +9,10 @@ jobs:
       - name: Extract branch name
         shell: bash
         run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | sed 's/\//_/g')" >> $GITHUB_ENV
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: 14
+          node-version: 16
       - name: Cache node modules
         uses: actions/cache@v1
         env:
@@ -24,9 +24,9 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
-      - name: Sapper Example - Deploy to Layer0
+      - name: Sapper Example - Deploy to Edgio
         run: |
           npm ci
-          npm run layer0:deploy -- ${{'--branch=$BRANCH_NAME' || ''}} --token=$deploy_token --environment=default
+          npm run edgio:deploy -- ${{'--branch=$BRANCH_NAME' || ''}} --token=$deploy_token --environment=default
         env:
-          deploy_token: ${{secrets.LAYER0_DEPLOY_TOKEN}}
+          deploy_token: ${{secrets.EDGIO_DEPLOY_TOKEN}}

@@ -1,3 +1,3 @@
 # Hello VitePress
 
-This is a Layer0 VitePress Example.
+This is a Edgio VitePress Example.

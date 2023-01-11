@@ -1,5 +1,5 @@
 {
-  "name": "layer0-mkdocs-example",
+  "name": "edgio-mkdocs-example",
   "scripts": {
     "postinstall": "pip3 install mkdocs",
     "build": "mkdocs build",

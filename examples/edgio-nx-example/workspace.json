@@ -1,7 +1,0 @@
-{
-  "version": 2,
-  "projects": {
-    "edgio-nx-next-app": "apps/edgio-nx-next-app",
-    "edgio-nx-next-app-e2e": "apps/edgio-nx-next-app-e2e"
-  }
-}

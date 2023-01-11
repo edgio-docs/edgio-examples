@@ -34,7 +34,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-# Layer0 generated build directory
-.layer0
 # Edgio generated build directory
 .edgio

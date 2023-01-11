@@ -2,7 +2,7 @@
   <div class="flex min-h-[calc(100vh-56px)] flex-col items-center px-5 md:px-0">
     <div class="mt-10 flex w-full max-w-2xl flex-col p-2.5">
       <span class="text-2xl font-semibold text-white">About</span>
-      <span class="mt-5 text-lg text-[#FFFFFF75]">This demo of Layer0 showcases the following:</span>
+      <span class="mt-5 text-lg text-[#FFFFFF75]">This demo of Edgio showcases the following:</span>
       <ul class="list-disc">
         <li class="mt-3 text-[#FFFFFF75]" :key="i" v-for="i in showcases">
           {{ i }}
@@ -31,13 +31,13 @@ export default {
   data: () => {
     return {
       showcases: [
-        `Layer0's Built-In Support for Vue 3`,
-        'Static Pre-rendering with Layer0, to warm cache as soon as the app goes to production (or the cache is cleared)',
-        '(Free) Real Time User Monitoring service offered by Layer0',
+        `Edgio's Built-In Support for Vue 3`,
+        'Static Pre-rendering with Edgio, to warm cache as soon as the app goes to production (or the cache is cleared)',
+        '(Free) Real Time User Monitoring service offered by Edgio',
         'Edge and Browser caching of SSR page(s)',
-        'Prefetching with Layer0 Service Worker to speeden up transitions',
+        'Prefetching with Edgio Service Worker to speeden up transitions',
         'Proxying and Caching external API(s) for faster edge and browser responses',
-        'Layer0 Devtools: See what came from the edge, browser and serverless',
+        'Edgio Devtools: See what came from the edge, browser and serverless',
       ],
     }
   },

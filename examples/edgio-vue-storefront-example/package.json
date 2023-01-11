@@ -32,16 +32,13 @@
     "edgio:build": "yarn edgio:build:server && yarn edgio:build:assets && yarn edgio:build:client",
     "edgio:clean": "rimraf dist-layer0-assets && rimraf dist-layer0-client && rimraf dist-layer0-server && rimraf .edgio",
     "edgio:start:prod": "edgio run --production",
-    "edgio:deploy": "edgio deploy --team=layer0-docs --site=layer0-vue-storefront-example --skip-build",
+    "edgio:deploy": "edgio deploy",
     "deploy": "edgio deploy --skip-build"
   },
   "name": "vsf1",
   "version": "1.12.2",
   "description": "A Vue.js, PWA eCommerce frontend",
   "private": true,
-  "engines": {
-    "node": ">=14.x"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DivanteLtd/vue-storefront"

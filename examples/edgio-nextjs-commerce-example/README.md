@@ -10,12 +10,12 @@ https://layer0-docs-layer0-nextjs-commerce-default.layer0-limelight.link
 
 ## Detailed Guides
 
-- [Next.js Commerce](https://docs.layer0.co/guides/next_commerce)
-- [BigCommerce](https://docs.layer0.co/guides/next_commerce) - includes details on setting up your BigCommerce store.
+- [Next.js Commerce](https://docs.edg.io/guides/next_commerce)
+- [BigCommerce](https://docs.edg.io/guides/next_commerce) - includes details on setting up your BigCommerce store.
 
 ## Try It Now
 
-[![Deploy with Layer0](https://docs.layer0.co/button.svg)](https://app.layer0.co/deploy?repo=https://github.com/layer0-docs/layer0-nextjs-commerce-example)
+[![Deploy with Layer0](https://docs.edg.io/button.svg)](https://app.layer0.co/deploy?repo=https://github.com/layer0-docs/layer0-nextjs-commerce-example)
 
 ## Getting Started
 
@@ -66,7 +66,7 @@ Deploying requires an account on Layer0. [Sign up here for free](https://app.lay
 npm run layer0:deploy
 ```
 
-See [deploying](https://docs.layer0.co/guides/deploying) for more information.
+See [deploying](https://docs.edg.io/guides/deploying) for more information.
 
 ## Features
 

@@ -1,5 +1,5 @@
 module.exports = {
-  connector: './edgio',
+  connector: '@edgio/express',
   routes: './edgio/routes.js',
   backends: {
     // Define a domain or IP address to proxy as a backend

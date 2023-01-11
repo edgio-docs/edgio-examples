@@ -4,7 +4,7 @@
 
 <script setup>
 import { onMounted, onUnmounted, nextTick, useSlots } from 'vue'
-import { prefetch as doPrefetch } from '@layer0/prefetch/window/index.js'
+import { prefetch as doPrefetch } from '@edgio/prefetch/window/index.js'
 
 const slots = useSlots()
 const props = defineProps(['url'])

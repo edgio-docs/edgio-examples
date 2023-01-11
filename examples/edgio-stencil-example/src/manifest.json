@@ -1,6 +1,6 @@
 {
-  "name": "layer0-stencil-example",
-  "short_name": "layer0-stencil-example",
+  "name": "edgio-stencil-example",
+  "short_name": "edgio-stencil-example",
   "start_url": "/",
   "display": "standalone",
   "icons": [

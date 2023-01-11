@@ -1,0 +1,21 @@
+name: Deploy to Edgio
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy-to-edgio:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+      - run:|
+          npm ci
+          npm run build
+          npm run edgio:build
+          npm run deploy --skip-build -- --token=$EDGIO_DEPLOY_TOKEN
+        env:
+          EDGIO_DEPLOY_TOKEN: ${{secrets.EDGIO_DEPLOY_TOKEN}}
+        working-directory: ./src/web-ui

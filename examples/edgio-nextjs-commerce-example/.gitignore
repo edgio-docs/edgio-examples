@@ -29,11 +29,11 @@ yarn-error.log*
 
 # dev
 framework
-# layer0 generated build directory
-.layer0
+# edgio generated build directory
+.edgio
 
 .yalc
-yalc.lock# Layer0 generated build directory
-.layer0
-# Layer0 generated build directory
-.layer0
+yalc.lock# Edgio generated build directory
+.edgio
+# Edgio generated build directory
+.edgio

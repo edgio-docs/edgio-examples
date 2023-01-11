@@ -1,4 +1,4 @@
-# layer0-frontity-example
+# edgio-frontity-example
 
 This project was bootstrapped with [Frontity](https://frontity.org/).
 

@@ -1,6 +1,6 @@
-// This file was automatically added by layer0 init.
+// This file was automatically added by edgio init.
 // You should commit this file to source control.
-const { withLayer0, withServiceWorker } = require('@layer0/next/config')
+const { withEdgio, withServiceWorker } = require('@edgio/next/config')
 
 const commerce = require('./commerce.config.json')
 const { withCommerceConfig, getProviderName } = require('./commerce-config')
@@ -12,7 +12,7 @@ const isSaleor = provider === '@vercel/commerce-saleor'
 const isSwell = provider === '@vercel/commerce-swell'
 const isVendure = provider === '@vercel/commerce-vendure'
 
-const _preLayer0Export = withCommerceConfig({
+const _preEdgioExport = withCommerceConfig({
   commerce,
   i18n: {
     locales: ['en-US', 'es'],
@@ -39,18 +39,18 @@ const _preLayer0Export = withCommerceConfig({
         },
     ].filter(Boolean)
   },
-});;
+})
 
 // Don't delete this console log, useful to see the commerce config in Vercel deployments
 console.log('next.config.js', JSON.stringify(module.exports, null, 2))
 
 module.exports = (phase, config) =>
-  withLayer0(
+  withEdgio(
     withServiceWorker({
       // Output sourcemaps so that stack traces have original source filenames and line numbers when tailing
-      // the logs in the Layer0 developer console.
-      layer0SourceMaps: true,
+      // the logs in the Edgio developer console.
+      edgioSourceMaps: true,
 
-      ..._preLayer0Export
+      ..._preEdgioExport,
     })
   )
