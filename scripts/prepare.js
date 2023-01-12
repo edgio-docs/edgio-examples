@@ -94,6 +94,7 @@ async function main() {
     examplePath = path.join(examplesPath, exampleName);
 
     // Run `npm install` or `yarn install` within the chosen directory
+    console.log('Installing packages...');
     const yarnLockFilePath = path.join(examplePath, 'yarn.lock');
     if (fs.existsSync(yarnLockFilePath)) {
       // Run `yarn install` within the chosen directory
