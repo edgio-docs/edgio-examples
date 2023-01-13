@@ -85,7 +85,7 @@ jobs:
     strategy:
       max-parallel: 5 # Prevent exceeding rate limit on Edgio platform during deployment
       matrix:
-        example: ${{ fromJson( needs.prepare.outputs.matrix ) }}
+        example: ${{ if needs.prepare.outputs.matrix != null  ? fromJson( needs.prepare.outputs.matrix ) : null }}
     env:
       EXAMPLE_DIR: examples/${{ matrix.example }}
       ENV_CMD_ARGS: --site=$EDGIO_SITE --team=$EDGIO_TEAM --token=$EDGIO_DEPLOY_TOKEN $OPTIONAL_API_URL
