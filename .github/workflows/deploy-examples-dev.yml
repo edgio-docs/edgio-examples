@@ -61,7 +61,13 @@ jobs:
 
       - name: Get matrix of modified examples
         id: setMatrix
-        run: echo -e "matrix=$(node scripts/helpers/printModifiedExamples.js)" >> $GITHUB_OUTPUT
+        run: |
+          matrix=$(node scripts/helpers/printModifiedExamples.js)
+          echo -e "matrix=$matrix" >> $GITHUB_OUTPUT
+          if [[ "$matrix" == "[]" ]]; then
+            echo "No jobs to run. Exiting workflow."
+            exit 0
+          fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -85,7 +91,7 @@ jobs:
     strategy:
       max-parallel: 5 # Prevent exceeding rate limit on Edgio platform during deployment
       matrix:
-        example: ${{ if needs.prepare.outputs.matrix != null  ? fromJson( needs.prepare.outputs.matrix ) : null }}
+        example: ${{ fromJson( needs.prepare.outputs.matrix ) }}
     env:
       EXAMPLE_DIR: examples/${{ matrix.example }}
       ENV_CMD_ARGS: --site=$EDGIO_SITE --team=$EDGIO_TEAM --token=$EDGIO_DEPLOY_TOKEN $OPTIONAL_API_URL
