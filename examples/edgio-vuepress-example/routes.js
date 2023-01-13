@@ -1,6 +1,6 @@
-import { Router } from "@layer0/core/router";
+import { Router } from '@edgio/core/router';
 
-export default new Router().static("public", ({ cache }) => {
+export default new Router().static('public', ({ cache }) => {
   cache({
     edge: {
       maxAgeSeconds: 60 * 60 * 60 * 365,

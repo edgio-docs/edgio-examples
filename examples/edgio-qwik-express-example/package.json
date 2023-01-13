@@ -3,7 +3,7 @@
   "scripts": {
     "edgio:dev": "edgio dev",
     "edgio:build": "npm run build && edgio build",
-    "edgio:deploy": "edgio deploy",
+    "edgio:deploy": "npm run edgio:build && edgio deploy --skip-build",
     "edgio:production": "edgio run --production",
     "build": "qwik build",
     "build.client": "vite build",

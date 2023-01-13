@@ -97,5 +97,5 @@ version
 # e2e reports
 tests/e2e/report.json
 tests/e2e/report
-# Layer0 generated build directory
-.layer0
+# Edgio generated build directory
+.edgio

@@ -1,4 +1,4 @@
 build
-#Layer0 generated build directory
-.layer0
+#Edgio generated build directory
+.edgio
 node_modules

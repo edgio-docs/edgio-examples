@@ -1,6 +1,5 @@
 # build output
 /dist
-/.layer0
 /.edgio
 
 # dependencies

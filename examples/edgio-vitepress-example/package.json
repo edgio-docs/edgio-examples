@@ -1,18 +1,17 @@
 {
-  "name": "layer0-vitepress-example",
+  "name": "edgio-vitepress-example",
   "scripts": {
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
     "docs:serve": "vitepress serve docs",
-    "layer0:dev": "layer0 dev",
-    "layer0:build": "layer0 build",
-    "layer0:deploy": "layer0 deploy"
+    "edgio:build": "edgio build",
+    "edgio:deploy": "edgio deploy"
   },
   "devDependencies": {
-    "@layer0/cli": "^4.13.9",
-    "@layer0/core": "^4.13.9",
-    "@layer0/devtools": "^4.13.9",
-    "@layer0/prefetch": "^4.13.9",
+    "@edgio/cli": "^6.0.6",
+    "@edgio/core": "^6.0.6",
+    "@edgio/devtools": "^6.0.6",
+    "@edgio/prefetch": "^6.0.6",
     "vitepress": "^0.20.10"
   }
 }

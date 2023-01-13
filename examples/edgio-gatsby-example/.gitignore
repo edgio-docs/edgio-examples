@@ -68,8 +68,8 @@ yarn-error.log
 # Yarn Integrity file
 .yarn-integrity
 
-# Layer0 generated build directory
-.layer0
+# Edgio generated build directory
+.edgio
 
 # Edgio generated build directory
 .edgio

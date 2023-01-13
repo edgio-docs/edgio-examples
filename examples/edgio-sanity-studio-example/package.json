@@ -1,5 +1,5 @@
 {
-  "name": "layer0-sanity-studio-example",
+  "name": "edgio-sanity-studio-example",
   "scripts": {
     "start": "sanity start",
     "build": "sanity build",

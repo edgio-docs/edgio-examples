@@ -1,5 +1,5 @@
 node_modules
 /build
 /*.log
-# Layer0 generated build directory
-.layer0
+# Edgio generated build directory
+.edgio

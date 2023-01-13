@@ -44,10 +44,10 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-# layer0 generated build directory
-.layer0
+# edgio generated build directory
+.edgio
 
 .yalc
 yalc.lock
-# Layer0 generated build directory
-.layer0
+# Edgio generated build directory
+.edgio

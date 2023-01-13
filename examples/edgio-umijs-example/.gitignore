@@ -16,5 +16,5 @@
 /src/.umi-production
 /src/.umi-test
 /.env.local
-# Layer0 generated build directory
-.layer0
+# Edgio generated build directory
+.edgio

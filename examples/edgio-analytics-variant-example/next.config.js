@@ -20,6 +20,6 @@ module.exports = (phase, config) =>
       // Set the following to `true` to disable the Edgio dev tools.
       disableEdgioDevTools: false,
 
-      ..._preEdgioExport(phase, config),
+      ..._preEdgioExport,
     })
   );

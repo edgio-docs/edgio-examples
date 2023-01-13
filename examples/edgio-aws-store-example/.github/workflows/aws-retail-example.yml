@@ -1,4 +1,4 @@
-name: Deploy AWS Retail Example to Layer0
+name: Deploy AWS Retail Example to Edgio
 
 on: push
 
@@ -9,10 +9,10 @@ jobs:
       - name: Extract branch name
         shell: bash
         run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/} | sed 's/\//_/g')" >> $GITHUB_ENV
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: 14
+          node-version: 16
       - name: Cache node modules
         uses: actions/cache@v1
         env:
@@ -24,12 +24,12 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
             ${{ runner.os }}-build-
             ${{ runner.os }}-
-      - name: AWS Retail Demo Store example - Deploy to Layer0
+      - name: AWS Retail Demo Store example - Deploy to Edgio
         run: |
           npm ci
           npm run build
-          npm run layer0:build
-          npm run layer0:deploy --skip-build -- ${{'--branch=$BRANCH_NAME' || ''}} --token=$deploy_token ${{env.BRANCH_NAME != 'master' && '--environment=staging' || ''}}
+          npm run edgio:build
+          npm run edgio:deploy --skip-build -- ${{'--branch=$BRANCH_NAME' || ''}} --token=$deploy_token ${{env.BRANCH_NAME != 'master' && '--environment=staging' || ''}}
         env:
-          deploy_token: ${{secrets.LAYER0_DEPLOY_TOKEN}}
+          deploy_token: ${{secrets.EDGIO_DEPLOY_TOKEN}}
         working-directory: ./src/web-ui

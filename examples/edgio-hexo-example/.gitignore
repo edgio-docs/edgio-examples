@@ -5,6 +5,6 @@ db.json
 node_modules/
 public/
 .deploy*/
-.layer0
+.edgio
 # Edgio generated build directory
 .edgio

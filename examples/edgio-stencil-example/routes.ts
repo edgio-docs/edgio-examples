@@ -1,5 +1,5 @@
-import { Router } from '@layer0/core/router'
-import { isProductionBuild } from '@layer0/core/environment'
+import { Router } from '@edgio/core/router'
+import { isProductionBuild } from '@edgio/core/environment'
 
 const router = new Router()
 

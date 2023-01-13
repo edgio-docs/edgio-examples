@@ -1,5 +1,5 @@
 {
-  "name": "layer0-astro-ssr-example",
+  "name": "edgio-astro-ssr-example",
   "scripts": {
     "astro": "astro",
     "dev": "astro dev",

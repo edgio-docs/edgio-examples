@@ -1,18 +1,18 @@
 {
-  "name": "layer0-vuepress-example",
+  "name": "edgio-vuepress-example",
   "version": "0.0.1",
   "scripts": {
     "dev": "vuepress dev src",
     "build": "vuepress build src -d=public",
-    "layer0:build": "layer0 build",
-    "layer0:deploy": "layer0 deploy"
+    "edgio:build": "edgio build",
+    "edgio:deploy": "edgio deploy"
   },
   "license": "MIT",
   "devDependencies": {
-    "@layer0/cli": "^4.5.0",
-    "@layer0/core": "^4.5.0",
-    "@layer0/devtools": "^4.5.0",
-    "@layer0/prefetch": "^4.5.0",
+    "@edgio/cli": "^6.0.6",
+    "@edgio/core": "^6.0.6",
+    "@edgio/devtools": "^6.0.6",
+    "@edgio/prefetch": "^6.0.6",
     "vuepress": "^1.5.3"
   }
 }
