@@ -180,9 +180,15 @@ jobs:
         id: deploy
         shell: bash
         run: |
+          # Set branch argument only if BRANCH_NAME is not main
+          if [ "${{ env.BRANCH_NAME }}" != "main" ]; then
+            BRANCH_ARG="--branch=${{ env.BRANCH_NAME }}"
+          else
+            BRANCH_ARG=""
+          fi
           # Run the command and redirect stderr to stdout; we return true
           # to prevent the script from exiting if the command fails
-          DEPLOY=$(npm run edgio:deploy -- ${{ env.ENV_CMD_ARGS }} --branch=${{ env.BRANCH_NAME }} --environment=${{ env.ENV_NAME }} 2>&1) || true
+          DEPLOY=$(npm run edgio:deploy -- ${{ env.ENV_CMD_ARGS }} $BRANCH_ARG --environment=${{ env.ENV_NAME }} 2>&1) || true
 
           # DEPLOY="${DEPLOY//'%'/'%25'}"
           # DEPLOY="${DEPLOY//$'\n'/'%0A'}"
