@@ -1,15 +1,14 @@
-name: Deploy Examples (dev-only)
+name: Deploy Examples
 
 on:
   push:
     branches:
       - '**'
-      - '!main'
   workflow_dispatch:
 
 # In case you push new commit into the MR / the previous runs will automatically stop
 concurrency:
-  group: dev-examples-${{ github.ref }}
+  group: examples-${{ github.ref }}
   cancel-in-progress: true
 
 env:
@@ -34,10 +33,6 @@ jobs:
       branch: ${{ steps.setBranch.outputs.branch }}
       pr: ${{ steps.finder.outputs.pr }}
     steps:
-      - uses: actions/checkout@v3
-        with:
-          ref: main
-
       - uses: actions/checkout@v3
 
       - uses: actions/setup-node@v3
