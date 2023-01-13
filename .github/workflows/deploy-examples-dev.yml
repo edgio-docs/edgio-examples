@@ -5,6 +5,12 @@ on:
     branches:
       - '**'
   workflow_dispatch:
+    inputs:
+      deploy-all:
+        description: 'Deploys all examples to the live environment'
+        required: false
+        default: 'false'
+        type: boolean
 
 # In case you push new commit into the MR / the previous runs will automatically stop
 concurrency:
@@ -23,6 +29,7 @@ env:
   EDGIO_DEPLOY_TOKEN: ${{secrets.EDGIO_EXAMPLES_DEPLOY_TOKEN}}
   OPTIONAL_API_URL: --api-url=https://app.layer0.co
   COMMENT_ID: preview-${{ github.ref }}
+  DEPLOY_ALL: ${{ github.event.inputs.deploy-all }}
 
 jobs:
   prepare:

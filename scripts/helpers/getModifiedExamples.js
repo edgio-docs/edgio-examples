@@ -8,6 +8,9 @@ module.exports = () => {
   const isMainBranch =
     execSync('git rev-parse --abbrev-ref HEAD').toString().trim() === 'main';
 
+  // Determine if we should deploy all examples regardless of changes
+  const deployAll = process.env.DEPLOY_ALL === 'true';
+
   // Get the list of modified files
   const modifiedFiles = isMainBranch
     ? // If the current branch is `main`, get the list of modified files from the last commit
@@ -21,7 +24,7 @@ module.exports = () => {
         .split('\n');
 
   // Filter the array of paths to return only the modified paths
-  return examples.filter((path) =>
-    modifiedFiles.includes(join(examplesPath, path))
+  return examples.filter(
+    (path) => deployAll || modifiedFiles.includes(join(examplesPath, path))
   );
 };
