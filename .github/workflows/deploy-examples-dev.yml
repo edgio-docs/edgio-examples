@@ -24,8 +24,8 @@ env:
   # Set env var based on branch name
   GIT_REF: ${{ github.ref }}
   EDGIO_ENV: ${{ github.ref == 'refs/heads/main' && 'live' || 'test' }}
-  EDGIO_TEAM: layer0-docs
-  EDGIO_SITE: edgio-examples
+  EDGIO_TEAM: edgio-community
+  EDGIO_SITE: examples
   EDGIO_DEPLOY_TOKEN: ${{secrets.EDGIO_EXAMPLES_DEPLOY_TOKEN}}
   OPTIONAL_API_URL: --api-url=https://app.layer0.co
   COMMENT_ID: preview-${{ github.ref }}
