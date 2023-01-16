@@ -173,8 +173,8 @@ jobs:
         env:
           ENV_NAME: ${{ matrix.example }}-${{ env.EDGIO_ENV }}
 
-      # - name: Validate package scripts
-      #   run: node scripts/helpers/validatePackageScripts.js ${{ env.EXAMPLE_DIR }}
+      - name: Validate package scripts
+        run: node scripts/helpers/validatePackageScripts.js ${{ env.EXAMPLE_DIR }}
 
       - name: Deploy example
         id: deploy
