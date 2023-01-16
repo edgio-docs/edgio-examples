@@ -198,19 +198,30 @@ jobs:
           # Save the output of the command to the output variable
           echo DEPLOY_OUTPUT=$DEPLOY >> $GITHUB_OUTPUT
 
-          # Get the preview link from the output of the command
+          # Get the permalink link from the output of the command
           echo "$DEPLOY" |
             sed -n 's/.*\(https.*-perma\.link\).*/\1/p' |
             {
-              read matches || matches=""
-              if [[ -n $matches ]]; then
-                echo "matches=$matches" >> $GITHUB_OUTPUT
-                echo "status=✅ [Preview Site]($matches)" >> $GITHUB_OUTPUT
+              read permalink || permalink=""
+              if [[ -n $permalink ]]; then
+                echo "permalink=$permalink" >> $GITHUB_OUTPUT
+              else
+                echo "permalink=" >> $GITHUB_OUTPUT
+              fi
+            }
+            
+          # Get the edge link from the output of the command
+          echo "$DEPLOY" |
+            sed -n 's/.*\(https.*-limelight\.link\).*/\1/p' |
+            {
+              read edge || edge=""
+              if [[ -n $edge ]]; then
+                echo "edge=$edge" >> $GITHUB_OUTPUT
+                echo "status=✅ Successful!" >> $GITHUB_OUTPUT
                 exit 0
               else
-                echo "matches=" >> $GITHUB_OUTPUT
-                # Append the current job number to the end of the link
-                echo "status=❌ (See status check)" >> $GITHUB_OUTPUT
+                echo "edge=" >> $GITHUB_OUTPUT
+                echo "status=❌ See status check" >> $GITHUB_OUTPUT
                 exit 1
               fi
             }
@@ -228,3 +239,5 @@ jobs:
           append: true
           message: |
             ##### `${{ matrix.example }}`: ${{ steps.deploy.outputs.status }}
+            - Permalink: ${{ steps.deploy.outputs.permalink }}
+            - Edge: ${{ steps.deploy.outputs.edge }}
