@@ -6,12 +6,7 @@
     "generate-config": "node scripts/generateConfig.js",
     "clone-examples": "rm -rf ./examples; mkdir ./examples; node scripts/cloneExamples.js",
     "update-examples": "node scripts/updateEdgio.js",
-    "prepare": "node scripts/prepare.js",
-    "dev": "turbo run edgio:dev",
-    "build": "turbo run edgio:build",
-    "deploy": "turbo run edgio:deploy",
-    "test": "turbo run test",
-    "lint": "turbo run lint"
+    "examples": "node scripts/prepare.js"
   },
   "repository": {
     "type": "git",
@@ -33,10 +28,6 @@
   "devDependencies": {
     "chalk": "^4.1.2",
     "minimist": "^1.2.7",
-    "prompts": "^2.4.2",
-    "turbo": "^1.6.3"
-  },
-  "workspaces": [
-    "__ignore__examples/*"
-  ]
+    "prompts": "^2.4.2"
+  }
 }

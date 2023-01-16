@@ -14,23 +14,19 @@ To checkout all available example apps, clone this repository:
 
 Due to the number of examples, it is recommended to _only_ install dependencies for the example you are working on.
 
-Whether you want to create a new example or modify an existing one, there is a `prepare` script to help with either case.
+Whether you want to create a new example or modify an existing one, there is an `examples` script to help with either case.
 
 Start by running:
 
 ```
-  npm run prepare
+  npm run examples
 ```
 
 This will prompt to create a new example from the existing template or modify an existing example.
 
 ### New Example
 
-When creating a new example, the name entered will be concatenated in the following format:
-
-```
-  edgio-{name}-example
-```
+When creating a new example, the name entered is the path to be created under the `./examples` path. For instance, if you enter `my-example`, the path will be `./examples/my-example`.
 
 This will copy the base template from `_template`, install the dependencies, and automatically update Edgio to the latest version.
 

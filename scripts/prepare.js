@@ -40,7 +40,7 @@ async function main() {
 
   let exampleName;
   let examplePath;
-  const formatFn = (input) => `edgio-${input.trim()}-example`;
+  const formatFn = (input) => input.trim();
 
   if (exampleType === 'new') {
     // Prompt the user to enter the name of the new example
@@ -48,7 +48,7 @@ async function main() {
       type: 'text',
       name: 'name',
       message: 'Enter the name of the new example:',
-      initial: 'edgio-{name}-example',
+      initial: '{name}',
       format: formatFn,
       validate: (input) => {
         const name = formatFn(input);
