@@ -13,7 +13,7 @@
     "build:ssr": "ng build --prod && ng run edgio-spartacus-example:server:production",
     "prerender": "ng run edgio-spartacus-example:prerender",
     "edgio": "edgio",
-    "edgio:start": "npm run edgio:sw:dev && edgio run",
+    "edgio:dev": "npm run edgio:sw:dev && edgio run",
     "edgio:build": "edgio build",
     "edgio:deploy": "edgio deploy",
     "deploy": "edgio deploy",
