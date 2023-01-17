@@ -16,7 +16,7 @@ import { B2cStorefrontModule } from '@spartacus/storefront';
       backend: {
         occ: {
           baseUrl:
-            'https://edgio-docs-edgio-spartacus-example-default.edgio.link',
+            'https://edgio-community-examples-spartacus-test.layer0-limelight.link',
         },
       },
       context: {
