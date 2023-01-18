@@ -44,12 +44,12 @@ jobs:
       EXAMPLE_DIR: examples/${{ matrix.example }}
     steps:
       - uses: actions/checkout@v3
-      - name: Setup jq
-        uses: actions/setup-jq@v1
+      - name: Install jq
+        run: sudo apt-get install jq
       - name: Push example to individual repo
         run: |
           # Clone the repo defined in package.json
-          REPO_URL=$(jq -r '.repository' package.json)
+          REPO_URL=$(jq -r '.repository' $EXAMPLE_DIR/package.json)
           git clone ${REPO_URL}
           cd $(basename ${REPO_URL%.git})
 
