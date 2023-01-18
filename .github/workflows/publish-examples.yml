@@ -65,9 +65,11 @@ jobs:
           ls -a ..
           # Copy all files from the example
           cp -r ../${EXAMPLE_DIR}/* .
+          echo "-----------------"
+          ls -a .
 
-          git status
-          git add .
-          git commit -m "Publishing example ${EXAMPLE_DIR}"
-          git push --force origin main
+          # git status
+          # git add .
+          # git commit -m "Publishing example ${EXAMPLE_DIR}"
+          # git push --force origin main
         working-directory: example-repo
