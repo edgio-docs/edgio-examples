@@ -60,9 +60,11 @@ jobs:
         run: |
           # Remove all files except .git
           find . -maxdepth 1 -not -name .git -exec rm -rf {} \;
-
+          ls -a .
+          echo "-----------------"
+          ls -a ..
           # Copy all files from the example
-          cp -r ..${EXAMPLE_DIR}/* .
+          cp -r ../${EXAMPLE_DIR}/* .
 
           git status
           git add .
