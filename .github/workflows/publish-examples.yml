@@ -47,13 +47,18 @@ jobs:
       - name: Install jq
         run: sudo apt-get install jq
       - name: Push example to individual repo
+        id: repo
         run: |
-          # Clone the repo defined in package.json
+          # Get the destination repo url from the example's package.json
           REPO_URL=$(jq -r '.repository' $EXAMPLE_DIR/package.json)
-          echo ${REPO_URL}
-          git clone ${REPO_URL}
-          cd $(basename ${REPO_URL%.git})
-
+          echo "REPO_NAME=$(basename ${REPO_URL%.git})" >> $GITHUB_ENV
+      - uses: actions/checkout@v2
+        with:
+          repository: ${{ env.REPO_NAME }}
+          token: ${{ secrets.MOOVWEB_DOCS_GITHUB_TOKEN }}
+          path: example-repo
+      - name: Publish example
+        run: |
           # Remove all files except .git
           find . -maxdepth 1 -not -name .git -exec rm -rf {} \;
 
@@ -61,6 +66,7 @@ jobs:
           cp -r ${EXAMPLE_DIR}/* .
 
           git status
-          # git add .
-          # git commit -m "Publishing example ${EXAMPLE_DIR}"
-          # git push --force origin main
+          git add .
+          git commit -m "Publishing example ${EXAMPLE_DIR}"
+          git push --force origin main
+        working-directory: example-repo
