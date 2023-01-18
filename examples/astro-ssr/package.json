@@ -34,5 +34,6 @@
     "prettier": "^2.7.1",
     "prettier-plugin-astro": "latest",
     "tailwindcss": "^3.2.1"
-  }
+  },
+  "repository": "git@github.com:edgio-docs/edgio-astro-ssr-example.git"
 }

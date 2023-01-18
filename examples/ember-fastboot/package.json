@@ -19,7 +19,7 @@
   "version": "1.0.0",
   "private": true,
   "description": "Edgio Ember Fastboot Example App",
-  "repository": "",
+  "repository": "git@github.com:edgio-docs/edgio-ember-fastboot-example.git",
   "license": "MIT",
   "author": "",
   "directories": {

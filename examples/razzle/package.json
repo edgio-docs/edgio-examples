@@ -40,5 +40,6 @@
     "webpack": "^4.44.1",
     "webpack-cli": "^4.6.0",
     "webpack-dev-server": "^3.11.2"
-  }
+  },
+  "repository": "git@github.com:edgio-docs/edgio-razzle-example.git"
 }

@@ -27,5 +27,6 @@
     "@edgio/react": "6.0.5",
     "eslint": "8.22.0",
     "eslint-config-next": "12.2.5"
-  }
+  },
+  "repository": "git@github.com:edgio-docs/edgio-analytics-variant-example.git"
 }

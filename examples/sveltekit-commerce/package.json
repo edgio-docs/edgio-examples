@@ -33,5 +33,6 @@
     "svelte-preprocess": "latest",
     "tailwindcss": "latest",
     "vite": "latest"
-  }
+  },
+  "repository": "git@github.com:edgio-docs/edgio-sveltekit-commerce-example.git"
 }

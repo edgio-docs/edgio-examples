@@ -14,5 +14,6 @@
     "@edgio/core": "^6.0.5",
     "@edgio/devtools": "^6.0.5",
     "@edgio/prefetch": "^6.0.5"
-  }
+  },
+  "repository": "git@github.com:edgio-docs/edgio-gridsome-example.git"
 }

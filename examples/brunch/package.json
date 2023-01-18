@@ -29,5 +29,6 @@
     "clean-css-brunch": "^2",
     "hmr-brunch": "^0.1",
     "uglify-js-brunch": "^2"
-  }
+  },
+  "repository": "git@github.com:edgio-docs/edgio-brunch-example.git"
 }

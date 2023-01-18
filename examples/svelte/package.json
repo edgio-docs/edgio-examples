@@ -35,5 +35,6 @@
     "svelte-navigator": "^3.1.5",
     "whatwg-fetch": "^3.6.2",
     "workbox-webpack-plugin": "^6.3.0"
-  }
+  },
+  "repository": "git@github.com:edgio-docs/edgio-svelte-example.git"
 }

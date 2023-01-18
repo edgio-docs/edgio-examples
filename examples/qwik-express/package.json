@@ -49,5 +49,6 @@
   },
   "dependencies": {
     "@edgio/express": "^6.0.5"
-  }
+  },
+  "repository": "git@github.com:edgio-docs/edgio-qwik-express-example.git"
 }

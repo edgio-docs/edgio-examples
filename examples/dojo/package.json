@@ -27,5 +27,6 @@
     "@types/node": "~9.6.5",
     "prettier": "^2.7.1",
     "typescript": "~3.5.3"
-  }
+  },
+  "repository": "git@github.com:edgio-docs/edgio-dojo-example.git"
 }

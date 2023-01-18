@@ -36,5 +36,6 @@
     "@edgio/frontity": "^6.0.5",
     "@edgio/prefetch": "^6.0.5",
     "@edgio/react": "^6.0.5"
-  }
+  },
+  "repository": "git@github.com:edgio-docs/edgio-frontity-example.git"
 }

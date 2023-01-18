@@ -87,5 +87,6 @@
     "typescript": "3.9.2",
     "webpack-cli": "^4.5.0",
     "workbox-build": "^6.1.2"
-  }
+  },
+  "repository": "git@github.com:edgio-docs/edgio-spartacus-example.git"
 }

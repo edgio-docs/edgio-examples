@@ -69,5 +69,6 @@
   },
   "ember": {
     "edition": "octane"
-  }
+  },
+  "repository": "git@github.com:edgio-docs/edgio-emberjs-example.git"
 }

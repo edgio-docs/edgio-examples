@@ -45,5 +45,6 @@
     "@edgio/devtools": "^6.0.5",
     "@edgio/prefetch": "^6.0.5",
     "prettier": "^2.7.1"
-  }
+  },
+  "repository": "git@github.com:edgio-docs/edgio-docusaurus-example.git"
 }

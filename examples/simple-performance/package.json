@@ -17,5 +17,6 @@
     "@edgio/core": "^6.0.6",
     "@edgio/devtools": "^6.0.6",
     "@edgio/prefetch": "^6.0.6"
-  }
+  },
+  "repository": "git@github.com:edgio-docs/edgio-simple-performance-example.git"
 }

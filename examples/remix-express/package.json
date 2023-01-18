@@ -46,5 +46,6 @@
   },
   "engines": {
     "node": ">=14"
-  }
+  },
+  "repository": "git@github.com:edgio-docs/edgio-remix-express-example.git"
 }
