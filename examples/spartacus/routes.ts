@@ -44,23 +44,36 @@ const ssrPageCacheHandler = ({ cache }) => {
 };
 
 export default new Router()
-  // .match('/occ/v2/electronics-spa/users/:user/:path*', ({ proxy, removeRequestHeader }) => {
-  //   removeRequestHeader('origin')
-  //   proxy('commerce')
-  // })
-  // .match('/occ/v2/:path*', ({ cache, proxy, removeRequestHeader }) => {
-  //   removeRequestHeader('origin')
-  //   cache(CACHE_API)
-  //   proxy('commerce')
-  // })
-  // .match('/medias/:path*', ({ cache, proxy, removeRequestHeader }) => {
-  //   removeRequestHeader('origin')
-  //   cache(CACHE_ASSETS)
-  //   proxy('commerce')
-  // })
-  // .post('/authorizationserver/oauth/:path*', ({ proxy }) => {
-  //   proxy('commerce')
-  // })
+  .match(
+    '/occ/v2/electronics-spa/users/:user/:path*',
+    ({ proxy, removeRequestHeader, compute }) => {
+      compute(async () => {
+        removeRequestHeader('origin');
+        await proxy('commerce');
+      });
+    }
+  )
+  .match('/occ/v2/:path*', ({ cache, proxy, removeRequestHeader, compute }) => {
+    compute(async () => {
+      removeRequestHeader('origin');
+
+      await proxy('commerce');
+    });
+
+    cache(CACHE_API);
+  })
+  .match('/medias/:path*', ({ cache, proxy, removeRequestHeader, compute }) => {
+    compute(async () => {
+      removeRequestHeader('origin');
+      await proxy('commerce');
+    });
+    cache(CACHE_ASSETS);
+  })
+  .post('/authorizationserver/oauth/:path*', ({ proxy, compute }) => {
+    compute(async () => {
+      await proxy('commerce');
+    });
+  })
 
   // Main app pages:
   .get('/', ({ redirect }) => redirect('/electronics-spa/'))
