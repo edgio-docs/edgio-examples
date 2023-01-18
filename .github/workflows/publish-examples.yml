@@ -1,0 +1,71 @@
+name: Publish Edgio Examples
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - 'main'
+
+concurrency:
+  group: publish-examples-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  # Node version for all the jobs
+  NODE_VERSION: 16
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.setMatrix.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          registry-url: https://registry.npmjs.org/
+      - name: Install Node.js modules
+        run: npm ci
+      - name: Get matrix of examples
+        id: setMatrix
+        run: echo -e "matrix=$(node scripts/helpers/printExamples.js)" >> $GITHUB_OUTPUT
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  publish-examples:
+    name: Publish Examples
+    needs: prepare
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        example: ${{ fromJson( needs.prepare.outputs.matrix ) }}
+    env:
+      EXAMPLE_DIR: examples/${{ matrix.example }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install jq
+        run: sudo apt-get install jq
+      - name: Push example to individual repo
+        id: repo
+        run: |
+          # Get the destination repo url from the example's package.json
+          REPO_URL=$(jq -r '.repository' $EXAMPLE_DIR/package.json)
+          echo "REPO_NAME=$(echo $REPO_URL | cut -d ':' -f 2 | cut -d '.' -f 1)" >> $GITHUB_ENV
+      - uses: actions/checkout@v2
+        with:
+          repository: ${{ env.REPO_NAME }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+          path: example-repo
+      - name: Publish example
+        run: |
+          # Remove all files except .git
+          find . -maxdepth 1 -not -name .git -exec rm -rf {} \;
+
+          # Copy all files from the example
+          cp -r ${EXAMPLE_DIR}/* .
+
+          git status
+          git add .
+          git commit -m "Publishing example ${EXAMPLE_DIR}"
+          git push --force origin main
+        working-directory: example-repo

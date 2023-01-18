@@ -35,5 +35,6 @@
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "serve": "^11.3.2"
-  }
+  },
+  "repository": "git@github.com:edgio-docs/edgio-react-static-example.git"
 }

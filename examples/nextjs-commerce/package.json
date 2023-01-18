@@ -24,5 +24,6 @@
       "pre-commit": "turbo run lint"
     }
   },
-  "packageManager": "yarn@1.22.17"
+  "packageManager": "yarn@1.22.17",
+  "repository": "git@github.com:edgio-docs/edgio-nextjs-commerce-example.git"
 }

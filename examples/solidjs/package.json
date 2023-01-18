@@ -28,5 +28,6 @@
   "dependencies": {
     "@solidjs/router": "^0.4.2",
     "solid-js": "^1.3.3"
-  }
+  },
+  "repository": "git@github.com:edgio-docs/edgio-solidjs-example.git"
 }

@@ -13,5 +13,6 @@
     "@edgio/devtools": "^6.0.6",
     "@edgio/prefetch": "^6.0.6",
     "vitepress": "^0.20.10"
-  }
+  },
+  "repository": "git@github.com:edgio-docs/edgio-vitepress-example.git"
 }

@@ -28,5 +28,6 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+  "repository": "git@github.com:edgio-docs/edgio-vue2-example.git"
 }

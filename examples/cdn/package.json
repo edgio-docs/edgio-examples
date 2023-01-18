@@ -21,5 +21,6 @@
     "semi": false,
     "printWidth": 150,
     "singleQuote": true
-  }
+  },
+  "repository": "git@github.com:edgio-docs/edgio-cdn-example.git"
 }

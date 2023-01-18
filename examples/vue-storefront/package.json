@@ -39,10 +39,7 @@
   "version": "1.12.2",
   "description": "A Vue.js, PWA eCommerce frontend",
   "private": true,
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/DivanteLtd/vue-storefront"
-  },
+  "repository": "git@github.com:edgio-docs/edgio-vue-storefront-example.git",
   "keywords": [
     "vue",
     "vuex",

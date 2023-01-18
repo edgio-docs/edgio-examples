@@ -17,5 +17,6 @@
   "dependencies": {
     "node-fetch": "^3.2.10",
     "zlib": "^1.0.5"
-  }
+  },
+  "repository": "git@github.com:edgio-docs/edgio-serverless-example.git"
 }

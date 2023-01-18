@@ -21,5 +21,6 @@
     "luxon": "^1.26.0",
     "markdown-it": "^12.1.0",
     "markdown-it-anchor": "^8.1.2"
-  }
+  },
+  "repository": "git@github.com:edgio-docs/edgio-eleventy-example.git"
 }
