@@ -44,8 +44,8 @@ jobs:
       EXAMPLE_DIR: examples/${{ matrix.example }}
     steps:
       - uses: actions/checkout@v3
-      - name: Install jq
-        run: apt-get install jq
+      - name: Setup jq
+        uses: actions/setup-jq@v1
       - name: Push example to individual repo
         run: |
           # Clone the repo defined in package.json
