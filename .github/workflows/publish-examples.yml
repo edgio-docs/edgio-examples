@@ -54,7 +54,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           repository: ${{ env.REPO_NAME }}
-          token: ${{ secrets.MOOVWEB_DOCS_GITHUB_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           path: example-repo
       - name: Publish example
         run: |
