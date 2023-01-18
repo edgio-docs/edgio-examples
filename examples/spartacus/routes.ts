@@ -61,6 +61,7 @@ export default new Router()
   // .post('/authorizationserver/oauth/:path*', ({ proxy }) => {
   //   proxy('commerce')
   // })
+
   // Main app pages:
   .get('/', ({ redirect }) => redirect('/electronics-spa/'))
   .get('/electronics-spa', ssrPageCacheHandler)
