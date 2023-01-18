@@ -36,7 +36,6 @@ jobs:
     name: Publish Examples
     needs: prepare
     runs-on: ubuntu-latest
-    continue-on-error: true
     strategy:
       matrix:
         example: ${{ fromJson( needs.prepare.outputs.matrix ) }}
@@ -51,7 +50,7 @@ jobs:
         run: |
           # Get the destination repo url from the example's package.json
           REPO_URL=$(jq -r '.repository' $EXAMPLE_DIR/package.json)
-          echo "REPO_NAME=$(basename ${REPO_URL%.git})" >> $GITHUB_ENV
+          echo "REPO_NAME=$(echo $REPO_URL | cut -d ':' -f 2 | cut -d '.' -f 1)" >> $GITHUB_ENV
       - uses: actions/checkout@v2
         with:
           repository: ${{ env.REPO_NAME }}
