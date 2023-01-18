@@ -50,6 +50,7 @@ jobs:
         run: |
           # Clone the repo defined in package.json
           REPO_URL=$(jq -r '.repository' $EXAMPLE_DIR/package.json)
+          echo ${REPO_URL}
           git clone ${REPO_URL}
           cd $(basename ${REPO_URL%.git})
 
