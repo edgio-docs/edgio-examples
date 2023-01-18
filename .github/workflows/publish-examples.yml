@@ -59,6 +59,7 @@ jobs:
           # Copy all files from the example
           cp -r ${EXAMPLE_DIR}/* .
 
-          git add .
-          git commit -m "Publishing example ${EXAMPLE_DIR}"
-          git push --force origin main
+          git status
+          # git add .
+          # git commit -m "Publishing example ${EXAMPLE_DIR}"
+          # git push --force origin main
