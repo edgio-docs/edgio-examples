@@ -1,5 +1,5 @@
 const { Octokit } = require('@octokit/rest');
-const { exec } = require('child_process');
+const { execSync } = require('child_process');
 require('dotenv').config();
 
 const octokit = new Octokit({
@@ -20,7 +20,7 @@ async function checkAndCreateRepo(repoUrl) {
     console.log(`Repository ${repoUrl} created`);
 
     // Initialize the repository locally and push the main branch
-    exec(
+    execSync(
       `mkdir ${tmpRepoPath} && 
       cd ${tmpRepoPath} && 
       echo "# ${repoName}" >> README.md && 
@@ -28,7 +28,7 @@ async function checkAndCreateRepo(repoUrl) {
       git add README.md && 
       git commit -m "first commit" && 
       git branch -M main && 
-      git remote add origin git@github.com:${owner}/${repoName}.git && 
+      git remote add origin ${repoUrl} && 
       git push -u origin main && 
       cd .. &&
       rm -rf ${tmpRepoPath}`,
