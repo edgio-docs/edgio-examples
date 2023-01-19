@@ -28,8 +28,8 @@ async function checkAndCreateRepo(repoUrl) {
       git add README.md && 
       git commit -m "first commit" && 
       git branch -M main && 
-      git remote add origin ${repoUrl} && 
-      git remote set-url origin https://x-access-token:${process.env.GITHUB_API_TOKEN}@github.com/${owner}/${repoName}.git && 
+      git remote add origin https://github.com/${owner}/${repoName}.git && 
+      git remote set-url origin https://${process.env.GITHUB_API_TOKEN}@github.com/OWNER/REPO.git &&
       git push -u origin main && 
       cd .. &&
       rm -rf ${tmpRepoPath}`,
