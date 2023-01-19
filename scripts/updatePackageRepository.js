@@ -57,7 +57,6 @@ fs.readdir(examplesPath, async (err, dirs) => {
 });
 
 async function checkAndCreateRepo(repoUrl) {
-  return;
   try {
     const [owner, repo] = repoUrl.split(':')[1].split('/');
     let { status } = await octokit.repos.get({

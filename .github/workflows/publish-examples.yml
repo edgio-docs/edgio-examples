@@ -46,12 +46,14 @@ jobs:
       - uses: actions/checkout@v3
       - name: Install jq
         run: sudo apt-get install jq
-      - name: Push example to individual repo
-        id: repo
+      - name: Prepare destination repository
         run: |
           # Get the destination repo url from the example's package.json
           REPO_URL=$(jq -r '.repository' $EXAMPLE_DIR/package.json)
           echo "REPO_NAME=$(echo $REPO_URL | cut -d ':' -f 2 | cut -d '.' -f 1)" >> $GITHUB_ENV
+
+          # Prepare the destination repo
+          node scripts/helpers/prepareRepo.js $REPO_URL
       - uses: actions/checkout@v3
         with:
           repository: ${{ env.REPO_NAME }}
@@ -65,9 +67,13 @@ jobs:
           # Copy all files from the example
           cp -r ../${EXAMPLE_DIR}/* .
 
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add -A .
-          git commit -m "Publishing example ${EXAMPLE_DIR}"
-          git push --force origin HEAD
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No modified files"
+          else
+            git config --local user.email "action@github.com"
+            git config --local user.name "GitHub Action"
+            git add -A .
+            git commit -m "Publishing example ${EXAMPLE_DIR}"
+            git push --force origin HEAD
+          fi
         working-directory: example-repo
