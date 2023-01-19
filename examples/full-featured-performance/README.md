@@ -1,11 +1,11 @@
 # An Edgio Application Performance Example
 ## Demo
 
-https://demos-edgio-advanced-performance-example-default.layer0-limelight.link
+https://edgio-community-examples-full-featured-performance-live.layer0-limelight.link/
 
 ## Try It Now
 
-[![Deploy with Edgio](https://docs.edg.io/button.svg)](https://app.edgio.co/deploy?repo=https://github.com/edgio-docs/full-featured-performance-example)
+[![Deploy with Edgio](https://docs.edg.io/button.svg)](https://app.edgio.co/deploy?repo=https://github.com/edgio-docs/edgio-full-featured-performance-example)
 
 ## Implemented Features
 
