@@ -38,6 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     continue-on-error: true
     strategy:
+      max-parallel: 5
       matrix:
         example: ${{ fromJson( needs.prepare.outputs.matrix ) }}
     env:
