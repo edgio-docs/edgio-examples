@@ -5,7 +5,7 @@ https://demos-edgio-advanced-performance-example-default.layer0-limelight.link
 
 ## Try It Now
 
-[![Deploy with Edgio](https://docs.edg.io/button.svg)](https://app.edgio.co/deploy?repo=https://github.com/moovweb-demos/edgio-advanced-performance-example)
+[![Deploy with Edgio](https://docs.edg.io/button.svg)](https://app.edgio.co/deploy?repo=https://github.com/edgio-docs/full-featured-performance-example)
 
 ## Implemented Features
 
@@ -25,7 +25,7 @@ https://demos-edgio-advanced-performance-example-default.layer0-limelight.link
 
 ### Clone This Repo
 
-Use `git clone https://github.com/moovweb-demos/edgio-advanced-performance-example.git` to get the files within this repository onto your local machine.
+Use `git clone https://github.com/edgio-docs/full-featured-performance-example.git` to get the files within this repository onto your local machine.
 
 ### Install dependencies
 
