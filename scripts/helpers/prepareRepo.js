@@ -14,7 +14,10 @@ async function checkAndCreateRepo(repoUrl) {
       repo: repoName,
     });
     if (status === 404) {
-      await octokit.repos.createForAuthenticatedUser({ name: repoName });
+      await octokit.repos.createInOrg({
+        org: owner,
+        name: repoName,
+      });
       console.log(`Repository ${repoUrl} created`);
     }
     if (status !== 200 && status !== 201) {
@@ -22,7 +25,11 @@ async function checkAndCreateRepo(repoUrl) {
     }
   } catch (err) {
     if (err.message === 'Not Found') {
-      await octokit.repos.createForAuthenticatedUser({ name: repoName });
+      await octokit.repos.createInOrg({
+        org: owner,
+        name: repoName,
+      });
+
       console.log(`Repository ${repoUrl} created`);
       return;
     }
