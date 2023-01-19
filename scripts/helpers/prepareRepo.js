@@ -49,7 +49,9 @@ async function checkAndCreateRepo(repoUrl) {
       repo: repoName,
     });
 
-    await createRepo();
+    if (status === 404) {
+      await createRepo();
+    }
 
     if (status !== 200 && status !== 201) {
       throw new Error(`Error checking repository ${repoUrl}`);
