@@ -29,6 +29,7 @@ async function checkAndCreateRepo(repoUrl) {
       git commit -m "first commit" && 
       git branch -M main && 
       git remote add origin ${repoUrl} && 
+      git remote set-url origin https://x-access-token:${process.env.GITHUB_API_TOKEN}@github.com/${owner}/${repoName}.git && 
       git push -u origin main && 
       cd .. &&
       rm -rf ${tmpRepoPath}`,
