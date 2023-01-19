@@ -55,8 +55,8 @@ jobs:
         run: sudo apt-get install jq
       - name: Prepare destination repository
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+          git config --global user.name "GitHub Action"
 
           # Get the destination repo url from the example's package.json
           REPO_URL=$(jq -r '.repository' $EXAMPLE_DIR/package.json)
