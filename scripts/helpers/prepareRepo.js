@@ -13,10 +13,10 @@ async function checkAndCreateRepo(repoUrl) {
   async function createRepo() {
     const tmpRepoPath = `${repoName}-tmp`;
     // Create the repository
-    // await octokit.repos.createInOrg({
-    //   org: owner,
-    //   name: repoName,
-    // });
+    await octokit.repos.createInOrg({
+      org: owner,
+      name: repoName,
+    });
     console.log(`Repository ${repoUrl} created`);
 
     // Initialize the repository locally and push the main branch
