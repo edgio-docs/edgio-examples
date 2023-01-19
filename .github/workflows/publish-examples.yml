@@ -36,6 +36,7 @@ jobs:
     name: Publish Examples
     needs: prepare
     runs-on: ubuntu-latest
+    continue-on-error: true
     strategy:
       matrix:
         example: ${{ fromJson( needs.prepare.outputs.matrix ) }}
