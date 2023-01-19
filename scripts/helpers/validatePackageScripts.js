@@ -1,8 +1,13 @@
 const fs = require('fs');
 const { join } = require('path');
 const requiredScripts = ['edgio:dev', 'edgio:build', 'edgio:deploy'];
+const repoFormat = (name) =>
+  `git@github.com:edgio-docs/edgio-${name}-example.git`;
+
+let error = false;
 
 // Get package.json path from the first argument passed to the script
+const exampleName = process.argv[2].split('/')[1];
 const packageJsonPath = join(process.cwd(), process.argv[2], 'package.json');
 
 // Read the contents of the package.json file
@@ -25,9 +30,29 @@ if (packageJson.scripts) {
         "', '"
       )}' script(s) not found in '${packageJsonPath}'`
     );
-    process.exit(1);
+    error = true;
   }
 } else {
-  console.error(`'scripts' property not found in '${packageJsonPath}'`);
+  console.error(
+    `'${requiredScripts.join(
+      "', '"
+    )}' script(s) not found in '${packageJsonPath}'`
+  );
+  error = true;
+}
+
+// Check for `repository` property in package.json
+if (
+  !packageJson.repository ||
+  packageJson.repository !== repoFormat(exampleName)
+) {
+  console.error(
+    `'repository' property either not found or not the recommended value in '${packageJsonPath}'.\n` +
+      `Recommended value: ${repoFormat(exampleName)}`
+  );
+  error = true;
+}
+
+if (error) {
   process.exit(1);
 }
