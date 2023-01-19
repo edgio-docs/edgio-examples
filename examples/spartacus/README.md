@@ -1,4 +1,6 @@
-# edgioSpartacusExample
+# Edgio Spartacus Example
+
+Live Demo: https://edgio-community-examples-spartacus-live.layer0-limelight.link/
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.1.
 
