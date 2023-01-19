@@ -26,7 +26,7 @@ async function checkAndCreateRepo(repoUrl) {
       echo "# ${repoName}" >> README.md && 
       git init && 
       git add README.md && 
-      git commit -m "first commit" && 
+      git commit -m "Initializing repo" && 
       git branch -M main && 
       git remote add origin https://github.com/${owner}/${repoName}.git && 
       git remote set-url origin https://${process.env.GITHUB_API_TOKEN}@github.com/${owner}/${repoName}.git &&
@@ -50,9 +50,9 @@ async function checkAndCreateRepo(repoUrl) {
       repo: repoName,
     });
 
-    //if (status === 404) {
-    await createRepo();
-    //}
+    if (status === 404) {
+      await createRepo();
+    }
 
     if (status !== 200 && status !== 201) {
       throw new Error(`Error checking repository ${repoUrl}`);

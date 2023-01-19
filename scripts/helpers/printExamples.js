@@ -1,5 +1,3 @@
 const paths = require('./getExamples')();
 
-console.log(
-  JSON.stringify(paths.filter((path) => path.includes('advanced-performance')))
-);
+console.log(JSON.stringify(paths));
