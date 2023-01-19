@@ -13,10 +13,10 @@ async function checkAndCreateRepo(repoUrl) {
   async function createRepo() {
     const tmpRepoPath = `${repoName}-tmp`;
     // Create the repository
-    await octokit.repos.createInOrg({
-      org: owner,
-      name: repoName,
-    });
+    // await octokit.repos.createInOrg({
+    //   org: owner,
+    //   name: repoName,
+    // });
     console.log(`Repository ${repoUrl} created`);
 
     // Initialize the repository locally and push the main branch
@@ -29,7 +29,7 @@ async function checkAndCreateRepo(repoUrl) {
       git commit -m "first commit" && 
       git branch -M main && 
       git remote add origin https://github.com/${owner}/${repoName}.git && 
-      git remote set-url origin https://${process.env.GITHUB_API_TOKEN}@github.com/OWNER/REPO.git &&
+      git remote set-url origin https://${process.env.GITHUB_API_TOKEN}@github.com/${owner}/${repoName}.git &&
       git push -u origin main && 
       cd .. &&
       rm -rf ${tmpRepoPath}`,
@@ -50,9 +50,9 @@ async function checkAndCreateRepo(repoUrl) {
       repo: repoName,
     });
 
-    if (status === 404) {
-      await createRepo();
-    }
+    //if (status === 404) {
+    await createRepo();
+    //}
 
     if (status !== 200 && status !== 201) {
       throw new Error(`Error checking repository ${repoUrl}`);
