@@ -1,0 +1,28 @@
+name: Cleanup Update Branches
+on: workflow_dispatch
+
+concurrency:
+  group: update-examples-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  BRANCH_PREFIX: bot-examples-update-
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Cleanup branches
+        run: |
+          # Cleanup existing branches
+          git pull
+          git fetch --all
+          for branch in $(git branch --remotes)
+          do
+            git branch -q ${branch#origin/} $branch || true
+          done
+          for branch in $(git branch --list "${{ env.BRANCH_PREFIX }}*")
+          do
+            git push origin --delete $branch || true
+          done
