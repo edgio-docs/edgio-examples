@@ -6,7 +6,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  BRANCH_PREFIX: update-edgio-
+  BRANCH_PREFIX: bot-examples-update-
 
 jobs:
   prepare:
