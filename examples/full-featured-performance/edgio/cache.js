@@ -71,7 +71,7 @@ export const NEXT_CACHE_HANDLER = ({ removeUpstreamResponseHeader, cache }) => {
   // Set the caching values
   cache({
     //CacheKey Normalization
-    key: new CustomCacheKey().excludeAllQueryParametersExcept('category'),
+    key: new CustomCacheKey().excludeAllQueryParametersExcept('category', 'name'),
     edge: {
       // Save the response(s) [whether stale or updated] in the edge POP for a year
       maxAgeSeconds: 60 * 60 * 24 * 365,
