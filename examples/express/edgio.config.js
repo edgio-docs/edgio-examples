@@ -17,6 +17,6 @@ module.exports = {
     // - ./index.js
     //
     // Uncomment the line below to specify the path to the entry point(s):
-    // entryPoints: ['./src/app.js']
+    //appPath: './app.js',
   },
-}
+};
