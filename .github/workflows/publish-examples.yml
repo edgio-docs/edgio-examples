@@ -73,22 +73,11 @@ jobs:
           path: example-repo
       - name: Publish example
         run: |
-          echo "All example files"
-          ls -al
-
           # Remove all files except .git
           find . -maxdepth 1 -not -name .git -exec rm -rf {} \;
 
-          echo "After removal"
-          ls -al
-
           # Copy all files from the example
-          echo "Example listing"
-          ls -al ../${EXAMPLE_DIR}
           rsync -ar ../${EXAMPLE_DIR}/ .
-
-          echo "After copy"
-          ls -al
 
           if [ -z "$(git status --porcelain)" ]; then
             echo "No modified files"
