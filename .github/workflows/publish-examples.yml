@@ -85,7 +85,7 @@ jobs:
           # Copy all files from the example
           echo "Example listing"
           ls -al ../${EXAMPLE_DIR}
-          rsync -ar ../${EXAMPLE_DIR}/* .
+          rsync -ar ../${EXAMPLE_DIR}/ .
 
           echo "After copy"
           ls -al
