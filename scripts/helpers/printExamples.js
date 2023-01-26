@@ -1,5 +1,3 @@
 const paths = require('./getExamples')();
 
-console.log(
-  JSON.stringify(paths.filter((path) => path.includes('analytics-variant')))
-);
+console.log(JSON.stringify(paths));
