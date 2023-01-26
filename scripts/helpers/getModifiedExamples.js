@@ -21,9 +21,10 @@ module.exports = () => {
       : execSync(
           'git diff --name-only origin/main | xargs -I {} dirname {} | sort | uniq'
         )
-          .toString()
-          .split('\n')
-  ).filter(Boolean);
+  )
+    .toString()
+    .split('\n')
+    .filter(Boolean);
 
   // Filter the array of paths to return only the modified paths
   return examples.filter(
