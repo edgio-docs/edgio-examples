@@ -83,6 +83,8 @@ jobs:
           ls -al
 
           # Copy all files from the example
+          echo "Example listing"
+          ls -al ../${EXAMPLE_DIR}
           cp -r ../${EXAMPLE_DIR}/* .
 
           echo "After copy"
