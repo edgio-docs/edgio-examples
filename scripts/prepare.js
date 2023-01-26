@@ -90,6 +90,10 @@ async function main() {
         choices.filter((choice) => choice.title.includes(input)),
     });
 
+    if (!example) {
+      console.log(chalk.yellow('No example selected, exiting...'));
+      return;
+    }
     exampleName = example;
     examplePath = path.join(examplesPath, exampleName);
 

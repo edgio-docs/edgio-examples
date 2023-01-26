@@ -3,10 +3,12 @@
   "version": "1.0.0",
   "description": "Monorepo for all Edgio example sites",
   "scripts": {
+    "start": "node scripts/prepare.js",
+    "examples": "node scripts/prepare.js",
+    "### INTERNAL SCRIPTS ###": "",
     "generate-config": "node scripts/generateConfig.js",
     "clone-examples": "rm -rf ./examples; mkdir ./examples; node scripts/cloneExamples.js",
-    "update-examples": "node scripts/updateEdgio.js",
-    "examples": "node scripts/prepare.js"
+    "update-examples": "node scripts/updateEdgio.js"
   },
   "repository": {
     "type": "git",
