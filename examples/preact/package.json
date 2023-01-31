@@ -11,10 +11,10 @@
     "format": "prettier --write '**/*' --ignore-unknown"
   },
   "devDependencies": {
-    "@edgio/cli": "^6.0.5",
-    "@edgio/core": "^6.0.5",
-    "@edgio/devtools": "^6.0.5",
-    "@edgio/prefetch": "^6.0.5",
+    "@edgio/cli": "^6.1.0",
+    "@edgio/core": "^6.1.0",
+    "@edgio/devtools": "^6.1.0",
+    "@edgio/prefetch": "^6.1.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-preact-pure": "^2.0.0",
     "preact-cli": "^3.0.0",
