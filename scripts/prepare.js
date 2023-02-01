@@ -48,7 +48,7 @@ async function main() {
       type: 'text',
       name: 'name',
       message: 'Enter the name of the new example:',
-      initial: '{name}',
+      initial: 'eg. `vue3` (not `edgio-vue3-example`)',
       format: formatFn,
       validate: (input) => {
         const name = formatFn(input);
@@ -63,11 +63,37 @@ async function main() {
     exampleName = name;
     examplePath = path.join(examplesPath, exampleName);
 
+    // Full name of example
+    const fullName = `edgio-${exampleName}-example`;
+    const repoUrl = `git@github.com:edgio-docs/edgio-${exampleName}-example.git`;
+
     // Copy the contents of the `_template` directory into the new directory
     execSync(`cp -r _template ${examplesPath}`);
 
     // Rename the directory to the name of the new example
     fs.renameSync(path.join(examplesPath, '_template'), examplePath);
+
+    // Update package.json name/repo
+    const packageJsonPath = path.join(examplePath, 'package.json');
+    fs.readFile(packageJsonPath, 'utf8', async (err, data) => {
+      if (err) throw err;
+
+      const packageJson = JSON.parse(data);
+      packageJson.repository = repoUrl;
+      packageJson.name = fullName;
+      try {
+        fs.writeFile(
+          packageJsonPath,
+          JSON.stringify(packageJson, null, 2),
+          (err) => {
+            if (err) throw err;
+          }
+        );
+      } catch (err) {
+        console.error(`Error: ${err}`);
+      }
+    });
+
     console.log(chalk.green(`✔ Created new example "${exampleName}"`));
 
     // Install the packages and the latest Edgio version
