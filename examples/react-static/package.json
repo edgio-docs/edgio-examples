@@ -21,10 +21,10 @@
     "react-static-plugin-source-filesystem": "^7.5.1"
   },
   "devDependencies": {
-    "@edgio/cli": "6.0.5",
-    "@edgio/core": "6.0.5",
-    "@edgio/devtools": "6.0.5",
-    "@edgio/prefetch": "6.0.5",
+    "@edgio/cli": "6.1.0",
+    "@edgio/core": "6.1.0",
+    "@edgio/devtools": "6.1.0",
+    "@edgio/prefetch": "6.1.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.20.0",
     "eslint-config-react-app": "^6.0.0",
