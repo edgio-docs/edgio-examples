@@ -12,7 +12,7 @@ export class FilterComponentComponent implements OnInit {
 
   ngOnInit(): void {
     if (typeof window !== 'undefined')
-      fetch('https://layer0-docs-layer0-ecommmerce-api-example-default.layer0-limelight.link/categories/all')
+      fetch('https://edgio-community-ecommerce-api-example-default.layer0-limelight.link/categories/all')
         .then((res) => res.json())
         .then((res) => {
           this.filterItems = res
