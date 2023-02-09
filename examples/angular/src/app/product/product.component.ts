@@ -14,7 +14,7 @@ export class ProductComponent implements OnInit {
     route.url.subscribe(async (i) => {
       if (i[1].path) {
         this.data = await this.http
-          .get(`https://layer0-docs-layer0-ecommmerce-api-example-default.layer0-limelight.link/products/${i[1].path}`)
+          .get(`https://edgio-community-ecommerce-api-example-default.layer0-limelight.link/products/${i[1].path}`)
           .toPromise()
       }
     })

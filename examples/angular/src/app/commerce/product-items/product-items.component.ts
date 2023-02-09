@@ -13,7 +13,7 @@ export class ProductItemsComponent implements OnInit {
   fetchItems(category?: string) {
     if (typeof window !== 'undefined') {
       fetch(
-        `https://layer0-docs-layer0-ecommmerce-api-example-default.layer0-limelight.link/${category ? 'categories' : 'products'}/${category || 'all'}`
+        `https://edgio-community-ecommerce-api-example-default.layer0-limelight.link/${category ? 'categories' : 'products'}/${category || 'all'}`
       )
         .then((res) => res.json())
         .then((res) => {
