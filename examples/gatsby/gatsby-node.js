@@ -2,7 +2,7 @@ const path = require('path')
 const { InjectManifest } = require('workbox-webpack-plugin')
 const fetch = (...args) => import(`node-fetch`).then(({ default: fetch }) => fetch(...args))
 
-const apiUrl = 'https://layer0-docs-layer0-ecommmerce-api-example-default.layer0-limelight.link'
+const apiUrl = 'https://edgio-community-ecommerce-api-example-default.layer0-limelight.link'
 
 exports.onCreateWebpackConfig = ({ stage, actions }) => {
   if (stage === 'build-javascript') {
