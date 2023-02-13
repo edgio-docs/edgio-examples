@@ -4,8 +4,8 @@ export const API_CACHE_HANDLER = ({ cache, proxy, removeUpstreamResponseHeader }
     edge: {
       maxAgeSeconds: 60 * 60 * 24,
       // Cache responses even if they contain cache-control: private header
-      // https://docs.edgio.co/guides/caching#private
-      // https://docs.edgio.co/docs/api/core/interfaces/_router_cacheoptions_.edgecacheoptions.html#forceprivatecaching
+      // https://docs.edg.io/guides/caching#private
+      // https://docs.edg.io/docs/api/core/interfaces/_router_cacheoptions_.edgecacheoptions.html#forceprivatecaching
       forcePrivateCaching: true,
     },
     browser: {
@@ -41,8 +41,8 @@ export const IMAGE_CACHE_HANDLER = ({ cache, proxy }) => {
     edge: {
       maxAgeSeconds: 60 * 60,
       // Cache responses even if they contain cache-control: private header
-      // https://docs.edgio.co/guides/caching#private
-      // https://docs.edgio.co/docs/api/core/interfaces/_router_cacheoptions_.edgecacheoptions.html#forceprivatecaching
+      // https://docs.edg.io/guides/caching#private
+      // https://docs.edg.io/docs/api/core/interfaces/_router_cacheoptions_.edgecacheoptions.html#forceprivatecaching
       forcePrivateCaching: true,
     },
     browser: {

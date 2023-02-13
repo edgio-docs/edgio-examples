@@ -1,31 +1,38 @@
 {
-  "name": "edgio-vue3-example",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "tailwindcss:watch": "npx tailwindcss -i ./src/input.css -o ./src/compiled/output.css --watch",
-    "tailwindcss:build": "npx tailwindcss -i ./src/input.css -o ./src/compiled/output.css",
     "edgio:dev": "edgio dev",
     "edgio:build": "edgio build",
     "edgio:deploy": "edgio deploy",
     "edgio:production": "edgio run --production",
-    "format": "prettier --write '**/*' --ignore-unknown"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "format": "prettier --write '**/*' --ignore-unknown",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
+  "name": "edgio-vue3-example",
   "dependencies": {
-    "vue": "^3.2.16",
-    "vue-router": "^4.0.12"
+    "@edgio/rum": "^6.0.0",
+    "vue": "^3.2.45",
+    "vue-router": "^4.1.6"
   },
   "devDependencies": {
-    "@edgio/cli": "^6.0.5",
-    "@edgio/core": "^6.0.5",
-    "@edgio/devtools": "^6.0.5",
-    "@edgio/prefetch": "^6.0.5",
-    "@edgio/rum": "^5.0.8",
-    "@edgio/vue": "^6.0.5",
-    "@vue/cli-service": "~4.5.0",
-    "@vue/compiler-sfc": "^3.0.0",
+    "@edgio/cli": "^6.1.0",
+    "@edgio/core": "^6.1.0",
+    "@edgio/devtools": "^6.1.0",
+    "@edgio/prefetch": "^6.1.0",
+    "@edgio/vue": "^6.1.0",
+    "@edgio/vue-cva": "^6.1.0",
+    "@rushstack/eslint-patch": "^1.1.4",
+    "@vitejs/plugin-vue": "^4.0.0",
+    "@vue/eslint-config-prettier": "^7.0.0",
+    "autoprefixer": "^10.4.13",
+    "eslint": "^8.22.0",
+    "eslint-plugin-vue": "^9.3.0",
+    "postcss": "^8.4.21",
     "prettier": "^2.7.1",
-    "tailwindcss": "^3.1.6"
+    "tailwindcss": "^3.2.4",
+    "vite": "^4.0.0"
   },
   "browserslist": [
     "> 1%",

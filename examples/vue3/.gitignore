@@ -24,4 +24,6 @@ pnpm-debug.log*
 
 # Edgio generated build directory
 .edgio
+
+.edgio_temp
 src/compiled
