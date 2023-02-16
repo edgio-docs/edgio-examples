@@ -18,7 +18,7 @@
     "test": "npm-run-all lint test:*",
     "test:ember": "ember test",
     "edgio:build": "edgio build",
-    "edgio:deploy": "edgio deploy",
+    "edgio:deploy": "npm run build && edgio deploy",
     "format": "prettier --write '**/*' --ignore-unknown"
   },
   "devDependencies": {
