@@ -3,6 +3,7 @@ const chalk = require('chalk');
 const prompts = require('prompts');
 const fs = require('fs');
 const path = require('path');
+const os = require('os');
 
 const examplesPath = path.join(process.cwd(), 'examples');
 const templateName = '_template';
@@ -35,6 +36,7 @@ async function main() {
     choices: [
       { title: 'New', value: 'new' },
       { title: 'Existing', value: 'existing' },
+      // { title: 'Import from Github URL', value: 'import' },
     ],
   });
 
@@ -42,7 +44,8 @@ async function main() {
   let examplePath;
   const formatFn = (input) => input.trim();
 
-  if (exampleType === 'new') {
+  if (exampleType === 'github') {
+  } else if (exampleType === 'new') {
     // Prompt the user to enter the name of the new example
     const { name } = await prompts({
       type: 'text',
@@ -98,7 +101,8 @@ async function main() {
 
     // Install the packages and the latest Edgio version
     console.log('Installing packages and updating to latest Edgio version...');
-    execSync(`cd ${examplePath} && npm install && edgio use latest`);
+    await installDependencies(examplePath);
+    await updateEdgio(examplePath);
   } else {
     // Show a list of examples to choose from by listing the directory names within the `examples` directory
     const examples = fs
@@ -123,26 +127,41 @@ async function main() {
     exampleName = example;
     examplePath = path.join(examplesPath, exampleName);
 
-    // Run `npm install` or `yarn install` within the chosen directory
-    console.log('Installing packages...');
-    const yarnLockFilePath = path.join(examplePath, 'yarn.lock');
-    if (fs.existsSync(yarnLockFilePath)) {
-      // Run `yarn install` within the chosen directory
-      execSync(`cd ${examplePath} && yarn install`);
-    } else {
-      // Run `npm install` within the chosen directory
-      execSync(`cd ${examplePath} && npm install`);
-    }
+    // Install the packages
+    await installDependencies(examplePath);
   }
 
   // Inform the user that the example is ready to be worked on
+  const cdCmd = `cd ${path.relative(process.cwd(), examplePath)}`;
+  const shortcutKey = os.platform() === 'darwin' ? '\u2318' : 'Control';
+
+  const { default: clipboardy } = await import('clipboardy');
+  clipboardy.writeSync(cdCmd);
+
   console.log(
     chalk.green(`✔ ${exampleName} is ready to be worked on.`),
     '\n\n',
-    `To switch to the example, run: ${chalk.cyan(
-      `cd ${path.relative(process.cwd(), examplePath)}`
-    )}\n\n`
+    `To switch to the example, press ${chalk.cyan(
+      `${shortcutKey} + V`
+    )} or run: ${chalk.cyan(cdCmd)}\n\n`
   );
+}
+
+async function installDependencies(examplePath) {
+  // Run `npm install` or `yarn install` within the chosen directory
+  console.log('Installing packages...');
+  const yarnLockFilePath = path.join(examplePath, 'yarn.lock');
+  if (fs.existsSync(yarnLockFilePath)) {
+    // Run `yarn install` within the chosen directory
+    execSync(`cd ${examplePath} && yarn install`);
+  } else {
+    // Run `npm install` within the chosen directory
+    execSync(`cd ${examplePath} && npm install`);
+  }
+}
+
+async function updateEdgio(examplePath) {
+  execSync(`cd ${examplePath} && edgio use latest`);
 }
 
 main();
