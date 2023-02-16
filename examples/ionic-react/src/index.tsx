@@ -1,7 +1,7 @@
 import App from './App'
 import React from 'react'
 import ReactDOM from 'react-dom'
-import installDevtools from '@layer0/devtools/install'
+import installDevtools from '@edgio/devtools/install'
 import * as serviceWorkerRegistration from './serviceWorkerRegistration'
 
 ReactDOM.render(

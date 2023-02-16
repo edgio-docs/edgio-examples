@@ -40,10 +40,10 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "SKIP_PREFLIGHT_CHECK=true react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "edgio:deploy": "edgio deploy",
+    "edgio:deploy": "npm run build && edgio deploy",
     "format": "prettier --write '**/*' --ignore-unknown"
   },
   "prettier": {
