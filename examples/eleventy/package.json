@@ -7,7 +7,7 @@
     "serve": "eleventy --serve",
     "start": "eleventy --serve",
     "debug": "DEBUG=* eleventy",
-    "edgio:deploy": "edgio deploy"
+    "edgio:deploy": "npm run build && edgio deploy"
   },
   "devDependencies": {
     "@11ty/eleventy": "^0.12.1",
