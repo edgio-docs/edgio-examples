@@ -1,6 +1,6 @@
-import { Prefetcher } from '@edgio/prefetch/sw'
-import { precacheAndRoute } from 'workbox-precaching'
 import { skipWaiting, clientsClaim } from 'workbox-core'
+import { precacheAndRoute } from 'workbox-precaching'
+import { Prefetcher } from '@edgio/prefetch/sw'
 
 skipWaiting()
 clientsClaim()
