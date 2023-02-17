@@ -36,7 +36,7 @@ async function main() {
     choices: [
       { title: 'New', value: 'new' },
       { title: 'Existing', value: 'existing' },
-      // { title: 'Import from Github URL', value: 'import' },
+      { title: 'Import from Github URL', value: 'import' },
     ],
   });
 
@@ -44,8 +44,8 @@ async function main() {
   let examplePath;
   const formatFn = (input) => input.trim();
 
-  if (exampleType === 'github') {
-  } else if (exampleType === 'new') {
+  // new or github import
+  if (exampleType !== 'existing') {
     // Prompt the user to enter the name of the new example
     const { name } = await prompts({
       type: 'text',
@@ -70,11 +70,18 @@ async function main() {
     const fullName = `edgio-${exampleName}-example`;
     const repoUrl = `git@github.com:edgio-docs/edgio-${exampleName}-example.git`;
 
-    // Copy the contents of the `_template` directory into the new directory
-    execSync(`cp -r _template ${examplesPath}`);
+    if (exampleType === 'new') {
+      await copyTemplate(examplePath);
+    } else if (exampleType === 'import') {
+      const { importUrl } = await prompts({
+        type: 'text',
+        name: 'importUrl',
+        message: 'Enter the Github URL of the example to import:',
+        initial: 'eg. `git@github.com:edgio-docs/my-example.git`',
+      });
 
-    // Rename the directory to the name of the new example
-    fs.renameSync(path.join(examplesPath, '_template'), examplePath);
+      await cloneRepo(importUrl, examplePath);
+    }
 
     // Update package.json name/repo
     const packageJsonPath = path.join(examplePath, 'package.json');
@@ -162,6 +169,21 @@ async function installDependencies(examplePath) {
 
 async function updateEdgio(examplePath) {
   execSync(`cd ${examplePath} && edgio use latest`);
+}
+
+async function cloneRepo(repoUrl, examplePath) {
+  execSync(`git clone ${repoUrl} ${examplePath}`);
+
+  // Remove .git folder
+  execSync(`rm -rf ${path.join(examplePath, '.git')}`);
+}
+
+async function copyTemplate(examplePath) {
+  // Copy the contents of the `_template` directory into the new directory
+  execSync(`cp -r _template ${examplesPath}`);
+
+  // Rename the directory to the name of the new example
+  fs.renameSync(path.join(examplesPath, '_template'), examplePath);
 }
 
 main();
