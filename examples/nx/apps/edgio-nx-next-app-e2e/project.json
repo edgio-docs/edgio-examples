@@ -1,0 +1,28 @@
+{
+  "root": "apps/edgio-nx-next-app-e2e",
+  "sourceRoot": "apps/edgio-nx-next-app-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/edgio-nx-next-app-e2e/cypress.json",
+        "devServerTarget": "edgio-nx-next-app:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "edgio-nx-next-app:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/edgio-nx-next-app-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["edgio-nx-next-app"]
+}

@@ -3,7 +3,7 @@
   "scripts": {
     "edgio:dev": "edgio dev",
     "edgio:build": "edgio build",
-    "edgio:deploy": "edgio deploy",
+    "edgio:deploy": "npm run build && edgio deploy",
     "start": "umi dev",
     "build": "umi build",
     "postinstall": "umi generate tmp",

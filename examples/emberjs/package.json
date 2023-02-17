@@ -18,8 +18,9 @@
     "test": "npm-run-all lint test:*",
     "test:ember": "ember test",
     "edgio:build": "edgio build",
-    "edgio:deploy": "edgio deploy",
-    "format": "prettier --write '**/*' --ignore-unknown"
+    "edgio:deploy": "npm run build && edgio deploy",
+    "format": "prettier --write '**/*' --ignore-unknown",
+    "edgio:dev": "edgio dev"
   },
   "devDependencies": {
     "@edgio/cli": "^6.0.6",

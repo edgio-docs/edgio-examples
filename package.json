@@ -29,6 +29,7 @@
   "devDependencies": {
     "@octokit/rest": "^19.0.5",
     "chalk": "^4.1.2",
+    "clipboardy": "^3.0.0",
     "dotenv": "^16.0.3",
     "minimist": "^1.2.7",
     "prompts": "^2.4.2",

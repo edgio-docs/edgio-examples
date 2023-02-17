@@ -5,7 +5,8 @@
     "dev": "vuepress dev src",
     "build": "vuepress build src -d=public",
     "edgio:build": "edgio build",
-    "edgio:deploy": "edgio deploy"
+    "edgio:deploy": "npm run build && edgio deploy",
+    "edgio:dev": "edgio dev"
   },
   "license": "MIT",
   "devDependencies": {

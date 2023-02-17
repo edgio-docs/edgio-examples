@@ -4,7 +4,9 @@
     "build": "gridsome build",
     "develop": "gridsome develop",
     "explore": "gridsome explore",
-    "edgio:deploy": "edgio deploy"
+    "edgio:deploy": "npm run build && edgio deploy",
+    "edgio:dev": "edgio dev",
+    "edgio:build": "edgio build"
   },
   "dependencies": {
     "gridsome": "^0.7.0"

@@ -1,0 +1,10 @@
+{
+  "version": "v1",
+  "packages": {
+    "@edgio/next": {
+      "signature": "ec4737c7973f3a1259a0a917922b5179",
+      "file": true,
+      "replaced": "^6.1.1"
+    }
+  }
+}
