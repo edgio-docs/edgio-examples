@@ -2,7 +2,7 @@
   "name": "edgio-react-static-example",
   "scripts": {
     "edgio:build": "edgio build",
-    "edgio:deploy": "edgio deploy",
+    "edgio:deploy": "yarn build && edgio deploy",
     "start": "react-static start",
     "stage": "react-static build --staging",
     "build": "react-static build",
