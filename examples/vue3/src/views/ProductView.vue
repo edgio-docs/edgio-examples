@@ -44,21 +44,22 @@
   </div>
 </template>
 
-<style scoped>
+<style>
 .product-thumbnails {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
 .product-thumbnails::-webkit-scrollbar {
   display: none;
 }
 </style>
 
 <script>
-import StarIcon from './StarIcon.vue'
-import HeartIcon from './HeartIcon.vue'
-import { relativizeURL } from '../../lib/helper'
-import StarIconOutline from './StarIconOutline.vue'
+import StarIcon from '../components/StarIcon.vue'
+import HeartIcon from '../components/HeartIcon.vue'
+import StarIconOutline from '../components/StarIconOutline.vue'
+import { relativizeURL } from '../utils'
 
 export default {
   name: 'Product',
@@ -73,10 +74,10 @@ export default {
     }
   },
   methods: {
-    relativizeURL: (url) => relativizeURL(url),
+    relativizeURL: relativizeURL,
     fetchData() {
       let link = window.location.origin
-      fetch(`${link}/l0-api/products/${this.$route.params.slug}`)
+      fetch(`${link}/edgio-api/products/${this.$route.params.slug}`)
         .then((res) => res.json())
         .then((res) => {
           this.data = res

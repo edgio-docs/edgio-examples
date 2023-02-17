@@ -14,7 +14,9 @@
             class="relative mt-2 border border-white p-1"
           >
             <div class="absolute top-0 left-0 z-10 flex flex-col items-start">
-              <h3 class="border border-gray-200 bg-white py-1 px-2 text-xs md:py-2 md:px-4 md:text-xl font-medium text-black">{{ item.name }}</h3>
+              <h3 class="border border-gray-200 bg-white py-1 px-2 text-xs md:py-2 md:px-4 md:text-xl font-medium text-black">
+                {{ item.name }}
+              </h3>
               <h4 class="border border-gray-200 bg-white py-1 px-2 text-xs md:py-2 md:px-4 md:text-lg text-black">
                 {{ item.prices.price.value }}{{ item.prices.price.currencyCode }}
               </h4>
@@ -28,7 +30,7 @@
               class="h-full object-contain bg-white"
             />
             <div v-if="!item.images" class="h-full w-full bg-white/50 animate-pulse min-h-[100px] min-w-[100px]"></div>
-            <Prefetch :url="`/l0-api/products/${item.slug}`"><span class="w-0 h-0"></span></Prefetch>
+            <Prefetch :url="`/edgio-api/products/${item.slug}`"><span class="w-0 h-0"></span></Prefetch>
           </router-link>
         </div>
       </div>
@@ -37,10 +39,10 @@
 </template>
 
 <script>
-import Sidebar from './Sidebar.vue'
-import Prefetch from './Prefetch.vue'
-import HeartIcon from './HeartIcon.vue'
-import { filterProducts, relativizeURL } from '../../lib/helper'
+import Prefetch from '@edgio/vue/Prefetch'
+import Sidebar from '../components/Sidebar.vue'
+import HeartIcon from '../components/HeartIcon.vue'
+import { filterProducts, relativizeURL } from '../utils'
 
 export default {
   name: 'Commerce',
@@ -61,18 +63,13 @@ export default {
     }
   },
   watch: {
-    '$route.query.filter': {
-      handler: function (filter) {
-        this.createFilter()
-        this.setProducts(this.$route.params.slug, filter)
-      },
-      deep: true,
-      immediate: true,
-    },
     '$route.params.slug': {
       handler: function (slug) {
-        this.createFilter()
-        this.setProducts(slug, this.$route.query.filter)
+        if (!this.$route.query || !this.$route.query['filter']) {
+          this.createFilter()
+        } else {
+          this.setProducts(slug, this.$route.query.filter)
+        }
       },
       deep: true,
       immediate: true,
@@ -81,20 +78,18 @@ export default {
   methods: {
     getImage: (url) => relativizeURL(url),
     createFilter() {
-      if (!this.$route.query || !this.$route.query['filter']) {
-        this.$router.push({ path: this.$route.path, query: { filter: 'trending' } })
-      }
+      this.$router.push({ path: this.$route.path, query: { filter: 'trending' } })
     },
     setProducts(slug, query) {
       let link = window.location.origin
       if (slug) {
-        fetch(`${link}/l0-api/categories/${slug}`)
+        fetch(`${link}/edgio-api/categories/${slug}`)
           .then((res) => res.json())
           .then((res) => {
             this.items = filterProducts(res['items'], query)
           })
       } else {
-        fetch(`${link}/l0-api/products/all`)
+        fetch(`${link}/edgio-api/products/all`)
           .then((res) => res.json())
           .then((res) => {
             this.items = filterProducts(res, query)
