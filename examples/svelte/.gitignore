@@ -3,3 +3,6 @@
 
 .DS_Store
 .edgio
+
+# Edgio generated build directory
+.edgio

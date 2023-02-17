@@ -1,6 +1,6 @@
 <script>
   import Rating from './Rating.svelte'
-  import { Prefetch } from '@layer0/svelte'
+  import { Prefetch } from '@edgio/svelte'
   import { getCategory } from '../lib/cms'
   let data= []
   export let slug

@@ -1,6 +1,6 @@
 <script>
   import { getCategories } from '../lib/cms'
-  import { Prefetch } from '@layer0/svelte'
+  import { Prefetch } from '@edgio/svelte'
   const fetchCategories = (async () => {
     const response = await getCategories()
     return await response.categories
