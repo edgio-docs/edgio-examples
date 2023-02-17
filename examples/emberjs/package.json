@@ -19,7 +19,8 @@
     "test:ember": "ember test",
     "edgio:build": "edgio build",
     "edgio:deploy": "npm run build && edgio deploy",
-    "format": "prettier --write '**/*' --ignore-unknown"
+    "format": "prettier --write '**/*' --ignore-unknown",
+    "edgio:dev": "edgio dev"
   },
   "devDependencies": {
     "@edgio/cli": "^6.0.6",

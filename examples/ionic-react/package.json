@@ -44,7 +44,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "edgio:deploy": "npm run build && edgio deploy",
-    "format": "prettier --write '**/*' --ignore-unknown"
+    "format": "prettier --write '**/*' --ignore-unknown",
+    "edgio:dev": "edgio dev",
+    "edgio:build": "edgio build"
   },
   "prettier": {
     "semi": false,

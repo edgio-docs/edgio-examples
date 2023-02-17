@@ -12,7 +12,9 @@
     "start": "turbo run start",
     "types": "turbo run types",
     "edgio:deploy": "npm run --prefix ./site edgio:deploy",
-    "prettier-fix": "prettier --write ."
+    "prettier-fix": "prettier --write .",
+    "edgio:dev": "edgio dev",
+    "edgio:build": "edgio build"
   },
   "devDependencies": {
     "husky": "^7.0.4",

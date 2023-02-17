@@ -1,4 +1,9 @@
 {
   "name": "edgio-aws-store-example",
-  "repository": "git@github.com:edgio-docs/edgio-aws-store-example.git"
+  "repository": "git@github.com:edgio-docs/edgio-aws-store-example.git",
+  "scripts": {
+    "edgio:dev": "edgio dev",
+    "edgio:build": "edgio build",
+    "edgio:deploy": "edgio deploy"
+  }
 }

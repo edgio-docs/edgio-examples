@@ -7,7 +7,8 @@
     "stage": "react-static build --staging",
     "build": "react-static build",
     "analyze": "react-static build --analyze",
-    "serve": "serve dist -p 3000"
+    "serve": "serve dist -p 3000",
+    "edgio:dev": "edgio dev"
   },
   "dependencies": {
     "@reach/router": "^1.3.4",
