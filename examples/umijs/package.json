@@ -18,10 +18,10 @@
     "umi": "^3.5.20"
   },
   "devDependencies": {
-    "@edgio/cli": "^6.0.5",
-    "@edgio/core": "^6.0.5",
-    "@edgio/devtools": "^6.0.5",
-    "@edgio/prefetch": "^6.0.5",
+    "@edgio/cli": "^6.1.1",
+    "@edgio/core": "^6.1.1",
+    "@edgio/devtools": "^6.1.1",
+    "@edgio/prefetch": "^6.1.1",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
     "@umijs/preset-react": "1.x",
