@@ -10,10 +10,10 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@edgio/cli": "^6.0.6",
-    "@edgio/core": "^6.0.6",
-    "@edgio/devtools": "^6.0.6",
-    "@edgio/prefetch": "^6.0.6",
+    "@edgio/cli": "^6.1.1",
+    "@edgio/core": "^6.1.1",
+    "@edgio/devtools": "^6.1.1",
+    "@edgio/prefetch": "^6.1.1",
     "vuepress": "^1.5.3"
   },
   "repository": "git@github.com:edgio-docs/edgio-vuepress-example.git"
