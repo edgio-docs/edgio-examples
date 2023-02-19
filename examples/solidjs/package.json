@@ -11,10 +11,10 @@
     "format": "prettier --write '**/*' --ignore-unknown"
   },
   "devDependencies": {
-    "@edgio/cli": "^6.0.5",
-    "@edgio/core": "^6.0.5",
-    "@edgio/devtools": "^6.0.5",
-    "@edgio/prefetch": "^6.0.5",
+    "@edgio/cli": "^6.1.1",
+    "@edgio/core": "^6.1.1",
+    "@edgio/devtools": "^6.1.1",
+    "@edgio/prefetch": "^6.1.1",
     "@edgio/rum": "^5.0.8",
     "autoprefixer": "^10.4.8",
     "classnames": "^2.3.1",
