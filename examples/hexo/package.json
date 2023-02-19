@@ -25,11 +25,11 @@
     "hexo-theme-landscape": "^0.0.3"
   },
   "devDependencies": {
-    "@edgio/cli": "^6.0.5",
-    "@edgio/core": "^6.0.5",
-    "@edgio/devtools": "^6.0.5",
-    "@edgio/hexo": "^6.0.5",
-    "@edgio/prefetch": "^6.0.5"
+    "@edgio/cli": "^6.1.1",
+    "@edgio/core": "^6.1.1",
+    "@edgio/devtools": "^6.1.1",
+    "@edgio/hexo": "^6.1.1",
+    "@edgio/prefetch": "^6.1.1"
   },
   "repository": "git@github.com:edgio-docs/edgio-hexo-example.git"
 }
