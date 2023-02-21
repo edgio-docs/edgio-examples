@@ -1,0 +1,22 @@
+{
+  "name": "nuxt",
+  "scripts": {
+    "edgio:dev": "edgio dev",
+    "edgio:build": "edgio build",
+    "edgio:deploy": "edgio deploy",
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "@edgio/cli": "^6.1.1",
+    "@edgio/core": "^6.1.1",
+    "@edgio/devtools": "^6.1.1",
+    "@edgio/nuxt-nitro": "^6.1.1",
+    "@edgio/prefetch": "^6.1.1",
+    "@edgio/vue": "^6.1.1",
+    "nuxt": "^3.2.2"
+  }
+}
