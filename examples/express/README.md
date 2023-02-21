@@ -1,25 +1,24 @@
-# Layer0 Express Example
+# Edgio Express Example
 
-A simple example of an Express app configured for deployment on [Layer0](https://www.layer0.co/).
+A simple example of an Express app configured for deployment on [Edgio](https://www.edg.io/).
 
-For more information on deploying Express apps to Layer0, see the [Express guide](https://docs.layer0.co/guides/express).
+For more information on deploying Express apps to Edgio, see the [Express guide](https://docs.edg.io/guides/express).
 
 ## Setup
 
 ```
-git clone https://github.com/layer0-docs/layer0-express-example.git
+git clone https://github.com/edgio-docs/edgio-express-example.git
 npm install
 ```
 
-## Running Locally
+## Running Express Locally with Edgio
 
 ```
-0 dev
+edgio dev
 ```
 
-## Deploying to Layer0
+## Deploying To Edgio
 
 ```
-0 deploy
+edgio deploy
 ```
-

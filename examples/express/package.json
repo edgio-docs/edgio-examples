@@ -1,20 +1,17 @@
 {
+  "name": "edgio-express-example",
   "scripts": {
+    "start": "node ./bin/www",
     "edgio:dev": "edgio dev",
     "edgio:build": "edgio build",
     "edgio:deploy": "edgio deploy",
-    "deploy": "edgio deploy",
-    "start": "node ./bin/www"
+    "format": "prettier --write '**/*' --ignore-unknown"
   },
-  "name": "edgio-express-example",
-  "version": "0.0.0",
-  "private": true,
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
-    "jade": "~1.11.0",
     "morgan": "~1.9.1"
   },
   "devDependencies": {
@@ -22,7 +19,9 @@
     "@edgio/core": "^6.1.1",
     "@edgio/devtools": "^6.1.1",
     "@edgio/express": "^6.1.1",
-    "@edgio/prefetch": "^6.1.1"
+    "@edgio/prefetch": "^6.1.1",
+    "@vercel/nft": "^0.22.6",
+    "prettier": "^2.8.4"
   },
   "repository": "git@github.com:edgio-docs/edgio-express-example.git"
 }
