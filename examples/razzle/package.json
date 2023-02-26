@@ -14,8 +14,8 @@
     "format": "prettier '**/*' --ignore-unknown --write"
   },
   "dependencies": {
-    "@edgio/razzle": "^6.0.5",
-    "@edgio/react": "^6.0.5",
+    "@edgio/razzle": "^6.1.1",
+    "@edgio/react": "^6.1.1",
     "axios": "^0.21.1",
     "express": "^4.17.1",
     "npm": "^8.1.4",
@@ -27,10 +27,10 @@
     "workbox-webpack-plugin": "^6.4.1"
   },
   "devDependencies": {
-    "@edgio/cli": "^6.0.5",
-    "@edgio/core": "^6.0.5",
-    "@edgio/devtools": "^6.0.5",
-    "@edgio/prefetch": "^6.0.5",
+    "@edgio/cli": "^6.1.1",
+    "@edgio/core": "^6.1.1",
+    "@edgio/devtools": "^6.1.1",
+    "@edgio/prefetch": "^6.1.1",
     "babel-preset-razzle": "4.0.4",
     "html-webpack-plugin": "^4.5.2",
     "mini-css-extract-plugin": "^0.9.0",
