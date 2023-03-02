@@ -4,6 +4,7 @@ export default function Document() {
   return (
     <Html>
       <Head>
+        <link rel="icon" type="icon" href="/logo/favicon.ico"></link>
         <style
           dangerouslySetInnerHTML={{
             __html: `* {font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;}`,
