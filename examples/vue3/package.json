@@ -17,12 +17,12 @@
     "vue-router": "^4.1.6"
   },
   "devDependencies": {
-    "@edgio/cli": "^6.1.0",
-    "@edgio/core": "^6.1.0",
-    "@edgio/devtools": "^6.1.0",
-    "@edgio/prefetch": "^6.1.0",
-    "@edgio/vue": "^6.1.0",
-    "@edgio/vue-cva": "^6.1.0",
+    "@edgio/cli": "^6.1.1",
+    "@edgio/core": "^6.1.1",
+    "@edgio/devtools": "^6.1.1",
+    "@edgio/prefetch": "^6.1.1",
+    "@edgio/vue": "^6.1.1",
+    "@edgio/vue-cva": "^6.1.1",
     "@rushstack/eslint-patch": "^1.1.4",
     "@vitejs/plugin-vue": "^4.0.0",
     "@vue/eslint-config-prettier": "^7.0.0",
