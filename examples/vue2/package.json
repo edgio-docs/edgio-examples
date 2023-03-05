@@ -15,12 +15,12 @@
     "vue-router": "3.5.4"
   },
   "devDependencies": {
-    "@edgio/cli": "^6.1.1",
-    "@edgio/core": "^6.1.1",
-    "@edgio/devtools": "^6.1.1",
-    "@edgio/prefetch": "^6.1.1",
+    "@edgio/cli": "^6.1.2",
+    "@edgio/core": "^6.1.2",
+    "@edgio/devtools": "^6.1.2",
+    "@edgio/prefetch": "^6.1.2",
     "@edgio/rum": "^6.0.0",
-    "@edgio/vue": "^6.1.1",
+    "@edgio/vue": "^6.1.2",
     "@vue/cli-service": "~4.5.0",
     "tailwindcss": "^3.1.6",
     "vue-template-compiler": "^2.6.11"
