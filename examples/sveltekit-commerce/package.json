@@ -16,8 +16,8 @@
     "@shopify/shopify-api": "latest"
   },
   "devDependencies": {
-    "@edgio/cli": "^6.1.1",
-    "@edgio/core": "^6.1.1",
+    "@edgio/cli": "^6.1.2",
+    "@edgio/core": "^6.1.2",
     "@sveltejs/adapter-vercel": "latest",
     "@sveltejs/kit": "latest",
     "autoprefixer": "latest",
