@@ -1059,10 +1059,10 @@
     "@docsearch/css" "3.3.2"
     algoliasearch "^4.0.0"
 
-"@edgio/cli@6.1.1":
-  version "6.1.1"
-  resolved "https://registry.yarnpkg.com/@edgio/cli/-/cli-6.1.1.tgz#ab436beed178d5d577bcd6039935d08c2eb3410d"
-  integrity sha512-o6L6ugT4KRpe02jJHyzhA1jEO6GR35LKxuIgs1Zf1G6j4J9dpHr8RVSEfPjGWu4q19RVQZsZtSDEYEVJMfTTbQ==
+"@edgio/cli@6.1.2":
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/@edgio/cli/-/cli-6.1.2.tgz#9721e0474fba831da51f3ef3514aaa91a5dd9ab2"
+  integrity sha512-72la6qpn8RGxZu3m0VZS2OV9douOz/MyOWK5o1TYLIK6PK0cL+oAaViEmVtg7/+yJyZ6QHX09kKRyKcBJrr3/g==
   dependencies:
     axios "^0.21.2"
     chalk "^4.1.2"
@@ -1072,7 +1072,7 @@
     conf "^6.1.0"
     cross-spawn "^7.0.3"
     date-fns "^2.27.0"
-    decode-uri-component "^0.2.0"
+    decode-uri-component "^0.2.2"
     execa "^3.2.0"
     filesize "^6.0.1"
     form-data "^2.5.1"
@@ -1106,16 +1106,16 @@
     yauzl "^2.10.0"
     yazl "^2.5.1"
 
-"@edgio/core@6.1.1", "@edgio/core@^6.1.1":
-  version "6.1.1"
-  resolved "https://registry.yarnpkg.com/@edgio/core/-/core-6.1.1.tgz#2e405b2483a10bdf77e66cee3f9f8717af797699"
-  integrity sha512-Y3TJBnD5+82ufpPyFVIMbnC6fKXmmSGvCfSE6NiLx2uwoB5gmC84vd1K0Nm3VulYEGTIC14MiUGDjbbf688yaw==
+"@edgio/core@6.1.2", "@edgio/core@^6.1.2":
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/@edgio/core/-/core-6.1.2.tgz#4d61b673faf6722a072e9ed4f8df6ac8d0c2e4c8"
+  integrity sha512-NQeEiB+CRSo2zfNcMWNSw2fsH3Sh4yLngyrrxVNcVmNo6gluiyt7UGMPrZoNrNyXasVi7VxK11jq2UX929IYFA==
   dependencies:
     "@babel/parser" "^7.18.9"
     "@babel/traverse" "^7.18.9"
     "@types/lodash.clonedeep" "^4.5.6"
     ajv "^6.12.6"
-    babel-loader "^8.2.2"
+    babel-loader "^8.2.5"
     chalk "^4.1.2"
     chardet "^1.4.0"
     chokidar "^3.5.1"
@@ -1123,7 +1123,7 @@
     content-type "^1.0.4"
     cookie "^0.4.1"
     cross-spawn "^7.0.3"
-    decode-uri-component "^0.2.0"
+    decode-uri-component "^0.2.2"
     deepmerge "^4.2.2"
     esbuild "^0.14.49"
     express "^4.17.1"
@@ -1143,26 +1143,26 @@
     shelljs "^0.8.5"
     slash "^3.0.0"
     tcp-port-used "^1.0.2"
-    ts-loader "^8.2.0"
+    ts-loader "^8.4.0"
     unixify "^1.0.0"
     uuid "^8.3.2"
     workbox-build "^6.5.4"
 
-"@edgio/devtools@6.1.1":
-  version "6.1.1"
-  resolved "https://registry.yarnpkg.com/@edgio/devtools/-/devtools-6.1.1.tgz#b92f9ce5e9abcc95dcee7ca93847c5522c26b205"
-  integrity sha512-eNQtTWhvs5FODwqTJZ+ye2LqpX4ucExwB3e2S5joe92y4LYJUVKrJ9A6iOn4oJ/5UB+CXJF50AOtvJg4brmAzQ==
+"@edgio/devtools@6.1.2":
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/@edgio/devtools/-/devtools-6.1.2.tgz#92afc7c1dfa845e9abdd34d5ef7f9e7cb0c01581"
+  integrity sha512-5XIKd4/VXLmL23LEmp8GCZEOWj5/FUCZ9gcX/jmQrPjZFP7pwdWdMTyUiPXRB79uRAWH16Ay77RxhNovoVyrBQ==
   dependencies:
     clsx "^1.1.1"
-    lodash "^4.17.20"
+    lodash "^4.17.21"
     sirv-cli "^1.0.0"
 
-"@edgio/prefetch@6.1.1":
-  version "6.1.1"
-  resolved "https://registry.yarnpkg.com/@edgio/prefetch/-/prefetch-6.1.1.tgz#67b8c0573509e9d9433cde066c0d887493fd352e"
-  integrity sha512-QKH8kWrvAOO3TkdhMgmlI6eIc1LisAbc+tPinznPkrOUOGnURjlvAaXjOC8PwUcSt4NeJpjwx0Z51lBGA8889Q==
+"@edgio/prefetch@6.1.2":
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/@edgio/prefetch/-/prefetch-6.1.2.tgz#050a1413795dd120a24e3cb42f529d3547c41956"
+  integrity sha512-fJmcpAQOiAkrbz+LUtykcJsvEni3U2hIKvolrZY5S3uB1O+3ONYyHiVLcl3jXivPHm+f1moHb/ugFaFSoSDvbg==
   dependencies:
-    "@edgio/core" "^6.1.1"
+    "@edgio/core" "^6.1.2"
     cheerio "^1.0.0-rc.3"
     json-query "^2.2.2"
     workbox-cacheable-response "^5.1.2"
@@ -1610,7 +1610,7 @@ axios@^0.21.2:
   dependencies:
     follow-redirects "^1.14.0"
 
-babel-loader@^8.2.2:
+babel-loader@^8.2.5:
   version "8.3.0"
   resolved "https://registry.yarnpkg.com/babel-loader/-/babel-loader-8.3.0.tgz#124936e841ba4fe8176786d6ff28add1f134d6a8"
   integrity sha512-H8SvsMF+m9t15HNLMipppzkC+Y2Yq+v3SonZyU70RBL/h1gxPkH08Ot8pEE9Z4Kd+czyWJClmFS8qzIP9OZ04Q==
@@ -2123,7 +2123,7 @@ decamelize@^1.2.0:
   resolved "https://registry.yarnpkg.com/decamelize/-/decamelize-1.2.0.tgz#f6534d15148269b20352e7bee26f501f9a191290"
   integrity sha512-z2S+W9X73hAUUki+N+9Za2lBlun89zigOyGrsax+KUQ6wKW4ZoWpEYBkGhQjwAjjDCkWxhY0VKEhk8wzY7F5cA==
 
-decode-uri-component@^0.2.0:
+decode-uri-component@^0.2.2:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/decode-uri-component/-/decode-uri-component-0.2.2.tgz#e69dbe25d37941171dd540e024c444cd5188e1e9"
   integrity sha512-FqUYQ+8o158GyGTrMFJms9qh3CqTKvAqgqsTnkLI8sKu0028orqBhxNMFkFen0zGyg6epACD32pjVk58ngIErQ==
@@ -4825,7 +4825,7 @@ tr46@~0.0.3:
   resolved "https://registry.yarnpkg.com/tr46/-/tr46-0.0.3.tgz#8184fd347dac9cdc185992f3a6622e14b9d9ab6a"
   integrity sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==
 
-ts-loader@^8.2.0:
+ts-loader@^8.4.0:
   version "8.4.0"
   resolved "https://registry.yarnpkg.com/ts-loader/-/ts-loader-8.4.0.tgz#e845ea0f38d140bdc3d7d60293ca18d12ff2720f"
   integrity sha512-6nFY3IZ2//mrPc+ImY3hNWx1vCHyEhl6V+wLmL4CZcm6g1CqX7UKrkc6y0i4FwcfOhxyMPCfaEvh20f4r9GNpw==
