@@ -13,12 +13,12 @@
     "saber": "^0.11.7"
   },
   "devDependencies": {
-    "@edgio/cli": "^6.1.1",
-    "@edgio/core": "^6.1.1",
-    "@edgio/devtools": "^6.1.1",
-    "@edgio/prefetch": "^6.1.1",
+    "@edgio/cli": "^6.1.2",
+    "@edgio/core": "^6.1.2",
+    "@edgio/devtools": "^6.1.2",
+    "@edgio/prefetch": "^6.1.2",
     "@edgio/rum": "^5.0.8",
-    "@edgio/vue": "^6.1.1",
+    "@edgio/vue": "^6.1.2",
     "autoprefixer": "^10.4.8",
     "node-fetch": "^3.2.10",
     "postcss": "^8.4.16",
