@@ -23,10 +23,10 @@
     "edgio:dev": "edgio dev"
   },
   "devDependencies": {
-    "@edgio/cli": "^6.1.1",
-    "@edgio/core": "^6.1.1",
-    "@edgio/devtools": "^6.1.1",
-    "@edgio/prefetch": "^6.1.1",
+    "@edgio/cli": "^6.1.2",
+    "@edgio/core": "^6.1.2",
+    "@edgio/devtools": "^6.1.2",
+    "@edgio/prefetch": "^6.1.2",
     "@ember/optional-features": "^2.0.0",
     "@ember/test-helpers": "^2.4.2",
     "@glimmer/component": "^1.0.4",
