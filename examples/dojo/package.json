@@ -20,10 +20,10 @@
   "devDependencies": {
     "@dojo/cli": "~8.0.0",
     "@dojo/cli-build-app": "~8.0.0",
-    "@edgio/cli": "^6.1.1",
-    "@edgio/core": "^6.1.1",
-    "@edgio/devtools": "^6.1.1",
-    "@edgio/prefetch": "^6.1.1",
+    "@edgio/cli": "^6.1.2",
+    "@edgio/core": "^6.1.2",
+    "@edgio/devtools": "^6.1.2",
+    "@edgio/prefetch": "^6.1.2",
     "@types/node": "~9.6.5",
     "prettier": "^2.7.1",
     "typescript": "~3.5.3"

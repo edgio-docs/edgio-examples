@@ -14,7 +14,7 @@
   },
   "sideEffects": false,
   "dependencies": {
-    "@edgio/express": "^6.1.1",
+    "@edgio/express": "^6.1.2",
     "@remix-run/express": "^1.6.8",
     "@remix-run/node": "^1.6.8",
     "@remix-run/react": "^1.6.8",
@@ -25,11 +25,11 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@edgio/cli": "^6.1.1",
-    "@edgio/core": "^6.1.1",
-    "@edgio/devtools": "^6.1.1",
-    "@edgio/prefetch": "^6.1.1",
-    "@edgio/react": "^6.1.1",
+    "@edgio/cli": "^6.1.2",
+    "@edgio/core": "^6.1.2",
+    "@edgio/devtools": "^6.1.2",
+    "@edgio/prefetch": "^6.1.2",
+    "@edgio/react": "^6.1.2",
     "@edgio/rum": "^5.0.8",
     "@heroicons/react": "^1.0.6",
     "@remix-run/dev": "^1.6.8",

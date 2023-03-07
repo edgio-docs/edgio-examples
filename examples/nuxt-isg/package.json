@@ -18,12 +18,12 @@
     "rss-to-json": "^2.0.2"
   },
   "devDependencies": {
-    "@edgio/cli": "^6.1.1",
-    "@edgio/core": "^6.1.1",
-    "@edgio/devtools": "^6.1.1",
-    "@edgio/nuxt": "^6.1.1",
-    "@edgio/prefetch": "^6.1.1",
-    "@edgio/vue": "^6.1.1",
+    "@edgio/cli": "^6.1.2",
+    "@edgio/core": "^6.1.2",
+    "@edgio/devtools": "^6.1.2",
+    "@edgio/nuxt": "^6.1.2",
+    "@edgio/prefetch": "^6.1.2",
+    "@edgio/vue": "^6.1.2",
     "@nuxtjs/tailwindcss": "^4.0.1",
     "core-js": "^3.9.1",
     "fs-cheerio": "^3.0.0",

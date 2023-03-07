@@ -24,12 +24,12 @@
     "tslib": "^2.3.0"
   },
   "devDependencies": {
-    "@edgio/cli": "^6.1.1",
-    "@edgio/core": "^6.1.1",
-    "@edgio/devtools": "^6.1.1",
-    "@edgio/next": "^6.1.1",
-    "@edgio/prefetch": "^6.1.1",
-    "@edgio/react": "^6.1.1",
+    "@edgio/cli": "^6.1.2",
+    "@edgio/core": "^6.1.2",
+    "@edgio/devtools": "^6.1.2",
+    "@edgio/next": "^6.1.2",
+    "@edgio/prefetch": "^6.1.2",
+    "@edgio/react": "^6.1.2",
     "@emotion/babel-plugin": "11.9.2",
     "@nrwl/cli": "14.0.5",
     "@nrwl/cypress": "14.0.5",
