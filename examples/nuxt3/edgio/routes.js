@@ -5,19 +5,16 @@ import { isProductionBuild } from '@edgio/core/environment'
 import { API_CACHE_HANDLER, IMAGE_CACHE_HANDLER, EDGE_CACHE_HANDLER } from './cache'
 
 const router = new Router()
-
-// Regex to catch multiple hostnames
-// Any deployment will have a L0 permalink
-// Don't allow Google bot to crawl it, read more on:
-// https://docs.edg.io/guides/cookbook#blocking-search-engine-crawlers
-router.noIndexPermalink()
+// Fallback in case any request is not served by any routes above will be handled by default routes
+router.use(nuxtRoutes)
 
 // Pre-render the static home page
 // By pre-rendering, once the project is deployed
 // the set of links are visited to warm the cache
 // for future visits (expected to be the first view for real users)
 // More on static prerendering: https://docs.edg.io/guides/static_prerendering
-router.prerender(getPrerenderRequests)
+
+// router.prerender(getPrerenderRequests)
 
 // API (Any backend) caching
 router.match('/l0-api/:path*', API_CACHE_HANDLER)
@@ -34,8 +31,5 @@ if (isProductionBuild()) {
   router.match('/product/:name', EDGE_CACHE_HANDLER)
   router.match('/commerce/:name', EDGE_CACHE_HANDLER)
 }
-
-// Fallback in case any request is not served by any routes above will be handled by default routes
-router.use(nuxtRoutes)
 
 export default router
