@@ -27,7 +27,6 @@ env:
   EDGIO_TEAM: edgio-community
   EDGIO_SITE: examples
   EDGIO_DEPLOY_TOKEN: ${{secrets.EDGIO_EXAMPLES_DEPLOY_TOKEN}}
-  OPTIONAL_API_URL: --api-url=https://app.layer0.co
   COMMENT_ID: preview-${{ github.ref }}
   DEPLOY_ALL: ${{ github.event.inputs.deploy-all }}
 
@@ -104,7 +103,7 @@ jobs:
         example: ${{ fromJson( needs.prepare.outputs.matrix ) }}
     env:
       EXAMPLE_DIR: examples/${{ matrix.example }}
-      ENV_CMD_ARGS: --site=$EDGIO_SITE --team=$EDGIO_TEAM --token=$EDGIO_DEPLOY_TOKEN $OPTIONAL_API_URL
+      ENV_CMD_ARGS: --site=$EDGIO_SITE --team=$EDGIO_TEAM --token=$EDGIO_DEPLOY_TOKEN
     steps:
       - uses: actions/checkout@v3
 
