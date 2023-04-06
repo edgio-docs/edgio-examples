@@ -34,5 +34,6 @@
     "semi": false,
     "singleQuote": true,
     "printWidth": 150
-  }
+  },
+  "repository": "git@github.com:edgio-docs/edgio-marko-run-example.git"
 }
