@@ -1,0 +1,31 @@
+{
+  "include": ["src/**/*", "vite.config.ts", ".marko-run/*"],
+  "compilerOptions": {
+    "rootDir": "./",
+    "outDir": "./dist",
+    "noImplicitOverride": false,
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "strict": true,
+    "target": "ESNext",
+    "module": "ESNext",
+    "sourceMap": false,
+    "composite": true,
+    "incremental": true,
+    "stripInternal": true,
+    "noUnusedLocals": true,
+    "isolatedModules": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "moduleResolution": "node",
+    "noUnusedParameters": true,
+    "allowUnusedLabels": false,
+    "noImplicitReturns": false,
+    "emitDeclarationOnly": true,
+    "allowUnreachableCode": false,
+    "importsNotUsedAsValues": "error",
+    "noFallthroughCasesInSwitch": true,
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true
+  }
+}

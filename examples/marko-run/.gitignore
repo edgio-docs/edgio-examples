@@ -1,0 +1,5 @@
+node_modules/
+.marko-run/
+assets/
+dist/
+.edgio/
