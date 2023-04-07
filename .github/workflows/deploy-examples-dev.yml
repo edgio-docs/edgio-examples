@@ -222,7 +222,7 @@ jobs:
             
           # Get the edge link from the output of the command
           echo "$DEPLOY" |
-            sed -n 's/.*\(https.*-limelight\.link\).*/\1/p' |
+            sed -n 's/.*\(https.*\(-limelight\|\.edgio\)\.link\).*/\1/p' |
             {
               read edge || edge=""
               if [[ -n $edge ]]; then
