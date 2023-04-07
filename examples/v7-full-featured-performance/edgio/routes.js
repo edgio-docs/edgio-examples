@@ -4,10 +4,7 @@ import { nextRoutes } from '@edgio/next'
 import { isProductionBuild } from '@edgio/core/environment'
 import { IMDB_CACHE_HANDLER, SAMPLEAPIS_CACHE_HANDLER, NEXT_CACHE_HANDLER, API_CACHE_HANDLER, IMAGE_CACHE_HANDLER } from './cache'
 
-const router = new Router()
-
-// Fallback in case any request is not served by any routes above will be handled by default routes
-router.use(nextRoutes)
+const router = new Router().use(nextRoutes)
 
 // API (Any backend) caching
 router.match('/edgio-api/:path*', API_CACHE_HANDLER)

@@ -10,9 +10,7 @@ module.exports = {
       override_host_header: 'edgio-community-ecommerce-api-example-default.layer0-limelight.link',
       hosts: [
         {
-          location: {
-            hostname: 'edgio-community-ecommerce-api-example-default.layer0-limelight.link',
-          },
+          location: 'edgio-community-ecommerce-api-example-default.layer0-limelight.link',
         },
       ],
     },
@@ -21,7 +19,7 @@ module.exports = {
       override_host_header: 'opt.moovweb.net',
       hosts: [
         {
-          location: { hostname: 'opt.moovweb.net' },
+          location: 'opt.moovweb.net',
         },
       ],
     },
@@ -30,7 +28,7 @@ module.exports = {
       override_host_header: 'api.sampleapis.com',
       hosts: [
         {
-          location: { hostname: 'api.sampleapis.com' },
+          location: 'api.sampleapis.com',
         },
       ],
     },
@@ -39,7 +37,7 @@ module.exports = {
       override_host_header: 'search.imdbot.workers.dev',
       hosts: [
         {
-          location: { hostname: 'search.imdbot.workers.dev' },
+          location: 'search.imdbot.workers.dev',
         },
       ],
     },
