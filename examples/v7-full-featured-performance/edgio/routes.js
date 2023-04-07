@@ -6,6 +6,8 @@ import { IMDB_CACHE_HANDLER, SAMPLEAPIS_CACHE_HANDLER, NEXT_CACHE_HANDLER, API_C
 
 const router = new Router()
 
+router.use(nextRoutes)
+
 // API (Any backend) caching
 router.match('/edgio-api/:path*', API_CACHE_HANDLER)
 
@@ -39,6 +41,5 @@ router.match('/edgio-imdb/:path*', IMDB_CACHE_HANDLER)
 //   router.match('/movie/:name', NEXT_CACHE_HANDLER)
 // }
 
-router.use(nextRoutes)
 
 export default router
