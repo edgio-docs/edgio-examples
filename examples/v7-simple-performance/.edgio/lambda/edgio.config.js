@@ -6,11 +6,7 @@ module.exports = {
       override_host_header: "publicdomainreview.org",
       hosts: [
         {
-          location: [
-            {
-              hostname: "publicdomainreview.org"
-            }
-          ]
+          location: "publicdomainreview.org"
         }
       ]
     }
