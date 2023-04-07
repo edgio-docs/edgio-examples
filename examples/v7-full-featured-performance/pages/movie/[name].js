@@ -83,8 +83,8 @@ export default Movie
 
 export async function getServerSideProps({ req, params }) {
   const slug = params.name.trim()
-  const resp = await fetch(`${getOrigin(req)}/l0-imdb/?tt=${slug}`)
-
+  const resp = await fetch(`${getOrigin(req)}/edgio-imdb/?tt=${slug}`)
+  
   if (!resp.ok) {
     return {
       notFound: true,

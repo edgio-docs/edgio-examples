@@ -9935,7 +9935,7 @@ __export(routes_exports, {
 });
 module.exports = __toCommonJS(routes_exports);
 var import_router = __toESM(require_router());
-var routes_default = new import_router.Router().match("/:path", {
+var routes_default = new import_router.Router().match(":path", {
   origin: {
     set_origin: "origin"
   }

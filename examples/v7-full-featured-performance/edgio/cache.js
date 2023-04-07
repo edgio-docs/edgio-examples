@@ -1,4 +1,3 @@
-import { CustomCacheKey } from '@edgio/core/router'
 export const API_CACHE_HANDLER = ({ cache, proxy }) => {
   cache({
     edge: {
@@ -17,34 +16,8 @@ export const API_CACHE_HANDLER = ({ cache, proxy }) => {
       forcePrivateCaching: true,
     },
   })
-  proxy('api', { path: ':path*' })
+  proxy('api', { path: '/:path*' })
 }
-// export const API_CACHE_HANDLER = {
-//   caching: {
-//     max_age: '3600s',
-//     stale_while_revalidate: '86400s',
-//     ignore_origin_no_cache: [200],
-//     service_worker_max_age: '86400s',
-//     bypass_client_cache: true,
-//   },
-//   headers: {
-//     set_response_headers: {
-//       'x-sw-cache-control': 'max-age=86400',
-//     },
-//   },
-//   origin: {
-//     set_origin: 'api',
-//   },
-//   url: {
-//     url_rewrite: [
-//       {
-//         source: '/:path*',
-//         syntax: 'path-to-regexp',
-//         destination: ':path*',
-//       },
-//     ],
-//   },
-// }
 
 export const IMAGE_CACHE_HANDLER = {
   caching: {
@@ -125,9 +98,10 @@ export const SAMPLEAPIS_CACHE_HANDLER = ({ cache, proxy }) => {
   proxy('sampleapis', {
     path: ':path*',
     transformResponse: (response) => {
-      if (response.body) {
-        response.body = response.body.toString().replace(/https:\/\/m.media-amazon.com\//g, '/l0-opt?quality=80&img=https://m.media-amazon.com/')
-      }
+      // TODO response.body is not a string
+      // if (response.body) {
+      //   response.body = response.body.toString().replace(/https:\/\/m.media-amazon.com\//g, '/edgio-opt?quality=80&img=https://m.media-amazon.com/')
+      // }
     },
   })
 }
@@ -153,9 +127,10 @@ export const IMDB_CACHE_HANDLER = ({ cache, proxy }) => {
   proxy('imdb', {
     path: ':path*',
     transformResponse: (response) => {
-      if (response.body) {
-        response.body = response.body.toString().replace('https://m.media-amazon.com/', '/l0-opt?width=600&img=https://m.media-amazon.com/')
-      }
+      // TODO response.body is not a string
+      // if (response.body) {
+      //   response.body = response.body.toString().replace('https://m.media-amazon.com/', '/edgio-opt?width=600&img=https://m.media-amazon.com/')
+      // }
     },
   })
 }

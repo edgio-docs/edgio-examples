@@ -28,8 +28,8 @@ const Search = ({ data }) => {
 export default Search
 
 export async function getServerSideProps({ req, query }) {
-  const resp = await fetch(`${getOrigin(req)}/l0-api/${query.name ? `categories/${query.name}` : 'products/all'}`)
-  console.log(resp)
+  const resp = await fetch(`${getOrigin(req)}/edgio-api/${query.name ? `categories/${query.name}` : 'products/all'}`)
+  console.log(`${getOrigin(req)}/edgio-api/${query.name ? `categories/${query.name}` : 'products/all'}`, resp)
   if (!resp.ok) {
     return {
       notFound: true,

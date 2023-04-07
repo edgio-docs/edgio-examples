@@ -4,7 +4,7 @@
 import { Router } from '@edgio/core/router';
 
 export default new Router()
-  .match('/:path', {
+  .match(':path', {
     origin: {
       set_origin: 'origin',
     },

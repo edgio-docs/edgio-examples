@@ -54,7 +54,7 @@ export default Product
 
 export async function getServerSideProps({ req, params }) {
   const slug = params.name
-  const resp = await fetch(`${getOrigin(req)}/l0-api/products/${slug}`)
+  const resp = await fetch(`${getOrigin(req)}/edgio-api/products/${slug}`)
   if (!resp.ok) {
     return {
       notFound: true,
