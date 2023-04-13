@@ -17,8 +17,6 @@ module.exports = {
         {
           // The domain name or IP address of the origin server
           location: 'edgio-community-ecommerce-api-example-default.layer0-limelight.link',
-          // hostHeader: 'edgio-community-ecommerce-api-example-default.layer0-limelight.link',
-          disableCheckCert: true,
         },
       ],
     },
@@ -33,7 +31,6 @@ module.exports = {
         {
           // The domain name or IP address of the origin serve r
           location: 'opt.moovweb.net',
-          disableCheckCert: true,
         },
       ],
     },

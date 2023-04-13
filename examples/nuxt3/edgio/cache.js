@@ -11,9 +11,6 @@ export const API_CACHE_HANDLER = ({ cache, proxy }) => {
       serviceWorkerSeconds: 60 * 60 * 24,
     },
   })
-  // TODO: check if it gives error when deployed also
-  // the issue -> when the slash isnt there, the path is mapped to something like localhost:3000categories instead of localhost:3000/categories
-  // it makes sense in terms of express.js, but it obviously worked before, so - dont know
   proxy('api', { path: '/:path*' })
 }
 

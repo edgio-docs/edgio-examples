@@ -1,10 +1,11 @@
 import { Router } from '@edgio/core'
 import { nuxtRoutes } from '@edgio/nuxt-nitro'
-import getPrerenderRequests from './prerenderRequests'
+// import getPrerenderRequests from './prerenderRequests'
 import { isProductionBuild } from '@edgio/core/environment'
 import { API_CACHE_HANDLER, IMAGE_CACHE_HANDLER, EDGE_CACHE_HANDLER } from './cache'
 
 const router = new Router()
+
 // Fallback in case any request is not served by any routes above will be handled by default routes
 router.use(nuxtRoutes)
 
@@ -13,7 +14,6 @@ router.use(nuxtRoutes)
 // the set of links are visited to warm the cache
 // for future visits (expected to be the first view for real users)
 // More on static prerendering: https://docs.edg.io/guides/static_prerendering
-
 // router.prerender(getPrerenderRequests)
 
 // API (Any backend) caching

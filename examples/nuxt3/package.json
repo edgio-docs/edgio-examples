@@ -11,13 +11,13 @@
     "format": "prettier --write '**/*' --ignore-unknown"
   },
   "devDependencies": {
-    "@edgio/cli": "^7.0.1",
-    "@edgio/core": "^7.0.1",
-    "@edgio/devtools": "^7.0.1",
-    "@edgio/nuxt-nitro": "^7.0.1",
-    "@edgio/prefetch": "^7.0.1",
+    "@edgio/cli": "^7.0.7",
+    "@edgio/core": "^7.0.7",
+    "@edgio/devtools": "^7.0.7",
+    "@edgio/nuxt-nitro": "^7.0.7",
+    "@edgio/prefetch": "^7.0.7",
     "@edgio/rum": "latest",
-    "@edgio/vue": "^7.0.1"
+    "@edgio/vue": "^7.0.7"
   },
   "dependencies": {
     "@nuxtjs/tailwindcss": "^6.1.3",

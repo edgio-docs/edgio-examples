@@ -2,15 +2,7 @@ const path = require('path')
 
 export default {
   // Target: https://go.nuxtjs.dev/config-target
-  target: 'static',
-  generate: {
-    crawler: false,
-    fallback: false,
-    exclude: [
-      '/',
-      '/error'
-    ]
-  },
+  target: 'server',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {

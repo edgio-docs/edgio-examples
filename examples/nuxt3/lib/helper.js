@@ -1,7 +1,7 @@
 export const relativizeURL = (str) =>
   str.replace(
-    'https://edgio-community-ecommerce-api-example-default.layer0-limelight.link/',
-    '/l0-opt?quality=30&img=https://edgio-community-ecommerce-api-example-default.layer0-limelight.link/'
+    'https://edgio-docs-edgio-ecommmerce-api-example-default.edgio-limelight.link/',
+    '/l0-opt?quality=30&img=https://edgio-docs-edgio-ecommmerce-api-example-default.edgio-limelight.link/'
   )
 
 export const getOrigin = (req) => {

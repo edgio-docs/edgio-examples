@@ -12,7 +12,7 @@ export const API_CACHE_HANDLER = ({ cache, proxy, removeUpstreamResponseHeader }
       serviceWorkerSeconds: 60 * 60 * 24,
     },
   })
-  proxy('api', { path: ':path*' })
+  proxy('api', { path: '/:path*' })
 }
 
 export const EDGE_CACHE_HANDLER = ({ cache }) => {
