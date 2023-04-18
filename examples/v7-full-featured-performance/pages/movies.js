@@ -28,7 +28,9 @@ const Search = ({ data }) => {
 export default Search
 
 export async function getServerSideProps({ req, query }) {
+  console.log('fetch for movies', req.headers, `${getOrigin(req)}/edgio-sampleapis/movies/${query.category ? `${query.category}` : 'animation'}`)
   const resp = await fetch(`${getOrigin(req)}/edgio-sampleapis/movies/${query.category ? `${query.category}` : 'animation'}`)
+  console.log('resp', resp)
   if (!resp.ok) {
     return {
       notFound: true,

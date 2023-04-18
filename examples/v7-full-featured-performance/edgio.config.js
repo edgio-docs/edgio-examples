@@ -6,20 +6,20 @@ module.exports = {
   routes: './edgio/routes.js',
   origins: [
     {
-      name: 'api',
-      override_host_header: 'edgio-community-ecommerce-api-example-default.layer0-limelight.link',
-      hosts: [
-        {
-          location: 'edgio-community-ecommerce-api-example-default.layer0-limelight.link',
-        },
-      ],
-    },
-    {
       name: 'image',
       override_host_header: 'opt.moovweb.net',
       hosts: [
         {
           location: 'opt.moovweb.net',
+        },
+      ],
+    },
+    {
+      name: 'api',
+      override_host_header: 'edgio-community-ecommerce-api-example-default.layer0-limelight.link',
+      hosts: [
+        {
+          location: 'edgio-community-ecommerce-api-example-default.layer0-limelight.link',
         },
       ],
     },
