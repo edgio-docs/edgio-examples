@@ -24,11 +24,11 @@
     "styled-components": "^5.2.0"
   },
   "devDependencies": {
-    "@edgio/cli": "6.1.3",
-    "@edgio/core": "6.1.3",
-    "@edgio/devtools": "6.1.3",
-    "@edgio/prefetch": "6.1.3",
-    "@edgio/sanity-studio": "6.1.3"
+    "@edgio/cli": "7.0.11",
+    "@edgio/core": "7.0.11",
+    "@edgio/devtools": "7.0.11",
+    "@edgio/prefetch": "7.0.11",
+    "@edgio/sanity-studio": "7.0.11"
   },
   "repository": "git@github.com:edgio-docs/edgio-sanity-studio-example.git"
 }
