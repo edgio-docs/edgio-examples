@@ -10,33 +10,31 @@ nextRoutes.setEnforceTrailingSlash(true)
 export default new Router()
   // NextRoutes automatically adds routes for all Next.js pages and their assets
   .use(nextRoutes)
-  .match('/l0-api/:path*', ({ cache, proxy, removeUpstreamResponseHeader, removeRequestHeader }) => {
-    removeRequestHeader('+x-edg-serverless-hint')
-    removeUpstreamResponseHeader('cache-control')
-    cache({
-      edge: {
-        maxAgeSeconds: 60 * 60 * 24,
-        staleWhileRevalidateSeconds: 60 * 60 * 24 * 365,
-      },
-      browser: {
-        maxAgeSeconds: 0,
-        serviceWorkerSeconds: 60 * 60 * 24,
-      },
-    })
-    proxy('api', { path: '/:path*' })
+  .match('/edgio-api/:path*', {
+    caching: { max_age: '86400s', stale_while_revalidate: '31536000s', bypass_client_cache: true },
+    url: {
+      url_rewrite: [
+        {
+          source: '/edgio-api/:path*',
+          syntax: 'path-to-regexp',
+          destination: '/:path*',
+        },
+      ],
+    },
+    headers: { set_request_headers: { '+x-edg-serverless-hint': '' } },
+    origin: { set_origin: 'api' },
   })
-  .match('/l0-opt', ({ cache, proxy, removeUpstreamResponseHeader, removeRequestHeader }) => {
-    removeRequestHeader('+x-edg-serverless-hint')
-    removeUpstreamResponseHeader('cache-control')
-    cache({
-      edge: {
-        maxAgeSeconds: 60 * 60 * 24,
-        staleWhileRevalidateSeconds: 60 * 60 * 24 * 365,
-      },
-      browser: {
-        maxAgeSeconds: 0,
-        serviceWorkerSeconds: 60 * 60 * 24,
-      },
-    })
-    proxy('image', { path: '/' })
+  .match('/edgio-opt', {
+    caching: { max_age: '86400s', stale_while_revalidate: '31536000s', bypass_client_cache: true },
+    url: {
+      url_rewrite: [
+        {
+          source: '/edgio-opt',
+          syntax: 'path-to-regexp',
+          destination: '/',
+        },
+      ],
+    },
+    headers: { set_request_headers: { '+x-edg-serverless-hint': '' } },
+    origin: { set_origin: 'image' },
   })

@@ -29,7 +29,7 @@ const Sidebar = ({}) => {
     else setPathWithoutQuery(temp)
   }, [router.asPath])
   useEffect(() => {
-    fetch('/l0-api/categories/all')
+    fetch('/edgio-api/categories/all')
       .then((res) => res.json())
       .then((res) => {
         setListingItems(res)
