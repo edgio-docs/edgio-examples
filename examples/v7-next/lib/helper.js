@@ -9,7 +9,7 @@ export const getOrigin = (req) => {
   if (typeof window !== 'undefined') {
     origin = window.location.origin
   } else if (req) {
-    let hostURL = req.headers['host'] || req.headers['x-host'] || process.env.API_URL
+    let hostURL = req.headers['x-host'] ?? req.headers['host']
     if (hostURL) {
       hostURL = hostURL.replace('http://', '').replace('https://', '')
       if (hostURL.includes('localhost:') || hostURL.includes('127.0.0.1')) {
