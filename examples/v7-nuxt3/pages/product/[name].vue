@@ -61,9 +61,12 @@ const route = useRoute()
 const slug = route.params.name
 
 const xHostHeader = useRequestHeaders(['x-host'])
-const host = xHostHeader['x-host']
+const xHost = xHostHeader['x-host']
 
-const origin = getOrigin({ headers: { host } })
+const hostHeader = useRequestHeaders(['host'])
+const host = xHostHeader['host']
+
+const origin = getOrigin({ headers: { host: xHost ?? host } })
 
 const { data } = await useFetch(`${origin}/l0-api/products/${slug}`, { immediate: true })
 </script>
