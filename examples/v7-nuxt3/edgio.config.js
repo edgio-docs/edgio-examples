@@ -9,7 +9,7 @@ module.exports = {
       override_host_header: 'edgio-community-ecommerce-api-example-default.layer0-limelight.link',
       hosts: [
         {
-          scheme: 'https',
+          scheme: 'match',
           location: [
             {
               hostname: 'edgio-community-ecommerce-api-example-default.layer0-limelight.link',
@@ -26,7 +26,7 @@ module.exports = {
       override_host_header: 'opt.moovweb.net',
       hosts: [
         {
-          scheme: 'https',
+          scheme: 'match',
           location: [
             {
               hostname: 'opt.moovweb.net',
