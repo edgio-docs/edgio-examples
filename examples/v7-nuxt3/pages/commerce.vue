@@ -42,9 +42,12 @@ const route = useRoute()
 const router = useRouter()
 
 const xHostHeader = useRequestHeaders(['x-host'])
-const host = xHostHeader['x-host']
+const xHost = xHostHeader['x-host']
 
-const origin = getOrigin({ headers: { host } })
+const hostHeader = useRequestHeaders(['host'])
+const host = xHostHeader['host']
+
+const origin = getOrigin({ headers: { host: xHost ?? host } })
 
 const fetchURL = (route) => {
   return `${origin}/l0-api/${route.params.name ? `categories/${route.params.name}` : 'products/all'}`
