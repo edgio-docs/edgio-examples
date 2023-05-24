@@ -9,7 +9,7 @@ const Home = () => {
             Learn More &rarr;
           </a>
         </div>
-        <div className="flex w-[330px] flex-col items-start justify-start rounded p-5 md:w-1/2">
+        {/* <div className="flex w-[330px] flex-col items-start justify-start rounded p-5 md:w-1/2">
           <h1 className="text-xl font-bold text-white">Next.js Commerce with Edgio</h1>
           <h3 className="mb-5 mt-2 text-lg text-[#FFFFFF75]">
             It uses all of the latest Next.js features including image optimization, localization, and incremental static regeneration with
@@ -18,7 +18,7 @@ const Home = () => {
           <a className="mt-auto text-[#01B18D] hover:underline" href="https://docs.edg.io/guides/next_commerce" target="_blank">
             Learn More &rarr;
           </a>
-        </div>
+        </div> */}
         <div className="flex w-[330px] flex-col items-start justify-start rounded p-5 md:w-1/2">
           <h1 className="text-xl font-bold text-white">Caching with Edgio</h1>
           <h3 className="mb-5 mt-2 text-lg text-[#FFFFFF75]">
