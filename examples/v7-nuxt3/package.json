@@ -1,0 +1,28 @@
+{
+  "name": "edgio-v7-nuxt3-example",
+  "scripts": {
+    "edgio:dev": "edgio dev",
+    "edgio:build": "edgio build",
+    "edgio:deploy": "edgio deploy",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@edgio/cli": "^7.0.15",
+    "@edgio/core": "^7.0.15",
+    "@edgio/devtools": "^7.0.15",
+    "@edgio/nuxt-nitro": "^7.0.15",
+    "@edgio/prefetch": "^7.0.15",
+    "@edgio/rum": "^7.0.6",
+    "@edgio/vue": "^7.0.15"
+  },
+  "repository": "git@github.com:edgio-docs/edgio-v7-nuxt3-example.git",
+  "dependencies": {
+    "@nuxtjs/tailwindcss": "^6.6.7",
+    "node-fetch": "^3.3.1",
+    "nuxt": "^3.4.3"
+  }
+}
