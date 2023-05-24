@@ -24,12 +24,11 @@ export default new Router()
     url: {
       url_rewrite: [
         {
-          source: '/edgio-opt',
+          source: '/edgio-opt:optionalSlash(\\/?)?:optionalQuery(\\?.*)?',
           syntax: 'path-to-regexp',
-          destination: '/',
+          destination: '/:optionalSlash:optionalQuery',
         },
       ],
     },
-    headers: { set_request_headers: { '+x-edg-serverless-hint': '' } },
     origin: { set_origin: 'image' },
   })
