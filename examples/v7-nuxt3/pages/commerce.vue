@@ -9,7 +9,7 @@
         <div class="mt-5 grid grid-cols-1 sm:gird-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6">
           <NuxtLink :key="item.path" :to="`/product/${item.slug}`" v-for="item in finalProducts" class="relative mt-2 border border-white p-1">
             <ClientOnly>
-              <prefetch :url="`/l0-api/products/${item.slug}`"><span class="h-0 w-0"></span></prefetch>
+              <prefetch :url="`/edgio-api/products/${item.slug}`"><span class="h-0 w-0"></span></prefetch>
             </ClientOnly>
             <div class="absolute top-0 left-0 z-10 flex flex-col items-start">
               <h3 class="border border-gray-200 bg-white py-1 px-2 text-xs md:py-2 md:px-4 md:text-xl font-medium text-black">
@@ -50,7 +50,7 @@ const host = xHostHeader['host']
 const origin = getOrigin({ headers: { host: xHost ?? host } })
 
 const fetchURL = (route) => {
-  return `${origin}/l0-api/${route.params.name ? `categories/${route.params.name}` : 'products/all'}`
+  return `${origin}/edgio-api/${route.params.name ? `categories/${route.params.name}` : 'products/all'}`
 }
 
 const { data } = await useFetch(fetchURL(route))

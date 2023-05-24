@@ -69,7 +69,7 @@ export default {
     }
   },
   async mounted() {
-    let resp = await fetch('/l0-api/categories/all')
+    let resp = await fetch('/edgio-api/categories/all')
     if (resp.ok) {
       let data = await resp.json()
       this.listingItems = data

@@ -1,35 +1,33 @@
-import { Router } from '@edgio/core'
+// This file was automatically added by edgio init.
+// You should commit this file to source control.
+import { Router } from '@edgio/core/router'
 import { nuxtRoutes } from '@edgio/nuxt-nitro'
 
 export default new Router()
   .use(nuxtRoutes)
-  .match('/l0-api/:path*', ({ cache, proxy, removeUpstreamResponseHeader, removeRequestHeader }) => {
-    removeRequestHeader('+x-edg-serverless-hint')
-    removeUpstreamResponseHeader('cache-control')
-    cache({
-      edge: {
-        maxAgeSeconds: 60 * 60 * 24,
-        staleWhileRevalidateSeconds: 60 * 60 * 24 * 365,
-      },
-      browser: {
-        maxAgeSeconds: 0,
-        serviceWorkerSeconds: 60 * 60 * 24,
-      },
-    })
-    proxy('api', { path: '/:path*' })
+  .match('/edgio-api/:path*', {
+    caching: { max_age: '86400s', stale_while_revalidate: '31536000s', bypass_client_cache: true },
+    url: {
+      url_rewrite: [
+        {
+          source: '/edgio-api/:path*',
+          syntax: 'path-to-regexp',
+          destination: '/:path*',
+        },
+      ],
+    },
+    origin: { set_origin: 'api' },
   })
-  .match('/l0-opt', ({ cache, proxy, removeUpstreamResponseHeader, removeRequestHeader }) => {
-    removeRequestHeader('+x-edg-serverless-hint')
-    removeUpstreamResponseHeader('cache-control')
-    cache({
-      edge: {
-        maxAgeSeconds: 60 * 60 * 24,
-        staleWhileRevalidateSeconds: 60 * 60 * 24 * 365,
-      },
-      browser: {
-        maxAgeSeconds: 0,
-        serviceWorkerSeconds: 60 * 60 * 24,
-      },
-    })
-    proxy('image', { path: '/' })
+  .match('/edgio-opt', {
+    caching: { max_age: '86400s', stale_while_revalidate: '31536000s', bypass_client_cache: true },
+    url: {
+      url_rewrite: [
+        {
+          source: '/edgio-opt:optionalSlash(\\/?)?:optionalQuery(\\?.*)?',
+          syntax: 'path-to-regexp',
+          destination: '/:optionalSlash:optionalQuery',
+        },
+      ],
+    },
+    origin: { set_origin: 'image' },
   })

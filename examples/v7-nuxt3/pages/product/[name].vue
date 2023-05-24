@@ -68,5 +68,5 @@ const host = xHostHeader['host']
 
 const origin = getOrigin({ headers: { host: xHost ?? host } })
 
-const { data } = await useFetch(`${origin}/l0-api/products/${slug}`, { immediate: true })
+const { data } = await useFetch(`${origin}/edgio-api/products/${slug}`, { immediate: true })
 </script>
