@@ -155,7 +155,7 @@ jobs:
           echo "Edgio version is $edgio_version"
           echo "EDGIO_VERSION=$edgio_version" >> $GITHUB_ENV
           if [[ $edgio_version =~ ^7.* ]]; then
-            echo "ENV_CMD_ARGS=--site=$EDGIO_SITE --team=$EDGIO_TEAM --token=$EDGIO_V7_DEPLOY_TOKEN" >> $GITHUB_ENV
+            echo "ENV_CMD_ARGS=--property=$EDGIO_SITE --team=$EDGIO_TEAM --token=$EDGIO_V7_DEPLOY_TOKEN --ignore-error CONFIG_SOURCE_SWITCH" >> $GITHUB_ENV
           else
             echo "ENV_CMD_ARGS=--site=$EDGIO_SITE --team=$EDGIO_TEAM --token=$EDGIO_DEPLOY_TOKEN" >> $GITHUB_ENV
           fi
