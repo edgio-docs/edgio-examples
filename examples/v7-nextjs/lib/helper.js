@@ -9,6 +9,7 @@ export const getOrigin = (req) => {
   if (typeof window !== 'undefined') {
     origin = window.location.origin
   } else if (req) {
+    console.log('req', req.headers)
     let hostURL = req.headers['x-host'] ?? req.headers['host']
     if (hostURL) {
       hostURL = hostURL.replace('http://', '').replace('https://', '')

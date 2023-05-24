@@ -17,7 +17,6 @@ export default new Router()
         },
       ],
     },
-    headers: { set_request_headers: { '+x-edg-serverless-hint': '' } },
     origin: { set_origin: 'api' },
   })
   .match('/edgio-opt', {

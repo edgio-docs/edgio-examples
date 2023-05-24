@@ -63,6 +63,8 @@ module.exports = {
       ],
       tls_verify: {
         allow_self_signed_certs: true,
+        use_sni: true,
+        sni_hint_and_strict_san_check: 'edgio-community-ecommerce-api-example-default.layer0-limelight.link',
       },
     },
     {
