@@ -38,6 +38,16 @@ const Home = () => {
             Learn More &rarr;
           </a>
         </div>
+        <div className="flex w-[330px] flex-col items-start justify-start rounded p-5 md:w-1/2">
+          <h1 className="text-xl font-bold text-white">Edgio Deep Fetching</h1>
+          <h3 className="mt-2 text-lg text-[#FFFFFF75]">
+            Edgio allows you to speed up the user’s browsing experience by deep fetching the assets referenced in the API response(s) that they are
+            likely to be shown to the user.
+          </h3>
+          <a className="mt-auto text-[#01B18D] hover:underline" href="https://docs.edg.io/guides/v7/performance/prefetching#deep-fetching" target="_blank">
+            Learn More &rarr;
+          </a>
+        </div>
       </div>
     </div>
   )
