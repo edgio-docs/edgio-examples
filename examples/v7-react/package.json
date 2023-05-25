@@ -1,0 +1,47 @@
+{
+  "name": "edgio-v7-react-example",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "edgio:dev": "edgio dev",
+    "edgio:build": "edgio build",
+    "edgio:deploy": "edgio deploy",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.3.0",
+    "react-scripts": "5.0.1"
+  },
+  "devDependencies": {
+    "@edgio/cli": "^7.0.16-next-1685031967-5a7f5ea.0",
+    "@edgio/core": "^7.0.16-next-1685031967-5a7f5ea.0",
+    "@edgio/devtools": "^7.0.16-next-1685031967-5a7f5ea.0",
+    "@edgio/prefetch": "^7.0.16-next-1685031967-5a7f5ea.0",
+    "@edgio/react": "^7.0.16-next-1685031967-5a7f5ea.0",
+    "@edgio/react-cra": "^7.0.16-next-1685031967-5a7f5ea.0",
+    "@edgio/rum": "^7.0.7",
+    "@heroicons/react": "^1.0.6",
+    "autoprefixer": "^10.4.8",
+    "classnames": "^2.3.1",
+    "postcss": "^8.4.16",
+    "prettier": "^2.6.2",
+    "tailwindcss": "^3.1.8"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "repository": "git@github.com:edgio-docs/edgio-v7-react-example.git"
+}
