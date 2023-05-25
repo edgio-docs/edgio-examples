@@ -1,0 +1,36 @@
+{
+  "name": "edgio-v7-nextjs-example",
+  "version": "1.0.0",
+  "license": "ISC",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "edgio:dev": "edgio dev",
+    "edgio:build": "edgio build",
+    "edgio:deploy": "edgio deploy",
+    "format": "prettier '**/*' --write --ignore-unknown"
+  },
+  "dependencies": {
+    "next": "^13.4.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@edgio/cli": "^7.0.15",
+    "@edgio/core": "^7.0.15",
+    "@edgio/devtools": "^7.0.15",
+    "@edgio/next": "^7.0.15",
+    "@edgio/prefetch": "^7.0.15",
+    "@edgio/react": "^7.0.15",
+    "@heroicons/react": "^1.0.6",
+    "autoprefixer": "^10.4.14",
+    "classnames": "^2.3.2",
+    "node-fetch": "^3.3.1",
+    "postcss": "^8.4.23",
+    "prettier": "^2.8.8",
+    "prettier-plugin-tailwindcss": "^0.2.8",
+    "tailwindcss": "^3.3.2"
+  },
+  "repository": "git@github.com:edgio-docs/edgio-v7-nextjs-example.git"
+}

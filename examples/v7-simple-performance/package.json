@@ -1,0 +1,22 @@
+{
+  "name": "edgio-v7-simple-performance-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "edgio:dev": "edgio dev",
+    "edgio:build": "edgio build",
+    "edgio:deploy": "edgio deploy"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@edgio/cli": "^7.0.7",
+    "@edgio/core": "^7.0.7",
+    "@edgio/devtools": "^7.0.7",
+    "@edgio/prefetch": "^7.0.7"
+  },
+  "repository": "git@github.com:edgio-docs/edgio-v7-simple-performance-example.git"
+}
