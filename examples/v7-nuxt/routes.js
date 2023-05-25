@@ -1,8 +1,13 @@
-import { Router } from '@edgio/core'
-import { nuxtRoutes } from '@edgio/nuxt'
+// This file was added by edgio init.
+// You should commit this file to source control.
+const { nuxtRoutes } = require('@edgio/nuxt')
+const { Router } = require('@edgio/core/router')
 
-export default new Router()
+module.exports = new Router()
   .use(nuxtRoutes)
+  .match('/service-worker.js', ({ serviceWorker }) => {
+    serviceWorker('.nuxt/dist/client/service-worker.js')
+  })
   .match('/edgio-api/:path*', {
     caching: { max_age: '86400s', stale_while_revalidate: '31536000s', bypass_client_cache: true },
     url: {

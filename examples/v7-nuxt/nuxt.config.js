@@ -5,14 +5,12 @@ export default {
   },
   components: true,
   css: ['@/assets/css/main.css'],
-  buildModules: [['@edgio/nuxt/module', { edgioSourceMaps: true }]],
+  buildModules: ['@nuxt/postcss8', '@edgio/nuxt/module'],
   build: {
     postcss: {
-      postcssOptions: {
-        plugins: {
-          tailwindcss: {},
-          autoprefixer: {},
-        },
+      plugins: {
+        tailwindcss: {},
+        autoprefixer: {},
       },
     },
   },

@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import EdgioRUM from '@/rum.js'
+import EdgioRUM from '@/edgio/rum.js'
 import Header from '@/components/Header.vue'
 import { install } from '@edgio/prefetch/window'
 import installDevtools from '@edgio/devtools/install'

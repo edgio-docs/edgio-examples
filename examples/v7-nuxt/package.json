@@ -1,32 +1,34 @@
 {
   "name": "edgio-v7-nuxt-example",
-  "version": "1.0.0",
-  "description": "",
   "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
     "edgio:dev": "edgio dev",
     "edgio:build": "edgio build",
     "edgio:deploy": "edgio deploy",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "edgio:production": "edgio run --production",
+    "format": "prettier '**/*' --write --ignore-unknown"
   },
-  "author": "",
-  "license": "ISC",
+  "dependencies": {
+    "@nuxt/core": "2.15.8"
+  },
   "devDependencies": {
     "@edgio/cli": "^7.0.15",
     "@edgio/core": "^7.0.15",
     "@edgio/devtools": "^7.0.15",
     "@edgio/nuxt": "^7.0.15",
     "@edgio/prefetch": "^7.0.15",
-    "@edgio/rum": "^7.0.7",
+    "@edgio/rum": "^5.0.8",
     "@edgio/vue": "^7.0.15",
-    "@vercel/nft": "^0.22.6",
-    "autoprefixer": "^10.4.14",
-    "nuxt": "^2.15.8",
-    "postcss": "^8.4.23",
-    "prettier": "^2.8.8",
-    "tailwindcss": "^3.3.2"
-  },
-  "dependencies": {
-    "@nuxt/core": "^2.16.3"
+    "@nuxt/postcss8": "^1.1.3",
+    "@vercel/nft": "^0.20.1",
+    "autoprefixer": "^10.4.7",
+    "nuxt": "2.15.8",
+    "postcss": "^8.4.14",
+    "prettier": "^2.7.1",
+    "tailwindcss": "^3.1.6"
   },
   "repository": "git@github.com:edgio-docs/edgio-v7-nuxt-example.git"
 }
