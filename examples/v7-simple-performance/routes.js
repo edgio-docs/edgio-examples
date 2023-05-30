@@ -1,13 +1,11 @@
 // This file was added by edgio init.
 // You should commit this file to source control.
 
-import { Router } from '@edgio/core/router';
+import { Router, edgioRoutes } from '@edgio/core/router';
 
 export default new Router()
+  .use(edgioRoutes)
   .match(':path', {
-    headers: {
-      debug_header: true,
-    },
     origin: {
       set_origin: 'origin',
     },
