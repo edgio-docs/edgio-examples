@@ -5,6 +5,9 @@ import { Router } from '@edgio/core/router';
 
 export default new Router()
   .match(':path', {
+    headers: {
+      debug_header: true,
+    },
     origin: {
       set_origin: 'origin',
     },

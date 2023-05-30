@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../edgio.config.js"],
-  "sourcesContent": ["// This file was automatically added by edgio init.\n// You should commit this file to source control.\n// Learn more about this file at https://docs.edg.io/guides/edgio_config\nmodule.exports = {\n  origins: [\n    {\n      name: 'origin',\n      override_host_header: 'publicdomainreview.org',\n      hosts: [\n        {\n          location: 'publicdomainreview.org',\n        },\n      ],\n    },\n  ],\n\n  // The name of the site in Edgio to which this app should be deployed.\n  name: 'edgio-v7-simple-performance-example',\n};\n"],
-  "mappings": ";AAGA,OAAO,UAAU;AAAA,EACf,SAAS;AAAA,IACP;AAAA,MACE,MAAM;AAAA,MACN,sBAAsB;AAAA,MACtB,OAAO;AAAA,QACL;AAAA,UACE,UAAU;AAAA,QACZ;AAAA,MACF;AAAA,IACF;AAAA,EACF;AAAA,EAGA,MAAM;AACR;",
-  "names": []
-}
