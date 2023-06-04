@@ -13,12 +13,12 @@
     "react-scripts": "5.0.1"
   },
   "devDependencies": {
-    "@edgio/cli": "^6.1.3",
-    "@edgio/core": "^6.1.3",
-    "@edgio/devtools": "^6.1.3",
-    "@edgio/prefetch": "^6.1.3",
-    "@edgio/react": "^6.1.3",
-    "@edgio/react-cra": "^6.1.3",
+    "@edgio/cli": "^7.0.15",
+    "@edgio/core": "^7.0.15",
+    "@edgio/devtools": "^7.0.15",
+    "@edgio/prefetch": "^7.0.15",
+    "@edgio/react": "^7.0.15",
+    "@edgio/react-cra": "^7.0.15",
     "@edgio/rum": "^5.0.8",
     "@heroicons/react": "^1.0.6",
     "autoprefixer": "^10.4.8",
