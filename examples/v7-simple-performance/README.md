@@ -4,4 +4,4 @@ This simple example demonstrates what to expect when running our [Getting Starte
 
 ## Demo
 
-https://edgio-community-examples-simple-performance-live.layer0-limelight.link/
+https://edgio-community-examples-v7-simple-performance-live.edgio.link/
