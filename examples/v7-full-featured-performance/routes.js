@@ -44,37 +44,11 @@ export default new Router()
       ],
     },
   })
-  .match('/', {
+  .match('/:path*', {
     ...cachingFeature,
     ...headersFeature,
   })
-  .match('/', ({ proxy }) => {
-    proxy('origin', {
-      transformResponse: (res) => {
-        injectBrowserScript(res)
-        const $ = load(responseBodyToString(res))
-        res.body = $.html().replace(/https?:\/\/files.smashing.media\//g, '/edgio-assets/')
-      },
-    })
-  })
-  .match('/articles', {
-    ...cachingFeature,
-    ...headersFeature,
-  })
-  .match('/articles', ({ proxy }) => {
-    proxy('origin', {
-      transformResponse: (res) => {
-        injectBrowserScript(res)
-        const $ = load(responseBodyToString(res))
-        res.body = $.html().replace(/https?:\/\/files.smashing.media\//g, '/edgio-assets/')
-      },
-    })
-  })
-  .match('/2023/06/:path*', {
-    ...cachingFeature,
-    ...headersFeature,
-  })
-  .match('/2023/06/:path', ({ proxy }) => {
+  .match('/:path*', ({ proxy }) => {
     proxy('origin', {
       transformResponse: (res) => {
         injectBrowserScript(res)
