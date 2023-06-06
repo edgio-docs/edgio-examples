@@ -83,6 +83,7 @@ export default new Router()
     proxy('origin', {
       transformResponse: (res) => {
         injectBrowserScript(res)
+        const $ = load(responseBodyToString(res))
         res.body = $.html().replace(/https?:\/\/files.smashing.media\//g, '/edgio-assets/')
       },
     })
