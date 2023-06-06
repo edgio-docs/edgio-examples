@@ -23,38 +23,38 @@ const headersFeature = {
 }
 
 export default new Router()
-  .match('/:path*/:file.:ext(js|css|mjs|png|ico|svg|jpg|jpeg|gif|ttf|woff|otf)', {
+  .match('/wiki/:path*', {
     ...cachingFeature,
+    ...headersFeature,
     origin: {
       set_origin: 'origin',
     },
   })
-  .match('/edgio-assets/:path*', {
-    ...cachingFeature,
+  .match('/wiki/:path*', ({ proxy }) => {
+    proxy('origin', {
+      transformResponse: (res) => {
+        console.log('transform')
+        injectBrowserScript(res)
+        const $ = load(responseBodyToString(res))
+        res.body = $.html().replace(/\/\/upload.wikimedia.org\//g, '/uploads/')
+      },
+    })
+  })
+  .match('/uploads/:path*', {
     origin: {
-      set_origin: 'assets',
+      set_origin: 'upload',
+    },
+    response: {
+      optimize_images: true,
     },
     url: {
       url_rewrite: [
         {
-          source: '/edgio-a/:path*',
+          source: '/uploads/:path*',
           syntax: 'path-to-regexp',
-          destination: '/:path*',
+          destination: '/:path*?format=webp',
         },
       ],
     },
-  })
-  .match('/:path*', {
-    ...cachingFeature,
-    ...headersFeature,
-  })
-  .match('/:path*', ({ proxy }) => {
-    proxy('origin', {
-      transformResponse: (res) => {
-        injectBrowserScript(res)
-        const $ = load(responseBodyToString(res))
-        res.body = $.html().replace(/https?:\/\/files.smashing.media\//g, '/edgio-assets/')
-      },
-    })
   })
   .use(starterRoutes)

@@ -3,28 +3,28 @@ module.exports = {
   origins: [
     {
       name: 'origin',
-      override_host_header: 'www.smashingmagazine.com',
+      override_host_header: 'en.wikipedia.org',
       hosts: [
         {
-          location: 'www.smashingmagazine.com',
+          location: 'en.wikipedia.org',
         },
       ],
       tls_verify: {
         use_sni: true,
-        sni_hint_and_strict_san_check: 'www.smashingmagazine.com',
+        sni_hint_and_strict_san_check: 'en.wikipedia.org',
       },
     },
     {
-      name: 'assets',
-      override_host_header: 'files.smashing.media',
+      name: 'upload',
+      override_host_header: 'upload.wikimedia.org',
       hosts: [
         {
-          location: 'files.smashing.media',
+          location: 'upload.wikimedia.org',
         },
       ],
       tls_verify: {
         use_sni: true,
-        sni_hint_and_strict_san_check: 'files.smashing.media',
+        sni_hint_and_strict_san_check: 'upload.wikimedia.org',
       },
     },
   ],
