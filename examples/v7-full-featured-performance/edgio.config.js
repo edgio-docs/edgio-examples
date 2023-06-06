@@ -12,6 +12,7 @@ module.exports = {
       tls_verify: {
         use_sni: true,
         sni_hint_and_strict_san_check: 'en.wikipedia.org',
+        allow_self_signed_certs: true,
       },
     },
     {

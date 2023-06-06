@@ -23,17 +23,16 @@ const headersFeature = {
 }
 
 export default new Router()
-  .match('/wiki/:path*', {
+  .match('/:path*', {
     ...cachingFeature,
     ...headersFeature,
     origin: {
       set_origin: 'origin',
     },
   })
-  .match('/wiki/:path*', ({ proxy }) => {
+  .match('/:path*', ({ proxy }) => {
     proxy('origin', {
       transformResponse: (res) => {
-        console.log('transform')
         injectBrowserScript(res)
         const $ = load(responseBodyToString(res))
         res.body = $.html().replace(/\/\/upload.wikimedia.org\//g, '/uploads/')
