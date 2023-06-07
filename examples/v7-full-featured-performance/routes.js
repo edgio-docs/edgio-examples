@@ -19,10 +19,10 @@ const cachingFeature = {
 const headersFeature = {
   headers: {
     remove_origin_response_headers: ['cache-control'],
-    set_response_headers: {
-      'Accept-CH': 'DPR, Viewport-Width, Width, ECT, Downlink',
-      'Accept-CH-Lifetime': '86400',
-    },
+    // set_response_headers: {
+    //   'Accept-CH': 'DPR, Viewport-Width, Width, ECT, Downlink',
+    //   'Accept-CH-Lifetime': '86400',
+    // },
   },
 }
 
