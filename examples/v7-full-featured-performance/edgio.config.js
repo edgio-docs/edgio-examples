@@ -11,8 +11,8 @@ module.exports = {
       ],
       tls_verify: {
         use_sni: true,
-        sni_hint_and_strict_san_check: 'en.wikipedia.org',
         allow_self_signed_certs: true,
+        sni_hint_and_strict_san_check: 'en.wikipedia.org',
       },
     },
     {
@@ -25,6 +25,7 @@ module.exports = {
       ],
       tls_verify: {
         use_sni: true,
+        allow_self_signed_certs: true,
         sni_hint_and_strict_san_check: 'upload.wikimedia.org',
       },
     },

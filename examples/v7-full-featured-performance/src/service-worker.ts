@@ -12,10 +12,20 @@ new Prefetcher({
         as: 'style',
         maxMatches: 5,
         attribute: 'href',
-        selector: 'link[type="text/css"]',
+        selector: 'link[rel="stylesheet"]',
         callback: ({ $el }) => {
           const href = $el.attr('href')
           if (href) prefetch(href)
+        },
+      },
+      {
+        as: 'image',
+        maxMatches: 5,
+        attribute: 'src',
+        selector: 'img',
+        callback: ({ $el }) => {
+          const src = $el.attr('src')
+          if (src) prefetch(src)
         },
       },
     ]),

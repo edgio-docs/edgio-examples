@@ -23,6 +23,7 @@ const headersFeature = {
 }
 
 export default new Router()
+  // The default configuration to apply on all routes
   .match('/:path*', {
     ...cachingFeature,
     ...headersFeature,
@@ -30,7 +31,8 @@ export default new Router()
       set_origin: 'origin',
     },
   })
-  .match('/:path*', ({ proxy }) => {
+  // Caching pages, be specific as possible
+  .match('/wiki/Main_Page', ({ proxy }) => {
     proxy('origin', {
       transformResponse: (res) => {
         injectBrowserScript(res)
@@ -39,7 +41,19 @@ export default new Router()
       },
     })
   })
+  // Caching pages, be specific as possible
+  .match('/wiki/Talk:Main_Page', ({ proxy }) => {
+    proxy('origin', {
+      transformResponse: (res) => {
+        injectBrowserScript(res)
+        const $ = load(responseBodyToString(res))
+        res.body = $.html().replace(/\/\/upload.wikimedia.org\//g, '/uploads/')
+      },
+    })
+  })
+  // URL Rewrite from /uploads/X to /X
   .match('/uploads/:path*', {
+    ...cachingFeature,
     origin: {
       set_origin: 'upload',
     },
@@ -51,7 +65,26 @@ export default new Router()
         {
           source: '/uploads/:path*',
           syntax: 'path-to-regexp',
-          destination: '/:path*?format=webp',
+          destination: '/:path*',
+        },
+      ],
+    },
+  })
+  // Image Optimization all jpeg & jpg to webp
+  .match('/static/:path*', {
+    ...cachingFeature,
+    origin: {
+      set_origin: 'origin',
+    },
+    response: {
+      optimize_images: true,
+    },
+    url: {
+      url_rewrite: [
+        {
+          source: '/(.*)\\.(jpeg|jpg)',
+          syntax: 'regexp',
+          destination: '/%{request_uri:1}%{is_amp:=?}auto=webp',
         },
       ],
     },
