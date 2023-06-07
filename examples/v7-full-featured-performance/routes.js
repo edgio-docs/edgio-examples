@@ -51,7 +51,7 @@ export default new Router()
           if (src && src.startsWith('//upload.wikimedia.org/')) {
             const modifiedSrc = src.replace(/\/\/upload\.wikimedia\.org\//, '/uploads/')
             console.log('modifiedSrc', modifiedSrc)
-            $img.attr('src', modifiedSrc)
+            $img.attr('src', modifiedSrc + '?auto=webp')
           }
         })
 
