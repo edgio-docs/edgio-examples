@@ -19,6 +19,10 @@ const cachingFeature = {
 const headersFeature = {
   headers: {
     remove_origin_response_headers: ['cache-control'],
+    set_response_headers: {
+      'Accept-CH': 'DPR, Viewport-Width, Width, ECT, Downlink',
+      'Accept-CH-Lifetime': '86400',
+    },
   },
 }
 
@@ -38,7 +42,20 @@ export default new Router()
       transformResponse: (res) => {
         injectBrowserScript(res)
         const $ = load(responseBodyToString(res))
-        res.body = $.html().replace(/\/\/upload.wikimedia.org\//g, '/uploads/')
+
+        // Replace the domain and append ?auto=webp in img tags src attribute
+        // for image optimization
+        $('img').each((index, element) => {
+          const $img = $(element)
+          const src = $img.removeAttr('srcset').attr('src')
+          if (src && src.startsWith('//upload.wikimedia.org/')) {
+            const modifiedSrc = src.replace(/\/\/upload\.wikimedia\.org\//, '/uploads/')
+            console.log('modifiedSrc', modifiedSrc)
+            $img.attr('src', modifiedSrc)
+          }
+        })
+
+        res.body = $.html()
       },
     })
   })
