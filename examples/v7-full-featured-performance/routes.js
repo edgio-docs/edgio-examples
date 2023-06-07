@@ -31,18 +31,9 @@ export default new Router()
       set_origin: 'origin',
     },
   })
-  // Caching pages, be specific as possible
-  .match('/wiki/Main_Page', ({ proxy }) => {
-    proxy('origin', {
-      transformResponse: (res) => {
-        injectBrowserScript(res)
-        const $ = load(responseBodyToString(res))
-        res.body = $.html().replace(/\/\/upload.wikimedia.org\//g, '/uploads/')
-      },
-    })
-  })
-  // Caching pages, be specific as possible
-  .match('/wiki/Talk:Main_Page', ({ proxy }) => {
+  // Proxy /wiki to origin, transforming the response to inject the browser script and
+  // rewrite the image URLs to use the /uploads origin for image optimization
+  .match('/wiki/:path*', ({ proxy }) => {
     proxy('origin', {
       transformResponse: (res) => {
         injectBrowserScript(res)
