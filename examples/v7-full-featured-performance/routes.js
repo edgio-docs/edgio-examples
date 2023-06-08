@@ -1,5 +1,6 @@
 import { load } from 'cheerio'
 import { Router } from '@edgio/core'
+import { isCloud } from '@edgio/core/environment'
 import { injectBrowserScript, starterRoutes } from '@edgio/starter'
 import responseBodyToString from '@edgio/core/utils/responseBodyToString'
 
@@ -19,10 +20,6 @@ const cachingFeature = {
 const headersFeature = {
   headers: {
     remove_origin_response_headers: ['cache-control'],
-    // set_response_headers: {
-    //   'Accept-CH': 'DPR, Viewport-Width, Width, ECT, Downlink',
-    //   'Accept-CH-Lifetime': '86400',
-    // },
   },
 }
 
@@ -50,8 +47,11 @@ export default new Router()
           const src = $img.removeAttr('srcset').attr('src')
           if (src && src.startsWith('//upload.wikimedia.org/')) {
             const modifiedSrc = src.replace(/\/\/upload\.wikimedia\.org\//, '/uploads/')
-            console.log('modifiedSrc', modifiedSrc)
-            $img.attr('src', modifiedSrc + '?auto=webp')
+
+            // Only optimize images running in the Edgio cloud
+            if (isCloud()) {
+              $img.attr('src', modifiedSrc + '?auto=webp')
+            }
           }
         })
 
@@ -59,7 +59,7 @@ export default new Router()
       },
     })
   })
-  // URL Rewrite from /uploads/X to /X
+  // Proxy images to the upload origin then send them though the Edgio image optimizer
   .match('/uploads/:path*', {
     ...cachingFeature,
     origin: {
@@ -74,25 +74,6 @@ export default new Router()
           source: '/uploads/:path*',
           syntax: 'path-to-regexp',
           destination: '/:path*',
-        },
-      ],
-    },
-  })
-  // Image Optimization all jpeg & jpg to webp
-  .match('/static/:path*', {
-    ...cachingFeature,
-    origin: {
-      set_origin: 'origin',
-    },
-    response: {
-      optimize_images: true,
-    },
-    url: {
-      url_rewrite: [
-        {
-          source: '/(.*)\\.(jpeg|jpg)',
-          syntax: 'regexp',
-          destination: '/%{request_uri:1}%{is_amp:=?}auto=webp',
         },
       ],
     },
