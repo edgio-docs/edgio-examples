@@ -1,36 +1,22 @@
 {
+  "name": "edgio-v7-full-featured-performance-example",
   "scripts": {
+    "format": "prettier --write '**/*' --ignore-unknown",
     "edgio:dev": "edgio dev",
     "edgio:build": "edgio build",
-    "edgio:deploy": "edgio deploy",
-    "dev": "next",
-    "build": "next build",
-    "start": "next start",
-    "edgio:production": "edgio run --production",
-    "format": "prettier '**/*' --write --ignore-unknown"
-  },
-  "name": "edgio-v7-advanced-performance-example",
-  "dependencies": {
-    "next": "^13.1.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "edgio:deploy": "edgio deploy"
   },
   "devDependencies": {
-    "@edgio/cli": "^7.0.7",
-    "@edgio/core": "^7.0.7",
-    "@edgio/devtools": "^7.0.7",
-    "@edgio/next": "^7.0.7",
-    "@edgio/prefetch": "^7.0.7",
-    "@edgio/react": "^7.0.7",
-    "@edgio/rum": "^5.0.8",
-    "@heroicons/react": "^1.0.6",
-    "autoprefixer": "^10.4.7",
-    "classnames": "^2.3.1",
-    "node-fetch": "^3.2.8",
-    "postcss": "^8.4.13",
-    "prettier": "^2.6.2",
-    "prettier-plugin-tailwindcss": "^0.1.11",
-    "tailwindcss": "^3.0.24"
+    "@edgio/cli": "^7.0.15",
+    "@edgio/core": "^7.0.15",
+    "@edgio/devtools": "^7.0.15",
+    "@edgio/prefetch": "^7.0.15",
+    "@edgio/starter": "^7.0.15",
+    "cheerio": "^1.0.0-rc.12",
+    "prettier": "^2.8.8"
   },
-  "repository": "git@github.com:edgio-docs/edgio-v7-full-featured-performance-example.git"
+  "repository": "git@github.com:edgio-docs/edgio-v7-full-featured-performance-example.git",
+  "dependencies": {
+    "@edgio/rum": "^7.0.7"
+  }
 }

@@ -1,20 +1,19 @@
-# An Edgio Application Performance Example
-## Demo
+# A Full-Featured Edgio Application Performance Example
 
-https://edgio-community-examples-full-featured-performance-live.layer0-limelight.link/
+This full-featured example demonstrates what to expect when running our [Getting Started](https://docs.edg.io/guides/getting_started) command with the addition of static asset caching, which can be found in the route.js file.
 
 ## Implemented Features
 
-* [Multiple origins proxying](https://docs.edg.io/guides/performance/cdn_as_code/common_routing_patterns#proxying-an-origin)
-* [StaleWhileRevalidate](https://docs.edg.io/guides/performance/caching#achieving-100-cache-hit-rates) additional cache buffer
-* [Prefetching](https://docs.edg.io/guides/performance/prefetching)
-* [Deepfetching](https://docs.edg.io/guides/performance/prefetching#deep-fetching)
-* [Image Optimization](https://docs.edg.io/guides/performance/image_optimization)
-* [Response Transformation with Serverless](https://docs.edg.io/guides/performance/serverless_compute)
-* [Header Manipulation](https://docs.edg.io/guides/performance/cdn_as_code#alter-requests-and-responses)
-* [Cache Key Normalization](https://docs.edg.io/guides/performance/caching#customizing-the-cache-key)
-* [DevTools](https://docs.edg.io/guides/performance/observability/devtools)
-* [RUM script injection](https://docs.edg.io/guides/performance/observability/core_web_vitals)
+* [Multiple origins proxying](https://docs.edg.io/guides/v7/performance/cdn_as_code/route_features#proxying-an-origin)
+* [StaleWhileRevalidate](https://docs.edg.io/guides/v7/performance/caching#cache-hit-ratio-optimization) additional cache buffer
+* [Prefetching](https://docs.edg.io/guides/v7/performance/prefetching)
+* [Deepfetching](https://docs.edg.io/guides/v7/performance/prefetching#deep-fetching)
+* [Image Optimization](https://docs.edg.io/guides/v7/performance/image_optimization)
+* [Response Transformation with Serverless](https://docs.edg.io/guides/v7/performance/serverless_compute)
+* [Header Manipulation](https://docs.edg.io/guides/v7/performance/cdn_as_code/route_features#altering-the-response)
+* [Cache Key Normalization](https://docs.edg.io/guides/v7/performance/caching#customizing-the-cache-key)
+* [DevTools](https://docs.edg.io/guides/v7/performance/observability/devtools)
+* [RUM script injection](https://docs.edg.io/guides/v7/performance/observability/core_web_vitals)
 
 ## Getting Started
 
@@ -30,7 +29,7 @@ On the command line, in the project root directory, run the following command:
 npm install
 ```
 
-### Run the Next.js app locally on Edgio
+### Run the app locally on Edgio
 
 Run the Next.js app with the command:
 
@@ -59,3 +58,7 @@ npm run edgio:deploy
 ```
 
 See [deploying](https://docs.edg.io/guides/deploying) for more information.
+
+## Demo
+
+https://edgio-community-examples-v7-full-featured-performance-live.edgio.link/
