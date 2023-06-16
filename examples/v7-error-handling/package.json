@@ -1,7 +1,10 @@
 {
   "scripts": {
     "start": "edgio dev",
-    "deploy": "edgio deploy"
+    "deploy": "edgio deploy",
+    "edgio:dev": "edgio dev",
+    "edgio:build": "edgio build",
+    "edgio:deploy": "edgio deploy"
   },
   "name": "edgio-v7-error-handling-example",
   "private": true,
