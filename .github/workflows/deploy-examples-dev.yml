@@ -27,7 +27,7 @@ env:
   EDGIO_TEAM: edgio-community
   EDGIO_SITE: examples
   EDGIO_DEPLOY_TOKEN: ${{secrets.EDGIO_EXAMPLES_DEPLOY_TOKEN}}
-  OPTIONAL_API_URL: --api-url=https://app.layer0.co
+  EDGIO_V7_DEPLOY_TOKEN: ${{secrets.EDGIO_V7_EXAMPLES_DEPLOY_TOKEN}}
   COMMENT_ID: preview-${{ github.ref }}
   DEPLOY_ALL: ${{ github.event.inputs.deploy-all }}
 
@@ -104,7 +104,6 @@ jobs:
         example: ${{ fromJson( needs.prepare.outputs.matrix ) }}
     env:
       EXAMPLE_DIR: examples/${{ matrix.example }}
-      ENV_CMD_ARGS: --site=$EDGIO_SITE --team=$EDGIO_TEAM --token=$EDGIO_DEPLOY_TOKEN $OPTIONAL_API_URL
     steps:
       - uses: actions/checkout@v3
 
@@ -149,6 +148,17 @@ jobs:
 
       - name: Disable analytics
         run: edgio config set-analytics false
+
+      - name: Get Edgio version and set environment variable
+        run: |
+          edgio_version=$(edgio --version)
+          echo "Edgio version is $edgio_version"
+          echo "EDGIO_VERSION=$edgio_version" >> $GITHUB_ENV
+          if [[ $edgio_version =~ ^7.* ]]; then
+            echo "ENV_CMD_ARGS=--site=$EDGIO_SITE --team=$EDGIO_TEAM --token=$EDGIO_V7_DEPLOY_TOKEN --ignore-error CONFIG_SOURCE_SWITCH" >> $GITHUB_ENV
+          else
+            echo "ENV_CMD_ARGS=--site=$EDGIO_SITE --team=$EDGIO_TEAM --token=$EDGIO_DEPLOY_TOKEN" >> $GITHUB_ENV
+          fi
 
       - name: Prepare environments for the example
         run: |
@@ -212,7 +222,7 @@ jobs:
             
           # Get the edge link from the output of the command
           echo "$DEPLOY" |
-            sed -n 's/.*\(https.*-limelight\.link\).*/\1/p' |
+            sed -n 's/.*\(https.*\(-limelight\|\.edgio\)\.link\).*/\1/p' |
             {
               read edge || edge=""
               if [[ -n $edge ]]; then
