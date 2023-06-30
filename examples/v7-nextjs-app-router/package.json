@@ -1,8 +1,8 @@
 {
   "scripts": {
     "edgio:dev": "edgio dev",
-    "edgio:build": "edgio build",
-    "edgio:deploy": "edgio deploy",
+    "edgio:build": "node scripts/prebuild.js && edgio build",
+    "edgio:deploy": "node scripts/prebuild.js && edgio deploy",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
