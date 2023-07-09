@@ -73,10 +73,10 @@
   },
   "devDependencies": {
     "@capacitor/cli": "3.3.2",
-    "@edgio/cli": "^6.1.3",
-    "@edgio/core": "^6.1.3",
-    "@edgio/devtools": "^6.1.3",
-    "@edgio/prefetch": "^6.1.3",
+    "@edgio/cli": "^7.0.24",
+    "@edgio/core": "^7.0.24",
+    "@edgio/devtools": "^7.0.24",
+    "@edgio/prefetch": "^7.0.24",
     "prettier": "^2.5.1"
   },
   "repository": "git@github.com:edgio-docs/edgio-ionic-react-example.git"
