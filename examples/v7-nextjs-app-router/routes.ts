@@ -7,17 +7,14 @@ export default new Router()
   .use(nextRoutes)
 
   // caching for all requests
-  .match(
-    {},
-    {
-      caching: {
-        max_age: '86400s',
-        stale_while_revalidate: '31536000s',
-        bypass_client_cache: true,
-        ignore_origin_no_cache: [200],
-      },
-    }
-  )
+  .match('/(.*)', {
+    caching: {
+      max_age: '86400s',
+      stale_while_revalidate: '31536000s',
+      bypass_client_cache: true,
+      ignore_origin_no_cache: [200],
+    },
+  })
   .match('/edgio-api/:path*', {
     url: {
       url_rewrite: [
