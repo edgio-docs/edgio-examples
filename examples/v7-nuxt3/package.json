@@ -11,13 +11,13 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@edgio/cli": "^7.0.15",
-    "@edgio/core": "^7.0.15",
-    "@edgio/devtools": "^7.0.15",
-    "@edgio/nuxt-nitro": "^7.0.15",
-    "@edgio/prefetch": "^7.0.15",
+    "@edgio/cli": "^7.0.30",
+    "@edgio/core": "^7.0.30",
+    "@edgio/devtools": "^7.0.30",
+    "@edgio/nuxt-nitro": "^7.0.30",
+    "@edgio/prefetch": "^7.0.30",
     "@edgio/rum": "^7.0.6",
-    "@edgio/vue": "^7.0.15"
+    "@edgio/vue": "^7.0.30"
   },
   "repository": "git@github.com:edgio-docs/edgio-v7-nuxt3-example.git",
   "dependencies": {
