@@ -5,12 +5,11 @@
 
 module.exports = {
   connector: "@edgio/spartacus",
-  backends: {
-    commerce: {
-      domainOrIp: "spartacus-demo.eastus.cloudapp.azure.com",
-      hostHeader: "spartacus-demo.eastus.cloudapp.azure.com",
-      port: 8443,
-      disableCheckCert: true,
+  origins: [
+    {
+      name: "commerce",
+      override_host_header: "spartacus-demo.eastus.cloudapp.azure.com",
+      hosts: [{ location: "spartacus-demo.eastus.cloudapp.azure.com" }],
     },
-  },
+  ],
 };
