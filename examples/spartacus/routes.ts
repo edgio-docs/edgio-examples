@@ -44,6 +44,7 @@ const ssrPageCacheHandler = ({ cache }) => {
 };
 
 export default new Router()
+  .use(angularRoutes)
   .match(
     '/occ/v2/electronics-spa/users/:user/:path*',
     ({ proxy, removeRequestHeader, compute }) => {
@@ -51,7 +52,7 @@ export default new Router()
         removeRequestHeader('origin');
         await proxy('commerce');
       });
-    }
+    },
   )
   .match('/occ/v2/:path*', ({ cache, proxy, removeRequestHeader, compute }) => {
     compute(async () => {
@@ -80,5 +81,4 @@ export default new Router()
   .get('/electronics-spa', ssrPageCacheHandler)
   .get('/electronics-spa/open-Catalogue/:path*', ssrPageCacheHandler)
   .get('/electronics-spa/product/:path*', ssrPageCacheHandler)
-  .get('/electronics-spa/Brands/:path*', ssrPageCacheHandler)
-  .use(angularRoutes);
+  .get('/electronics-spa/Brands/:path*', ssrPageCacheHandler);
