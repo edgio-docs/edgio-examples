@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "dev:ssr": "ng run edgio-spartacus-example:serve-ssr --port=3001",
+    "dev:ssr": "NODE_OPTIONS=--openssl-legacy-provider ng run edgio-spartacus-example:serve-ssr --port=3001",
     "serve:ssr": "node dist/edgio-spartacus-example/server/main.js",
     "build:ssr": "ng build --prod && ng run edgio-spartacus-example:server:production",
     "prerender": "ng run edgio-spartacus-example:prerender",
