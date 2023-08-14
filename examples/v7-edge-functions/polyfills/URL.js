@@ -1,4 +1,3 @@
-import { URL, URLSearchParams } from 'whatwg-url';
+import URL from 'url-parse';
 
 global.URL = URL;
-global.URLSearchParams = URLSearchParams;
