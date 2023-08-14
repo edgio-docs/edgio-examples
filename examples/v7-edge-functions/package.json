@@ -1,0 +1,32 @@
+{
+  "name": "edgio-v7-edge-functions-example",
+  "version": "0.2.0",
+  "description": "Edgio Functions Examples",
+  "scripts": {
+    "edgio": "edgio",
+    "update": "edgio use pre-v7-edge",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "edgio:dev": "edgio dev",
+    "edgio:build": "edgio build",
+    "edgio:deploy": "edgio deploy"
+  },
+  "keywords": [],
+  "private": true,
+  "author": {
+    "name": "Raees Iqbal",
+    "url": "https://raees.me"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@edgio/cli": "^7.1.1",
+    "@edgio/core": "^7.1.1",
+    "@edgio/devtools": "^7.1.1",
+    "@edgio/prefetch": "^7.1.1"
+  },
+  "repository": "git@github.com:edgio-docs/edgio-v7-edge-functions-example.git",
+  "dependencies": {
+    "@planetscale/database": "^1.10.0",
+    "undici": "^5.23.0",
+    "whatwg-url": "^13.0.0"
+  }
+}
