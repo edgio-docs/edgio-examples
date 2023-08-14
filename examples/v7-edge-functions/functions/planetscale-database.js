@@ -8,6 +8,7 @@ import createFetch from '../polyfills/fetch';
 export async function handleHttpRequest(request, context) {
   const env = context.environmentVars;
 
+  console.log('env', env);
   const config = {
     host: 'aws.connect.psdb.cloud',
     username: env.PLANETSCALE_USERNAME,
