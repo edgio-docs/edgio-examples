@@ -8,10 +8,6 @@ import createFetch from '../polyfills/fetch';
 export async function handleHttpRequest(request, context) {
   const env = context.environmentVars;
 
-  const _context = JSON.parse(JSON.stringify(context, null, 2));
-  delete _context.environmentVars['__EDGE_FUNCTION_QUICKJS_BYTECODE_BASE64__'];
-
-  console.log('context', JSON.stringify(_context, null, 2));
   // const config = {
   //   host: 'aws.connect.psdb.cloud',
   //   username: env.PLANETSCALE_USERNAME,
@@ -32,7 +28,17 @@ export async function handleHttpRequest(request, context) {
   //   message: `Total number of records: ${totalCount}`,
   // });
 
-  const content = JSON.stringify(_context, null, 2);
+  const content = JSON.stringify(
+    {
+      requestVars: context.requestVars,
+      geo: context.geo,
+      device: context.device,
+      client: context.client,
+      metrics: context.metrics,
+    },
+    null,
+    2
+  );
 
   const response = new Response(content, {
     headers: {
