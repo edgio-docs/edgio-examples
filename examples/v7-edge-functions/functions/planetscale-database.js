@@ -8,7 +8,10 @@ import createFetch from '../polyfills/fetch';
 export async function handleHttpRequest(request, context) {
   const env = context.environmentVars;
 
-  console.log('context', JSON.stringify(context));
+  const _context = JSON.parse(JSON.stringify(context, null, 2));
+  delete _context.environmentVars['__EDGE_FUNCTION_QUICKJS_BYTECODE_BASE64__'];
+
+  console.log('context', JSON.stringify(_context, null, 2));
   // const config = {
   //   host: 'aws.connect.psdb.cloud',
   //   username: env.PLANETSCALE_USERNAME,
