@@ -32,7 +32,7 @@ export async function handleHttpRequest(request, context) {
   //   message: `Total number of records: ${totalCount}`,
   // });
 
-  const content = JSON.stringify(context, null, 2);
+  const content = JSON.stringify(_context, null, 2);
 
   const response = new Response(content, {
     headers: {
