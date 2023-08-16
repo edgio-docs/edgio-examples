@@ -31,6 +31,6 @@ export default new Router()
   .match('/example/manifest-manipulation', {
     edge_function: './functions/manifest-manipulation.js',
   })
-  .match('/example/planetscale-database', {
+  .match('/example/planetscale-database.json', {
     edge_function: './functions/planetscale-database.js',
   });

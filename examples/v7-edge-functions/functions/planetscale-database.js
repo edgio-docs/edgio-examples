@@ -8,26 +8,28 @@ import createFetch from '../polyfills/fetch';
 export async function handleHttpRequest(request, context) {
   const env = context.environmentVars;
 
-  console.log('env', env);
-  const config = {
-    host: 'aws.connect.psdb.cloud',
-    username: env.PLANETSCALE_USERNAME,
-    password: env.PLANETSCALE_PASSWORD,
-    fetch: createFetch('planetscale'),
-  };
+  console.log('context', JSON.stringify(context));
+  // const config = {
+  //   host: 'aws.connect.psdb.cloud',
+  //   username: env.PLANETSCALE_USERNAME,
+  //   password: env.PLANETSCALE_PASSWORD,
+  //   fetch: createFetch('planetscale'),
+  // };
 
-  const conn = connect(config);
+  // const conn = connect(config);
 
-  const results = await conn.transaction(async (tx) => {
-    await tx.execute('INSERT INTO example_table () VALUES ();');
-    return await tx.execute('SELECT COUNT(*) as total FROM example_table;');
-  });
+  // const results = await conn.transaction(async (tx) => {
+  //   await tx.execute('INSERT INTO example_table () VALUES ();');
+  //   return await tx.execute('SELECT COUNT(*) as total FROM example_table;');
+  // });
 
-  const totalCount = results.rows[0].total;
+  // const totalCount = results.rows[0].total;
 
-  const content = JSON.stringify({
-    message: `Total number of records: ${totalCount}`,
-  });
+  // const content = JSON.stringify({
+  //   message: `Total number of records: ${totalCount}`,
+  // });
+
+  const content = JSON.stringify(context, null, 2);
 
   const response = new Response(content, {
     headers: {

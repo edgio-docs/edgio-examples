@@ -13,6 +13,7 @@ export async function handleHttpRequest(request, context) {
             <li><a href="/">This page</a></li>
             <li><a href="/example/change-headers.json">Change headers example</a></li>
             <li><a href="/example/generate.json">Generate a JSON response</a></li>
+            <li><a href="/example/planetscale-database.json">Insert and read record count from database</a></li>
           </ul>
         </body>
       </html>`;
