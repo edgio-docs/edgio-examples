@@ -28,6 +28,8 @@ export async function handleHttpRequest(request, context) {
   //   message: `Total number of records: ${totalCount}`,
   // });
 
+  context.geo = JSON.parse(JSON.stringify(context.geo));
+
   const response = new Response(context.geo.country, {
     headers: {
       'content-type': 'application/json; charset=utf-8',
