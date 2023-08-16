@@ -33,4 +33,13 @@ export default new Router()
   })
   .match('/example/planetscale-database.json', {
     edge_function: './functions/planetscale-database.js',
+  })
+  .match('/example/planetscale-database-1.json', {
+    edge_function: './functions/planetscale-database-1.js',
+  })
+  .match('/example/planetscale-database-2.json', {
+    edge_function: './functions/planetscale-database-2.js',
+  })
+  .match('/example/planetscale-database-3.json', {
+    edge_function: './functions/planetscale-database-3.js',
   });
