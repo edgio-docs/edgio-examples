@@ -28,13 +28,13 @@ export async function handleHttpRequest(request, context) {
   //   message: `Total number of records: ${totalCount}`,
   // });
 
-  context.geo = JSON.parse(JSON.stringify(context.geo));
+context.geo = JSON.parse(JSON.stringify(context.geo));
 
-  const response = new Response(context.geo.country, {
-    headers: {
-      'content-type': 'application/json; charset=utf-8',
-    },
-  });
+const response = new Response(JSON.stringify(context.geo, null, 2), {
+  headers: {
+    'content-type': 'application/json; charset=utf-8',
+  },
+});
 
   response.headers.set('x-custom-header', context.geo.country || 'empty');
 
