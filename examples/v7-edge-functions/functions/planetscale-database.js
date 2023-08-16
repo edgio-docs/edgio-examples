@@ -38,7 +38,10 @@ const response = new Response(
   }
 );
 
-  response.headers.set('x-custom-header', context.geo.country || 'empty');
+  response.headers.set(
+    'x-custom-header',
+    context.geo.get('country') || 'empty'
+  );
 
   context.respondWith(response);
 }
