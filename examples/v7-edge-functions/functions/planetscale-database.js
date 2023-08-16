@@ -6,7 +6,15 @@
 // import createFetch from '../polyfills/fetch';
 
 export async function handleHttpRequest(request, context) {
-  const env = context.environmentVars;
+  const _context = {};
+
+  Object.keys(context).forEach((key) => {
+    if (context[key].toJSON && key !== 'environmentVars') {
+      _context[key] = context[key].toJSON();
+    }
+  });
+
+  console.log(_context, request);
   // console.log(JSON.stringify(context, null, 2));
   // const config = {
   //   host: 'aws.connect.psdb.cloud',
@@ -29,14 +37,11 @@ export async function handleHttpRequest(request, context) {
   // });
 
 
-const response = new Response(
-  JSON.stringify(context.geo.get('country'), null, 2),
-  {
-    headers: {
-      'content-type': 'application/json; charset=utf-8',
-    },
-  }
-);
+const response = new Response(JSON.stringify(_context, null, 2), {
+  headers: {
+    'content-type': 'application/json; charset=utf-8',
+  },
+});
 
   response.headers.set(
     'x-custom-header',
