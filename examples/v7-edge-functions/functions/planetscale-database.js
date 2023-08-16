@@ -1,9 +1,9 @@
-import { connect } from '@planetscale/database';
+// import { connect } from '@planetscale/database';
 
 // polyfills
-import '../polyfills/Buffer';
-import '../polyfills/URL';
-import createFetch from '../polyfills/fetch';
+// import '../polyfills/Buffer';
+// import '../polyfills/URL';
+// import createFetch from '../polyfills/fetch';
 
 export async function handleHttpRequest(request, context) {
   const env = context.environmentVars;
