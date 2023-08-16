@@ -7,7 +7,7 @@
 
 export async function handleHttpRequest(request, context) {
   const env = context.environmentVars;
-
+  // console.log(JSON.stringify(context, null, 2));
   // const config = {
   //   host: 'aws.connect.psdb.cloud',
   //   username: env.PLANETSCALE_USERNAME,
@@ -28,23 +28,13 @@ export async function handleHttpRequest(request, context) {
   //   message: `Total number of records: ${totalCount}`,
   // });
 
-  const content = JSON.stringify(
-    {
-      requestVars: context.requestVars,
-      geo: context.geo,
-      device: context.device,
-      client: context.client,
-      metrics: context.metrics,
-    },
-    null,
-    2
-  );
-
-  const response = new Response(content, {
+  const response = new Response('foo', {
     headers: {
       'content-type': 'application/json; charset=utf-8',
     },
   });
+
+  response.headers.set('x-custom-header', context.geo.country || 'empty');
 
   context.respondWith(response);
 }
