@@ -2,6 +2,8 @@
 
 This example is a basic Astro SSR template powered by Edgio.
 
+**Preview**: https://edgio-community-examples-v7-astro-live.edgio.link/
+
 To get started with local development, run the following to install the Edgio CLI and start the development server:
 
 ```bash
