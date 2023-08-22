@@ -1,0 +1,31 @@
+{
+  "scripts": {
+    "edgio": "edgio",
+    "edgio:dev": "edgio dev",
+    "edgio:build": "edgio build",
+    "edgio:deploy": "edgio deploy",
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "name": "edgio-v7-astro-example",
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@astrojs/node": "^5.3.5",
+    "astro": "^2.10.12"
+  },
+  "devDependencies": {
+    "@edgio/astro": "^7.2.1",
+    "@edgio/cli": "^7.2.1",
+    "@edgio/core": "^7.2.1",
+    "@edgio/devtools": "^7.2.1",
+    "@edgio/prefetch": "^7.2.1"
+  },
+  "repository": "git@github.com:edgio-docs/edgio-v7-astro-example.git"
+}
