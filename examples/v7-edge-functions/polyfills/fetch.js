@@ -1,21 +1,24 @@
-const _fetch = fetch;
-
-export default function createFetch(origin) {
-  if (!origin)
+/**
+ * Creates a fetch function with an additional 'edgio' option to specify the origin.
+ *
+ * @param {string} originName - The origin name defined in edgio.config.js.
+ * @returns {function} - A modified fetch function.
+ * @throws {Error} If the origin name is not provided.
+ */
+export default function createFetchWithOrigin(originName) {
+  if (!originName) {
     throw new Error(
-      `'origin' is required and must be a name defined in edgio.config.js`
+      "'originName' is required and must be a name defined in edgio.config.js"
     );
+  }
 
-  return (url, options, ...rest) => {
-    return _fetch(
-      url,
-      {
-        ...options,
-        edgio: {
-          origin,
-        },
+  return (url, options = {}, ...rest) => {
+    const modifiedOptions = {
+      ...options,
+      edgio: {
+        origin: originName,
       },
-      ...rest
-    );
+    };
+    return fetch(url, modifiedOptions, ...rest);
   };
 }
