@@ -7,11 +7,11 @@
     "edgio:deploy": "edgio deploy"
   },
   "devDependencies": {
-    "@edgio/cli": "^7.0.15",
-    "@edgio/core": "^7.0.15",
-    "@edgio/devtools": "^7.0.15",
-    "@edgio/prefetch": "^7.0.15",
-    "@edgio/starter": "^7.0.15",
+    "@edgio/cli": "^7.2.1",
+    "@edgio/core": "^7.2.1",
+    "@edgio/devtools": "^7.2.1",
+    "@edgio/prefetch": "^7.2.1",
+    "@edgio/starter": "^7.2.1",
     "cheerio": "^1.0.0-rc.12",
     "prettier": "^2.8.8"
   },

@@ -14,12 +14,12 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
-    "@edgio/cli": "^7.0.20",
-    "@edgio/core": "^7.0.20",
-    "@edgio/devtools": "^7.0.20",
-    "@edgio/next": "^7.0.20",
-    "@edgio/prefetch": "^7.0.20",
-    "@edgio/react": "^7.0.20",
+    "@edgio/cli": "7.2.1",
+    "@edgio/core": "7.2.1",
+    "@edgio/devtools": "7.2.1",
+    "@edgio/next": "7.2.1",
+    "@edgio/prefetch": "7.2.1",
+    "@edgio/react": "7.2.1",
     "eslint": "7",
     "eslint-config-next": "13.4.6"
   },
