@@ -116,17 +116,20 @@ function updateEdgioDependencies(rootPath) {
             key
           ].join(', ')}`
         );
-        let command;
+        let command, installCommand;
         if (packageManager === 'yarn') {
           command = `yarn add ${saveKey} ${edgioDependencies[key].join(
             ' '
           )} --ignore-workspace-root-check`;
+          installCommand = `yarn install --ignore-workspace-root-check`;
         } else {
           command = `npm install ${saveKey} ${edgioDependencies[key].join(
             ' '
           )} --legacy-peer-deps`;
+          installCommand = `npm install --legacy-peer-deps`;
         }
         execSync(command, { stdio: 'inherit', cwd: rootPath });
+        execSync(installCommand, { stdio: 'inherit', cwd: rootPath });
       } else {
         console.log(`No ${key} to update`);
       }
