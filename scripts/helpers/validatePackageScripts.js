@@ -47,8 +47,8 @@ if (
   packageJson.repository !== repoFormat(exampleName)
 ) {
   console.error(
-    `'repository' property either not found or not the recommended value in '${packageJsonPath}'.\n` +
-      `Recommended value: ${repoFormat(exampleName)}`
+    `'repository' property either not found or not the recommended value in '${packageJsonPath}'.\n\n` +
+      `Recommended value: "repository": "${repoFormat(exampleName)}"`
   );
   error = true;
 }
