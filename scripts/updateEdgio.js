@@ -125,8 +125,8 @@ function updateEdgioDependencies(rootPath) {
         } else {
           command = `npm install ${saveKey} ${edgioDependencies[key].join(
             ' '
-          )} --legacy-peer-deps`;
-          installCommand = `npm install --legacy-peer-deps`;
+          )}`;
+          installCommand = `npm install`;
         }
         execSync(command, { stdio: 'inherit', cwd: rootPath });
         execSync(installCommand, { stdio: 'inherit', cwd: rootPath });
