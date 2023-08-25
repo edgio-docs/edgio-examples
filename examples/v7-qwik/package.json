@@ -20,7 +20,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "qwik": "qwik"
   },
-  "name": "edgio-v7-qwikjs-example",
+  "name": "edgio-v7-qwik-example",
   "version": "1.0.0",
   "description": "",
   "author": "",
@@ -49,5 +49,5 @@
     "vite": "4.4.7",
     "vite-tsconfig-paths": "4.2.0"
   },
-  "repository": "git@github.com:edgio-docs/edgio-v7-qwikjs-example.git"
+  "repository": "git@github.com:edgio-docs/edgio-v7-qwik-example.git"
 }
