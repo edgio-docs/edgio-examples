@@ -1,0 +1,20 @@
+{
+  "version": "v1",
+  "packages": {
+    "@edgio/nodejs-connector": {
+      "signature": "56d113e6c856bf664e7c357cf1e3d211",
+      "file": true,
+      "replaced": "^7.2.1"
+    },
+    "@edgio/core": {
+      "signature": "066cfa696a0ed6e39bbd4e8574ae9e3f",
+      "file": true,
+      "replaced": "^7.2.1"
+    },
+    "@edgio/cli": {
+      "signature": "d3b2ee289c8393d3009f85e53e5bde5a",
+      "file": true,
+      "replaced": "^7.2.1"
+    }
+  }
+}
