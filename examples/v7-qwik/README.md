@@ -2,7 +2,7 @@
 
 This example is a basic Qwik template powered by Edgio.
 
-**Preview**: https://edgio-community-examples-v7-qwikjs-live.edgio.link/
+**Preview**: https://edgio-community-examples-v7-qwik-live.edgio.link/
 
 To get started with local development, run the following to install the Edgio CLI and start the development server:
 
