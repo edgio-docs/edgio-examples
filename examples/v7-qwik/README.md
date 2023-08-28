@@ -1,4 +1,4 @@
-# Edgio v7 Remix Template
+# Edgio v7 Qwik Template
 
 This example is a basic Qwik template powered by Edgio.
 
