@@ -34,9 +34,16 @@ async function main() {
     name: 'exampleType',
     message: 'Would you like to prepare a new or existing example?',
     choices: [
-      { title: 'New', value: 'new' },
-      { title: 'Existing', value: 'existing' },
-      { title: 'Import from Github URL', value: 'import' },
+      { title: 'New - Creates a new repo from base template', value: 'new' },
+      {
+        title: 'Existing - Prepares example by installing modules',
+        value: 'existing',
+      },
+      { title: 'Import - Import from a GitHub URL', value: 'import' },
+      {
+        title: 'Update - Adds Edgio scripts to existing example',
+        value: 'update',
+      },
     ],
   });
 
@@ -45,7 +52,7 @@ async function main() {
   const formatFn = (input) => input.trim();
 
   // new or github import
-  if (exampleType !== 'existing') {
+  if (['new', 'import'].includes(exampleType)) {
     // Prompt the user to enter the name of the new example
     const { name } = await prompts({
       type: 'text',
@@ -66,10 +73,6 @@ async function main() {
     exampleName = name;
     examplePath = path.join(examplesPath, exampleName);
 
-    // Full name of example
-    const fullName = `edgio-${exampleName}-example`;
-    const repoUrl = `git@github.com:edgio-docs/edgio-${exampleName}-example.git`;
-
     if (exampleType === 'new') {
       await copyTemplate(examplePath);
     } else if (exampleType === 'import') {
@@ -88,9 +91,11 @@ async function main() {
     fs.readFile(packageJsonPath, 'utf8', async (err, data) => {
       if (err) throw err;
 
+      const pkgProps = getNameAndRepoUrl(exampleName);
       const packageJson = JSON.parse(data);
-      packageJson.repository = repoUrl;
-      packageJson.name = fullName;
+      packageJson.repository = pkgProps.repository;
+      packageJson.name = pkgProps.name;
+
       try {
         fs.writeFile(
           packageJsonPath,
@@ -133,6 +138,15 @@ async function main() {
     }
     exampleName = example;
     examplePath = path.join(examplesPath, exampleName);
+
+    if (exampleType === 'update') {
+      // copy over the .github folder and update package.json
+      await copyGithubFiles(examplePath);
+      await mergePackageJsons(
+        path.join(examplePath, 'package.json'),
+        getNameAndRepoUrl(exampleName)
+      );
+    }
 
     // Install the packages
     await installDependencies(examplePath);
@@ -184,6 +198,54 @@ async function copyTemplate(examplePath) {
 
   // Rename the directory to the name of the new example
   fs.renameSync(path.join(examplesPath, '_template'), examplePath);
+}
+
+async function copyGithubFiles(examplePath) {
+  // Copy the .github folder from the template
+  execSync(
+    `cp -r ${path.join(examplesPath, templateName, '.github')} ${examplePath}`
+  );
+}
+
+async function mergePackageJsons(targetPath, options = {}) {
+  try {
+    const targetJson = fs.readFileSync(targetPath, 'utf8');
+    const sourceJson = fs.readFileSync(
+      path.join(process.cwd(), templateName, 'package.json'),
+      'utf8'
+    );
+
+    const targetObj = JSON.parse(targetJson);
+    const sourceObj = JSON.parse(sourceJson);
+
+    const mergedObj = deepMerge(targetObj, { ...sourceObj, ...options });
+
+    fs.writeFileSync(targetPath, JSON.stringify(mergedObj, null, 2));
+  } catch (err) {
+    console.error(`Error merging package.json files: ${err}`);
+  }
+}
+
+function deepMerge(target, source) {
+  for (const key in source) {
+    if (
+      source[key] instanceof Object &&
+      target.hasOwnProperty(key) &&
+      target[key] instanceof Object
+    ) {
+      deepMerge(target[key], source[key]);
+    } else {
+      target[key] = source[key];
+    }
+  }
+  return target;
+}
+
+function getNameAndRepoUrl(exampleName) {
+  return {
+    name: `edgio-${exampleName}-example`,
+    repository: `git@github.com:edgio-docs/edgio-${exampleName}-example.git`,
+  };
 }
 
 main();
