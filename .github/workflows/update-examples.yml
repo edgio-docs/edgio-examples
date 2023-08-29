@@ -53,7 +53,7 @@ jobs:
           git push origin ${{ env.UPDATES_BRANCH_NAME }}
       - name: Get matrix of examples
         id: setMatrix
-        run: echo -e "matrix=$(node scripts/helpers/printExamples.js)" >> $GITHUB_OUTPUT
+        run: echo -e "matrix=$(node scripts/helpers/printV7Examples.js)" >> $GITHUB_OUTPUT
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
