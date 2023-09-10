@@ -1063,10 +1063,10 @@
     "@babel/helper-validator-identifier" "^7.22.5"
     to-fast-properties "^2.0.0"
 
-"@edgio/cli@7.2.1":
-  version "7.2.1"
-  resolved "https://registry.yarnpkg.com/@edgio/cli/-/cli-7.2.1.tgz#0c56e69b7c78a2da62fe156409decf155670c32d"
-  integrity sha512-4ZjpBWfDhKUuPF/Q7NF6dpbR/5COp6r/61Gcj3fDTNRXjUIx/7wGU9hwrN1ay9i5AcR9cwoqAR8p132YxOWi/A==
+"@edgio/cli@7.2.2":
+  version "7.2.2"
+  resolved "https://registry.yarnpkg.com/@edgio/cli/-/cli-7.2.2.tgz#b8035c2857522116fc14c93fd5f6a680e8cf9f90"
+  integrity sha512-sFnaW/GLXMFSjrCADtTNg4LtA3IPjyUmGfLSnZbKLPyzv/LP2qMvL06z3zB9bhDJIaa1Ouw+RHgH37sEBqCJYg==
   dependencies:
     axios "^0.21.2"
     chalk "^4.1.2"
@@ -1110,10 +1110,10 @@
     yauzl "^2.10.0"
     yazl "^2.5.1"
 
-"@edgio/core@7.2.1", "@edgio/core@^7.2.1":
-  version "7.2.1"
-  resolved "https://registry.yarnpkg.com/@edgio/core/-/core-7.2.1.tgz#9bd50e249ef80a222675e4201a7fa9107e15d179"
-  integrity sha512-1L66snoRBWSYuPoC8dV02QUMs4EBO/8tzdlQMm7RiZ30sZZiTtBfWdm4BDoCAsl95+GflBMOzuCBi++MY+8fJg==
+"@edgio/core@7.2.2", "@edgio/core@^7.2.2":
+  version "7.2.2"
+  resolved "https://registry.yarnpkg.com/@edgio/core/-/core-7.2.2.tgz#fea7baedf34dcadf96e20aa350bf89dfa3669d3b"
+  integrity sha512-wdqCiYGY5U8N3sdlA3ZBugbJG5eNt+YhSxin/p8Lr49WgGhAjnl7ndvMss2YVsOV32sRYbiOGWzppoci1oZrIw==
   dependencies:
     "@babel/parser" "^7.18.9"
     "@babel/traverse" "^7.18.9"
@@ -1161,19 +1161,19 @@
     workbox-build "^6.5.4"
     yaml-validator "^4.0.0"
 
-"@edgio/devtools@7.2.1":
-  version "7.2.1"
-  resolved "https://registry.yarnpkg.com/@edgio/devtools/-/devtools-7.2.1.tgz#5f76acbe78c5c0cda2df739ac369f10f58a7d84e"
-  integrity sha512-IUH0tEYm7yJS9gS3gvREfXD2lvxEDuiHGLBR5lfoq95BFoS294rXdAIhNCx1fgUybVNxfO455IxbqdaG3WzjaQ==
+"@edgio/devtools@7.2.2":
+  version "7.2.2"
+  resolved "https://registry.yarnpkg.com/@edgio/devtools/-/devtools-7.2.2.tgz#7a57248f7cde5d903298307916ef2dd67c34e51a"
+  integrity sha512-h7CShDuSGFQrwyB5z+G8FLN81GMsd2SsgyVpwXOs1hsW2JUG+abjczqsDSqe43oXHFdw8gcvRsyCbzBGUA7oaw==
   dependencies:
     clsx "^1.1.1"
     lodash "^4.17.20"
     sirv-cli "^1.0.0"
 
-"@edgio/next@7.2.1":
-  version "7.2.1"
-  resolved "https://registry.yarnpkg.com/@edgio/next/-/next-7.2.1.tgz#e5ed03a57a2a71ceec992397b4c517ebb593e454"
-  integrity sha512-MRxWHWkaXby0Vs3qVUmu91HP61fyGSMQtHSBq0RKTE/QP4POt0jgOdenPJt7JQSuaR5Wxg5OAcOO2Lzr0vByDg==
+"@edgio/next@7.2.2":
+  version "7.2.2"
+  resolved "https://registry.yarnpkg.com/@edgio/next/-/next-7.2.2.tgz#a100304c9c602c68743ef105b093a6ab4e58c102"
+  integrity sha512-SGAuN3TJ6zxH43R27cWhpYT0/6z/DjGHPlqOTneKJidyZcRpQfOUaFXemQn1dA8p+05z4vSYUgBPGf9osgNeUw==
   dependencies:
     "@vercel/nft" "^0.13.1"
     chalk "^4.1.2"
@@ -1191,12 +1191,12 @@
     webpack "^4.0.0"
     webpack-sources "^2.2.0"
 
-"@edgio/prefetch@7.2.1":
-  version "7.2.1"
-  resolved "https://registry.yarnpkg.com/@edgio/prefetch/-/prefetch-7.2.1.tgz#6c9d8fa15d0e800bdd4e5886861360a95ed9bb5a"
-  integrity sha512-JsqODryDzkKash8ralNnYMnnlnU4PpqO+XBsrct1w/bx0LgcMlRrfmfP9Eq8XzuWoBOQ6zt2iEp+8z0L5qwbiQ==
+"@edgio/prefetch@7.2.2":
+  version "7.2.2"
+  resolved "https://registry.yarnpkg.com/@edgio/prefetch/-/prefetch-7.2.2.tgz#07496a049c8cd2080bbe40b2dc6d487d2090ac2d"
+  integrity sha512-NGG3H4NNuHigQDK+S8Xc5qwapDF2/0/p02LHMFY4d+hjr4aicjiI6vgjqUw621C5RMrkD4BfxENa9CzOvoOj0g==
   dependencies:
-    "@edgio/core" "^7.2.1"
+    "@edgio/core" "^7.2.2"
     cheerio "^1.0.0-rc.3"
     json-query "^2.2.2"
     workbox-cacheable-response "^5.1.2"
@@ -1206,10 +1206,10 @@
     workbox-routing "^5.1.2"
     workbox-strategies "^5.1.2"
 
-"@edgio/react@7.2.1":
-  version "7.2.1"
-  resolved "https://registry.yarnpkg.com/@edgio/react/-/react-7.2.1.tgz#463f985ab7de9e899dd270f107020e4769e759cc"
-  integrity sha512-Nvb2DeYKXLFuMetpzme72qKXDjXOq5iQ6OFsGAnyfh6+fDei+4y8GkKwRXR8Wd+KFjuZAcBdi4+Ko1yg2pbHaw==
+"@edgio/react@7.2.2":
+  version "7.2.2"
+  resolved "https://registry.yarnpkg.com/@edgio/react/-/react-7.2.2.tgz#e74566009895f1385704608c920e8d4e858be9d6"
+  integrity sha512-sOyWp3S7jOUE9C05RDCeNlZx9bqqLdvWkyUIokdkX05zqh6t5UCOi8MY2VtJHlpWgWR2mJjDGQLUG4/t81mvEA==
   dependencies:
     prop-types "^15.8.1"
     react-merge-refs "^1.1.0"
