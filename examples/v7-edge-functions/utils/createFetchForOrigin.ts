@@ -5,20 +5,20 @@
  * @returns {function} - A modified fetch function.
  * @throws {Error} If the origin name is not provided.
  */
-export default function createFetchWithOrigin(originName) {
+export default function createFetchWithOrigin(originName: string) {
   if (!originName) {
     throw new Error(
       "'originName' is required and must be a name defined in edgio.config.js"
     );
   }
 
-  return (url, options = {}, ...rest) => {
+  return async (url: string | Request, options: any = {}) => {
     const modifiedOptions = {
       ...options,
       edgio: {
         origin: originName,
       },
     };
-    return fetch(url, modifiedOptions, ...rest);
+    return fetch(url, modifiedOptions);
   };
 }

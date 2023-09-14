@@ -3,43 +3,29 @@
 import { Router, edgioRoutes } from '@edgio/core';
 
 export default new Router()
-  // Here is an example where we cache api/* at the edge but prevent caching in the browser
-  // .match('/api/:path*', {
-  //   caching: {
-  //     max_age: '1d',
-  //     stale_while_revalidate: '1h',
-  //     bypass_client_cache: true,
-  //     service_worker_max_age: '1d',
-  //   },
-  // })
-
   // plugin enabling basic Edgio functionality
   .use(edgioRoutes)
-
   .static('public')
 
   // Edgio Functions
   .match('/', {
-    edge_function: './functions/sample-html-page.js',
+    edge_function: './functions/general/sample-html-page.js',
   })
   .match('/example/generate.json', {
-    edge_function: './functions/generate-json.js',
+    edge_function: './functions/general/generate-json.js',
   })
   .match('/example/change-headers.json', {
-    edge_function: './functions/change-headers.js',
+    edge_function: './functions/general/change-headers.js',
   })
   .match('/example/manifest-manipulation', {
-    edge_function: './functions/manifest-manipulation.js',
+    edge_function: './functions/general/manifest-manipulation.js',
   })
-  .match('/example/planetscale-database.json', {
-    edge_function: './functions/planetscale-database.js',
+  .match('/example/content-stitching', {
+    edge_function: './functions/general/content-stitching.js',
   })
-  .match('/example/planetscale-database-1.json', {
-    edge_function: './functions/planetscale-database-1.js',
+  .match('/example/planetscale-database', {
+    edge_function: './functions/database/planetscale/index.js',
   })
-  .match('/example/planetscale-database-2.json', {
-    edge_function: './functions/planetscale-database-2.js',
-  })
-  .match('/example/planetscale-database-3.json', {
-    edge_function: './functions/planetscale-database-3.js',
+  .match('/example/upstash-database', {
+    edge_function: './functions/database/upstash/index.js',
   });

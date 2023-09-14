@@ -1,6 +1,8 @@
 // This file was automatically added by edgio init.
 // You should commit this file to source control.
 // Learn more about this file at https://docs.edg.io/guides/edgio_config
+require('dotenv').config();
+
 module.exports = {
   // The name of the site in Edgio to which this app should be deployed.
   name: 'edgio-functions-examples',
@@ -36,6 +38,28 @@ module.exports = {
           location: 'aws.connect.psdb.cloud',
         },
       ],
+    },
+    {
+      name: 'upstash',
+      override_host_header: 'simple-weasel-38863.upstash.io',
+      hosts: [
+        {
+          location: 'simple-weasel-38863.upstash.io',
+        },
+      ],
+    },
+    {
+      name: 'google',
+      override_host_header: 'www.google.com',
+      hosts: [
+        {
+          location: 'www.google.com',
+        },
+      ],
+      tls_verify: {
+        use_sni: true,
+        sni_hint_and_strict_san_check: 'www.google.com',
+      },
     },
   ],
 
