@@ -24,6 +24,9 @@ export async function handleHttpRequest(request, context) {
                 flex-direction: column;
                 align-items: center;
               }
+              pre {
+                text-wrap: wrap;
+              }
               h1 {
                 background: #6200EE;
                 color: #FFF;
