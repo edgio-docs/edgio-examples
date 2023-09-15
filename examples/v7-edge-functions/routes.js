@@ -23,6 +23,9 @@ export default new Router()
   .match('/example/content-stitching', {
     edge_function: './functions/general/content-stitching.js',
   })
+  .match('/example/redirects(.*)', {
+    edge_function: './functions/general/redirect.js',
+  })
   .match('/example/planetscale-database', {
     edge_function: './functions/database/planetscale/index.js',
   })

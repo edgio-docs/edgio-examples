@@ -1,5 +1,3 @@
-import { STATIC_ORIGIN_NAME } from '@edgio/core/origins';
-
 const UrlRegex =
   /(?<scheme>https?):\/\/(?<hostname>(?:\w|\.|-)+)(?::(?<port>\d{2,5}))?/g;
 
@@ -12,7 +10,7 @@ export async function handleHttpRequest(request, context) {
     `${urlMatch[0]}/assets/tears-of-steel.m3u`,
     {
       edgio: {
-        origin: STATIC_ORIGIN_NAME,
+        origin: 'edgio_static',
       },
     }
   );

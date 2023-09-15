@@ -11,41 +11,58 @@ export async function handleHttpRequest(request, context) {
                 font-family: 'Roboto', sans-serif;
                 background: #F5F5F5;
                 color: #212121;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
               }
               h1 {
                 background: #6200EE;
                 color: #FFF;
-                padding: 20px;
+                padding: 15px;
                 margin: 0;
-                font-size: 26px;
+                font-size: 22px;
                 text-align: center;
+                width: 100%;
               }
               p {
-                padding: 16px 20px;
-                font-size: 18px;
+                padding: 10px 15px;
+                font-size: 16px;
               }
-              ul {
-                margin: 0;
-                padding: 0;
+              .grid-container {
                 display: grid;
-                gap: 10px;
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+                gap: 20px;
+                justify-content: center;
+                width: 100%;
+                max-width: 1600px;  /* 500px * 3 + 2 * 20px (gap) */
               }
-              li {
-                list-style-type: none;
-                padding: 12px;
+              section {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin: 15px 0;
+                padding: 10px;
                 background-color: #FFF;
                 box-shadow: 0 2px 5px rgba(0,0,0,0.1);
                 border-radius: 5px;
-                transition: transform 0.3s;
               }
-              li:hover {
-                transform: translateY(-5px);
+              h2 {
+                font-size: 20px;
+                margin: 0 0 10px 0;
+              }
+              ul {
+                padding: 0;
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+                width: 100%;
+                list-style-type: none;
               }
               a {
                 text-decoration: none;
                 color: #6200EE;
-                transition: color 0.3s ease;
+                transition: color 0.2s ease;
+                padding: 5px 0;
               }
               a:hover {
                 color: #3700B3;
@@ -54,15 +71,37 @@ export async function handleHttpRequest(request, context) {
         </head>
         <body>
           <h1>Welcome to Edgio Functions!</h1>
-          <p>Explore various functionalities provided by Edgio through the following examples:</p>
-          <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/example/change-headers.json">Header Manipulation</a></li>
-            <li><a href="/example/generate.json">JSON Response Generation</a></li>
-            <li><a href="/example/content-stitching">Content Stitching w/ HTML Injection</a></li>
-            <li><a href="/example/planetscale-database">Database Transactions with PlanetScale</a></li>
-            <li><a href="/example/upstash-database">Upstash: Waiting Room Simulation</a></li>
-          </ul>
+          <p>Explore Edgio's functionalities:</p>
+
+          <div class="grid-container">
+            <section>
+              <h2>Header Manipulation</h2>
+              <p>Manipulate headers in your response.</p>
+              <a href="/example/change-headers.json">View Example</a>
+            </section>
+
+            <section>
+              <h2>JSON Response Generation</h2>
+              <p>Generate dynamic JSON responses.</p>
+              <a href="/example/generate.json">View Example</a>
+            </section>
+
+            <section>
+              <h2>Content Stitching</h2>
+              <p>Combine content with HTML injections.</p>
+              <a href="/example/content-stitching">View Example</a>
+            </section>
+
+            <section>
+              <h2>Redirect Examples</h2>
+              <p>Simulate redirect scenarios.</p>
+              <ul>
+                <li><a href="/example/redirects/first">Redirect Based on Path</a></li>
+                <li><a href="/example/redirects?queryRedirect=example">Redirect Based on Query</a></li>
+                <li><a href="/example/redirects/no-redirect-match">No Redirect Match</a></li>
+              </ul>
+            </section>
+          </div>
         </body>
       </html>`;
 
