@@ -1,0 +1,5 @@
+# Temporary Edgio files
+.edgio
+
+# Node.js modules
+node_modules
