@@ -1,4 +1,13 @@
+import '../../utils/polyfills/URL';
+
 export async function handleHttpRequest(request, context) {
+  const url = new URL(request.url);
+  const domain = `${url.protocol}//${url.host}`;
+
+  function createCURLCommand(path) {
+  return `curl -i ${domain}${path}`;
+}
+
   const content = `
       <!DOCTYPE html>
       <html lang="en">
@@ -75,32 +84,69 @@ export async function handleHttpRequest(request, context) {
 
           <div class="grid-container">
             <section>
+              <h2>Simple Edge Function</h2>
+              <p>A basic "Hello World" example.</p>
+              <a href="/example/hello-world">View Example</a>
+              <pre><code>${createCURLCommand(
+                '/example/hello-world'
+              )}</code></pre>
+            </section>
+
+            <section>
               <h2>Header Manipulation</h2>
               <p>Manipulate headers in your response.</p>
               <a href="/example/change-headers.json">View Example</a>
+              <pre><code>${createCURLCommand(
+                '/example/change-headers.json'
+              )}</code></pre>
             </section>
 
             <section>
               <h2>JSON Response Generation</h2>
               <p>Generate dynamic JSON responses.</p>
               <a href="/example/generate.json">View Example</a>
+              <pre><code>${createCURLCommand(
+                '/example/generate.json'
+              )}</code></pre>
             </section>
 
             <section>
               <h2>Content Stitching</h2>
               <p>Combine content with HTML injections.</p>
               <a href="/example/content-stitching">View Example</a>
+              <pre><code>${createCURLCommand(
+                '/example/content-stitching'
+              )}</code></pre>
             </section>
 
             <section>
               <h2>Redirect Examples</h2>
               <p>Simulate redirect scenarios.</p>
               <ul>
-                <li><a href="/example/redirects/first">Redirect Based on Path</a></li>
-                <li><a href="/example/redirects?queryRedirect=example">Redirect Based on Query</a></li>
-                <li><a href="/example/redirects/no-redirect-match">No Redirect Match</a></li>
+                <li>
+                  <a href="/example/redirects/first">Redirect Based on Path</a>
+                  <pre><code>${createCURLCommand(
+                    '/example/redirects/first'
+                  )}</code></pre>
+                </li>
+                <li>
+                  <a href="/example/redirects?queryRedirect=example">Redirect Based on Query</a>
+                  <pre><code>${createCURLCommand(
+                    '/example/redirects?queryRedirect=example'
+                  )}</code></pre>
+                </li>
+                <li>
+                  <a href="/example/redirects/no-redirect-match">No Redirect Match</a>
+                  <pre><code>${createCURLCommand(
+                    '/example/redirects/no-redirect-match'
+                  )}</code></pre>
+                </li>
               </ul>
             </section>
+          </div>
+          <div style="margin-top: 30px; text-align: center;">
+            <a href="https://docs.edg.io/guides/v7/edge-functions" target="_blank">Edge Functions Documentation</a>
+            <p style="margin-top: 10px; font-size: 14px; color: #FF5733;">Disclaimer: Edge Functions requires activation on your account.</p>
           </div>
         </body>
       </html>`;
