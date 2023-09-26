@@ -146,9 +146,24 @@ export async function handleHttpRequest(request, context) {
                 </li>
               </ul>
             </section>
+
+            <section>
+              <h2>Database Examples</h2>
+              <p>Explore database interactions using different databases.</p>
+              <ul>
+                <li>
+                  <h4>PlanetScale Database (<a href="/example/planetscale-database">View Example</a>)</h4>
+                  <p>Transactional queries with a PlanetScale database.</p>
+                </li>
+                <li>
+                  <h4>Upstash Database (<a href="/example/upstash-database">View Example</a>)</h4>
+                  <p>A waiting room example using Upstash + Redis.</p>
+                </li>
+              </ul>
+            </section>
           </div>
           <div style="margin-top: 30px; text-align: center;">
-            <a href="https://docs.edg.io/guides/v7/edge-functions" target="_blank">Edge Functions Documentation</a>
+            <a href="https://docs.edg.io/guides/v7/edge-functions" target="_blank">Edge Functions Documentation</a> | <a href="https://github.com/edgio-docs/edgio-v7-edge-functions-example" target="_blank">View the demo code on GitHub</a>
             <p style="margin-top: 10px; font-size: 14px; color: #FF5733;">Disclaimer: Edge Functions requires activation on your account.</p>
           </div>
         </body>
