@@ -164,7 +164,7 @@ export async function handleHttpRequest(request, context) {
           </div>
           <div style="margin-top: 30px; text-align: center;">
             <a href="https://docs.edg.io/guides/v7/edge-functions" target="_blank">Edge Functions Documentation</a> | <a href="https://github.com/edgio-docs/edgio-v7-edge-functions-example" target="_blank">View the demo code on GitHub</a>
-            <p style="margin-top: 10px; font-size: 14px; color: #FF5733;">Disclaimer: Edge Functions requires activation on your account.</p>
+            <p style="margin-top: 10px; font-size: 14px; color: #FF5733;"><strong>Note</strong>: Edge Functions requires activation on your account. <a href="https://docs.edg.io/guides/v7/edge-functions">Learn more.</a></p>
           </div>
         </body>
       </html>`;
