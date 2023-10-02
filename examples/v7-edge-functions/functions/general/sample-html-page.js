@@ -79,6 +79,10 @@ export async function handleHttpRequest(request, context) {
               a:hover {
                 color: #3700B3;
               }
+              pre {
+                overflow-wrap: break-word;
+                white-space: pre-wrap;
+              }
             </style>
         </head>
         <body>
