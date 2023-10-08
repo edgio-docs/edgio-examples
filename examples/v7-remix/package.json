@@ -26,11 +26,11 @@
     "source-map-support": "^0.5.21"
   },
   "devDependencies": {
-    "@edgio/cli": "^7.2.1",
-    "@edgio/core": "^7.2.1",
-    "@edgio/devtools": "^7.2.1",
-    "@edgio/express": "^7.2.1",
-    "@edgio/prefetch": "^7.2.1",
+    "@edgio/cli": "^7.2.8",
+    "@edgio/core": "^7.2.8",
+    "@edgio/devtools": "^7.2.8",
+    "@edgio/express": "^7.2.8",
+    "@edgio/prefetch": "^7.2.8",
     "@remix-run/dev": "^1.19.3",
     "@remix-run/eslint-config": "^1.19.3",
     "@types/compression": "^1.7.2",
