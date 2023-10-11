@@ -31,6 +31,15 @@ module.exports = {
       ],
     },
     {
+      name: 'echo',
+      override_host_header: 'http-echo.raees.me',
+      hosts: [
+        {
+          location: 'http-echo.raees.me',
+        },
+      ],
+    },
+    {
       name: 'planetscale',
       override_host_header: 'aws.connect.psdb.cloud',
       hosts: [

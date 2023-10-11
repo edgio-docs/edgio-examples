@@ -39,9 +39,21 @@ export default new Router()
   .match('/example/redirects(.*)', {
     edge_function: './functions/general/redirect.js',
   })
+  .match('/example/caching', {
+    caching: {
+      enable_caching_for_methods: ['GET', 'POST'],
+    },
+    edge_function: './functions/general/caching.js',
+  })
   .match('/example/planetscale-database', {
     edge_function: './functions/database/planetscale/index.js',
   })
   .match('/example/upstash-database', {
     edge_function: './functions/database/upstash/index.js',
+  })
+  .match('/bug', {
+    caching: {
+      enable_caching_for_methods: ['GET', 'POST'],
+    },
+    edge_function: './functions/general/bug.js',
   });
