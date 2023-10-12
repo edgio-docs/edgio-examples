@@ -50,10 +50,4 @@ export default new Router()
   })
   .match('/example/upstash-database', {
     edge_function: './functions/database/upstash/index.js',
-  })
-  .match('/bug', {
-    caching: {
-      enable_caching_for_methods: ['GET', 'POST'],
-    },
-    edge_function: './functions/general/bug.js',
   });
