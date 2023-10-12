@@ -165,6 +165,29 @@ export async function handleHttpRequest(request, context) {
                 </li>
               </ul>
             </section>
+
+            <section>
+              <h2>Caching</h2>
+              <p>Examples demonstrating caching for different request types.</p>
+              <ul>
+                <li>
+                  <strong>GET Request</strong>
+                  <pre><code>${createCURLCommand(
+                    '/example/caching'
+                  )}</code></pre>
+                </li>
+                <li>
+                  <strong>POST Request with JSON payload 1</strong>
+                  <pre><code>curl -i -X POST ${domain}/example/caching -d '{"key": "value1"}'</code></pre>
+                </li>
+                <li>
+                  <strong>POST Request with JSON payload 2</strong>
+                  <pre><code>curl -i -X POST ${domain}/example/caching -d '{"key": "value2"}'</code></pre>
+                </li>
+              </ul>
+            </section>
+
+
           </div>
           <div style="margin-top: 30px; text-align: center;">
             <a href="https://docs.edg.io/guides/v7/edge-functions" target="_blank">Edge Functions Documentation</a> | <a href="https://github.com/edgio-docs/edgio-v7-edge-functions-example" target="_blank">View the demo code on GitHub</a>
