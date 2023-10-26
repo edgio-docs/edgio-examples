@@ -11,14 +11,13 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@edgio/cli": "^7.2.8",
-    "@edgio/core": "^7.2.8",
-    "@edgio/devtools": "^7.2.8",
-    "@edgio/prefetch": "^7.2.8"
+    "@edgio/cli": "^7.3.1",
+    "@edgio/core": "^7.3.1",
+    "@edgio/devtools": "^7.3.1",
+    "@edgio/prefetch": "^7.3.1"
   },
   "repository": "git@github.com:edgio-docs/edgio-v7-image-optimization-example.git",
   "dependencies": {
-    "cheerio": "^1.0.0-rc.12",
     "url-parse": "^1.5.10"
   }
 }
