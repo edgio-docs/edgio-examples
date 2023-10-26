@@ -7,7 +7,7 @@ module.exports = {
 
   origins: [
     {
-      name: 'origin',
+      name: 'wiki',
       override_host_header: 'en.wikipedia.org',
       hosts: [
         {
@@ -21,7 +21,7 @@ module.exports = {
       },
     },
     {
-      name: 'upload',
+      name: 'wikiupload',
       override_host_header: 'upload.wikimedia.org',
       hosts: [
         {

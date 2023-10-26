@@ -16,5 +16,9 @@
     "@edgio/devtools": "^7.2.8",
     "@edgio/prefetch": "^7.2.8"
   },
-  "repository": "git@github.com:edgio-docs/edgio-v7-image-optimization-example.git"
+  "repository": "git@github.com:edgio-docs/edgio-v7-image-optimization-example.git",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "url-parse": "^1.5.10"
+  }
 }
