@@ -2,7 +2,11 @@ import { Router, edgioRoutes } from '@edgio/core';
 
 export default new Router()
   .use(edgioRoutes)
-
+  .always({
+    caching: {
+      max_age: '1d',
+    },
+  })
   // example page for image optimization
   .match('/', {
     edge_function: 'edge-functions/main.js',
