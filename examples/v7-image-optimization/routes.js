@@ -1,12 +1,11 @@
 import { Router, edgioRoutes } from '@edgio/core';
-import homeHandler from './edgio/homeHandler';
 
 export default new Router()
   .use(edgioRoutes)
 
   // example page for image optimization
-  .match('/', ({ compute }) => {
-    compute(homeHandler);
+  .match('/', {
+    edge_function: 'edge-functions/main.js',
   })
 
   // serve static images and apply optimizations

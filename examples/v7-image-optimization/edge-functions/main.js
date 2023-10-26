@@ -1,27 +1,37 @@
-import * as cheerio from 'cheerio';
-import urlParse from 'url-parse';
-import fetch from 'node-fetch';
+import URL from 'url-parse';
 
-export default async function (req, res) {
-  const resp = await fetch('https://en.wikipedia.org');
+export async function handleHttpRequest(request, context) {
+  const resp = await fetch('https://en.wikipedia.org', {
+    edgio: {
+      origin: 'wiki',
+    },
+  });
   const html = await resp.text();
-  const $ = cheerio.load(html);
 
+  // Regular expression to match image src attributes containing 'wikimedia'
+  const regex = /<img [^>]*src="([^"]*wikimedia[^"]*)"[^>]*>/g;
+  const matches = html.match(regex);
+
+  // Extract up to 5 image paths from the matches
   const wikimediaImages = [];
-  $('img').each((index, element) => {
-    const src = $(element).attr('src');
-    if (src.includes('wikimedia') && wikimediaImages.length < 5) {
-      const url = urlParse(`https:${src}`);
+  for (let i = 0; i < matches.length && wikimediaImages.length < 5; i++) {
+    const match = matches[i];
+    const urlMatch = match.match(/src="([^"]*)"/);
+    if (urlMatch && urlMatch[1]) {
+      const url = new URL(`https:${urlMatch[1]}`);
       const { pathname } = url;
       wikimediaImages.push(pathname);
     }
-  });
+  }
 
   const imageCards = generateImageCards(wikimediaImages);
   const newHtml = createHtml(imageCards);
 
-  res.setHeader('Content-Type', 'text/html');
-  res.body = newHtml;
+  return new Response(newHtml, {
+    headers: {
+      'content-type': 'text/html;charset=UTF-8',
+    },
+  });
 }
 
 const optimizations = [
