@@ -81,7 +81,7 @@ const generateImageCards = (wikimediaImages) => {
         optimizations[index % optimizations.length];
       return `
           <div class="image-card">
-            <img src="/img-optimize${src}?${optimization}" alt="${description}">
+            <img src="${src}?${optimization}" alt="${description}">
             <div class="info">
               <p>${description} using: <pre><code>?${optimization}</code></pre></p>
             </div>

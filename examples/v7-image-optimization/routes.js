@@ -22,18 +22,9 @@ export default new Router()
     });
   })
 
-  .match(/\/img-optimize\/(.*)/, {
+  .match('/:path*', {
     origin: {
       set_origin: 'wikiupload',
-    },
-    url: {
-      url_rewrite: [
-        {
-          source: '/img-optimize/(.*)',
-          syntax: 'regexp',
-          destination: '/$1',
-        },
-      ],
     },
     response: {
       optimize_images: true,
