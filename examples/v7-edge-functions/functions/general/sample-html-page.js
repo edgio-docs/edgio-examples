@@ -168,7 +168,7 @@ export async function handleHttpRequest(request, context) {
 
             <section>
               <h2>Caching</h2>
-              <p>Examples demonstrating caching for different request types.</p>
+              <p>Examples demonstrating caching for different request types. Observe unique caching for GET and POST w/ body requests.</p>
               <ul>
                 <li>
                   <strong>GET Request</strong>

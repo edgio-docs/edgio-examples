@@ -20,10 +20,8 @@ export async function handleHttpRequest(request, context) {
 
   const response = await fetch(newRequest);
 
-  // add a cache-control header for GET requests
-  if (method === 'GET') {
-    response.headers.set('cache-control', 's-maxage=600');
-  }
+  // apply caching headers to the response for all HTTP methods
+  response.headers.set('cache-control', 's-maxage=600');
 
   return response;
 }
