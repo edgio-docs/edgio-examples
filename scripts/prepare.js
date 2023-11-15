@@ -136,6 +136,8 @@ async function main() {
 
     // Install the packages
     await installDependencies(examplePath);
+    await updateEdgio(examplePath);
+    await copyWorkflows(examplePath);
   }
 
   // Inform the user that the example is ready to be worked on
@@ -184,6 +186,15 @@ async function copyTemplate(examplePath) {
 
   // Rename the directory to the name of the new example
   fs.renameSync(path.join(examplesPath, '_template'), examplePath);
+}
+
+async function copyWorkflows(examplePath) {
+  // Only copy the .github directory if the directory doesn't exist
+  const githubDirPath = path.join(examplePath, '.github');
+  if (!fs.existsSync(githubDirPath)) {
+    // Copy the contents of the `.github` directory into the new directory
+    execSync(`cp -r _template/.github ${examplePath}`);
+  }
 }
 
 main();

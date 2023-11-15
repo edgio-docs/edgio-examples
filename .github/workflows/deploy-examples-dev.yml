@@ -19,7 +19,7 @@ concurrency:
 
 env:
   # Node version for all the jobs
-  NODE_VERSION: 16
+  NODE_VERSION: 18
 
   # Set env var based on branch name
   GIT_REF: ${{ github.ref }}
