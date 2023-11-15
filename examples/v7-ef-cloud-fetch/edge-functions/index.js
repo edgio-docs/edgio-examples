@@ -1,5 +1,5 @@
 // Asynchronous function to handle HTTP requests at the edge.
-export async function handleHttpRequest(request: Request) {
+export async function handleHttpRequest(request) {
   // Check the request method and get the request body as an ArrayBuffer if it's not a GET or HEAD request.
   const requestBody = !['GET', 'HEAD'].includes(request.method)
     ? await request.arrayBuffer()
@@ -7,8 +7,13 @@ export async function handleHttpRequest(request: Request) {
 
   // Perform a fetch request to the original request URL with the same method, headers, and body.
   // Specify the 'edgio_serverless' as the origin to fetch the original Cloud Functions response.
+  console.log('fetch', {
+    url: request.url,
+    method: request.method,
+    headers: request.headers,
+    body: requestBody,
+  });
   const cloudFunctionsResponse = await fetch(request.url, {
-    // @ts-ignore
     edgio: { origin: 'edgio_serverless' },
     method: request.method,
     headers: request.headers,
