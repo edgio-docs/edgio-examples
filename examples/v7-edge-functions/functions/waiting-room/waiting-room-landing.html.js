@@ -1,4 +1,4 @@
-const template = `
+const template = ({ requestUrl }) => `
 <!DOCTYPE html>
 <html lang="en">
 
@@ -91,7 +91,7 @@ const template = `
         }
 
         function keepSessionAlive() {
-            fetch(window.location.origin + '/example/upstash-database');
+            fetch('${requestUrl}/ping');
         }
 
         // Set interval to keep session alive every 15 seconds
@@ -101,17 +101,26 @@ const template = `
 
 <body>
     <div class='container'>
-        <h1>Welcome to the Waiting Room Demo</h1>
-        <p>
-            This demo showcases an effective way to manage website traffic during high-volume periods. When the site is at full capacity, visitors are temporarily placed in a waiting room, ensuring a smooth user experience.
-        </p>
-        <p>Experience this firsthand by opening <a href="/example/upstash-database">this link</a> in multiple browser sessions. Once the site is at full capacity (2 active sessions), you will be placed in a waiting room until a spot opens up.</p>
-        <p>Optionally, issue the <pre>curl</pre> command below to make multiple requests:</p>
-        <div class="code-block">curl https://edgio-community-examples-v7-edge-functions-live.edgio.link/example/upstash-database</div>
-        <button class="copy-btn" onclick="copyCodeToClipboard()">Copy Code</button>
-        <p>Dive into the code to see how it works.</p>
-        <p><a href="https://github.com/edgio-docs/edgio-v7-edge-functions-example" target="_blank">View the demo code on GitHub</a></p>
-    </div>
+      <h1>Welcome to the Waiting Room Demo</h1>
+      <Here>This demo showcases an effective way to manage website traffic during high-volume periods. When the site is at full capacity, visitors are temporarily placed in a waiting room, ensuring a smooth user experience. Here's how it works:</p>
+      
+      <p>
+          If you see this page, you have established a session as an active user since the session limit has not been reached.
+      </p>
+      <p>
+          <strong>To simulate creating new sessions, issue the following command:</strong>
+          <div class="code-block">for i in {1..5}; do curl ${requestUrl}; done</div>
+          <button class="copy-btn" onclick="copyCodeToClipboard()">Copy Code</button>
+      </p>
+      <p>
+          <strong>To start a new session which is queued,</strong> follow these instructions:
+          <p>Open the link in a new private/incognito window: <a href="${requestUrl}" target="_blank">Start New Session</a>. This will attempt to establish a new session, which will be queued if the active session limit is reached.</p>
+      </p>
+
+      <p>Dive into the code to see how it works.</p>
+      <p><a href="https://github.com/edgio-docs/edgio-v7-edge-functions-example" target="_blank">View the demo code on GitHub</a></p>
+  </div>
+
 </body>
 
 </html>

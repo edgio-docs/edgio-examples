@@ -4,12 +4,6 @@
 require('dotenv').config();
 
 module.exports = {
-  // The name of the site in Edgio to which this app should be deployed.
-  name: 'edgio-functions-examples',
-
-  // The name of the team in Edgio to which this app should be deployed.
-  team: 'edge-functions-sandbox',
-
   // Overrides the default path to the routes file. The path should be relative to the root of your app.
   // routes: 'routes.js',
 

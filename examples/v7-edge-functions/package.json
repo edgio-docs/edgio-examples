@@ -18,10 +18,10 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@edgio/cli": "^7.3.1",
-    "@edgio/core": "^7.3.1",
-    "@edgio/devtools": "^7.3.1",
-    "@edgio/prefetch": "^7.3.1",
+    "@edgio/cli": "^7.4.1",
+    "@edgio/core": "^7.4.1",
+    "@edgio/devtools": "^7.4.1",
+    "@edgio/prefetch": "^7.4.1",
     "dotenv": "^16.3.1"
   },
   "repository": "git@github.com:edgio-docs/edgio-v7-edge-functions-example.git",
