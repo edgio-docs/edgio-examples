@@ -4,12 +4,6 @@
 require('dotenv').config();
 
 module.exports = {
-  // The name of the site in Edgio to which this app should be deployed.
-  name: 'edgio-functions-examples',
-
-  // The name of the team in Edgio to which this app should be deployed.
-  team: 'edge-functions-sandbox',
-
   // Overrides the default path to the routes file. The path should be relative to the root of your app.
   // routes: 'routes.js',
 
@@ -27,6 +21,15 @@ module.exports = {
         {
           // The domain name or IP address of the origin server
           location: 'edgio-functions-dummy-json-default.edgio.link',
+        },
+      ],
+    },
+    {
+      name: 'echo',
+      override_host_header: 'http-echo.raees.me',
+      hosts: [
+        {
+          location: 'http-echo.raees.me',
         },
       ],
     },
