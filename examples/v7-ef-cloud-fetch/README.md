@@ -1,3 +1,29 @@
+# Edgio Cloud Fetch Example
+
+https://tristan-lee-edgio-v7-ef-cloud-fetch-example-default.glb.edgio.link/
+
+## Description
+
+This example demonstrates how to use Edgio to [fetch from cloud functions](https://docs.edg.io/guides/v7/edge-functions#fetching-from-cloud-functions), enabling personalization of the Next.js server response at the edge.
+
+## Setup and Installation
+
+- Clone the repository to your local machine.
+- Run `npm install` in the repository directory.
+
+## Getting Started
+
+After setting up the project, run `npm run edgio:dev` to start a local development server to test the example functions.
+
+To deploy the project to Edgio, use the command `npm run edgio:deploy`. Note that deployment to Edgio requires you to be
+logged into Edgio CLI which can be done via `npm run edgio login` and following the instructions.
+
+## Support
+
+If you have any queries or face issues with this project, please don't hesitate to contact
+the [Edgio team](https://edg.io/contact-support/).
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

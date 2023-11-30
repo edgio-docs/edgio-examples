@@ -38,9 +38,14 @@ export default function Home() {
           href="/edge-override"
           className="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
         >
-          Go to Edge Override
+          Go to /edge-override
         </a>
       </div>
+      <footer className="z-0 absolute bottom-0 left-0 right-0 bg-gray-800 text-gray-100 text-center text-xs py-2">
+        <a href="https://github.com/edgio-docs/edgio-v7-ef-cloud-fetch-example">
+          Example Source Code
+        </a>
+      </footer>
     </main>
   );
 }
