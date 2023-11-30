@@ -1,6 +1,6 @@
 # Edgio Cloud Fetch Example
 
-https://tristan-lee-edgio-v7-ef-cloud-fetch-example-default.glb.edgio.link/
+https://edgio-community-examples-v7-ef-cloud-fetch-live.glb.edgio.link/
 
 ## Description
 
