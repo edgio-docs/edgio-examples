@@ -6,13 +6,7 @@ export async function handleHttpRequest(request) {
     : undefined;
 
   // Perform a fetch request to the original request URL with the same method, headers, and body.
-  // Specify the 'edgio_serverless' as the origin to fetch the original Cloud Functions response.
-  console.log('fetch', {
-    url: request.url,
-    method: request.method,
-    headers: request.headers,
-    body: requestBody,
-  });
+  // Specify 'edgio_serverless' as the origin to fetch the original Cloud Functions response.
   const cloudFunctionsResponse = await fetch(request.url, {
     edgio: { origin: 'edgio_serverless' },
     method: request.method,
@@ -23,9 +17,9 @@ export async function handleHttpRequest(request) {
   // Convert the response to text format.
   let responseText = await cloudFunctionsResponse.text();
 
-  // Replace certain phrases in the response text to indicate processing by Edge Functions.
-  responseText = responseText.replace(/cloud functions/i, 'Edge Functions');
-  responseText = responseText.replace(/rendered by/i, 'changed by');
+  // // Replace certain phrases in the response text to indicate processing by Edge Functions.
+  responseText = responseText.replace(/cloud functions/gi, 'Edge Functions');
+  responseText = responseText.replace(/rendered by/gi, 'changed by');
 
   // Return a new response with the modified text and original response status, status text, and headers.
   return new Response(responseText, {

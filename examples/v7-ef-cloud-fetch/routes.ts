@@ -7,5 +7,5 @@ export default new Router()
   // NextRoutes automatically adds routes for all Next.js pages and their assets
   .use(nextRoutes)
   .match('/edge-override', {
-    edge_function: 'edge-functions/index.js',
+    edge_function: './edge-functions/index.js',
   });
