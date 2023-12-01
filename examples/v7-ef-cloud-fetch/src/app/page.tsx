@@ -34,17 +34,22 @@ export default function Home() {
       <div className="text-center font-mono text-sm flex items-center justify-between space-x-4">
         <a
           href="/example"
-          className="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          className="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-80" // width set to 320px (80 * 4)
         >
-          Go to <pre>/example</pre> (cloud function only)
+          Go to <pre>/example</pre>
+          <br />
+          (cloud function only)
         </a>
         <a
           href="/example?edge=1"
-          className="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          className="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-80" // width set to 320px (80 * 4)
         >
-          Go to <pre>/example?edge=1</pre> (edge function =&gt; cloud function)
+          Go to <pre>/example?edge=1</pre>
+          <br />
+          (edge function =&gt; cloud function)
         </a>
       </div>
+
       <div className="text-center text-md mt-4">
         <a href="https://github.com/edgio-docs/edgio-v7-ef-cloud-fetch-example">
           Example Source Code
