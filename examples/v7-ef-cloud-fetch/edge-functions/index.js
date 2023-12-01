@@ -5,6 +5,15 @@ export async function handleHttpRequest(request) {
     ? await request.arrayBuffer()
     : undefined;
 
+  // Remove headers that could cause the a response status of 204/304 to be returned.
+  const headersToRemove = [
+    'etag',
+    'if-modified-since',
+    'if-none-match',
+    'last-modified',
+  ];
+  headersToRemove.forEach((header) => request.headers.delete(header));
+
   // Perform a fetch request to the original request URL with the same method, headers, and body.
   // Specify 'edgio_serverless' as the origin to fetch the original Cloud Functions response.
   const cloudFunctionsResponse = await fetch(request.url, {
