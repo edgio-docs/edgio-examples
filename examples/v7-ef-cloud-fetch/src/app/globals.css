@@ -6,6 +6,7 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --border-color: gray;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -28,6 +29,10 @@ body {
 
 pre {
   display: inline;
-  border: 1px solid rgb(var(--foreground-rgb));
+  border: 1px solid var(--border-color);
   border-radius: 0.25rem;
+}
+
+a pre {
+  border: none;
 }
