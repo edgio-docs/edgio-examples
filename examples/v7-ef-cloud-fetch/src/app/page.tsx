@@ -36,13 +36,13 @@ export default function Home() {
           href="/example"
           className="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
         >
-          Go to <pre>/example</pre> (no edge function process)
+          Go to <pre>/example</pre> (cloud function only)
         </a>
         <a
           href="/example?edge=1"
           className="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
         >
-          Go to <pre>/example?edge=1</pre> (edge function process)
+          Go to <pre>/example?edge=1</pre> (edge function =&gt; cloud function)
         </a>
       </div>
       <div className="text-center text-md mt-4">
