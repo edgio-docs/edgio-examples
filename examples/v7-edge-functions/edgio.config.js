@@ -1,11 +1,65 @@
 // This file was automatically added by edgio init.
 // You should commit this file to source control.
 // Learn more about this file at https://docs.edg.io/guides/edgio_config
-require('dotenv').config();
-
 module.exports = {
+  connector: '@edgio/next',
+
+  // The name of the site in Edgio to which this app should be deployed.
+  // name: 'my-site-name',
+
+  // The name of the organization in Edgio to which this app should be deployed.
+  // organization: 'my-organization-name',
+
   // Overrides the default path to the routes file. The path should be relative to the root of your app.
   // routes: 'routes.js',
+
+  // When set to true or omitted entirely, Edgio includes the deployment number in the cache key,
+  // effectively purging the cache each time you deploy.
+  // purgeCacheOnDeploy: false,
+
+  next: {
+    // Output sourcemaps so that stack traces have original source filenames and line numbers when tailing
+    // the logs in the Edgio developer console.
+    // This config options replaces the edgioSourceMaps option in next.config.js.
+    // @default true
+    // generateSourceMaps: true
+    //
+    // Disables the Edgio image optimizer and allows to use the Next's built in image optimizer.
+    // This config options replaces the disableImageOptimizer option in edgio.config.js root.
+    // @default false
+    // disableImageOptimizer: false
+    //
+    // Disables the Edgio development tools widget on the site.
+    // This config options replaces the disableEdgioDevTools option in next.config.js.
+    // @default false
+    // disableDevtools: false
+    //
+    // Disables the build of the service worker.
+    // @default false
+    // disableServiceWorker: false
+    //
+    // Forces the @edgio/next connector to use the server build.
+    // This config option replaces the NEXT_FORCE_SERVER_BUILD env variable.
+    // @default false
+    // forceServerBuild: false
+    //
+    // Optimizes the server build by bundling all server assets and decreasing the overall startup time.
+    // This option has no effect on apps with serverless build.
+    // This option is set to false for Next 13.x apps.
+    // @default true
+    // optimizeServerBuild: true
+    //
+    // Set this option to false to remove the default rule that proxies all requests to Next.js in serverless.
+    // This is useful if you want to proxy all unmatched pages to different origin.
+    // @default true
+    // proxyToServerlessByDefault: true
+    //
+    // Set this option to true to honor Next's internal redirects that either add or remove a trailing slash
+    // depending on the value of the `trailingSlash` config. When set to false, these internal redirects are not honored,
+    // so sites that fallback to serving from an origin do not add or remove the trailing slash for origin URLs.
+    // @default true
+    // enforceTrailingSlash: true
+  },
 
   origins: [
     {
@@ -66,28 +120,6 @@ module.exports = {
     },
   ],
 
-  // Uncomment the following to specify environment specific configs
-  // environments: {
-  //   production: {
-  //     hostnames: [{ hostname: 'www.mysite.com' }],
-  //   },
-  //   staging: {
-  //     hostnames: [{ hostname: 'staging.mysite.com' }],
-  //     origins: [
-  //       {
-  //         name: 'origin',
-  //         hosts: [{ location: 'staging-origin.mysite.com' }],
-  //         override_host_header: 'staging-origin.mysite.com',
-  //         tls_verify: {
-  //           use_sni: true,
-  //           sni_hint_and_strict_san_check: 'staging-origin.mysite.com',
-  //         },
-  //         shields: { us_east: 'DCD' },
-  //       },
-  //     ],
-  //   },
-  // },
-
   // Options for hosting serverless functions on Edgio
   // serverless: {
   //   // Set to true to include all packages listed in the dependencies property of package.json when deploying to Edgio.
@@ -103,7 +135,7 @@ module.exports = {
   // Defaults to 200, which is the maximum allowed value.
   // prerenderConcurrency: 200,
 
-  // A list of glob patterns identifying which source files should be uploaded when running edgio deploy --includeSources.
+  // A list of glob patterns identifying which prerenderConcurrency source files should be uploaded when running edgio deploy --includeSources.
   // This option is primarily used to share source code with Edgio support personnel for the purpose of debugging. If omitted,
   // edgio deploy --includeSources will result in all files which are not gitignored being uploaded to Edgio.
   //

@@ -13,9 +13,13 @@ export default function createFetchWithOrigin(originName: string) {
   }
 
   return async (url: string | Request, options: any = {}) => {
+    const edgio = options.edgio || {};
+    delete options.edgio;
+
     const modifiedOptions = {
       ...options,
       edgio: {
+        ...edgio,
         origin: originName,
       },
     };
