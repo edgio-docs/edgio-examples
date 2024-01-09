@@ -3,7 +3,13 @@ import HmacSHA1 from 'crypto-js/hmac-sha1';
 import Base64 from 'crypto-js/enc-base64';
 import createFetchForOrigin from '../../../utils/createFetchForOrigin';
 
-const fetch = createFetchForOrigin('echo');
+const fetch = createFetchForOrigin('echo', {
+  edgio: {
+    caching: {
+      bypass_cache: true,
+    },
+  },
+});
 
 export async function handleHttpRequest(request, context) {
   // ** IMPORTANT **
