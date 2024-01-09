@@ -1,5 +1,4 @@
-// npm install whatwg-url
-import { URL, URLSearchParams } from 'whatwg-url';
+// npm install url-parse
+import URL from 'url-parse';
 
 global.URL = URL;
-global.URLSearchParams = URLSearchParams;
