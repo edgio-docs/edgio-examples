@@ -70,12 +70,12 @@ async function generateSignedUrl(request, key) {
  * Verifies the MAC and expiry of the given URL. If the URL is valid, the request is forwarded to the origin.
  */
 async function verifyAndFetch(request, key) {
-  const invalidResponse = new Response('Invalid request', { status: 403 });
+  const invalidResponse = (reason) =>
+    new Response(`Invalid request - ${reason}`, { status: 403 });
   const url = new URL(request.url);
 
   if (!url.searchParams.has('mac') || !url.searchParams.has('expiry')) {
-    invalidResponse.body += ' - Missing MAC or expiry';
-    return invalidResponse;
+    return invalidResponse('Missing MAC or expiry');
   }
 
   const expiry = Number(url.searchParams.get('expiry'));
@@ -89,14 +89,12 @@ async function verifyAndFetch(request, key) {
 
   // Ensure that the MAC is valid
   if (hashInBase64 !== receivedMacBase64) {
-    invalidResponse.body += ' - Bad MAC';
-    return invalidResponse;
+    return invalidResponse('Invalid MAC');
   }
 
   // Ensure that the URL has not expired
   if (Date.now() > expiry) {
-    invalidResponse.body += ' - Expired';
-    return invalidResponse;
+    return invalidResponse('URL has expired');
   }
 
   // Forward the remaining request path after **/verify/* to the origin
