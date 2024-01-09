@@ -55,11 +55,8 @@ export default new Router()
     edge_function: './functions/general/security-response-headers.js',
   })
   // request signing
-  .match('/example/signed-request/verify/:path*', {
-    edge_function: './functions/general/signed-request/verify.js',
-  })
-  .match('/example/signed-request/sign/:path*', {
-    edge_function: './functions/general/signed-request/sign.js',
+  .match(/\/example\/signed-request\/(sign|verify)\/(.*)/, {
+    edge_function: './functions/general/signed-request/main.js',
   })
   .match('/example/caching', {
     caching: {
