@@ -67,9 +67,6 @@ export default new Router()
   .match('/example/planetscale-database', {
     edge_function: './functions/database/planetscale/index.js',
   })
-  .match('/example/waiting-room', {
-    edge_function: './functions/waiting-room/index.js',
-  })
-  .match('/example/waiting-room/ping', {
-    edge_function: './functions/waiting-room/ping.js',
+  .match('/example/upstash-database', {
+    edge_function: './functions/database/upstash/index.js',
   });

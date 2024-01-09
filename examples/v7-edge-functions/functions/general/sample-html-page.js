@@ -164,8 +164,8 @@ export async function handleHttpRequest(request, context) {
                   <p>Transactional queries with a PlanetScale database.</p>
                 </li>
                 <li>
-                  <h4>Waiting Room using PlanetScale (<a href="/example/waiting-room">View Example</a>)</h4>
-                  <p>A waiting room example using PlanetScale for session tracking.</p>
+                  <h4>Upstash Database (<a href="/example/upstash-database">View Example</a>)</h4>
+                  <p>A waiting room example using Upstash + Redis.</p>
                 </li>
               </ul>
             </section>

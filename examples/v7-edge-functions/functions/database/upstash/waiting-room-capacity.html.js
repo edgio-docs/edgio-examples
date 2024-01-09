@@ -1,4 +1,4 @@
-const template = ({ queuePosition }) => `
+const template = () => `
 <!DOCTYPE html>
 <html lang="en">
 
@@ -70,10 +70,10 @@ const template = ({ queuePosition }) => `
         <div class="loader"></div>
         <h1>Almost There!</h1>
         <p>Our site is currently at full capacity. Thanks for your patience.</p>
-        <p>You are number <strong>${queuePosition}</strong> in line.</p>
         <p>You'll be redirected shortly. Please do not close your browser.</p>
     </div>
 </body>
+
 </html>
 `;
 
