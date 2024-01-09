@@ -83,6 +83,10 @@ export async function handleHttpRequest(request, context) {
                 overflow-wrap: break-word;
                 white-space: pre-wrap;
               }
+
+              p pre {
+                display: inline;
+              }
             </style>
         </head>
         <body>
@@ -185,6 +189,12 @@ export async function handleHttpRequest(request, context) {
                   <pre><code>curl -i -X POST ${domain}/example/caching -d '{"key": "value2"}'</code></pre>
                 </li>
               </ul>
+            </section>
+
+            <section>
+              <h2>Request Signing</h2>
+              <p>Request signing and verification using <strong>crypto-js</strong>. Generated URLs are valid for 60 seconds.</p>
+              <p><a href="/example/signed-request/sign/foo/bar">Generate Signed URL</a></p>
             </section>
 
 
