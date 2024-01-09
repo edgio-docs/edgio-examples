@@ -74,6 +74,7 @@ async function verifyAndFetch(request, key) {
   const url = new URL(request.url);
 
   if (!url.searchParams.has('mac') || !url.searchParams.has('expiry')) {
+    invalidResponse.body += ' - Missing MAC or expiry';
     return invalidResponse;
   }
 
@@ -88,11 +89,13 @@ async function verifyAndFetch(request, key) {
 
   // Ensure that the MAC is valid
   if (hashInBase64 !== receivedMacBase64) {
+    invalidResponse.body += ' - Bad MAC';
     return invalidResponse;
   }
 
   // Ensure that the URL has not expired
   if (Date.now() > expiry) {
+    invalidResponse.body += ' - Expired';
     return invalidResponse;
   }
 
