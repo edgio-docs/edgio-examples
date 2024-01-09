@@ -59,9 +59,9 @@ async function generateSignedUrl(request, key) {
       <body>
         <p>Click the following links for verification:</p>
         <ul>
-          <li><a href="${validUrl}">Valid URL</a><pre>(${validUrl})</pre></li>
-          <li><a href="${modifiedExpiryUrl}">Invalid with modified Expiry URL</a><pre>(${modifiedExpiryUrl})</pre></li>
-          <li><a href="${modifiedMacUrl}">Invalid with modified Mac URL</a><pre>(${modifiedMacUrl})</pre></li>
+          <li><a href="${validUrl}">Valid request.</a><pre>(${validUrl})</pre></li>
+          <li><a href="${modifiedExpiryUrl}">Invalid request due to a modified <code>expiry</code> parameter.</a><pre>(${modifiedExpiryUrl})</pre></li>
+          <li><a href="${modifiedMacUrl}">Invalid request due to a modified <code>mac</code> parameter.</a><pre>(${modifiedMacUrl})</pre></li>
         </ul>
       </body>
     </html>
