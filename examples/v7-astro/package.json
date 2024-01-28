@@ -21,11 +21,11 @@
     "astro": "^2.10.12"
   },
   "devDependencies": {
-    "@edgio/astro": "^7.2.8",
-    "@edgio/cli": "^7.2.8",
-    "@edgio/core": "^7.2.8",
-    "@edgio/devtools": "^7.2.8",
-    "@edgio/prefetch": "^7.2.8"
+    "@edgio/astro": "^7.7.3",
+    "@edgio/cli": "^7.7.3",
+    "@edgio/core": "^7.7.3",
+    "@edgio/devtools": "^7.7.3",
+    "@edgio/prefetch": "^7.7.3"
   },
   "repository": "git@github.com:edgio-docs/edgio-v7-astro-example.git"
 }
