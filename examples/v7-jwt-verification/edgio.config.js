@@ -3,7 +3,7 @@
 // Learn more about this file at https://docs.edg.io/guides/edgio_config
 module.exports = {
   // The name of the site in Edgio to which this app should be deployed.
-  name: "ef-jwt-validate",
+  name: 'ef-jwt-verification',
 
   // The name of the organization in Edgio to which this app should be deployed.
   // organization: 'my-organization-name',
@@ -19,22 +19,22 @@ module.exports = {
   origins: [
     {
       // The name of the backend origin
-      name: "origin",
+      name: 'origin',
 
       // Use the following to override the host header sent from the browser when connecting to the origin
-      override_host_header: "httpbin.org",
+      override_host_header: 'httpbin.org',
 
       // The list of origin hosts to which to connect
       hosts: [
         {
           // The domain name or IP address of the origin server
-          location: "httpbin.org",
+          location: 'httpbin.org',
         },
       ],
 
       tls_verify: {
         use_sni: true,
-        sni_hint_and_strict_san_check: "httpbin.org",
+        sni_hint_and_strict_san_check: 'httpbin.org',
       },
 
       // Uncomment the following to configure a shield
