@@ -1,6 +1,6 @@
 # JWT Verification using Edge Functions
 
-https://edgio-community-examples-v7-jwt-verification-test.glb.edgio.link/
+https://edgio-community-examples-v7-jwt-verification-live.glb.edgio.link/
 
 ## Description
 
