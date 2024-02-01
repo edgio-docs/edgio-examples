@@ -4,7 +4,7 @@ import { Router, edgioRoutes } from '@edgio/core';
 
 export default new Router()
   .use(edgioRoutes)
-  .get('/validate', ({ serveStatic }) => {
+  .get('/', ({ serveStatic }) => {
     serveStatic('static/validate.html');
   })
   .post('/jwt', {
