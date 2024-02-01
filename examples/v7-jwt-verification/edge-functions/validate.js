@@ -32,7 +32,7 @@ export async function handleHttpRequest(request, context) {
 
   // Return the response with appropriate HTTP status code
   return new Response(JSON.stringify(resp), {
-    status: isValid ? 200 : 403, // 200 OK for valid token, 403 Forbidden for invalid
+    status: isValid ? 200 : 401, // 200 OK for valid token, 401 for invalid
     headers: { 'Content-Type': 'application/json' }, // Set response content type
   });
 }
