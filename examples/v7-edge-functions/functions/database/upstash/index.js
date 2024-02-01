@@ -4,6 +4,7 @@ import {
   setCookieToResponse,
 } from '../../../utils/cookies';
 import { setEnvFromContext } from '../../../utils/polyfills/process.env';
+import '../../../utils/polyfills/URL';
 import waitingPage from './waiting-room-capacity.html';
 import landingPage from './waiting-room-landing.html';
 
@@ -59,7 +60,13 @@ function generateId(len = 10) {
  * Handle the default response.
  */
 async function getDefaultResponse(request, userId) {
-  const response = new Response(landingPage);
+  const response = new Response(
+    landingPage({
+      domain: getDomainFromRequest(request),
+      maxUsers: TOTAL_ACTIVE_USERS,
+      sessionDuration: SESSION_DURATION_SECONDS,
+    })
+  );
   response.headers.set('content-type', 'text/html;charset=UTF-8');
 
   const cookies = getCookiesFromRequest(request);
@@ -126,7 +133,12 @@ async function setExpiryRecord(key, value, seconds) {
  * Response for the waiting room.
  */
 async function getWaitingRoomResponse() {
-  const response = new Response(waitingPage);
+  const response = new Response(waitingPage());
   response.headers.set('content-type', 'text/html;charset=UTF-8');
   return response;
+}
+
+function getDomainFromRequest(request) {
+  const url = new URL(request.url);
+  return url.origin;
 }

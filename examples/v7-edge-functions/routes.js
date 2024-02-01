@@ -1,10 +1,11 @@
 // This file was added by edgio init.
 // You should commit this file to source control.
 import { Router, edgioRoutes } from '@edgio/core';
+import { nextRoutes } from '@edgio/next';
 
 export default new Router()
   // plugin enabling basic Edgio functionality
-  .use(edgioRoutes)
+  // .use(nextRoutes)
   .static('public')
 
   // ================== IMPORTANT ==================
@@ -38,6 +39,30 @@ export default new Router()
   })
   .match('/example/redirects(.*)', {
     edge_function: './functions/general/redirect.js',
+  })
+  .match('/example/redirect-country', {
+    edge_function: './functions/general/redirect-country.js',
+  })
+  .match('/example/redirect-country/:country', {
+    origin: {
+      set_origin: 'echo',
+    },
+  })
+  .match('/example/client-ip', {
+    edge_function: './functions/general/client-ip.js',
+  })
+  .match('/example/security-response-headers', {
+    edge_function: './functions/general/security-response-headers.js',
+  })
+  // request signing
+  .match(/\/example\/signed-request\/(sign|verify)\/(.*)/, {
+    edge_function: './functions/general/signed-request/main.js',
+  })
+  .match('/example/caching', {
+    caching: {
+      enable_caching_for_methods: ['GET', 'POST'],
+    },
+    edge_function: './functions/general/caching.js',
   })
   .match('/example/planetscale-database', {
     edge_function: './functions/database/planetscale/index.js',

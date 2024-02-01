@@ -1,4 +1,4 @@
-const template = `
+const template = () => `
 <!DOCTYPE html>
 <html lang="en">
 

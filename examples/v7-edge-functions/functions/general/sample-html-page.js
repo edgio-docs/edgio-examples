@@ -83,6 +83,10 @@ export async function handleHttpRequest(request, context) {
                 overflow-wrap: break-word;
                 white-space: pre-wrap;
               }
+
+              p pre {
+                display: inline;
+              }
             </style>
         </head>
         <body>
@@ -165,6 +169,35 @@ export async function handleHttpRequest(request, context) {
                 </li>
               </ul>
             </section>
+
+            <section>
+              <h2>Caching</h2>
+              <p>Examples demonstrating caching for different request types. Observe unique caching for GET and POST w/ body requests.</p>
+              <ul>
+                <li>
+                  <strong>GET Request</strong>
+                  <pre><code>${createCURLCommand(
+                    '/example/caching'
+                  )}</code></pre>
+                </li>
+                <li>
+                  <strong>POST Request with JSON payload 1</strong>
+                  <pre><code>curl -i -X POST ${domain}/example/caching -d '{"key": "value1"}'</code></pre>
+                </li>
+                <li>
+                  <strong>POST Request with JSON payload 2</strong>
+                  <pre><code>curl -i -X POST ${domain}/example/caching -d '{"key": "value2"}'</code></pre>
+                </li>
+              </ul>
+            </section>
+
+            <section>
+              <h2>Request Signing</h2>
+              <p>Request signing and verification using <strong>crypto-js</strong>. Generated URLs are valid for 60 seconds.</p>
+              <p><a href="/example/signed-request/sign/foo/bar">Generate Signed URL</a></p>
+            </section>
+
+
           </div>
           <div style="margin-top: 30px; text-align: center;">
             <a href="https://docs.edg.io/guides/v7/edge-functions" target="_blank">Edge Functions Documentation</a> | <a href="https://github.com/edgio-docs/edgio-v7-edge-functions-example" target="_blank">View the demo code on GitHub</a>
