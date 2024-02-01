@@ -53,6 +53,14 @@
   <body>
     <div class="wrapper">
       <h1>JWT Validator</h1>
+      <p>
+        You can generate a test token using the default signing key
+        <code>your-256-bit-secret</code> at
+        <a href="https://jwt.io" target="_blank" rel="noopener noreferrer"
+          >jwt.io</a
+        >. Valid algorithms for this example include <code>HS256</code>,
+        <code>HS384</code>, and <code>HS512</code>.
+      </p>
       <form id="validator">
         <fieldset>
           <legend>Enter Your Token:</legend>
@@ -68,18 +76,7 @@ eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4
         <button type="submit">Validate</button>
       </form>
 
-      <p>
-        You can generate a test token using the default signing key
-        <code>your-256-bit-secret</code> at
-        <a href="https://jwt.io" target="_blank" rel="noopener noreferrer"
-          >jwt.io</a
-        >. Valid algorithms for this example include <code>HS256</code>,
-        <code>HS384</code>, and <code>HS512</code>.
-      </p>
-
-      <div id="results">
-        <p>Click "Validate" to verify your token.</p>
-      </div>
+      <div id="results" hidden></div>
     </div>
 
     <script type="text/javascript">
@@ -87,7 +84,9 @@ eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4
         .getElementById('validator')
         .addEventListener('submit', async (e) => {
           e.preventDefault();
-          const token = document.getElementById('token').value;
+          const tokenEl = document.getElementById('token');
+          const resultEl = document.getElementById('results');
+          const token = tokenEl.value.trim();
           let resultString = '';
 
           try {
@@ -98,7 +97,11 @@ eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4
             });
 
             if (!response.ok) {
-                throw new Error(`Server error occurred. Response code: ${response.status}, Response body: ${JSON.stringify(await response.json())}`);
+              throw new Error(
+                `Server error occurred. Response code: ${
+                  response.status
+                }, Response body: ${JSON.stringify(await response.json())}`
+              );
             }
 
             const data = await response.json();
@@ -118,7 +121,8 @@ eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4
             resultString = `<p>${error.message}</p>`;
             console.error('Error:', error);
           } finally {
-            document.getElementById('results').innerHTML = resultString;
+            resultEl.hidden = false;
+            resultEl.innerHTML = resultString;
           }
         });
     </script>
