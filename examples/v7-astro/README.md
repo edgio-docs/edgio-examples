@@ -1,3 +1,35 @@
+# Edgio v7 Astro SSR Template
+
+This example is a basic Astro SSR template powered by Edgio.
+
+**Preview**: https://edgio-community-examples-v7-astro-live.edgio.link/
+
+To get started with local development, run the following to install the Edgio CLI and start the development server:
+
+```bash
+# Install the latest version of the Edgio CLI
+npm i -g @edgio/cli@latest
+
+npm install
+npm run edgio:dev
+```
+
+To test the production build locally, run the following commands:
+
+```bash
+npm run edgio:build
+
+edgio run -p
+```
+
+When you're ready to deploy, run the following commands:
+
+```bash
+npm run edgio:deploy
+```
+
+---
+
 # Astro Starter Kit: Basics
 
 ```sh
