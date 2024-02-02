@@ -1,0 +1,23 @@
+{
+  "name": "edgio-v7-image-optimization-example",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "edgio:dev": "edgio dev",
+    "edgio:build": "edgio build",
+    "edgio:deploy": "edgio deploy",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@edgio/cli": "^7.3.1",
+    "@edgio/core": "^7.3.1",
+    "@edgio/devtools": "^7.3.1",
+    "@edgio/prefetch": "^7.3.1"
+  },
+  "repository": "git@github.com:edgio-docs/edgio-v7-image-optimization-example.git",
+  "dependencies": {
+    "url-parse": "^1.5.10"
+  }
+}

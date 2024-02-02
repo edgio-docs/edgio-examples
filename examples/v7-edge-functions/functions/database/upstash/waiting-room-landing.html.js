@@ -1,4 +1,4 @@
-const template = `
+const template = ({ domain, maxUsers, sessionDuration }) => `
 <!DOCTYPE html>
 <html lang="en">
 
@@ -103,11 +103,18 @@ const template = `
     <div class='container'>
         <h1>Welcome to the Waiting Room Demo</h1>
         <p>
-            This demo showcases an effective way to manage website traffic during high-volume periods. When the site is at full capacity, visitors are temporarily placed in a waiting room, ensuring a smooth user experience.
+            This demo showcases an effective way to manage website traffic during high-volume periods.
+            When the site is at full capacity, visitors are temporarily placed in a waiting room, ensuring a smooth user experience.
         </p>
-        <p>Experience this firsthand by opening <a href="/example/upstash-database">this link</a> in multiple browser sessions. Once the site is at full capacity (2 active sessions), you will be placed in a waiting room until a spot opens up.</p>
+        <p>
+          This is configured for a maximum of ${maxUsers} active sessions, with each session lasting ${sessionDuration} seconds.
+        </p>
+        <p>
+          Experience this firsthand by opening <a href="${domain}/example/upstash-database">this link</a> in multiple incognito/private browser sessions. 
+          Once the site is at full capacity (2 active sessions), you will be placed in a waiting room until a spot opens up.
+        </p>
         <p>Optionally, issue the <pre>curl</pre> command below to make multiple requests:</p>
-        <div class="code-block">curl https://edgio-community-examples-v7-edge-functions-live.edgio.link/example/upstash-database</div>
+        <div class="code-block">curl ${domain}/example/upstash-database</div>
         <button class="copy-btn" onclick="copyCodeToClipboard()">Copy Code</button>
         <p>Dive into the code to see how it works.</p>
         <p><a href="https://github.com/edgio-docs/edgio-v7-edge-functions-example" target="_blank">View the demo code on GitHub</a></p>
