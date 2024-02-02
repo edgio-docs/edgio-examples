@@ -1,6 +1,8 @@
 // This file was automatically added by edgio init.
 // You should commit this file to source control.
 // Learn more about this file at https://docs.edg.io/guides/edgio_config
+const { join } = require('path');
+
 module.exports = {
   connector: '@edgio/astro',
 
@@ -16,7 +18,7 @@ module.exports = {
   astro: {
     // The path of the standalone server that runs Astro SSR
     // The dependencies for this file are automatically bundled
-    // appPath: join('dist', 'server', 'entry.mjs')
+    appPath: join('dist', 'server', 'entry.mjs'),
   },
 
   // When set to true or omitted entirely, Edgio includes the deployment number in the cache key,
