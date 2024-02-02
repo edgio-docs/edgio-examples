@@ -1,16 +1,14 @@
 // This file was automatically added by edgio init.
 // You should commit this file to source control.
 // Learn more about this file at https://docs.edg.io/guides/edgio_config
-const { join } = require('path');
-
 module.exports = {
   connector: '@edgio/astro',
 
   // The name of the site in Edgio to which this app should be deployed.
   // name: 'my-site-name',
 
-  // The name of the team in Edgio to which this app should be deployed.
-  // team: 'my-team-name',
+  // The name of the organization in Edgio to which this app should be deployed.
+  // organization: 'my-organization-name',
 
   // Overrides the default path to the routes file. The path should be relative to the root of your app.
   // routes: 'routes.js',
@@ -18,8 +16,12 @@ module.exports = {
   astro: {
     // The path of the standalone server that runs Astro SSR
     // The dependencies for this file are automatically bundled
-    appPath: join(process.cwd(), 'dist', 'server', 'entry.mjs'),
+    // appPath: join('dist', 'server', 'entry.mjs')
   },
+
+  // When set to true or omitted entirely, Edgio includes the deployment number in the cache key,
+  // effectively purging the cache each time you deploy.
+  // purgeCacheOnDeploy: false,
 
   // If you need to proxy some URLs to an origin instead of your Next.js app, you can configure the origins here:
   // origins: [
@@ -29,13 +31,13 @@ module.exports = {
   //
   //     // When provided, the following value will be sent as the host header when connecting to the origin.
   //     // If omitted, the host header from the browser will be forwarded to the origin.
-  //     override_host_header: "example.com",
+  //     override_host_header: "test-origin.edgio.net",
   //
   //     // The list of backend hosts
   //     hosts: [
   //       {
   //         // The domain name or IP address of the origin server
-  //         location: "example.com"
+  //         location: "test-origin.edgio.net"
   //       }
   //     ]
   //   }
@@ -46,10 +48,10 @@ module.exports = {
   //   // Set to true to include all packages listed in the dependencies property of package.json when deploying to Edgio.
   //   // This option generally isn't needed as Edgio automatically includes all modules imported by your code in the bundle that
   //   // is uploaded during deployment
-  //   includeNodeModules: true,
+  //   // includeNodeModules: true,
   //
   //   // Include additional paths that are dynamically loaded by your app at runtime here when building the serverless bundle.
-  //   include: ['views/**/*'],
+  //   // include: ['views/**/*'],
   // },
 
   // The maximum number of URLs that will be concurrently prerendered during deployment when static prerendering is enabled.
