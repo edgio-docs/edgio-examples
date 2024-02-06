@@ -1,0 +1,38 @@
+{
+  "scripts": {
+    "edgio:dev": "edgio dev",
+    "edgio:build": "edgio build",
+    "edgio:deploy": "edgio deploy",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "name": "ajcwebdev-llamaindex",
+  "version": "0.1.0",
+  "dependencies": {
+    "ai": "^2.2.27",
+    "dotenv": "^16.3.1",
+    "llamaindex": "0.0.43",
+    "next": "^14.0.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "supports-color": "^9.4.0"
+  },
+  "devDependencies": {
+    "@edgio/cli": "^7.7.1",
+    "@edgio/core": "^7.7.1",
+    "@edgio/devtools": "^7.7.1",
+    "@edgio/next": "^7.7.1",
+    "@edgio/prefetch": "^7.7.1",
+    "@edgio/react": "^7.7.1",
+    "@types/node": "^20.10.3",
+    "@types/react": "^18.2.42",
+    "@types/react-dom": "^18.2.17",
+    "autoprefixer": "^10.4.16",
+    "cross-env": "^7.0.3",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.3.6",
+    "typescript": "^5.3.2"
+  }
+}
