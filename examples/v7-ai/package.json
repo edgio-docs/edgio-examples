@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": "git@github.com/edgio-docs/edgio-v7-ai-example.git",
+  "repository": "git@github.com:edgio-docs/edgio-v7-ai-example.git",
   "author": "",
   "license": "ISC",
   "bugs": {
