@@ -141,7 +141,7 @@ async function main() {
 
     if (exampleType === 'update') {
       // copy over the .github folder and update package.json
-      await copyGithubFiles(examplePath);
+      await copyWorkflows(examplePath);
       await mergePackageJsons(
         path.join(examplePath, 'package.json'),
         getNameAndRepoUrl(exampleName)
@@ -150,6 +150,8 @@ async function main() {
 
     // Install the packages
     await installDependencies(examplePath);
+    await updateEdgio(examplePath);
+    await copyWorkflows(examplePath);
   }
 
   // Inform the user that the example is ready to be worked on
@@ -200,13 +202,6 @@ async function copyTemplate(examplePath) {
   fs.renameSync(path.join(examplesPath, '_template'), examplePath);
 }
 
-async function copyGithubFiles(examplePath) {
-  // Copy the .github folder from the template
-  execSync(
-    `cp -r ${path.join(examplesPath, templateName, '.github')} ${examplePath}`
-  );
-}
-
 async function mergePackageJsons(targetPath, options = {}) {
   try {
     const targetJson = fs.readFileSync(targetPath, 'utf8');
@@ -246,6 +241,15 @@ function getNameAndRepoUrl(exampleName) {
     name: `edgio-${exampleName}-example`,
     repository: `git@github.com:edgio-docs/edgio-${exampleName}-example.git`,
   };
+}
+
+async function copyWorkflows(examplePath) {
+  // Only copy the .github directory if the directory doesn't exist
+  const githubDirPath = path.join(examplePath, '.github');
+  if (!fs.existsSync(githubDirPath)) {
+    // Copy the contents of the `.github` directory into the new directory
+    execSync(`cp -r _template/.github ${examplePath}`);
+  }
 }
 
 main();

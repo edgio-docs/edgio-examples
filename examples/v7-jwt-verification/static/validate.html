@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JWT Validator</title>
+    <style type="text/css">
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        color: #333;
+      }
+      .wrapper {
+        max-width: 640px;
+        margin: 2rem auto;
+        padding: 1rem;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      fieldset {
+        border: 1px solid #ddd;
+        padding: 0.5rem;
+      }
+      textarea {
+        width: calc(100% - 1rem); /* Adjust width to prevent overflow */
+        padding: 0.25rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        margin-top: 0.5rem;
+        box-sizing: border-box; /* Include padding and border in the element's total width and height */
+      }
+      button {
+        padding: 0.5rem 1rem;
+        color: white;
+        background-color: #007bff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 1rem;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      #results {
+        margin-top: 1rem;
+        padding: 1rem;
+        background-color: #eee;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <h1>JWT Validator</h1>
+      <p>
+        You can generate a test token using the default signing key
+        <code>your-256-bit-secret</code> at
+        <a href="https://jwt.io" target="_blank" rel="noopener noreferrer"
+          >jwt.io</a
+        >. Valid algorithms for this example include <code>HS256</code>,
+        <code>HS384</code>, and <code>HS512</code>.
+      </p>
+      <form id="validator">
+        <fieldset>
+          <legend>Enter Your Token:</legend>
+          <textarea
+            name="token"
+            id="token"
+            rows="10"
+            placeholder="Paste your JWT here..."
+          >
+eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJjb21tZW50IjoiRWRnZSBmdW5jdGlvbnMgYXJlIHN3ZWV0ISJ9.hc0nVeZWhE6MEf-CHJwljTY3uo6qqm8q_V_0zwm34tFALrjJDAa0CL3oUEehMRNdt3PQdcuWBgzMUqKVUWMRVQ</textarea
+          >
+        </fieldset>
+        <button type="submit">Validate</button>
+      </form>
+
+      <div id="results" hidden></div>
+    </div>
+
+    <script type="text/javascript">
+      document
+        .getElementById('validator')
+        .addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const tokenEl = document.getElementById('token');
+          const resultEl = document.getElementById('results');
+          const token = tokenEl.value.trim();
+          let resultString = '';
+
+          try {
+            const response = await fetch('/jwt', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ token }),
+            });
+
+            if (!response.ok) {
+              throw new Error(
+                `Server error occurred. Response code: ${
+                  response.status
+                }, Response body: ${JSON.stringify(await response.json())}`
+              );
+            }
+
+            const data = await response.json();
+
+            if (data.valid) {
+              resultString = `<p>Token successfully validated using ${
+                data.alg
+              }.</p><p>Payload:</p><pre>${JSON.stringify(
+                data.payload,
+                null,
+                2
+              )}</pre>`;
+            } else {
+              resultString = '<p>An error occurred validating the token.</p>';
+            }
+          } catch (error) {
+            resultString = `<p>${error.message}</p>`;
+            console.error('Error:', error);
+          } finally {
+            resultEl.hidden = false;
+            resultEl.innerHTML = resultString;
+          }
+        });
+    </script>
+  </body>
+</html>

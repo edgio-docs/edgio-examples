@@ -1,0 +1,50 @@
+{
+  "scripts": {
+    "edgio:dev": "edgio dev",
+    "edgio:build": "edgio build",
+    "edgio:deploy": "edgio deploy",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "edgio": "edgio",
+    "update": "edgio use pre-v7-edge",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "name": "edgio-v7-edge-functions-example",
+  "version": "0.2.0",
+  "description": "Edgio Functions Examples",
+  "keywords": [],
+  "private": true,
+  "license": "MIT",
+  "devDependencies": {
+    "@edgio/cli": "^7.7.1",
+    "@edgio/core": "^7.7.1",
+    "@edgio/devtools": "^7.7.1",
+    "@edgio/next": "^7.7.1",
+    "@edgio/prefetch": "^7.7.1",
+    "@edgio/react": "^7.7.1",
+    "@types/react": "18.2.45",
+    "autoprefixer": "^10.0.1",
+    "dotenv": "^16.3.1",
+    "eslint": "^8",
+    "eslint-config-next": "14.0.4",
+    "postcss": "^8",
+    "tailwindcss": "^3.3.0"
+  },
+  "repository": "git@github.com:edgio-docs/edgio-v7-edge-functions-example.git",
+  "dependencies": {
+    "@planetscale/database": "^1.10.0",
+    "clipboard-copy": "^4.0.1",
+    "crypto-js": "^4.2.0",
+    "next": "14.0.4",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-icons": "^4.12.0",
+    "react-responsive-modal": "^6.4.2",
+    "react-syntax-highlighter": "^15.5.0",
+    "undici": "^5.23.0",
+    "url-parse": "^1.5.10",
+    "whatwg-url": "^13.0.0"
+  }
+}
