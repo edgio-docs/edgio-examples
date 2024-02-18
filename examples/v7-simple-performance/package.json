@@ -13,10 +13,10 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@edgio/cli": "^7.2.8",
-    "@edgio/core": "^7.2.8",
-    "@edgio/devtools": "^7.2.8",
-    "@edgio/prefetch": "^7.2.8"
+    "@edgio/cli": "^7.8.0",
+    "@edgio/core": "^7.8.0",
+    "@edgio/devtools": "^7.8.0",
+    "@edgio/prefetch": "^7.8.0"
   },
   "repository": "git@github.com:edgio-docs/edgio-v7-simple-performance-example.git"
 }
