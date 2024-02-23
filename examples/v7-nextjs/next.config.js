@@ -11,6 +11,9 @@ const nextConfig = {
       },
     ]
   },
+  images: {
+    domains: ['edgio-community-ecommerce-api-example-default.layer0-limelight.link'],
+  },
 }
 
 module.exports = (phase, config) =>
