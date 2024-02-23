@@ -9,16 +9,6 @@ const Home = () => {
             Learn More &rarr;
           </a>
         </div>
-        {/* <div className="flex w-[330px] flex-col items-start justify-start rounded p-5 md:w-1/2">
-          <h1 className="text-xl font-bold text-white">Next.js Commerce with Edgio</h1>
-          <h3 className="mb-5 mt-2 text-lg text-[#FFFFFF75]">
-            It uses all of the latest Next.js features including image optimization, localization, and incremental static regeneration with
-            stale-while-revalidate.
-          </h3>
-          <a className="mt-auto text-[#01B18D] hover:underline" href="https://docs.edg.io/guides/next_commerce" target="_blank">
-            Learn More &rarr;
-          </a>
-        </div> */}
         <div className="flex w-[330px] flex-col items-start justify-start rounded p-5 md:w-1/2">
           <h1 className="text-xl font-bold text-white">Caching with Edgio</h1>
           <h3 className="mb-5 mt-2 text-lg text-[#FFFFFF75]">
@@ -44,8 +34,22 @@ const Home = () => {
             Edgio allows you to speed up the user’s browsing experience by deep fetching the assets referenced in the API response(s) that they are
             likely to be shown to the user.
           </h3>
-          <a className="mt-auto text-[#01B18D] hover:underline" href="https://docs.edg.io/guides/v7/performance/prefetching#deep-fetching" target="_blank">
+          <a
+            className="mt-auto text-[#01B18D] hover:underline"
+            href="https://docs.edg.io/guides/v7/performance/prefetching/prefetching_edgio_sites#deep-fetching"
+            target="_blank"
+          >
             Learn More &rarr;
+          </a>
+        </div>
+
+        <div className="flex w-[330px] flex-col items-start justify-start rounded p-5 md:w-1/2">
+          <h1 className="text-xl font-bold text-white">Incremental Static Regeneration (ISR)</h1>
+          <h3 className="mb-5 mt-2 text-lg text-[#FFFFFF75]">
+            It uses all of the latest Next.js features including incremental static regeneration with stale-while-revalidate.
+          </h3>
+          <a className="mt-auto text-[#01B18D] hover:underline" href="/isr-demo">
+            Try demo &rarr;
           </a>
         </div>
       </div>

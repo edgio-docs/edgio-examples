@@ -1,7 +1,7 @@
 import { StarIcon } from '@heroicons/react/solid'
-import { relativizeURL, getOrigin } from '@/lib/helper'
 import { HeartIcon, StarIcon as StarIconOutline } from '@heroicons/react/outline'
-
+import { getOrigin } from '@/lib/helper'
+import Image from 'next/image'
 const Product = ({ data }) => {
   return (
     <div className="flex w-full flex-col items-center">
@@ -13,11 +13,11 @@ const Product = ({ data }) => {
           </div>
           <HeartIcon className="absolute right-0 top-0 z-10 h-[50px] w-[50px] border border-gray-200 bg-white p-2" />
           <div className="flex w-full flex-col items-center">
-            <img src={relativizeURL(data.images[0].url)} className="h-auto w-full max-w-[600px]" />
+            <Image src={data.images[0].url} className="h-auto w-full max-w-[600px]" width={600} height={600} />
           </div>
           <div className="product-thumbnails mt-5 flex flex-row items-start gap-x-2 overflow-x-scroll">
             {data.images.map((i, ind) => (
-              <img key={i.url} loading="lazy" src={relativizeURL(i.url)} className="h-[250px] w-auto hover:bg-white" />
+              <Image key={i.url} loading="lazy" src={i.url} className="h-[250px] w-auto hover:bg-white" width={250} height={250} />
             ))}
           </div>
         </div>
