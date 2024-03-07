@@ -1,0 +1,25 @@
+{
+  "scripts": {
+    "edgio:dev": "edgio dev",
+    "edgio:build": "edgio build",
+    "edgio:deploy": "edgio deploy",
+    "dev": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "name": "edgio-cohere-template",
+  "type": "module",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "cohere-ai": "^7.7.7",
+    "express": "^4.18.3",
+    "typescript": "^5.4.2"
+  },
+  "devDependencies": {
+    "@edgio/cli": "^7.9.0",
+    "@edgio/connectors": "^7.9.0",
+    "@edgio/core": "^7.9.0",
+    "@edgio/prefetch": "^7.9.0",
+    "dotenv": "^16.4.5"
+  }
+}
