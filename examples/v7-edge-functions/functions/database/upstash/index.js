@@ -4,7 +4,6 @@ import {
   setCookieToResponse,
 } from '../../../utils/cookies';
 import { setEnvFromContext } from '../../../utils/polyfills/process.env';
-import '../../../utils/polyfills/URL';
 import waitingPage from './waiting-room-capacity.html';
 import landingPage from './waiting-room-landing.html';
 

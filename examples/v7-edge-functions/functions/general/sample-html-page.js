@@ -1,12 +1,10 @@
-import '../../utils/polyfills/URL';
-
 export async function handleHttpRequest(request, context) {
   const url = new URL(request.url);
   const domain = `${url.protocol}//${url.host}`;
 
   function createCURLCommand(path) {
-  return `curl -i ${domain}${path}`;
-}
+    return `curl -i ${domain}${path}`;
+  }
 
   const content = `
       <!DOCTYPE html>

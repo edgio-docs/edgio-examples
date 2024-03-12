@@ -2,7 +2,6 @@ import { connect } from '@planetscale/database';
 
 // polyfill required classes for Planetscale
 import '../../../utils/polyfills/Buffer';
-import '../../../utils/polyfills/URL';
 
 import createFetchForOrigin from '../../../utils/createFetchForOrigin';
 

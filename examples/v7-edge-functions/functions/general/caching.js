@@ -1,5 +1,4 @@
 import createFetchForOrigin from '../../utils/createFetchForOrigin';
-import '../../utils/polyfills/URL';
 
 const fetch = createFetchForOrigin('echo');
 
