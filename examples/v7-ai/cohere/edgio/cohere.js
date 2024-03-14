@@ -5,11 +5,13 @@ const { COHERE_API_TOKEN } = process.env;
 export default function cohereHandler({ compute }) {
   compute(async (req, res) => {
     const { text } = JSON.parse(req.body);
+
     if (!text) {
       res.statusCode = 400;
       res.statusMessage = 'Text is required for summarization.';
       return;
     }
+
     const cohere = new CohereClient({
       token: COHERE_API_TOKEN,
     });
