@@ -1,0 +1,35 @@
+{
+  "scripts": {
+    "edgio:dev": "edgio dev",
+    "edgio:build": "edgio build",
+    "edgio:deploy": "edgio deploy",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "name": "edgio-cohere-template",
+  "license": "MIT",
+  "dependencies": {
+    "cohere-ai": "^7.7.7",
+    "express": "^4.18.3",
+    "next": "14.1.3",
+    "react": "^18",
+    "react-dom": "^18",
+    "typescript": "^5.4.2"
+  },
+  "devDependencies": {
+    "@edgio/cli": "^7.10.0",
+    "@edgio/connectors": "^7.9.0",
+    "@edgio/core": "^7.10.0",
+    "@edgio/devtools": "^7.10.0",
+    "@edgio/next": "^7.10.0",
+    "@edgio/prefetch": "^7.10.0",
+    "@edgio/react": "^7.10.0",
+    "autoprefixer": "^10.0.1",
+    "dotenv": "^16.4.5",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1"
+  }
+}
