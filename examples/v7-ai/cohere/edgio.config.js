@@ -1,8 +1,11 @@
 // This file was automatically added by edgio init.
 // You should commit this file to source control.
 // Learn more about this file at https://docs.edg.io/guides/edgio_config
+require('dotenv').config();
+
+console.log('token:', process.env.COHERE_API_TOKEN);
 module.exports = {
-  connector: '@edgio/express',
+  connector: '@edgio/next',
 
   // The name of the site in Edgio to which this app should be deployed.
   // name: 'my-site-name',
@@ -13,35 +16,48 @@ module.exports = {
   // Overrides the default path to the routes file. The path should be relative to the root of your app.
   // routes: 'routes.js',
 
-    express: {
-    // The main entry point for your app, which exports an instance of express app.
-    // This file and its dependencies will be bundled into a single file for serverless deployment.
-    //
-    // If omitted, Edgio will try to find your app in one of the following files:
-    // - ./src/server.ts
-    // - ./src/server.js
-    // - ./src/app.ts
-    // - ./src/app.js
-    // - ./src/index.ts
-    // - ./src/index.js
-    // - ./server.js
-    // - ./app.js
-    // - ./index.js
-    //
-    // Uncomment the line below to specify the path to the app:
-    // appPath: './src/app.js',
-    // Uncomment the line below to bundle your express app using @vercel/nft to reduce the bundle size and cold start times
-    // nft (Node file trace) produces an exploded, tree-shaken bundle with a node_modules directory containing only those modules
-    // used by your app.
-    // bundler: '@vercel/nft',
-    // Uncomment the line below to bundle your express app using @vercel/ncc to reduce the bundle size and cold start times
-    // NCC produces an a single-file, tree-shaken bundle containing only those modules used by your app.
-    // bundler: '@vercel/ncc',
-  }
-
   // When set to true or omitted entirely, Edgio includes the deployment number in the cache key,
   // effectively purging the cache each time you deploy.
   // purgeCacheOnDeploy: false,
+
+  next: {
+    // Output sourcemaps so that stack traces have original source filenames and line numbers when tailing
+    // the logs in the Edgio developer console.
+    // This config options replaces the edgioSourceMaps option in next.config.js.
+    // @default true
+    // generateSourceMaps: true
+    //
+    // Disables the Edgio image optimizer and allows to use the Next's built in image optimizer.
+    // This config options replaces the disableImageOptimizer option in edgio.config.js root.
+    // @default false
+    // disableImageOptimizer: false
+    //
+    // Disables the build of the service worker.
+    // @default false
+    // disableServiceWorker: false
+    //
+    // Forces the @edgio/next connector to use the server build.
+    // This config option replaces the NEXT_FORCE_SERVER_BUILD env variable.
+    // @default false
+    // forceServerBuild: false
+    //
+    // Optimizes the server build by bundling all server assets and decreasing the overall startup time.
+    // This option has no effect on apps with serverless build.
+    // This option is set to false for Next 13.x apps.
+    // @default true
+    // optimizeServerBuild: true
+    //
+    // Set this option to false to remove the default rule that proxies all requests to Next.js in serverless.
+    // This is useful if you want to proxy all unmatched pages to different origin.
+    // @default true
+    // proxyToServerlessByDefault: true
+    //
+    // Set this option to true to honor Next's internal redirects that either add or remove a trailing slash
+    // depending on the value of the `trailingSlash` config. When set to false, these internal redirects are not honored,
+    // so sites that fallback to serving from an origin do not add or remove the trailing slash for origin URLs.
+    // @default true
+    // enforceTrailingSlash: true
+  },
 
   // If you need to proxy some URLs to an origin instead of your Next.js app, you can configure the origins here:
   // origins: [
@@ -68,10 +84,10 @@ module.exports = {
   //   // Set to true to include all packages listed in the dependencies property of package.json when deploying to Edgio.
   //   // This option generally isn't needed as Edgio automatically includes all modules imported by your code in the bundle that
   //   // is uploaded during deployment
-  //   // includeNodeModules: true,
+  //   includeNodeModules: true,
   //
   //   // Include additional paths that are dynamically loaded by your app at runtime here when building the serverless bundle.
-  //   // include: ['views/**/*'],
+  //   include: ['views/**/*'],
   // },
 
   // The maximum number of URLs that will be concurrently prerendered during deployment when static prerendering is enabled.
@@ -86,4 +102,4 @@ module.exports = {
   //   '**/*', // include all files
   //   '!(**/secrets/**/*)', // except everything in the secrets directory
   // ],
-}
+};
