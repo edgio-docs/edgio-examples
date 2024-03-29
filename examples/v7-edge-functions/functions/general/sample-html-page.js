@@ -158,10 +158,6 @@ export async function handleHttpRequest(request, context) {
               <p>Explore database interactions using different databases.</p>
               <ul>
                 <li>
-                  <h4>PlanetScale Database (<a href="/example/planetscale-database">View Example</a>)</h4>
-                  <p>Transactional queries with a PlanetScale database.</p>
-                </li>
-                <li>
                   <h4>Upstash Database (<a href="/example/upstash-database">View Example</a>)</h4>
                   <p>A waiting room example using Upstash + Redis.</p>
                 </li>
