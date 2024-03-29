@@ -1,4 +1,3 @@
-import { URL } from 'whatwg-url';
 import HmacSHA1 from 'crypto-js/hmac-sha1';
 import Base64 from 'crypto-js/enc-base64';
 import createFetchForOrigin from '../../../utils/createFetchForOrigin';
