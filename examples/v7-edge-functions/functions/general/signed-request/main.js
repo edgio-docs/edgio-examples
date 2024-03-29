@@ -40,14 +40,14 @@ async function generateSignedUrl(request, key) {
   const hash = HmacSHA1(dataToAuthenticate, key);
   const base64Mac = Base64.stringify(hash);
 
-  url.searchParams.set('mac', base64Mac);
+  url.searchParams.set('mac', encodeURIComponent(base64Mac));
   url.searchParams.set('expiry', expiry.toString());
 
   const validUrl = url.toString();
   const modifiedExpiryUrl = new URL(validUrl);
   modifiedExpiryUrl.searchParams.set('expiry', `${expiry + 5}`);
   const modifiedMacUrl = new URL(validUrl);
-  modifiedMacUrl.searchParams.set('mac', `${base64Mac}x`);
+  modifiedMacUrl.searchParams.set('mac', `${base64Mac}-bad-mac`);
 
   console.log('Valid URL:\n', validUrl);
   console.log('Modified expiry URL:\n', modifiedExpiryUrl.toString());
@@ -86,7 +86,7 @@ async function verifyAndFetch(request, key) {
   const expiry = Number(url.searchParams.get('expiry'));
   const dataToAuthenticate = url.pathname + expiry;
 
-  const receivedMacBase64 = url.searchParams.get('mac');
+  const receivedMacBase64 = decodeURIComponent(url.searchParams.get('mac'));
   const receivedMac = Base64.parse(receivedMacBase64);
 
   const hash = HmacSHA1(dataToAuthenticate, key);
