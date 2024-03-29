@@ -1,5 +1,3 @@
-import '../../utils/polyfills/URL';
-
 export async function handleHttpRequest(request, context) {
   // Retrieve the client's IP address from the context object
   const clientIP = context.client.dst_addr;

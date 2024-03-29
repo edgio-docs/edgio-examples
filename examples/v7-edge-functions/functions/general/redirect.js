@@ -1,13 +1,6 @@
-import '../../utils/polyfills/URL';
-
-function getQueryParam(url, param) {
-  const queryParams = {};
-  const queryString = url.query[0] === '?' ? url.query.substr(1) : url.query;
-  queryString.split('&').forEach((pair) => {
-    const [key, value] = pair.split('=');
-    queryParams[key] = decodeURIComponent(value);
-  });
-  return queryParams[param];
+function getQueryParam(url, paramName) {
+  const searchParams = new URLSearchParams(url.search);
+  return searchParams.get(paramName);
 }
 
 export async function handleHttpRequest(request, context) {

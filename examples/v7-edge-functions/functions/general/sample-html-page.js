@@ -1,12 +1,10 @@
-import '../../utils/polyfills/URL';
-
 export async function handleHttpRequest(request, context) {
   const url = new URL(request.url);
   const domain = `${url.protocol}//${url.host}`;
 
   function createCURLCommand(path) {
-  return `curl -i ${domain}${path}`;
-}
+    return `curl -i ${domain}${path}`;
+  }
 
   const content = `
       <!DOCTYPE html>
@@ -159,10 +157,6 @@ export async function handleHttpRequest(request, context) {
               <h2>Database Examples</h2>
               <p>Explore database interactions using different databases.</p>
               <ul>
-                <li>
-                  <h4>PlanetScale Database (<a href="/example/planetscale-database">View Example</a>)</h4>
-                  <p>Transactional queries with a PlanetScale database.</p>
-                </li>
                 <li>
                   <h4>Upstash Database (<a href="/example/upstash-database">View Example</a>)</h4>
                   <p>A waiting room example using Upstash + Redis.</p>

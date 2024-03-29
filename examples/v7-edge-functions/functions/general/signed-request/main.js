@@ -1,4 +1,3 @@
-import { URL } from 'whatwg-url';
 import HmacSHA1 from 'crypto-js/hmac-sha1';
 import Base64 from 'crypto-js/enc-base64';
 import createFetchForOrigin from '../../../utils/createFetchForOrigin';
@@ -41,14 +40,17 @@ async function generateSignedUrl(request, key) {
   const hash = HmacSHA1(dataToAuthenticate, key);
   const base64Mac = Base64.stringify(hash);
 
-  url.searchParams.set('mac', base64Mac);
+  url.searchParams.set('mac', encodeURIComponent(base64Mac));
   url.searchParams.set('expiry', expiry.toString());
 
   const validUrl = url.toString();
   const modifiedExpiryUrl = new URL(validUrl);
   modifiedExpiryUrl.searchParams.set('expiry', `${expiry + 5}`);
   const modifiedMacUrl = new URL(validUrl);
-  modifiedMacUrl.searchParams.set('mac', `${base64Mac}x`);
+  modifiedMacUrl.searchParams.set(
+    'mac',
+    encodeURIComponent(`${base64Mac}-bad-mac`)
+  );
 
   console.log('Valid URL:\n', validUrl);
   console.log('Modified expiry URL:\n', modifiedExpiryUrl.toString());
@@ -81,13 +83,13 @@ async function verifyAndFetch(request, key) {
   const url = new URL(request.url);
 
   if (!url.searchParams.has('mac') || !url.searchParams.has('expiry')) {
-    return invalidResponse('Missing MAC or expiry');
+    return invalidResponse('Missing MAC or expiry parameters in the URL.');
   }
 
   const expiry = Number(url.searchParams.get('expiry'));
   const dataToAuthenticate = url.pathname + expiry;
 
-  const receivedMacBase64 = url.searchParams.get('mac');
+  const receivedMacBase64 = decodeURIComponent(url.searchParams.get('mac'));
   const receivedMac = Base64.parse(receivedMacBase64);
 
   const hash = HmacSHA1(dataToAuthenticate, key);
@@ -95,12 +97,16 @@ async function verifyAndFetch(request, key) {
 
   // Ensure that the MAC is valid
   if (hashInBase64 !== receivedMacBase64) {
-    return invalidResponse('Invalid MAC');
+    return invalidResponse(
+      `Invalid MAC. Expected: ${hashInBase64}, Received: ${receivedMacBase64}`
+    );
   }
 
   // Ensure that the URL has not expired
   if (Date.now() > expiry) {
-    return invalidResponse('URL has expired');
+    return invalidResponse(
+      `URL has expired. Date.now(): ${Date.now()}, Expiry: ${expiry}`
+    );
   }
 
   // Forward the remaining request path after **/verify/* to the origin
