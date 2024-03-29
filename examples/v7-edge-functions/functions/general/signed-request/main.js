@@ -47,7 +47,10 @@ async function generateSignedUrl(request, key) {
   const modifiedExpiryUrl = new URL(validUrl);
   modifiedExpiryUrl.searchParams.set('expiry', `${expiry + 5}`);
   const modifiedMacUrl = new URL(validUrl);
-  modifiedMacUrl.searchParams.set('mac', `${base64Mac}-bad-mac`);
+  modifiedMacUrl.searchParams.set(
+    'mac',
+    encodeURIComponent(`${base64Mac}-bad-mac`)
+  );
 
   console.log('Valid URL:\n', validUrl);
   console.log('Modified expiry URL:\n', modifiedExpiryUrl.toString());
