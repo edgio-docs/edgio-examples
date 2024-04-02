@@ -64,9 +64,6 @@ export default new Router()
     },
     edge_function: './functions/general/caching.js',
   })
-  .match('/example/planetscale-database', {
-    edge_function: './functions/database/planetscale/index.js',
-  })
   .match('/example/upstash-database', {
     edge_function: './functions/database/upstash/index.js',
   });
