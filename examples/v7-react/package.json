@@ -39,11 +39,11 @@
     ]
   },
   "devDependencies": {
-    "@edgio/cli": "^7.10.6",
-    "@edgio/core": "^7.10.6",
-    "@edgio/devtools": "^7.10.6",
-    "@edgio/prefetch": "^7.10.6",
-    "@edgio/react-cra": "^7.10.6"
+    "@edgio/cli": "^7.11.0",
+    "@edgio/core": "^7.11.0",
+    "@edgio/devtools": "^7.11.0",
+    "@edgio/prefetch": "^7.11.0",
+    "@edgio/react-cra": "^7.11.0"
   },
   "repository": "git@github.com:edgio-docs/edgio-v7-react-example.git"
 }
