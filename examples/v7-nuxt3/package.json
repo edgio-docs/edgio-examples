@@ -17,12 +17,12 @@
     "@edgio/nuxt-nitro": "^7.10.6",
     "@edgio/prefetch": "^7.10.6",
     "@edgio/rum": "^7.0.6",
-    "@edgio/vue": "^7.10.6"
+    "@edgio/vue": "^7.10.6",
+    "nuxt": "^3.11.2"
   },
   "repository": "git@github.com:edgio-docs/edgio-v7-nuxt3-example.git",
   "dependencies": {
     "@nuxtjs/tailwindcss": "^6.6.7",
-    "node-fetch": "^3.3.1",
-    "nuxt": "^3.4.3"
+    "node-fetch": "^3.3.1"
   }
 }

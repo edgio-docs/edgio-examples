@@ -1,8 +1,12 @@
-export const relativizeURL = (str) =>
-  str.replace(
-    'https://edgio-community-ecommerce-api-example-default.layer0-limelight.link/',
-    '/edgio-opt?quality=30&img=https://edgio-community-ecommerce-api-example-default.layer0-limelight.link/'
-  )
+/**
+ * Returns a relative URL from a given URL. This is used to remove the origin from the image URL
+ * so that the image can be handled by Edgio router and processed by the image optimizer.
+ */
+export const relativizeURL = (str) => {
+  if (!str) return ''
+  // Return only the path and query string appended to /edgio-image/
+  return str.replace(/^(?:\/\/|[^/]+)*\//, '/edgio-image/')
+}
 
 export const getOrigin = (req) => {
   let origin

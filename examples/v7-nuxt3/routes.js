@@ -18,16 +18,20 @@ export default new Router()
     },
     origin: { set_origin: 'api' },
   })
-  .match('/edgio-opt', {
-    caching: { max_age: '86400s', stale_while_revalidate: '31536000s', bypass_client_cache: true },
+  .match('/edgio-image/:path*', {
+    comment:
+      'Matches all requests to /edgio-image/* including path and query params, ' +
+      'rewrites the url to exclude /edgio-image and proxy it to the "api" origin where the image is hosted.' +
+      'Then apply the image optimization feature to the response.',
     url: {
       url_rewrite: [
         {
-          source: '/edgio-opt:optionalSlash(\\/?)?:optionalQuery(\\?.*)?',
-          syntax: 'path-to-regexp',
-          destination: '/:optionalSlash:optionalQuery',
+          source: '\\/edgio-image\\/(.*)',
+          destination: '/$1',
+          syntax: 'regexp',
         },
       ],
     },
-    origin: { set_origin: 'image' },
+    origin: { set_origin: 'api' },
+    response: { optimize_images: true },
   })
