@@ -4,8 +4,17 @@
  */
 export const relativizeURL = (str) => {
   if (!str) return ''
-  // Return only the path and query string appended to /edgio-image/
-  return str.replace(/^(?:\/\/|[^/]+)*\//, '/edgio-image/')
+  // Only the path and query string appended to /edgio-image/.
+  str = str.replace(/^(?:\/\/|[^/]+)*\//, '/edgio-image/')
+
+  // Append `?auto=webp` to the URL to request WebP images while preserving any existing query string.
+  if (str.includes('?')) {
+    str += '&auto=webp'
+  } else {
+    str += '?auto=webp'
+  }
+
+  return str
 }
 
 export const getOrigin = (req) => {
