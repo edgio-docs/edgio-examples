@@ -24,6 +24,8 @@ const ProductPreview = ({ name, slug, images, prices }) => {
           <h4 className="border border-gray-200 bg-white px-2 py-1 text-xs text-black md:px-4 md:py-2 md:text-lg">{`${prices.price.value}${prices.price.currencyCode}`}</h4>
         </div>
         <HeartIcon className="absolute right-0 top-0 h-[30px] w-[30px] bg-white p-2" />
+
+        {/* The original image URL (external domain) is handled by the Next.js Image component and optimized with Edgio IO */}
         <Image className="h-full bg-white object-contain" loading="lazy" width={1200} height={1200} src={images[0].url} />
       </Link>
     </Prefetch>

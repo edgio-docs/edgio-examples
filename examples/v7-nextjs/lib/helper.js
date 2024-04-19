@@ -1,3 +1,6 @@
+/**
+ * Rewrite image URLs to use the a relative path that will be handled by the router and optimized
+ */
 export const relativizeURL = (str) =>
   str.replace(
     'https://edgio-community-ecommerce-api-example-default.layer0-limelight.link/',

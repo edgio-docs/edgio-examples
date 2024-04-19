@@ -13,10 +13,12 @@ const Product = ({ data }) => {
           </div>
           <HeartIcon className="absolute right-0 top-0 z-10 h-[50px] w-[50px] border border-gray-200 bg-white p-2" />
           <div className="flex w-full flex-col items-center">
+            {/* The original image URL (external domain) is handled by the Next.js Image component and optimized with Edgio IO */}
             <Image src={data.images[0].url} className="h-auto w-full max-w-[600px]" width={600} height={600} />
           </div>
           <div className="product-thumbnails mt-5 flex flex-row items-start gap-x-2 overflow-x-scroll">
             {data.images.map((i, ind) => (
+              /* The original image URL (external domain) is handled by the Next.js Image component and optimized with Edgio IO */
               <Image key={i.url} loading="lazy" src={i.url} className="h-[250px] w-auto hover:bg-white" width={250} height={250} />
             ))}
           </div>
