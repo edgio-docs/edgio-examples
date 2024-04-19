@@ -26,16 +26,4 @@ export default new Router()
       ],
     },
     origin: { set_origin: 'api' },
-  })
-  .match('/edgio-opt', {
-    url: {
-      url_rewrite: [
-        {
-          source: '/edgio-opt:optionalSlash(\\/?)?:optionalQuery(\\?.*)?',
-          syntax: 'path-to-regexp',
-          destination: '/:optionalSlash:optionalQuery',
-        },
-      ],
-    },
-    origin: { set_origin: 'image' },
   });
