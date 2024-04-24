@@ -1,48 +1,54 @@
-# Edgio v7 Qwik Template
+This is a [Qwik](https://qwik.dev/) project bootstrapped with QwikCity and powered by [Edgio](https://edg.io).
 
-This example is a basic Qwik template powered by Edgio.
+## Getting Started
 
-**Preview**: https://edgio-community-examples-v7-qwik-live.edgio.link/
-
-To get started with local development, run the following to install the Edgio CLI and start the development server:
+### Install Packages
 
 ```bash
-# Install the latest version of the Edgio CLI
-npm i -g @edgio/cli@latest
-
 npm install
+```
+
+### Local Development Server
+
+```bash
 npm run edgio:dev
 ```
 
-To test the production build locally, run the following commands:
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-```bash
-npm run edgio:build
+You can start editing the page by modifying `src/routes/index.tsx`. The page auto-updates as you edit the file.
 
-edgio run -p
-```
+## Learn More
 
-When you're ready to deploy, run the following commands:
+To learn more about Edgio, take a look at the following resources:
+
+- [Edgio Documentation](https://docs.edg.io) - learn about Edgio features
+
+## Deploy on Edgio
+
+Deploy this project on Edgio with the following command:
 
 ```bash
 npm run edgio:deploy
 ```
 
+Check out our [Qwik documentation](https://docs.edg.io/applications/v7/sites_frameworks/getting_started/qwik) for more details.
+
 ---
 
-## Qwik City App ⚡️
+# Qwik City App ⚡️
 
-- [Qwik Docs](https://qwik.builder.io/)
-- [Discord](https://qwik.builder.io/chat)
+- [Qwik Docs](https://qwik.dev/)
+- [Discord](https://qwik.dev/chat)
 - [Qwik GitHub](https://github.com/BuilderIO/qwik)
 - [@QwikDev](https://twitter.com/QwikDev)
 - [Vite](https://vitejs.dev/)
 
 ---
 
-### Project Structure
+## Project Structure
 
-This project is using Qwik with [QwikCity](https://qwik.builder.io/qwikcity/overview/). QwikCity is just an extra set of tools on top of Qwik to make it easier to build a full site, including directory-based routing, layouts, and more.
+This project is using Qwik with [QwikCity](https://qwik.dev/qwikcity/overview/). QwikCity is just an extra set of tools on top of Qwik to make it easier to build a full site, including directory-based routing, layouts, and more.
 
 Inside your project, you'll see the following directory structure:
 
@@ -56,21 +62,21 @@ Inside your project, you'll see the following directory structure:
         └── ...
 ```
 
-- `src/routes`: Provides the directory-based routing, which can include a hierarchy of `layout.tsx` layout files, and an `index.tsx` file as the page. Additionally, `index.ts` files are endpoints. Please see the [routing docs](https://qwik.builder.io/qwikcity/routing/overview/) for more info.
+- `src/routes`: Provides the directory-based routing, which can include a hierarchy of `layout.tsx` layout files, and an `index.tsx` file as the page. Additionally, `index.ts` files are endpoints. Please see the [routing docs](https://qwik.dev/qwikcity/routing/overview/) for more info.
 
 - `src/components`: Recommended directory for components.
 
 - `public`: Any static assets, like images, can be placed in the public directory. Please see the [Vite public directory](https://vitejs.dev/guide/assets.html#the-public-directory) for more info.
 
-### Add Integrations and deployment
+## Add Integrations and deployment
 
-Use the `npm run qwik add` command to add additional integrations. Some examples of integrations includes: Cloudflare, Netlify or Express Server, and the [Static Site Generator (SSG)](https://qwik.builder.io/qwikcity/guides/static-site-generation/).
+Use the `npm run qwik add` command to add additional integrations. Some examples of integrations includes: Cloudflare, Netlify or Express Server, and the [Static Site Generator (SSG)](https://qwik.dev/qwikcity/guides/static-site-generation/).
 
 ```shell
 npm run qwik add # or `yarn qwik add`
 ```
 
-### Development
+## Development
 
 Development mode uses [Vite's development server](https://vitejs.dev/). The `dev` command will server-side render (SSR) the output during development.
 
@@ -80,7 +86,7 @@ npm start # or `yarn start`
 
 > Note: during dev mode, Vite may request a significant number of `.js` files. This does not represent a Qwik production build.
 
-### Preview
+## Preview
 
 The preview command will create a production build of the client modules, a production build of `src/entry.preview.tsx`, and run a local server. The preview server is only for convenience to preview a production build locally and should not be used as a production server.
 
@@ -88,20 +94,10 @@ The preview command will create a production build of the client modules, a prod
 npm run preview # or `yarn preview`
 ```
 
-### Production
+## Production
 
 The production build will generate client and server modules by running both client and server build commands. The build command will use Typescript to run a type check on the source code.
 
 ```shell
 npm run build # or `yarn build`
 ```
-
-## Express Server
-
-This app has a minimal [Express server](https://expressjs.com/) implementation. After running a full build, you can preview the build using the command:
-
-```
-npm run serve
-```
-
-Then visit [http://localhost:8080/](http://localhost:8080/)
