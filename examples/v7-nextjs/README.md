@@ -37,5 +37,3 @@ npm run edgio:deploy
 ```
 
 Check out our [Next.js documentation](https://docs.edg.io/guides/v7/sites_frameworks/getting_started/next) for more details.
-
-#
