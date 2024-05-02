@@ -7,13 +7,13 @@ module.exports = {
   // The name of the site in Edgio to which this app should be deployed.
   // name: 'my-site-name',
 
-  // The name of the organization in Edgio to which this app should be deployed.
-  // organization: 'my-organization-name',
+  // The name of the team in Edgio to which this app should be deployed.
+  // team: 'my-team-name',
 
   // Overrides the default path to the routes file. The path should be relative to the root of your app.
   // routes: 'routes.js',
 
-    express: {
+  express: {
     // The main entry point for your app, which exports an instance of express app.
     // This file and its dependencies will be bundled into a single file for serverless deployment.
     //
@@ -33,15 +33,11 @@ module.exports = {
     // Uncomment the line below to bundle your express app using @vercel/nft to reduce the bundle size and cold start times
     // nft (Node file trace) produces an exploded, tree-shaken bundle with a node_modules directory containing only those modules
     // used by your app.
-    // bundler: '@vercel/nft',
+    bundler: '@vercel/nft',
     // Uncomment the line below to bundle your express app using @vercel/ncc to reduce the bundle size and cold start times
     // NCC produces an a single-file, tree-shaken bundle containing only those modules used by your app.
     // bundler: '@vercel/ncc',
-  }
-
-  // When set to true or omitted entirely, Edgio includes the deployment number in the cache key,
-  // effectively purging the cache each time you deploy.
-  // purgeCacheOnDeploy: false,
+  },
 
   // If you need to proxy some URLs to an origin instead of your Next.js app, you can configure the origins here:
   // origins: [
@@ -51,13 +47,13 @@ module.exports = {
   //
   //     // When provided, the following value will be sent as the host header when connecting to the origin.
   //     // If omitted, the host header from the browser will be forwarded to the origin.
-  //     override_host_header: "test-origin.edgio.net",
+  //     override_host_header: "example.com",
   //
   //     // The list of backend hosts
   //     hosts: [
   //       {
   //         // The domain name or IP address of the origin server
-  //         location: "test-origin.edgio.net"
+  //         location: "example.com"
   //       }
   //     ]
   //   }
@@ -68,10 +64,10 @@ module.exports = {
   //   // Set to true to include all packages listed in the dependencies property of package.json when deploying to Edgio.
   //   // This option generally isn't needed as Edgio automatically includes all modules imported by your code in the bundle that
   //   // is uploaded during deployment
-  //   // includeNodeModules: true,
+  //   includeNodeModules: true,
   //
   //   // Include additional paths that are dynamically loaded by your app at runtime here when building the serverless bundle.
-  //   // include: ['views/**/*'],
+  //   include: ['views/**/*'],
   // },
 
   // The maximum number of URLs that will be concurrently prerendered during deployment when static prerendering is enabled.
@@ -86,4 +82,4 @@ module.exports = {
   //   '**/*', // include all files
   //   '!(**/secrets/**/*)', // except everything in the secrets directory
   // ],
-}
+};
