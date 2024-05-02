@@ -11,7 +11,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
       - run: if [ -f yarn.lock ]; then yarn install; else npm ci; fi
       - run: if [ -f yarn.lock ]; then yarn edgio:deploy -- --token=$EDGIO_DEPLOY_TOKEN; else npm run edgio:deploy -- --token=$EDGIO_DEPLOY_TOKEN; fi
         env:
