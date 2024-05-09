@@ -28,6 +28,8 @@ When you're ready to deploy, run the following commands:
 npm run edgio:deploy
 ```
 
+Check out the [Edgio + Remix Documentation](https://docs.edg.io/guides/v7/sites_frameworks/getting_started/remix) for more details.
+
 ---
 
 # Welcome to Remix + Vite!
