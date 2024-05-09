@@ -1,8 +1,8 @@
 {
   "scripts": {
-    "edgio:dev": "edgio dev",
-    "edgio:build": "edgio build",
-    "edgio:deploy": "edgio deploy",
+    "edgio:dev": "npm run build && edgio dev",
+    "edgio:build": "npm run build && edgio build",
+    "edgio:deploy": "npm run build && edgio deploy",
     "build": "remix vite:build",
     "dev": "remix vite:dev",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
