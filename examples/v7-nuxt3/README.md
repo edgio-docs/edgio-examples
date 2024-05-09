@@ -35,5 +35,3 @@ npm run edgio:deploy
 ```
 
 Check out our [Nuxt3 documentation](https://docs.edg.io/applications/v7/sites_frameworks/getting_started/nuxt3) for more details.
-
-#

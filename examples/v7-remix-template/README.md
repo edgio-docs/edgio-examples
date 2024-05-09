@@ -1,8 +1,6 @@
-# Edgio v7 Remix Example
+# Edgio v7 Remix Template
 
-This example is a basic Remix template powered by Edgio.
-
-**Preview**: https://edgio-community-examples-v7-remix-live.edgio.link/
+This template is a basic Remix + Express app powered by Edgio. You may create a new property using this template from the [Edgio Console](https://app.edg.io).
 
 To get started with local development, run the following to install the Edgio CLI and start the development server:
 

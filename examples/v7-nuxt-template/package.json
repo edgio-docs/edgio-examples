@@ -1,0 +1,29 @@
+{
+  "scripts": {
+    "edgio:dev": "edgio dev",
+    "edgio:build": "edgio build",
+    "edgio:deploy": "edgio deploy",
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "name": "edgio-v7-nuxt-template",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "nuxt": "^3.11.2",
+    "vue": "^3.4.27",
+    "vue-router": "^4.3.2"
+  },
+  "repository": "git@github.com:edgio-docs/edgio-v7-nuxt-example.git",
+  "devDependencies": {
+    "@edgio/cli": "^7.11.4",
+    "@edgio/core": "^7.11.4",
+    "@edgio/devtools": "^7.11.4",
+    "@edgio/nuxt-nitro": "^7.11.4",
+    "@edgio/prefetch": "^7.11.4",
+    "@edgio/vue": "^7.11.4"
+  }
+}
