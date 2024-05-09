@@ -17,7 +17,7 @@
     "vue": "^3.4.27",
     "vue-router": "^4.3.2"
   },
-  "repository": "git@github.com:edgio-docs/edgio-v7-nuxt-example.git",
+  "repository": "git@github.com:edgio-docs/edgio-v7-nuxt-template.git",
   "devDependencies": {
     "@edgio/cli": "^7.11.4",
     "@edgio/core": "^7.11.4",
