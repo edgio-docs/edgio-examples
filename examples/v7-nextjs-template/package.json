@@ -1,0 +1,36 @@
+{
+  "scripts": {
+    "edgio:dev": "edgio dev",
+    "edgio:build": "edgio build",
+    "edgio:deploy": "edgio deploy",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "name": "edgio-v7-nextjs-template",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "next": "14.2.3",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@edgio/cli": "^7.11.4",
+    "@edgio/core": "^7.11.4",
+    "@edgio/devtools": "^7.11.4",
+    "@edgio/next": "^7.11.4",
+    "@edgio/prefetch": "^7.11.4",
+    "@edgio/react": "^7.11.4",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.3",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+  },
+  "repository": "git@github.com:edgio-docs/edgio-v7-nextjs-template.git"
+}

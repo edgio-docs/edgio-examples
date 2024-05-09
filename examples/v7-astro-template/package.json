@@ -1,0 +1,28 @@
+{
+  "scripts": {
+    "edgio:dev": "edgio dev",
+    "edgio:build": "edgio build",
+    "edgio:deploy": "edgio deploy",
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "name": "edgio-v7-astro-template",
+  "type": "module",
+  "version": "0.0.1",
+  "dependencies": {
+    "@astrojs/check": "^0.4.1",
+    "@astrojs/node": "^8.2.0",
+    "astro": "^4.3.1",
+    "typescript": "^5.3.3"
+  },
+  "devDependencies": {
+    "@edgio/cli": "^7.10.6",
+    "@edgio/connectors": "^7.10.6",
+    "@edgio/core": "^7.10.6",
+    "@edgio/prefetch": "^7.10.6"
+  },
+  "repository": "git@github.com:edgio-docs/edgio-v7-astro-template.git"
+}

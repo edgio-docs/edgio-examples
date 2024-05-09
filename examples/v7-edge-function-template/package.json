@@ -1,0 +1,20 @@
+{
+  "name": "edgio-v7-edge-function-template",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "edgio:dev": "edgio dev",
+    "edgio:build": "edgio build",
+    "edgio:deploy": "edgio deploy",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@edgio/cli": "^7.11.4",
+    "@edgio/core": "^7.11.4",
+    "@edgio/devtools": "^7.11.4",
+    "@edgio/prefetch": "^7.11.4"
+  },
+  "repository": "git@github.com:edgio-docs/edgio-v7-edge-function-template.git"
+}

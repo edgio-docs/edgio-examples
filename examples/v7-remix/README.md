@@ -1,4 +1,4 @@
-# Edgio v7 Remix Template
+# Edgio v7 Remix Example
 
 This example is a basic Remix template powered by Edgio.
 
@@ -28,23 +28,23 @@ When you're ready to deploy, run the following commands:
 npm run edgio:deploy
 ```
 
+Check out the [Edgio + Remix Documentation](https://docs.edg.io/guides/v7/sites_frameworks/getting_started/remix) for more details.
+
 ---
 
-## Welcome to Remix!
+# Welcome to Remix + Vite!
 
-- [Remix Docs](https://remix.run/docs)
+📖 See the [Remix docs](https://remix.run/docs) and the [Remix Vite docs](https://remix.run/docs/en/main/guides/vite) for details on supported features.
 
-### Development
+## Development
 
-Start the Remix development asset server and the Express server by running:
+Run the Vite dev server:
 
-```sh
+```shellscript
 npm run dev
 ```
 
-This starts your app in development mode, which will purge the server require cache when Remix rebuilds assets so you don't need a process manager restarting the express server.
-
-### Deployment
+## Deployment
 
 First, build your app for production:
 
@@ -60,29 +60,11 @@ npm start
 
 Now you'll need to pick a host to deploy it to.
 
-#### DIY
+### DIY
 
-If you're familiar with deploying express applications you should be right at home just make sure to deploy the output of `remix build`
+If you're familiar with deploying Node applications, the built-in Remix app server is production-ready.
 
-- `build/`
-- `public/build/`
+Make sure to deploy the output of `npm run build`
 
-#### Using a Template
-
-When you ran `npx create-remix@latest` there were a few choices for hosting. You can run that again to create a new project, then copy over relevant code/assets from your current app to the new project that's pre-configured for your target server.
-
-Most importantly, this means everything in the `app/` directory, but if you've further customized your current application outside of there it may also include:
-
-- Any assets you've added/updated in `public/`
-- Any updated versions of root files such as `.eslintrc.js`, etc.
-
-```sh
-cd ..
-# create a new project, and pick a pre-configured host
-npx create-remix@latest
-cd my-new-remix-app
-# remove the new project's app (not the old one!)
-rm -rf app
-# copy your app over
-cp -R ../my-old-remix-app/app app
-```
+- `build/server`
+- `build/client`

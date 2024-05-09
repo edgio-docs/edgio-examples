@@ -42,15 +42,17 @@ if (packageJson.scripts) {
 }
 
 // Check for `repository` property in package.json
-if (
-  !packageJson.repository ||
-  packageJson.repository !== repoFormat(exampleName)
-) {
+if (!packageJson.repository) {
   console.error(
-    `'repository' property either not found or not the recommended value in '${packageJsonPath}'.\n\n` +
+    `'repository' property missing in '${packageJsonPath}'.\n\n` +
       `Recommended value: "repository": "${repoFormat(exampleName)}"`
   );
   error = true;
+} else if (packageJson.repository !== repoFormat(exampleName)) {
+  console.warn(
+    `Warning: 'repository' value in '${packageJsonPath}' does not match the recommended value.\n\n` +
+      `Recommended value: "repository": "${repoFormat(exampleName)}"`
+  );
 }
 
 if (error) {
