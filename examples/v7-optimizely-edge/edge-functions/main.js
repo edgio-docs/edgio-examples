@@ -1,53 +1,70 @@
-import '../lib/polyfills';
+import '../lib/polyfills'; // Necessary polyfills for the edge function scope
 import {
   createInstance,
   eventDispatcher,
 } from '@optimizely/optimizely-sdk/dist/optimizely.lite.min.js';
 import optimizelyDatafile from '../lib/optimizely/datafile.json';
-import { v4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
+// Constants for Optimizely client configuration
 const CLIENT_ENGINE = 'EDGIO_EF';
 const COOKIE_NAME = 'optimizely_visitor_id';
 
+/**
+ * Handles incoming HTTP requests and applies A/B testing using Optimizely.
+ *
+ * @param {Request} request - The incoming HTTP request.
+ * @param {Object} context - The context for this handler
+ * @returns {Response} The HTTP response after applying A/B testing logic.
+ */
 export async function handleHttpRequest(request, context) {
+  console.log(JSON.stringify(request.headers, null, 2)); // Log request headers for debugging
+
+  // Retrieve or generate a unique user ID from cookies
   const userId =
     request.headers
       .get('Cookie')
       ?.split(';')
       .find((cookie) => cookie.trim().startsWith(`${COOKIE_NAME}=`))
-      ?.split('=')[1] || v4();
+      ?.split('=')[1] || uuidv4();
 
-  // Create Optimizely instance using datafile downloaded at build time.
+  // Create an Optimizely instance with the preloaded datafile and configuration
   const instance = createInstance({
     datafile: optimizelyDatafile,
     clientEngine: CLIENT_ENGINE,
     eventDispatcher,
   });
 
-  // Return the original HTML if the instance is not created.
+  // Early exit if the Optimizely instance isn't properly created
   if (!instance) {
-    return Response.error('Optimizely instance unavailable.');
+    return new Response('Optimizely instance unavailable.', { status: 500 });
   }
 
-  await instance.onReady();
+  await instance.onReady(); // Ensures the Optimizely instance is ready before proceeding
 
+  // Create a user context for the retrieved or generated user ID
   const userContext = instance.createUserContext(userId.toString());
+
+  // Make a decision using Optimizely for the 'text_direction' feature
   const decision = userContext.decide('text_direction');
-  const textDir = decision['enabled'] ? 'rtl' : 'ltr';
+  const textDir = decision.enabled ? 'rtl' : 'ltr'; // Determine text direction based on decision
 
-  console.log(
-    `[OPTIMIZELY] User ID: ${userId}, Text Direction: ${textDir}, Decision: ${JSON.stringify(
-      decision
-    )}`
-  );
+  console.log(`[OPTIMIZELY] User ID: ${userId}, Text Direction: ${textDir}`);
 
+  // Modify the request URL to append the determined text direction as a query parameter
   const url = new URL('/', request.url);
   url.searchParams.set('dir', textDir);
-  const resp = await fetch(url, {
-    edgio: {
-      origin: 'edgio_self',
-    },
+
+  // Fetch the `/` URL with the appended query parameter which will render a Next.js server page
+  // with the text direction applied. `edgio_self` origin is used to fetch the URL from the same
+  // environment which handles the Next.js routes.
+  const response = await fetch(url.toString(), {
+    edgio: { origin: 'edgio_self' },
   });
 
-  return resp;
+  // Add the user ID to the response headers as a cookie to ensure the user experience consistency
+  const cookie = `${COOKIE_NAME}=${userId}; Path=/; Max-Age=31536000; SameSite=Lax`;
+  response.headers.append('Set-Cookie', cookie);
+
+  return response;
 }
