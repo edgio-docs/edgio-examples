@@ -1,5 +1,6 @@
 const fs = require('fs');
 const fetch = require('node-fetch');
+require('dotenv').config();
 
 const DATAFILE_DIR = './lib/optimizely';
 
@@ -26,15 +27,6 @@ async function fetchDatafile() {
   console.log(`Optimizely Datafile fetched successfully`);
 }
 
-function withOptimizely(nextConfig = {}) {
-  return {
-    ...nextConfig,
-    // Not actually overwriting rewrites. Just using the async function to fetch optimizely datafile.
-    rewrites: async () => {
-      await fetchDatafile();
-      return nextConfig.rewrites ? nextConfig.rewrites() : [];
-    },
-  };
-}
-
-module.exports = withOptimizely;
+(async () => {
+  await fetchDatafile();
+})();

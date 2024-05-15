@@ -1,8 +1,8 @@
 {
   "scripts": {
     "edgio:dev": "edgio dev",
-    "edgio:build": "edgio build",
-    "edgio:deploy": "edgio deploy",
+    "edgio:build": "node scripts/fetch_optimizely_datafile.js && edgio build",
+    "edgio:deploy": "npm run edgio:build && edgio deploy --skip-build",
     "start": "edgio dev"
   },
   "name": "edgio-v7-optimizely-edge-example",
@@ -16,7 +16,8 @@
     "@edgio/devtools": "^7.11.4",
     "@edgio/next": "^7.11.4",
     "@edgio/prefetch": "^7.11.4",
-    "@edgio/react": "^7.11.4"
+    "@edgio/react": "^7.11.4",
+    "dotenv": "^16.4.5"
   },
   "repository": "git@github.com:edgio-docs/edgio-v7-optimizely-edge-example.git",
   "dependencies": {

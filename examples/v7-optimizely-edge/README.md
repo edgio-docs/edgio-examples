@@ -25,7 +25,7 @@ git clone ...
 npm install
 ```
 
-3. Create a `.env.local` file in the root of the project and add the following environment variables:
+3. Create a `.env` file in the root of the project and add the following environment variables:
 
 ```bash
 OPTIMIZELY_SDK_KEY=...

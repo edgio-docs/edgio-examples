@@ -18,8 +18,6 @@ const COOKIE_NAME = 'optimizely_visitor_id';
  * @returns {Response} The HTTP response after applying A/B testing logic.
  */
 export async function handleHttpRequest(request, context) {
-  console.log(JSON.stringify(request.headers, null, 2)); // Log request headers for debugging
-
   // Retrieve or generate a unique user ID from cookies
   const userId =
     request.headers
@@ -28,7 +26,8 @@ export async function handleHttpRequest(request, context) {
       .find((cookie) => cookie.trim().startsWith(`${COOKIE_NAME}=`))
       ?.split('=')[1] || uuidv4();
 
-  // Create an Optimizely instance with the preloaded datafile and configuration
+  // Create an Optimizely instance with the preloaded datafile and configuration.
+  // This edge function uses the Optimizely SDK Lite which requires a preloaded datafile.
   const instance = createInstance({
     datafile: optimizelyDatafile,
     clientEngine: CLIENT_ENGINE,
