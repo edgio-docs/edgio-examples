@@ -38,4 +38,3 @@ next-env.d.ts
 # Edgio generated build directory
 /.edgio
 /node_modules
-lib/optimizely/*
