@@ -3,11 +3,7 @@
     "edgio:dev": "edgio dev",
     "edgio:build": "edgio build",
     "edgio:deploy": "edgio deploy",
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "edgio dev"
   },
   "name": "edgio-v7-optimizely-edge-example",
   "version": "1.0.0",
@@ -20,25 +16,13 @@
     "@edgio/devtools": "^7.11.4",
     "@edgio/next": "^7.11.4",
     "@edgio/prefetch": "^7.11.4",
-    "@edgio/react": "^7.11.4",
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "dotenv": "^16.4.5",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.3",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
-    "typescript": "^5"
+    "@edgio/react": "^7.11.4"
   },
   "repository": "git@github.com:edgio-docs/edgio-v7-optimizely-edge-example.git",
   "dependencies": {
     "@optimizely/optimizely-sdk": "^5.3.0",
     "crypto-js": "^4.2.0",
-    "next": "14.2.3",
     "polyfill-crypto.getrandomvalues": "^1.0.0",
-    "react": "^18",
-    "react-dom": "^18",
     "uuid": "^9.0.1"
   }
 }
