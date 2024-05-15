@@ -34,9 +34,11 @@
   "repository": "git@github.com:edgio-docs/edgio-v7-optimizely-edge-example.git",
   "dependencies": {
     "@optimizely/optimizely-sdk": "^5.3.0",
+    "crypto-js": "^4.2.0",
     "next": "14.2.3",
+    "polyfill-crypto.getrandomvalues": "^1.0.0",
     "react": "^18",
     "react-dom": "^18",
-    "shortid": "^2.2.16"
+    "uuid": "^9.0.1"
   }
 }
