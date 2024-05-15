@@ -36,7 +36,9 @@ export async function handleHttpRequest(request, context) {
   const textDir = decision['enabled'] ? 'rtl' : 'ltr';
 
   console.log(
-    `[OPTIMIZELY] User ID: ${userId}, Text Direction: ${textDir}, Decision: ${decision}`
+    `[OPTIMIZELY] User ID: ${userId}, Text Direction: ${textDir}, Decision: ${JSON.stringify(
+      decision
+    )}`
   );
 
   const url = new URL('/', request.url);
