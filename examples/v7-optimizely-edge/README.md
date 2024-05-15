@@ -1,3 +1,50 @@
+# Edge-side Experiments with Optimizely and Next.js
+
+This project is a simple Next.js app that demonstrates how to use edge functions to run Optimizely experiments. The app is a Next.js starter project using server components that renders the text direction based on the experiment variant provided as a query parameter.
+
+The request workflow is as follows:
+
+- The client makes a request to `/optimizely` which is handled by an edge function.
+- The edge function fetches the Optimizely experiment variant and decides which text direction to use based on the variant.
+- The edge function makes another fetch request to `/` - the Next.js app, with the experiment variant as the `dir` query parameter.
+- The Next.js app renders the page on the server with the text direction based on the query parameter.
+- The server-rendered page response is returned to the edge function.
+- The edge function sets the experiment variant cookie and returns the page to the client.
+
+## Getting Started
+
+1. Clone the repository:
+
+```bash
+git clone ...
+```
+
+2. Install the dependencies:
+
+```bash
+npm install
+```
+
+3. Create a `.env.local` file in the root of the project and add the following environment variables:
+
+```bash
+OPTIMIZELY_SDK_KEY=...
+```
+
+4. Start the development server:
+
+```bash
+npm run edgio:dev
+```
+
+5. Open [http://localhost:3000/optimizely](http://localhost:3000/optimizely) with your browser to see the result. This will set a cookie to ensure you remain on the experience across page navigation. Issue multiple requests using `curl` to see the experiment variant change:
+
+```bash
+curl http://localhost:3000/optimizely | grep 'direction:'
+```
+
+---
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
