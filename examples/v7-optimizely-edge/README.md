@@ -2,12 +2,14 @@
 
 This example demonstrates how you may use edge functions to run Optimizely experiments.
 
+**Preview**: [https://edgio-community-examples-v7-optimizely-edge-live.glb.edgio.link/](https://edgio-community-examples-v7-optimizely-edge-live.glb.edgio.link/)
+
 The request workflow is as follows:
 
 - The client makes a request to `/` which is handled by an edge function.
 - The edge function fetches the Optimizely experiment variant and decides which text direction to use based on the variant.
 - The edge function makes another fetch request to the Wikipedia homepage and gets the HTML content.
-- The edge function modifies the HTML content to include the experiment variant and returns it to the client.
+- The edge function modifies the HTML content to include the experiment variant.
 - The edge function sets the experiment variant cookie and returns the page to the client.
 - Depending on the experiment variant, the page may render normal or mirrored based on the applied transformation.
 
