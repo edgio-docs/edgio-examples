@@ -34,31 +34,31 @@ export async function handleHttpRequest(request, context) {
   const html = await resp.text();
 
   // Create Optimizely instance using datafile downloaded at build time.
-  const instance = createInstance({
-    datafile: optimizelyDatafile,
-    clientEngine: CLIENT_ENGINE,
-    eventDispatcher,
-  });
+  // const instance = createInstance({
+  //   datafile: optimizelyDatafile,
+  //   clientEngine: CLIENT_ENGINE,
+  //   eventDispatcher,
+  // });
 
-  // Return the original HTML if the instance is not created.
-  if (!instance) {
-    return resp;
-  }
+  // // Return the original HTML if the instance is not created.
+  // if (!instance) {
+  //   return resp;
+  // }
 
-  await instance.onReady();
+  // await instance.onReady();
 
-  // Create Optimizely User Context
-  const userContext = instance.createUserContext(userId.toString());
+  // // Create Optimizely User Context
+  // const userContext = instance.createUserContext(userId.toString());
 
-  // Decide variation for the flag.
-  const decision = userContext.decide('foo_flag');
+  // // Decide variation for the flag.
+  // const decision = userContext.decide('foo_flag');
 
-  console.log(`[OPTIMIZELY] userId: ${userId}`);
-  console.log(
-    `[OPTIMIZELY] flag 'foo_flag' is ${
-      decision.enabled ? 'enabled' : 'disabled'
-    } for the user ${userId}`
-  );
+  // console.log(`[OPTIMIZELY] userId: ${userId}`);
+  // console.log(
+  //   `[OPTIMIZELY] flag 'foo_flag' is ${
+  //     decision.enabled ? 'enabled' : 'disabled'
+  //   } for the user ${userId}`
+  // );
 
   // To send the response to the client with the new HTML but the same headers as the origin response:
   return new Response(html, {
