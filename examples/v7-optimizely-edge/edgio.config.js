@@ -57,24 +57,22 @@ module.exports = {
   },
 
   // If you need to proxy some URLs to an origin instead of your Next.js app, you can configure the origins here:
-  // origins: [
-  //   {
-  //     // The name of the backend origin
-  //     name: "origin",
-  //
-  //     // When provided, the following value will be sent as the host header when connecting to the origin.
-  //     // If omitted, the host header from the browser will be forwarded to the origin.
-  //     override_host_header: "test-origin.edgio.net",
-  //
-  //     // The list of backend hosts
-  //     hosts: [
-  //       {
-  //         // The domain name or IP address of the origin server
-  //         location: "test-origin.edgio.net"
-  //       }
-  //     ]
-  //   }
-  // ],
+  origins: [
+    {
+      name: 'wikipedia',
+      override_host_header: 'en.wikipedia.org',
+      hosts: [
+        {
+          location: 'en.wikipedia.org',
+        },
+      ],
+      tls_verify: {
+        use_sni: true,
+        allow_self_signed_certs: true,
+        sni_hint_and_strict_san_check: 'en.wikipedia.org',
+      },
+    },
+  ],
 
   // Options for hosting serverless functions on Edgio
   // serverless: {
@@ -99,4 +97,4 @@ module.exports = {
   //   '**/*', // include all files
   //   '!(**/secrets/**/*)', // except everything in the secrets directory
   // ],
-}
+};

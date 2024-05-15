@@ -47,24 +47,28 @@ export async function handleHttpRequest(request, context) {
 
   // Make a decision using Optimizely for the 'text_direction' feature
   const decision = userContext.decide('text_direction');
-  const textDir = decision.enabled ? 'rtl' : 'ltr'; // Determine text direction based on decision
+  const textDir = decision.enabled ? 1 : -1; // Determine text direction based on decision
 
   console.log(`[OPTIMIZELY] User ID: ${userId}, Text Direction: ${textDir}`);
 
-  // Modify the request URL to append the determined text direction as a query parameter
-  const url = new URL('/', request.url);
-  url.searchParams.set('dir', textDir);
-
-  // Fetch the `/` URL with the appended query parameter which will render a Next.js server page
-  // with the text direction applied. `edgio_self` origin is used to fetch the URL from the same
-  // environment which handles the Next.js routes.
+  // Fetch the homepage of Wikipedia
+  const url = new URL('https://en.wikipedia.org');
   const response = await fetch(url.toString(), {
-    edgio: { origin: 'edgio_self' },
+    edgio: { origin: 'wikipedia' },
   });
 
-  // Add the user ID to the response headers as a cookie to ensure the user experience consistency
-  const cookie = `${COOKIE_NAME}=${userId}; Path=/; Max-Age=31536000; SameSite=Lax`;
-  response.headers.append('Set-Cookie', cookie);
+  // Update the `<body>` tag with the text direction based on the Optimizely decision
+  const bodyTagRegex = /<body([^>]*)>/i;
+  const bodyTagReplacement = `<body style="transform: scaleX(${textDir});"$1>`;
+  const body = await response.text();
+  const updatedBody = body.replace(bodyTagRegex, bodyTagReplacement);
 
-  return response;
+  // Create a new response with the updated body content
+  const updatedResponse = new Response(updatedBody, response);
+
+  // Add the user ID to the response headers as a cookie to ensure the user experience consistency
+  // const cookie = `${COOKIE_NAME}=${userId}; Path=/; Max-Age=31536000; SameSite=Lax`;
+  // updatedResponse.headers.append('Set-Cookie', cookie);
+
+  return updatedResponse;
 }
