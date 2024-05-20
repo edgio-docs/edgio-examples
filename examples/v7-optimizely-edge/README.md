@@ -18,7 +18,7 @@ The request workflow is as follows:
 1. Clone the repository:
 
 ```bash
-git clone ...
+git clone git@github.com:edgio-docs/edgio-v7-optimizely-edge-example.git
 ```
 
 2. Install the dependencies:
