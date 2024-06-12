@@ -21,6 +21,9 @@ export default new Router()
       max_age: '1h',
     },
   })
+  .get('/', ({ serveStatic }) => {
+    serveStatic('./public/index.html');
+  })
 
   // serve static files from the /public directory
   .static('./public')
