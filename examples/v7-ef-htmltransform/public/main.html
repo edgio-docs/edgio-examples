@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Examples using HTMLTransformer</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: #f4f4f9;
+      }
+      h1 {
+        color: #333;
+      }
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+      li {
+        background-color: #fff;
+        margin: 10px 0;
+        padding: 15px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      a {
+        text-decoration: none;
+        color: #1a73e8;
+        font-weight: bold;
+      }
+      p {
+        margin: 10px 0;
+        color: #555;
+      }
+      code {
+        display: block;
+        background-color: #f1f1f1;
+        padding: 10px;
+        border-radius: 5px;
+        color: #d63384;
+        font-family: 'Courier New', Courier, monospace;
+      }
+    </style>
+    <script type="text/javascript">
+      // once the document has loaded, update the curl command with the current
+      // url to make it easier for users to copy and paste
+      document.addEventListener('DOMContentLoaded', function () {
+        var curlCommands = document.querySelectorAll('code');
+        curlCommands.forEach(function (curlCommand) {
+          curlCommand.textContent = curlCommand.textContent.replace(
+            'http://localhost:3000',
+            window.location.origin
+          );
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Examples using HTMLTransformer</h1>
+    <ul>
+      <li>
+        <a href="/basic_example">Basic Example</a>
+        <p>
+          This example demonstrates a basic usage of HTMLTransformer within edge
+          functions. This code fetches a static HTML asset and modifies the
+          content and response headers.
+        </p>
+        <code>curl -v http://localhost:3000/basic_example</code>
+      </li>
+      <li>
+        <a href="/esi_example">ESI Example</a>
+        <p>
+          This example shows how to use Edge Side Includes (ESI) with edge
+          functions. Similar to the basic example, this code fetches a static
+          HTML asset and looks for ESI tags to include additional content. These
+          includes are fetched and processed by the edge function before
+          responding to the client.
+        </p>
+        <code>curl -v http://localhost:3000/esi_example</code>
+      </li>
+      <li>
+        <a href="/esi_response_stream_example">ESI Response Stream Example</a>
+        <p>
+          This example illustrates how to use ESI with a streamed response to
+          the HTMLTransformer. It's the same as the ESI example, but the
+          response of the initial fetch request is streamed to the transformer.
+        </p>
+        <code>curl -v http://localhost:3000/esi_response_stream_example</code>
+      </li>
+    </ul>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "name": "edgio-v7-ef-htmltransform-example",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "edgio:dev": "edgio dev",
+    "edgio:build": "edgio build",
+    "edgio:deploy": "edgio deploy",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@edgio/cli": "^7.12.0",
+    "@edgio/core": "^7.12.0",
+    "@edgio/devtools": "^7.12.0",
+    "@edgio/prefetch": "^7.12.0"
+  },
+  "repository": "git@github.com:edgio-docs/edgio-v7-ef-htmltransform-example.git"
+}
