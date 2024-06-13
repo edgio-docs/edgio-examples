@@ -22,7 +22,7 @@ export default new Router()
     },
   })
   .get('/', ({ serveStatic }) => {
-    serveStatic('./public/index.html');
+    serveStatic('./public/main.html');
   })
 
   // serve static files from the /public directory
