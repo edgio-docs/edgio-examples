@@ -26,7 +26,7 @@ export async function handleHttpRequest(request, context) {
         // Use the append() method to append the timestamp to the end of the document
         // Specify 'html' as the second arguemnt to indicate the content is HTML, not plain text
         d.append(
-          `&lt;!-- Transformed at ${new Date().toISOString()} by Edg.io -->`,
+          `<!-- Transformed at ${new Date().toISOString()} by Edg.io -->`,
           'html'
         );
       },

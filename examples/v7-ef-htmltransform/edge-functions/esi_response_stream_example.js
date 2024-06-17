@@ -23,7 +23,7 @@ export async function handleHttpRequest(request, context) {
   ];
   const textDecoder = new TextDecoder();
 
-  // Set the URL to the esi_include.html we'll be transforming
+  // For demo purposes, we'll fetch a local asset HTML file that contains an ESI include.
   const esiIncludeSource = new URL(request.url);
   esiIncludeSource.pathname = '/assets/esi_include.html';
 
