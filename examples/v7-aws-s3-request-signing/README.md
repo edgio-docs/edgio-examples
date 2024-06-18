@@ -1,6 +1,6 @@
 # S3 Request Signing Example
 
-https://your-s3-request-signing-example.edgio.link/
+https://edgio-community-examples-v7-aws-s3-request-signing-live.glb.edgio.link/
 
 ## Description
 
