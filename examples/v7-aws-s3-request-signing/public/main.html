@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>S3 Request Signing Example</title>
+    <style>
+      body {
+        font-family: 'Arial', sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        background-color: #f0f8ff;
+      }
+      .header {
+        background: #333;
+        color: #fff;
+        padding: 20px 0;
+        text-align: center;
+      }
+      .container {
+        max-width: 900px;
+        margin: 20px auto;
+        padding: 20px;
+        background: #fff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        color: #fff;
+      }
+      h2 {
+        color: #333;
+      }
+      pre {
+        background: #222;
+        color: #f8f8f8;
+        padding: 15px;
+        overflow: auto;
+        border-radius: 5px;
+      }
+      a {
+        color: #3498db;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      .highlight {
+        background-color: #e7f3fe;
+        padding: 10px;
+        border-left: 4px solid #3498db;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>S3 Request Signing Example</h1>
+    </div>
+    <div class="container">
+      <h2>Overview</h2>
+      <p>
+        This example demonstrates how to sign requests to an S3 origin using AWS
+        v4 signature algorithm.
+      </p>
+      <p>
+        This is a simple example of an HTML file stored on Amazon S3. The file
+        is served by an edge function that signs the request using AWS v4
+        signature algorithm.
+        <a href="/s3/aws_request_signing.html" target="_blank"
+          >View the original file</a
+        >.
+      </p>
+      <h2>Router Configuration</h2>
+      <div class="highlight">
+        The router handles incoming requests. Requests to the
+        <code>/s3/*</code> path are forwarded to an edge function for
+        processing.
+      </div>
+      <pre>
+// This file was added by edgio init.
+// You should commit this file to source control.
+import { Router, edgioRoutes } from '@edgio/core';
+
+export default new Router()
+  // Built-in Edgio routes
+  .use(edgioRoutes)
+
+  // Specifies the edge function for /s3/* paths
+  .get('/s3/:anything*', {
+    edge_function: './edge-functions/main.js',
+  })
+
+  // Serves the main.html file for the root path
+  .get('/', ({ serveStatic }) => serveStatic('public/main.html'));
+    </pre
+      >
+
+      <h2>Edge Function</h2>
+      <div class="highlight">
+        The edge function makes an authenticated request to S3, removing the
+        <code>/s3</code> prefix and using AWS v4 signature algorithm for
+        signing.
+      </div>
+      <pre>
+import { AwsV4Signer } from './lib/awsv4';
+
+/**
+ * This edge function signs an S3 request using the AWS v4 signature algorithm
+ * and forwards the request to the S3 origin. Authentication credentials are
+ * read from environment variables set in the Edgio Developer Console.
+ */
+export async function handleHttpRequest(request, context) {
+  const { S3_HOSTNAME, S3_REGION, S3_ACCESS_KEY_ID, S3_SECRET_ACCESS_KEY } = context.environmentVars;
+
+  const initialUrl = new URL(request.url);
+
+  // Remove the /s3 prefix from the path before signing since we only
+  // want to sign the path relative to the bucket.
+  const s3Path = initialUrl.pathname.replace(/^\/s3/, '');
+  const s3Url = new URL(s3Path, `https://${S3_HOSTNAME}`);
+
+  const signer = new AwsV4Signer({
+    url: s3Url.href,
+    method: request.method,
+    region: S3_REGION,
+    service: 's3',
+    accessKeyId: S3_ACCESS_KEY_ID,
+    secretAccessKey: S3_SECRET_ACCESS_KEY,
+    signQuery: true,
+  });
+
+  const signedDetails = await signer.sign();
+
+  return fetch(signedDetails.url, {
+    method: signedDetails.method,
+    headers: signedDetails.headers,
+    edgio: {
+      origin: 's3',
+    },
+  });
+}
+    </pre
+      >
+
+      <h2>Environment Variables</h2>
+      <div class="highlight">
+        <p>
+          Environment variables are critical for the edge function to
+          authenticate and sign requests correctly.
+        </p>
+        <ul>
+          <li><code>S3_HOSTNAME</code>: The S3 bucket hostname.</li>
+          <li>
+            <code>S3_REGION</code>: The AWS region where the S3 bucket is
+            located.
+          </li>
+          <li><code>S3_ACCESS_KEY_ID</code>: Your AWS access key ID.</li>
+          <li>
+            <code>S3_SECRET_ACCESS_KEY</code>: Your AWS secret access key.
+          </li>
+        </ul>
+        <p>
+          When running the project locally, these variables can be defined in a
+          <code>.env</code> file or directly in the environment. For deployment
+          on Edgio, these should be set in the Edgio Developer Console.
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
