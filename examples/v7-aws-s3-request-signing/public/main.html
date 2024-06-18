@@ -65,9 +65,11 @@
         This is a simple example of an HTML file stored on Amazon S3. The file
         is served by an edge function that signs the request using AWS v4
         signature algorithm.
-        <a href="/s3/aws_request_signing.html" target="_blank"
-          >View the original file</a
-        >.
+        
+        <ul>
+          <li>Original file: <a href="https://edgio-docs-demo.s3.us-east-2.amazonaws.com/aws_request_signing.html" target="_blank">https://edgio-docs-demo.s3.us-east-2.amazonaws.com/aws_request_signing.html</a> (Unsigned, access denied)</li>
+          <li>Signed file: <a href="/s3/aws_request_signing.html" target="_blank">/s3/aws_request_signing.html</a> (Signed, access granted)</li>
+        </ul>
       </p>
       <h2>Router Configuration</h2>
       <div class="highlight">
