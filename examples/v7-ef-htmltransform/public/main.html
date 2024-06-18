@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Examples using HTMLTransformer</title>
+    <title>Examples using HtmlTransformer</title>
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -56,12 +56,23 @@
     </script>
   </head>
   <body>
-    <h1>Examples using HTMLTransformer</h1>
+    <h1>Examples using HtmlTransformer</h1>
+    <p>
+      This page contains a list of examples that demonstrate how to use the
+      <a
+        href="https://docs.edg.io/applications/v7/edge_functions/htmltransformer"
+        target="_blank"
+        >HtmlTransformer</a
+      >
+      within edge functions. Each example fetches a static HTML asset and
+      modifies the content and response headers.
+    </p>
+
     <ul>
       <li>
         <a href="/basic_example">Basic Example</a>
         <p>
-          This example demonstrates a basic usage of HTMLTransformer within edge
+          This example demonstrates a basic usage of HtmlTransformer within edge
           functions. This code fetches a static HTML asset and modifies the
           content and response headers.
         </p>
@@ -82,7 +93,7 @@
         <a href="/esi_response_stream_example">ESI Response Stream Example</a>
         <p>
           This example illustrates how to use ESI with a streamed response to
-          the HTMLTransformer. It's the same as the ESI example, but the
+          the HtmlTransformer. It's the same as the ESI example, but the
           response of the initial fetch request is streamed to the transformer.
         </p>
         <code>curl -v http://localhost:3000/esi_response_stream_example</code>

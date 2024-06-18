@@ -1,10 +1,10 @@
-# HTMl Transformation with Edge Functions
+# HTML Transformation with Edge Functions
 
 https://edgio-community-examples-v7-ef-htmltransform-live.edgio.link/
 
 ## Description
 
-This repository provides example code for transforming HTML content using Edge Functions. It features examples of how to modify the content using the `HTMLTransformer` class along with Edge Side Includes and streaming responses to the transformer
+This repository provides example code for transforming HTML content using Edge Functions. It features examples of how to modify the content using the `HtmlTransformer` class along with Edge Side Includes and streaming responses to the transformer
 
 ## Prerequisites
 

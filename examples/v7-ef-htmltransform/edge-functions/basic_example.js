@@ -24,7 +24,7 @@ export async function handleHttpRequest(request, context) {
       // Since this operates on the document, there is no need to specify a selector
       doc_end: async (d) => {
         // Use the append() method to append the timestamp to the end of the document
-        // Specify 'html' as the second arguemnt to indicate the content is HTML, not plain text
+        // Specify 'html' as the second argument to indicate the content is HTML, not plain text
         d.append(
           `<!-- Transformed at ${new Date().toISOString()} by Edg.io -->`,
           'html'
