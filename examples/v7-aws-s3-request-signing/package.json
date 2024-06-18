@@ -1,0 +1,28 @@
+{
+  "name": "edgio-v7-aws-s3-request-signing-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "edgio": "edgio",
+    "edgio:dev": "edgio dev",
+    "edgio:build": "edgio build",
+    "edgio:deploy": "edgio deploy"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@edgio/cli": "^7.12.1",
+    "@edgio/core": "^7.12.1",
+    "@edgio/devtools": "^7.12.1",
+    "@edgio/prefetch": "^7.12.1",
+    "dotenv": "^16.4.5"
+  },
+  "dependencies": {
+    "aws4fetch": "^1.0.17",
+    "crypto-js": "^4.2.0"
+  },
+  "repository": "git@github.com:edgio-docs/edgio-v7-aws-s3-request-signing-example.git"
+}
