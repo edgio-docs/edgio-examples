@@ -27,7 +27,7 @@ The following environment variables need to be set for the edge function to auth
 - `S3_ACCESS_KEY_ID`: Your AWS access key ID.
 - `S3_SECRET_ACCESS_KEY`: Your AWS secret access key.
 
-When running the project locally, these variables can be defined in a `.env` file or directly in the environment. For deployment on Edgio, these should be set in the Edgio Developer Console.
+When running the project locally, these variables can be defined in a `.env` file or directly in the environment. For deployment on Edgio, these should be set in the Edgio Console.
 
 ## Getting Started
 

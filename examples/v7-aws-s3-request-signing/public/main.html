@@ -72,11 +72,11 @@
         </ul>
       </p>
       <h2>Router Configuration</h2>
-      <div class="highlight">
+      <p>
         The router handles incoming requests. Requests to the
         <code>/s3/*</code> path are forwarded to an edge function for
         processing.
-      </div>
+      </p>
       <pre>
 // This file was added by edgio init.
 // You should commit this file to source control.
@@ -97,18 +97,18 @@ export default new Router()
       >
 
       <h2>Edge Function</h2>
-      <div class="highlight">
+      <p>
         The edge function makes an authenticated request to S3, removing the
         <code>/s3</code> prefix and using AWS v4 signature algorithm for
         signing.
-      </div>
+      </p>
       <pre>
 import { AwsV4Signer } from './lib/awsv4';
 
 /**
  * This edge function signs an S3 request using the AWS v4 signature algorithm
  * and forwards the request to the S3 origin. Authentication credentials are
- * read from environment variables set in the Edgio Developer Console.
+ * read from environment variables set in the Edgio Console.
  */
 export async function handleHttpRequest(request, context) {
   const { S3_HOSTNAME, S3_REGION, S3_ACCESS_KEY_ID, S3_SECRET_ACCESS_KEY } = context.environmentVars;
@@ -144,7 +144,7 @@ export async function handleHttpRequest(request, context) {
       >
 
       <h2>Environment Variables</h2>
-      <div class="highlight">
+      <div>
         <p>
           Environment variables are critical for the edge function to
           authenticate and sign requests correctly.
@@ -163,7 +163,7 @@ export async function handleHttpRequest(request, context) {
         <p>
           When running the project locally, these variables can be defined in a
           <code>.env</code> file or directly in the environment. For deployment
-          on Edgio, these should be set in the Edgio Developer Console.
+          on Edgio, these should be set in the Edgio Console.
         </p>
       </div>
     </div>
