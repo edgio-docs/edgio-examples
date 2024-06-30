@@ -24,10 +24,10 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@edgio/cli": "^7.11.5",
-    "@edgio/connectors": "^7.11.5",
-    "@edgio/core": "^7.11.5",
-    "@edgio/prefetch": "^7.11.5",
+    "@edgio/cli": "^7.12.3",
+    "@edgio/connectors": "^7.12.3",
+    "@edgio/core": "^7.12.3",
+    "@edgio/prefetch": "^7.12.3",
     "@remix-run/dev": "^2.9.1",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
