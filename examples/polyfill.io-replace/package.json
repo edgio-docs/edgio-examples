@@ -1,0 +1,20 @@
+{
+  "name": "edgio-polyfill.io-replace-example",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "edgio:dev": "edgio dev",
+    "edgio:build": "edgio build",
+    "edgio:deploy": "edgio deploy",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@edgio/cli": "^7.12.5",
+    "@edgio/core": "^7.12.5",
+    "@edgio/devtools": "^7.12.5",
+    "@edgio/prefetch": "^7.12.5"
+  },
+  "repository": "git@github.com:edgio-docs/edgio-polyfill.io-replace-example.git"
+}
