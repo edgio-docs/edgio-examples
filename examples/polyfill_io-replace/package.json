@@ -16,5 +16,5 @@
     "@edgio/devtools": "^7.12.5",
     "@edgio/prefetch": "^7.12.5"
   },
-  "repository": "git@github.com:edgio-docs/edgio-polyfill.io-replace-example.git"
+  "repository": "git@github.com:edgio-docs/edgio-polyfill_io-replace-example.git"
 }
