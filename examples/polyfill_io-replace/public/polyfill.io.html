@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sample Page with Polyfill.io</title>
+
+    <!-- Polyfill assets -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="http://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script src="//polyfill.io/v3/polyfill.min.js?features=Array.prototype.includes"></script>
+
+    <script src="/assets/main.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/themes/prism-tomorrow.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .code-block code {
+        font-size: 12px !important;
+        line-height: 1.5 !important;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 text-gray-900 font-sans leading-normal">
+    <div class="container mx-auto p-4">
+      <h1 class="text-2xl font-bold mb-4 text-blue-500">Hello, World!</h1>
+      <p class="mb-4 text-lg text-gray-700">
+        Welcome to the sample page demonstrating how to mitigate the polyfill.io
+        vulnerability using edge functions and response transformation.
+      </p>
+      <p class="mb-4 text-base text-gray-600">
+        This page uses an edge function to replace script references from
+        polyfill.io to cdnjs.cloudflare.com for enhanced security and
+        performance. The code block below shows the current HTML document source
+        after the edge function has processed it.
+        <a href="/polyfill.io-usage" class="text-blue-500"
+          >View the original source code.</a
+        >
+      </p>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
+  </body>
+</html>
