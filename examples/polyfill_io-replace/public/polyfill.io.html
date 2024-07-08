@@ -4,6 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sample Page with Polyfill.io</title>
+
+    <!-- Polyfill assets -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script src="http://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script src="//polyfill.io/v3/polyfill.min.js?features=Array.prototype.includes"></script>
+
+    <script src="/assets/main.js"></script>
     <link
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
       rel="stylesheet"
@@ -29,16 +36,12 @@
       <p class="mb-4 text-base text-gray-600">
         This page uses an edge function to replace script references from
         polyfill.io to cdnjs.cloudflare.com for enhanced security and
-        performance.
+        performance. The code block below shows the current HTML document source
+        after the edge function has processed it.
+        <a href="/polyfill.io-usage" class="text-blue-500"
+          >View the original source code.</a
+        >
       </p>
-      <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-      <script src="http://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-      <script src="//polyfill.io/v3/polyfill.min.js?features=Array.prototype.includes"></script>
-      <script>
-        // Sample JavaScript code
-        console.log('Sample JavaScript code running...');
-      </script>
-      <script src="/assets/main.js"></script>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.25.0/prism.min.js"></script>
   </body>
