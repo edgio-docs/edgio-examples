@@ -13,5 +13,7 @@ export default new Router()
     serveStatic('public/polyfill.io.html');
   })
 
+  .static('public')
+
   // plugin enabling basic Edgio functionality
   .use(edgioRoutes);
