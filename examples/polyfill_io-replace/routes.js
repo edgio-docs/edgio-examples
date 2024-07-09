@@ -9,7 +9,7 @@ export default new Router()
   })
 
   // Serve a static HTML file that includes the polyfill.io script tags
-  .match('/polyfill.io-usage', ({ serveStatic }) => {
+  .match('/polyfill.io-example', ({ serveStatic }) => {
     serveStatic('public/polyfill.io.html');
   })
 
