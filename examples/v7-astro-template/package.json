@@ -19,10 +19,10 @@
     "typescript": "^5.3.3"
   },
   "devDependencies": {
-    "@edgio/cli": "^7.10.6",
-    "@edgio/connectors": "^7.10.6",
-    "@edgio/core": "^7.10.6",
-    "@edgio/prefetch": "^7.10.6"
+    "@edgio/cli": "^7.12.5",
+    "@edgio/connectors": "^7.12.5",
+    "@edgio/core": "^7.12.5",
+    "@edgio/prefetch": "^7.12.5"
   },
   "repository": "git@github.com:edgio-docs/edgio-v7-astro-template.git"
 }
