@@ -1,6 +1,6 @@
 # Polyfill.io Replacement with Edge Functions
 
-https://edgio-community-examples-polyfill.io-replace-live.edgio.link/
+[https://edgio-community-examples-polyfill.io-replace-live.edgio.link/](https://edgio-community-examples-polyfill-io-replace-live.glb.edgio.link/)
 
 ## Description
 
