@@ -13,9 +13,9 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@edgio/cli": "^7.12.5",
-    "@edgio/core": "^7.12.5",
-    "@edgio/prefetch": "^7.12.5"
+    "@edgio/cli": "^7.12.6",
+    "@edgio/core": "^7.12.6",
+    "@edgio/prefetch": "^7.12.6"
   },
   "dependencies": {
     "crypto-js": "^4.2.0"
