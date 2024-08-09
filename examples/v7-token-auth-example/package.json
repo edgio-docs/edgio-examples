@@ -1,0 +1,32 @@
+{
+  "scripts": {
+    "edgio:dev": "edgio dev",
+    "edgio:build": "edgio build",
+    "edgio:deploy": "edgio deploy",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "name": "edgio-v7-token-auth-example",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "next": "14.2.1",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@edgio/cli": "^7.12.13",
+    "@edgio/core": "^7.12.13",
+    "@edgio/devtools": "^7.12.13",
+    "@edgio/ectoken": "^2.0.3",
+    "@edgio/next": "^7.12.13",
+    "@edgio/prefetch": "^7.12.13",
+    "@edgio/react": "^7.12.13",
+    "@tailwindcss/forms": "^0.5.7",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1"
+  },
+  "repository": "git@github.com:edgio-docs/edgio-v7-token-auth-example.git"
+}
