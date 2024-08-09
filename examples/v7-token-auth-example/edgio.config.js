@@ -1,4 +1,4 @@
 module.exports = {
   connector: '@edgio/next',
-  organization: 'se-apps',
+  organization: 'edgio-community',
 }

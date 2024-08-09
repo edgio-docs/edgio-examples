@@ -1,16 +1,16 @@
 # Next.js Demo of Edgio Token Auth Functionality
 This project demonstrates how Token Auth works with Edgio. For more details on this feature, visit [the docs](https://docs.edg.io/applications/v7/security/token_auth).
 
-## Pages Available
+## Available Pages
 This application exposes a few separate pages and one API endpoint:
 
-* Main Page `/`: This page does not require an auth token.
-* Token Auth Landing Page `/secure`: This page does not require an auth token. All links on this page (except for the link to the homepage) DO require a valid token.
+* Main Page `/`: This page does not require a token.
+* Token Auth Landing Page `/secure`: This page does not require a token. All links on this page require a valid token.
 * Static Secure Page `/secure/static`: This page shows static data.
 * Static Dynamic Page `/secure/dynamic`: This page shows dynamic data fetched from a third-party API.
 * Token Generator/Decoder `/secure/generator`: This page allows the visitor to create and decode `ectoken`-compatible tokens.
 * Current Token Information `/secure/info`: This page shows the decoded information about the token used to access the page.
-* API route `/api/token`: This API route takes a GET request and returns a new token valid for all users but only for three minutes from when it was generated.
+* API route `/api/token`: This API route takes a `GET` request and returns a new token valid for all users but only for three minutes from when it was generated.
 
 ## How to Use
 1. Navigate to the project homepage and click the link for the "Landing Page."
