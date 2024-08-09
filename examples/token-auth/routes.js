@@ -25,7 +25,7 @@ export default new Router()
     {
       response: {
         set_response_body:
-          "<h1>403 - Access Denied</h1><p>Your request requires a valid token to proceed. Please append it to the URL and try again.</p><p><a href="./secure">Return to the Token Auth landing page.</a></p>",
+          "<h1>403 - Access Denied</h1><p>Your request requires a valid token to proceed. Please append it to the URL and try again.</p><p><a href="/secure">Return to the Token Auth landing page.</a></p>",
         set_status_code: 403
       },
     }
