@@ -171,7 +171,7 @@ export default function SecurePage__Generator() {
         </fieldset>
       </form>
 
-      <p className="mt-4"><TokenAwareLink className="underline text-slate-400 hover:text-slate-800" href="/secure">Return to the Secure Pages landing page.</TokenAwareLink></p>
+      <p className="mt-4"><TokenAwareLink className="underline text-slate-400 hover:text-slate-800" href="/secure">Return to the Token Auth landing page.</TokenAwareLink></p>
     </Suspense>
   )
 }

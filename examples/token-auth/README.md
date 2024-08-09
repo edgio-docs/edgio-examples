@@ -5,7 +5,7 @@ This project demonstrates how Token Auth works with Edgio. For more details on t
 This application exposes a few separate pages and one API endpoint:
 
 * Main Page `/`: This page does not require an auth token.
-* Secure Pages Landing Page `/secure`: This page does not require an auth token. All links on this page (except for the link to the homepage) DO require a valid token.
+* Token Auth Landing Page `/secure`: This page does not require an auth token. All links on this page (except for the link to the homepage) DO require a valid token.
 * Static Secure Page `/secure/static`: This page shows static data.
 * Static Dynamic Page `/secure/dynamic`: This page shows dynamic data fetched from a third-party API.
 * Token Generator/Decoder `/secure/generator`: This page allows the visitor to create and decode `ectoken`-compatible tokens.
