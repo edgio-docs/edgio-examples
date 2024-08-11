@@ -28,12 +28,12 @@
     "typescript": "5.1.3"
   },
   "devDependencies": {
-    "@edgio/cli": "^7.12.5",
-    "@edgio/core": "^7.12.5",
-    "@edgio/devtools": "^7.12.5",
-    "@edgio/next": "^7.12.5",
-    "@edgio/prefetch": "^7.12.5",
-    "@edgio/react": "^7.12.5"
+    "@edgio/cli": "^7.12.13",
+    "@edgio/core": "^7.12.13",
+    "@edgio/devtools": "^7.12.13",
+    "@edgio/next": "^7.12.13",
+    "@edgio/prefetch": "^7.12.13",
+    "@edgio/react": "^7.12.13"
   },
   "repository": "git@github.com:edgio-docs/edgio-v7-nextjs-app-router-example.git"
 }
