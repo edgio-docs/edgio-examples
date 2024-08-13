@@ -55,7 +55,8 @@
         let resultString = '';
 
         try {
-          const payload = { token }
+          const payload = { }
+          payload.token = token
           const secret = secretEl.value.trim()
           if (secret !== '') {
             payload.pubKey = secret

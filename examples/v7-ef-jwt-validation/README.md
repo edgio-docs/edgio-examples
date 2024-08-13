@@ -1,16 +1,21 @@
 # JWT Verification using Edge Functions
 
+This repository provides sample code for verifying JSON Web Tokens (JWT) using Edge Functions. The response varies according to whether it is able to verify the JWT.
+-   **Valid JWT:** Returns the decoded JWT.
+-   **Invalid JWT:** Returns a `401 Unauthorized` response.
+
+Try it at:
+
 https://edgio-community-examples-v7-ef-jwt-validation-live.glb.edgio.link/jwt
-
-## Description
-
-This repository provides example code for verifying JSON Web Tokens (JWT) using Edge Functions. It features an example of how to verify a JWT and return a 401 response if the token is invalid.
 
 ## Prerequisites
 
-**NOTE**: To use this project, you must be an Edgio customer and signed up for the Edge Functions. See our [Edge Functions documentation](https://docs.edg.io/guides/v7/edge-functions) for information on activating this feature.
+This JavaScript project requires:
 
-The system requirements include Node.js v16 or higher, and a UNIX-like system (Linux or macOS). The project code is written in JavaScript.
+-   An Edgio account.
+-   Edge Functions activation. [Learn more about activation.](https://docs.edg.io/guides/v7/edge-functions)
+-   Node.js v18 or higher
+-   A UNIX-like system (Linux or macOS). 
 
 ## Setup and Installation
 
@@ -20,32 +25,29 @@ The system requirements include Node.js v16 or higher, and a UNIX-like system (L
 
 ## Getting Started
 
-After setting up the project, run `npm run edgio:dev` to start a local development server to test the example functions.
+After setting up the project, run `npm run edgio:dev` to start a local development server to test.
 
-To deploy the project to Edgio, use the command `npm run edgio:deploy`. Note that deployment to Edgio requires you to be
-logged into Edgio CLI which can be done via `npm run edgio login` and following the instructions.
+To deploy the project to Edgio, use the command `npm run edgio:deploy`. Deploying to Edgio requires you to be
+logged into Edgio CLI which can be done via `npm run edgio login` and the following the instructions.
 
 ## Known Issues and Limitations
 
-Currently
+Edge functions:
 
-* We only support JavaScript-based code
-* Each request has a 60-second (wall time) timeout limit
-* Each request is limited to 50ms of CPU time
-* Each request is limited to 2MB of memory
-* An Edgio Function can make fetch requests only to origins defined in your property configuration
+-   Must use JavaScript code.
+-   May only submit fetch requests to origins defined within your property configuration
   file (`edgio.config.js`).
 
-Validating tokens signed with RSxxx, ESxxx, or PSxxx algorithms generally takes more processing power than is current available for Edge Functions. Please contact Edgio Support (below) to adjust the CPU and memory limits for your environment if you plan on validating these algorithms.
+[View additional limitations.](https://docs.edg.io/applications/edge_functions#limitations)
+
+Validating tokens signed with RSxxx, ESxxx, or PSxxx algorithms generally takes more processing power than is currently available for Edge Functions. [Contact Edgio support](https://edg.io/contact-support/) to adjust the CPU and memory limits for your environment if you plan on validating these algorithms.
 
 ESxxx algorithms use a very slow elliptical curve algorithm and may take longer than is allowed to validate, even with increased limits.
 
-We're looking forward to feedback from our customers about these limitations and how we can improve the product.
-
 ## Support
 
-If you have any queries or face issues with this project, please don't hesitate to contact
-the [Edgio team](https://edg.io/contact-support/).
+If you have any queries or face issues with this project, [contact
+us](https://edg.io/contact-support/).
 
 ## License
 
