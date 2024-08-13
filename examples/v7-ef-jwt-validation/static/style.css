@@ -1,0 +1,51 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.wrapper {
+  max-width: 640px;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+fieldset {
+  border: 1px solid #ddd;
+  padding: 0.5rem;
+}
+
+textarea {
+  width: calc(100% - 1rem);
+  /* Adjust width to prevent overflow */
+  padding: 0.25rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-top: 0.5rem;
+  box-sizing: border-box;
+  /* Include padding and border in the element's total width and height */
+}
+
+button {
+  padding: 0.5rem 1rem;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+#results {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #eee;
+  border-radius: 4px;
+}

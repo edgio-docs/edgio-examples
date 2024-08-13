@@ -24,8 +24,14 @@ export async function handleHttpRequest(request, context) {
     // For RSxxx, ESxxx, and PSxxx algorithms, a public key is required instead.
     // The public key is expected to be part of the request payload and be named pubKey;
     // the secret key SHOULD NOT be part of the payload.
+    // Note that for demo purposes (being able to set an arbitrary signing key) this
+    // version of the EF will use the secret from `pubKey` if it exists.
     if (/^HS/i.test(alg)) {
-      validationComponent = process.env.JWT_SECRET
+      if ('pubKey' in other) {
+        validationComponent = other.pubKey
+      } else {
+        validationComponent = process.env.JWT_SECRET
+      }
     } else if (/^[REP]S/i.test(alg)) {
       validationComponent = KEYUTIL.getKey(other.pubKey)
     } else {

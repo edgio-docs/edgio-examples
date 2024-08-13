@@ -2,6 +2,8 @@
 // You should commit this file to source control.
 // Learn more about this file at https://docs.edg.io/guides/edgio_config
 module.exports = {
+  connector: '@edgio/express',
+  
   // The name of the site in Edgio to which this app should be deployed.
   name: "edgio-v7-ef-jwt-validation-example",
 
@@ -16,32 +18,6 @@ module.exports = {
   purgeCacheOnDeploy: true,
   // If omitted this will default to the "Automatic Purging" configuration on the environment's Caching tab.
   // purgeCacheOnDeploy: false,
-
-  origins: [
-    {
-      // The name of the backend origin
-      name: "origin",
-
-      // Use the following to override the host header sent from the browser when connecting to the origin
-      override_host_header: "httpbin.org",
-
-      // The list of origin hosts to which to connect
-      hosts: [
-        {
-          // The domain name or IP address of the origin server
-          location: "httpbin.org",
-        },
-      ],
-
-      tls_verify: {
-        use_sni: true,
-        sni_hint_and_strict_san_check: "httpbin.org",
-      },
-
-      // Uncomment the following to configure a shield
-      // shields: { us_east: 'DCD' },
-    },
-  ],
 
   // Uncomment the following to specify environment specific configs
   // environments: {
@@ -66,15 +42,15 @@ module.exports = {
   // },
 
   // Options for hosting serverless functions on Edgio
-  // serverless: {
-  //   // Set to true to include all packages listed in the dependencies property of package.json when deploying to Edgio.
-  //   // This option generally isn't needed as Edgio automatically includes all modules imported by your code in the bundle that
-  //   // is uploaded during deployment
-  //   includeNodeModules: true,
-  //
-  //   // Include additional paths that are dynamically loaded by your app at runtime here when building the serverless bundle.
-  //   include: ['views/**/*'],
-  // },
+  serverless: {
+    // // Set to true to include all packages listed in the dependencies property of package.json when deploying to Edgio.
+    // // This option generally isn't needed as Edgio automatically includes all modules imported by your code in the bundle that
+    // // is uploaded during deployment
+    // includeNodeModules: true,
+  
+    // Include additional paths that are dynamically loaded by your app at runtime here when building the serverless bundle.
+    include: ['static'],
+  },
 
   // The maximum number of URLs that will be concurrently prerendered during deployment when static prerendering is enabled.
   // Defaults to 200, which is the maximum allowed value.

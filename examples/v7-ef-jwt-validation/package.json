@@ -11,13 +11,15 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@edgio/cli": "^7.12.12",
-    "@edgio/core": "^7.12.12",
-    "@edgio/devtools": "^7.12.12",
-    "@edgio/prefetch": "^7.12.12"
+    "@edgio/cli": "^7.12.13",
+    "@edgio/connectors": "^7.12.13",
+    "@edgio/core": "^7.12.13",
+    "@edgio/devtools": "^7.12.13",
+    "@edgio/prefetch": "^7.12.13"
   },
   "repository": "git@github.com:edgio-docs/edgio-v7-ef-jwt-validation-example.git",
   "dependencies": {
+    "express": "^4.19.2",
     "jsrsasign": "^11.1.0"
   }
 }
