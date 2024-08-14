@@ -20,21 +20,20 @@
   <div class="wrapper">
     <h1>JWT Validator</h1>
     <p>
-      You can generate a test token using the default signing key
-      <code>your-256-bit-secret</code> at
+      Generate a sample JSON Web Token (JWT) at
       <a href="https://jwt.io" target="_blank" rel="noopener noreferrer">jwt.io</a>. Valid algorithms for this example
-      include <code>HS256</code>,
+      are <code>HS256</code>,
       <code>HS384</code>, and <code>HS512</code>.
     </p>
     <form id="validator">
       <fieldset>
-        <legend>Enter Your Token:</legend>
+        <legend>Token:</legend>
         <textarea name="token" id="token" rows="10" placeholder="Paste your JWT here...">
           eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJjb21tZW50IjoiRWRnZSBmdW5jdGlvbnMgYXJlIHN3ZWV0ISJ9.hc0nVeZWhE6MEf-CHJwljTY3uo6qqm8q_V_0zwm34tFALrjJDAa0CL3oUEehMRNdt3PQdcuWBgzMUqKVUWMRVQ
         </textarea>
       </fieldset>
       <fieldset>
-        <legend>Enter Your Signing Key (if you set a custom key):</legend>
+        <legend>Signing key (required for tokens signed by a custom key):</legend>
         <input type="text" name="secret" id="secret" placeholder="your-256-bit-secret">
       </fieldset>
       <button type="submit">Validate</button>
