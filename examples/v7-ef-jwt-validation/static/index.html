@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Validate JWTs using Edge Functions">
+  <title>JWT Validator</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+  <!--[if lt IE 7]>
+    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+  <div class="wrapper">
+    <h1>JWT Validator</h1>
+    <p>
+      Generate a sample JSON Web Token (JWT) at
+      <a href="https://jwt.io" target="_blank" rel="noopener noreferrer">jwt.io</a>. Valid algorithms for this example
+      are <code>HS256</code>,
+      <code>HS384</code>, and <code>HS512</code>.
+    </p>
+    <form id="validator">
+      <fieldset>
+        <legend>Token:</legend>
+        <textarea name="token" id="token" rows="10" placeholder="Paste your JWT here...">
+          eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyLCJjb21tZW50IjoiRWRnZSBmdW5jdGlvbnMgYXJlIHN3ZWV0ISJ9.hc0nVeZWhE6MEf-CHJwljTY3uo6qqm8q_V_0zwm34tFALrjJDAa0CL3oUEehMRNdt3PQdcuWBgzMUqKVUWMRVQ
+        </textarea>
+      </fieldset>
+      <fieldset>
+        <legend>Signing key (required for tokens signed by a custom key):</legend>
+        <input type="text" name="secret" id="secret" placeholder="your-256-bit-secret">
+      </fieldset>
+      <button type="submit">Validate</button>
+    </form>
+
+    <div id="results" hidden></div>
+  </div>
+
+  <script type="text/javascript">
+    document
+      .getElementById('validator')
+      .addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const tokenEl = document.getElementById('token');
+        const secretEl = document.getElementById('secret');
+        const resultEl = document.getElementById('results');
+        const token = tokenEl.value.trim();
+        let resultString = '';
+
+        try {
+          const payload = { }
+          payload.token = token
+          const secret = secretEl.value.trim()
+          if (secret !== '') {
+            payload.pubKey = secret
+          }
+          const response = await fetch('/jwt', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
+          });
+
+          if (!response.ok) {
+            throw new Error(
+              `Server error occurred. Response code: ${response.status
+              }, Response body: ${JSON.stringify(await response.json())}`
+            );
+          }
+
+          const data = await response.json();
+
+          if (data.valid) {
+            resultString = `<p>Token successfully validated using ${data.alg
+              }.</p><p>Payload:</p><pre>${JSON.stringify(
+                data.payload,
+                null,
+                2
+              )}</pre>`;
+          } else {
+            resultString = '<p>An error occurred validating the token.</p>';
+          }
+        } catch (error) {
+          resultString = `<p>${error.message}</p>`;
+          console.error('Error:', error);
+        } finally {
+          resultEl.hidden = false;
+          resultEl.innerHTML = resultString;
+        }
+      });
+  </script>
+</body>
+
+</html>
